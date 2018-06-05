@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{b7ff86ea-90f4-4ebe-bad3-0df6d7296521}</UniqueIdentifier>
+      <Extensions>cpp;cxx;cc;c;C</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{bc8e7c2b-121e-4134-87a2-4507d5ba15fa}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hh</Extensions>
+    </Filter>
+    <Filter Include="Build Files">
+      <UniqueIdentifier>{ca54fa94-70eb-4d1c-814b-e57b6ef68396}</UniqueIdentifier>
+      <Extensions>mpc;mpb;mwc</Extensions>
+    </Filter>
+    <Filter Include="Documentation">
+      <UniqueIdentifier>{296cea86-dcb3-4676-a318-ffae8215e6e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FairyTreeCampaign">
+      <UniqueIdentifier>{de418bc9-55ae-4c0a-b575-7e5aad5e259f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FairyTreeCampaign\cppfile">
+      <UniqueIdentifier>{bb1ce8e7-3ff4-44c5-8346-9a514023e259}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FairyTreeCampaign\hfile">
+      <UniqueIdentifier>{00791e38-11cc-4142-a44c-edf8a16ea684}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ProtoMsg">
+      <UniqueIdentifier>{612678fa-446b-4873-a4d3-c5d6646d6251}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ConfigurationManager">
+      <UniqueIdentifier>{dc834346-f6d8-4651-9ef6-7bf7a27ff8b9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BaseCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TcpTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterClass.cpp">
+      <Filter>FairyTreeCampaign\cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="Elfin.cpp">
+      <Filter>FairyTreeCampaign\cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="FairyTree.cpp">
+      <Filter>FairyTreeCampaign\cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="FairyTreeUserClasses.cpp">
+      <Filter>FairyTreeCampaign\cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="Gold.cpp">
+      <Filter>FairyTreeCampaign\cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="Mail.cpp">
+      <Filter>FairyTreeCampaign\cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="RankingList.cpp">
+      <Filter>FairyTreeCampaign\cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="Relation.cpp">
+      <Filter>FairyTreeCampaign\cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="Shop.cpp">
+      <Filter>FairyTreeCampaign\cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="Skill.cpp">
+      <Filter>FairyTreeCampaign\cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskClass.cpp">
+      <Filter>FairyTreeCampaign\cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="TreeEnchantment.cpp">
+      <Filter>FairyTreeCampaign\cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="Warehouse.cpp">
+      <Filter>FairyTreeCampaign\cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="Water.cpp">
+      <Filter>FairyTreeCampaign\cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="MessageManage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcessMsg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtobufMSG\Msg.pb.cc">
+      <Filter>ProtoMsg</Filter>
+    </ClCompile>
+    <ClCompile Include="TinyXML\tinystr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TinyXML\tinyxml.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TinyXML\tinyxmlerror.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TinyXML\tinyxmlparser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MD5.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SunShine.cpp">
+      <Filter>FairyTreeCampaign\cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="XmlConfigManager.cpp">
+      <Filter>ConfigurationManager</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BaseCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterClass.h">
+      <Filter>FairyTreeCampaign\hfile</Filter>
+    </ClInclude>
+    <ClInclude Include="Elfin.h">
+      <Filter>FairyTreeCampaign\hfile</Filter>
+    </ClInclude>
+    <ClInclude Include="FairyTree.h">
+      <Filter>FairyTreeCampaign\hfile</Filter>
+    </ClInclude>
+    <ClInclude Include="FairyTreeUserClasses.h">
+      <Filter>FairyTreeCampaign\hfile</Filter>
+    </ClInclude>
+    <ClInclude Include="Gold.h">
+      <Filter>FairyTreeCampaign\hfile</Filter>
+    </ClInclude>
+    <ClInclude Include="Mail.h">
+      <Filter>FairyTreeCampaign\hfile</Filter>
+    </ClInclude>
+    <ClInclude Include="RankingList.h">
+      <Filter>FairyTreeCampaign\hfile</Filter>
+    </ClInclude>
+    <ClInclude Include="Relation.h">
+      <Filter>FairyTreeCampaign\hfile</Filter>
+    </ClInclude>
+    <ClInclude Include="Shop.h">
+      <Filter>FairyTreeCampaign\hfile</Filter>
+    </ClInclude>
+    <ClInclude Include="Skill.h">
+      <Filter>FairyTreeCampaign\hfile</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskClass.h">
+      <Filter>FairyTreeCampaign\hfile</Filter>
+    </ClInclude>
+    <ClInclude Include="TreeEnchantment.h">
+      <Filter>FairyTreeCampaign\hfile</Filter>
+    </ClInclude>
+    <ClInclude Include="Warehouse.h">
+      <Filter>FairyTreeCampaign\hfile</Filter>
+    </ClInclude>
+    <ClInclude Include="Water.h">
+      <Filter>FairyTreeCampaign\hfile</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageManage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcessMsg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtobufMSG\Msg.pb.h">
+      <Filter>ProtoMsg</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyXML\tinystr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyXML\tinyxml.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MD5.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SunShine.h">
+      <Filter>FairyTreeCampaign\hfile</Filter>
+    </ClInclude>
+    <ClInclude Include="XmlConfigManager.h">
+      <Filter>ConfigurationManager</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="TcpTest.mpc">
+      <Filter>Build Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ReadMe.txt">
+      <Filter>Documentation</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>
