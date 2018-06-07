@@ -20,7 +20,7 @@ public:
 	FairyTree();
 	~FairyTree();
 	//设置等级 获取等级
-	void Set_FGrade(uint32 fgr);
+	void Set_FGrade(bool fgr);
 	int Get_FGrade();
 
 	//设置树高
@@ -45,25 +45,6 @@ public:
 	//获取树存储金币
 	int Get_FFaiTreStoGol();
 
-	//设置消耗水的数量
-	void Set_ConsumptionWater(uint32 scw);
-	//获取消耗水的数量
-	int Get_ConsumptionWater();
-
-	//设置消耗阳光的数量
-	void Set_ConsumptionSunshine(uint32 scs);
-	//获取消耗阳光的数量
-	int Get_ConsumptionSunshine();
-
-	//设置消耗金币的数量
-	void Set_ConsumptionGold(uint32 scg);
-	//获取消耗金币的数量
-	int Get_ConsumptionGold();
-
-	//设置消耗小精灵体力的数量
-	void Set_ConsumptionElfinPP(uint32 scepp);
-	//获取消耗小精灵体力的数量
-	int Get_ConsumptionElfinPP();
 private:
 	//等级
 	uint32 fgrade;
@@ -78,18 +59,6 @@ private:
 
 	//神仙树存储金币
 	uint32 cfaiTreStoGol;
-
-	//消耗水的数量
-	uint32 uCoWaterNum;
-
-	//消耗阳光的数量
-	uint32 uCoSunNum;
-
-	//消耗金币的数量
-	uint32 uCoGoldNum;
-
-	//消耗小精灵体力的数量
-	uint32 uCoElfinPP;
 
 
 };

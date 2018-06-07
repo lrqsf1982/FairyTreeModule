@@ -7,6 +7,7 @@
 #include "BaseCommand.h"
 #include "IObject.h"
 #include "./ProtobufMSG/Msg.pb.h"
+#include "XmlConfigManager.h"
 
 #include "ace/svc_export.h"
 
@@ -50,6 +51,8 @@ int LoadModuleData(CServerObject* pServerObject)
 
     g_BaseCommand = new CBaseCommand();
 
+	XmlConfigManager* pxmlConfigManager = XmlConfigManager::GetInstance();//初始Xml数据到内存中
+
     OUR_DEBUG((LM_INFO, "[Base LoadModuleData] Begin.\n"));
 
     if(g_pServerObject != NULL)
@@ -59,6 +62,7 @@ int LoadModuleData(CServerObject* pServerObject)
     else
     {
         OUR_DEBUG((LM_INFO, "[Base LoadModuleData] pServerObject is NULL.\n"));
+		return -1;
     }
 
     IMessageManager* pMessageManager = g_pServerObject->GetMessageManager();
@@ -132,6 +136,7 @@ int LoadModuleData(CServerObject* pServerObject)
     else
     {
         OUR_DEBUG((LM_INFO, "[Base LoadModuleData] pMessageManager = NULL.\n"));
+		return -1;
     }
 
     //显示监听端口信息

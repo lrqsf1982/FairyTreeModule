@@ -15,6 +15,8 @@ CSunshine::CSunshine()
 	ufSunPCapa = 0; //阳光的产出能力
 
 	ufSunPTime = 0; //阳光的生产时间
+
+	usunnum = 0; //阳光的数量
 }
 
 
@@ -56,34 +58,10 @@ int CSunshine::Get_FGrade()
 	return ufgrade;
 }
 
-//设置消耗阳光数量
-void CSunshine::Set_FSunCoNum(uint32 setfsun)
-{
-	ufCoSun = setfsun;
-}
-
-//获取消耗阳光数量
-int CSunshine::Get_FSunCoNum()
-{
-	return ufCoSun;
-}
-
-//设置消耗金币数量
-void CSunshine::Set_FCoGoldNum(uint32 setfco)
-{
-	ufCoGold = setfco;
-}
-
-//获取消耗金币数量
-int CSunshine::Get_FCoGoldNum()
-{
-	return ufCoGold;
-}
-
 //设置阳光的产出能力
 void CSunshine::Set_FSunProCap(uint32 setpro)
 {
-	ufSunPCapa = setpro;
+	ufSunPCapa += setpro;
 }
 
 //获取阳光的产出能力
@@ -102,6 +80,24 @@ void CSunshine::Set_FSunProTime(uint32 setftime)
 int CSunshine::Get_FSunProTime()
 {
 	return ufSunPTime;
+}
+
+//设置增加阳光的数量
+void CSunshine::Set_FAddSunNumber(uint32 unum)
+{
+	usunnum += unum;
+}
+
+//设置减少阳光的数量
+void CSunshine::Set_FSubSunNum(uint32 unum)
+{
+	usunnum -= unum;
+}
+
+//获取阳光的数量
+int CSunshine::Get_FSunNumber()
+{
+	return usunnum;
 }
 
 

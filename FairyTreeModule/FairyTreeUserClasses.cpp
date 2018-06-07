@@ -4,7 +4,21 @@
 
 FairyTreeUserClasses::FairyTreeUserClasses()
 {
+	userid = 0; //用户ID
+
 	udiamond = 0; //钻石
+
+	uUpwaterNum = 0;//升级需要的普通水的数量
+	
+	uUpfairywaterNum = 0;//升级需要的神仙水的数量
+	
+	uUpgoldNum = 0;//升级需要的金币的数量
+	
+	uUpsunNum = 0;//升级需要的阳光的数量
+	
+	uUpelfinTiliNUM = 0;//升级需要的小精灵体力的数量
+	
+	uUpdiaNum = 0;//升级需要的钻石的数量
 }
 
 
@@ -12,17 +26,22 @@ FairyTreeUserClasses::~FairyTreeUserClasses()
 {
 }
 
+//设置用户ID
+void FairyTreeUserClasses::Set_UserId(uint32 suid)
+{
+	userid = suid;
+}
+
+//获得用户ID
+int FairyTreeUserClasses::Get_UserId()
+{
+	return userid;
+}
+
 //获取小精灵
-Elfin* FairyTreeUserClasses::Get_Elfin(uint32 id)
+Elfin FairyTreeUserClasses::Get_Elfin()
 { 
-	for (std::list<Elfin*>::iterator it = slistElfin.begin(); it != slistElfin.end(); it++)
-	{
-		if (id == (*it)->Get_ID())
-		{
-			return *it;
-		}
-	}
-	return nullptr;
+	return elf;
 }
 
 //获取神仙树
@@ -79,6 +98,12 @@ RankingList FairyTreeUserClasses::Get_RankingList()
 	return rankinglist;
 }
 
+//角色类
+CharacterClass FairyTreeUserClasses::Get_Characlass()
+{
+	return characlass;
+}
+
 //获取技能
 CSkill FairyTreeUserClasses::Get_CSkill()
 {
@@ -115,54 +140,107 @@ int FairyTreeUserClasses::Get_UserDiamond()
 	return udiamond;
 }
 
+//小精灵升级函数
+void FairyTreeUserClasses::vUpgradeElfinFun(uint32 uelfid)
+{
+	if (elf.Get_ID() == uelfid
+		&& water.Get_WOrdinaryWater() >= vGetUpgradeWaterNum()
+		&& gold.Get_GGoldNumber() >= vGetUpgradeGoldNum()
+		&& sunshine.Get_FSunNumber() >= vGetUpgradeSunNum()
+		&& Get_UserDiamond() >= vGetUpgradeDiamoNum())
+	{
+		elf.Set_EGrade(true);
+	}
+
+}
+
+//神仙树升级函数
+void FairyTreeUserClasses::vUpgradeFairyTreeFun(uint32 uid)
+{
+	if (characlass.Get_Role_ID() == uid
+		&& water.Get_WOrdinaryWater() >= vGetUpgradeWaterNum()
+		&& gold.Get_GGoldNumber() >= vGetUpgradeGoldNum()
+		&& sunshine.Get_FSunNumber() >= vGetUpgradeSunNum()
+		&& Get_UserDiamond() >= vGetUpgradeDiamoNum()
+		&& elf.Get_EPhysicalPower() >= vGetUpgradeElfinTiliNum())
+	{
+		fairytree.Set_FGrade(true);
+	}
+}
+
+//技能升级函数
+void FairyTreeUserClasses::vUpgradeSkillFun(uint32 usklid)
+{
+	if (skill.Get_Skill_ID() == usklid
+		&& water.Get_WOrdinaryWater() >= vGetUpgradeWaterNum()
+		&& gold.Get_GGoldNumber() >= vGetUpgradeGoldNum()
+		&& sunshine.Get_FSunNumber() >= vGetUpgradeSunNum()
+		&& Get_UserDiamond() >= vGetUpgradeDiamoNum())
+	{
+		skill.Set_Skill_Level(true);
+	}
+
+}
 
 
+//设置升级普通水消耗的数量
+void FairyTreeUserClasses::vSetUpgradeWaterNum(uint32 num)
+{
+	uUpwaterNum += num;
+}
+//获取升级普通水消耗的数量
+int FairyTreeUserClasses::vGetUpgradeWaterNum()
+{
+	return uUpwaterNum;
+}
+//设置升级神仙水消耗的数量
+void FairyTreeUserClasses::vSetUpgradeFairyTreeNum(uint32 num)
+{
+	uUpfairywaterNum += num;
+}
+//获取升级神仙水消耗的数量
+int FairyTreeUserClasses::vGetUpgradeFairyTreeWaterNum()
+{
+	return uUpfairywaterNum;
+}
+//设置升级金币消耗的数量
+void FairyTreeUserClasses::vSetUpgradeGoldNum(uint32 num)
+{
+	uUpgoldNum += num;
+}
+//获取升级金币消耗的数量
+int FairyTreeUserClasses::vGetUpgradeGoldNum()
+{
+	return uUpgoldNum;
+}
+//设置升级阳光消耗的数量
+void FairyTreeUserClasses::vSetUpgradeSunNum(uint32 num)
+{
+	uUpsunNum += num;
+}
+//获取升级阳光消耗的数量
+int FairyTreeUserClasses::vGetUpgradeSunNum()
+{
+	return uUpsunNum;
+}
+//设置升级小精灵体力消耗的数量
+void FairyTreeUserClasses::vSetUpgradeElfinTiliNum(uint32 num)
+{
+	uUpelfinTiliNUM += num;
+}
+//获取升级小精灵体力消耗的数量
+int FairyTreeUserClasses::vGetUpgradeElfinTiliNum()
+{
+	return uUpelfinTiliNUM;
+}
+//设置升级钻石消耗的数量
+void FairyTreeUserClasses::vSetUpgradeDiamoNum(uint32 num)
+{
+	uUpdiaNum += num;
+}
+//获取升级钻石消耗的数量
+int FairyTreeUserClasses::vGetUpgradeDiamoNum()
+{
+	return uUpdiaNum;
+}
 
-
-//加载Xml文件
-//bool bPaintXml(const char* pfilepath)
-//{
-//	//const char* filepath = ".Test.Xml";
-//	//定义一个文件节点TiXmlDocument指针, 加载的将是整个XML文档,构建文档对象
-//	TiXmlDocument* tixml = new TiXmlDocument(pfilepath);
-//	if (NULL == tixml)
-//	{
-//		return false;
-//	}
-//	// 加载文件 文件名,就是将文件信息载入到文档对象中
-//	tixml->LoadFile();
-//
-//	//Element元素是一个容器类
-//	//根据文档对象找到跟元素或跟节点,就是指向节点的指针
-//	TiXmlElement* proot = tixml->RootElement();
-//
-//	////从第一个名字为("Table")的节点循环 到它的下一个节点 
-//	////NextSibling("Table")下一个名为"Table"的子节点
-//	for (TiXmlNode* pnode = proot->FirstChild("Table"); pnode; pnode = pnode->NextSibling("Table"))
-//	{
-//		TiXmlNode* pchild = pnode->FirstChild();
-//		const char* pgrade = pchild->ToElement()->GetText(); //获得这个节点的值(等级)
-//
-//		if (pgrade)
-//		{
-//			OUR_DEBUG((LM_INFO, "pgrade = %s\n", pgrade));
-//		}
-//		else
-//		{
-//			OUR_DEBUG((LM_INFO, "error pgrade = %s\n"));
-//		}
-//
-//		pchild = pnode->IterateChildren(pchild);//IterateChildren()返回下一个子节点
-//		const char* ptiLi = pchild->ToElement()->GetText(); //获得这个节点的值(当前等级下的最大体力)
-//
-//		if (ptiLi)
-//		{
-//			OUR_DEBUG((LM_INFO, "ptiLi = %s\n", ptiLi));
-//		}
-//		else
-//		{
-//			OUR_DEBUG((LM_INFO, "error ptiLi = %s\n"));
-//		}
-//	}
-//	return true;
-//}

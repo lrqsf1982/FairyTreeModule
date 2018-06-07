@@ -27,6 +27,12 @@ int CBaseCommand::DoMessage(IMessage* pMessage, bool& bDeleteFlag)
     //如果函数不返回任何变量，你可以使用__LEAVE_FUNCTION即可。
     __ENTER_FUNCTION();
 
+	if (pMessage == NULL)
+	{
+		OUR_DEBUG((LM_ERROR, "[CBaseCommand::DoMessage] pMessage is NULL.\n"));
+		return -1;
+	}
+
     DO_TRACE("./", pMessage->GetMessageBase()->m_szTraceID);
 
     if(m_pServerObject == NULL)
@@ -34,13 +40,6 @@ int CBaseCommand::DoMessage(IMessage* pMessage, bool& bDeleteFlag)
         OUR_DEBUG((LM_ERROR, "[CBaseCommand::DoMessage] m_pServerObject is NULL(%d).\n", bDeleteFlag));
         return -1;
     }
-
-    if(pMessage == NULL)
-    {
-        OUR_DEBUG((LM_ERROR, "[CBaseCommand::DoMessage] pMessage is NULL.\n"));
-        return -1;
-    }
-
 	
     //处理链接建立信息
     MESSAGE_FUNCTION_BEGIN(pMessage->GetMessageBase()->m_u2Cmd);

@@ -4,6 +4,7 @@
 
 Elfin::Elfin()
 {
+	uEid = 0;//小精灵的ID
 
 	_egrade = 0;//等级
 
@@ -64,16 +65,13 @@ int Elfin::Get_ESkillStyle()
 //设置等级
 void Elfin::Set_EGrade(bool beg)
 {
-	//如果小精灵的经验值达到最大 
-	//等级加 1
 	if (beg)
 	{
 		_egrade += 1;
 
-		//每增加一级最大体力 增加指定值
+		//每增加一级 最大体力值就增加指定值
 		Set_EMaxPhysicalPower(SEGMAXPHYSICALPOWER);
 
-		beg = false;
 	}
 }
 
@@ -86,16 +84,31 @@ int Elfin::Get_EGrade()
 //设置增加体力
 void Elfin::Set_EAddPhysicalPower(uint32 ueap)
 {
-	_ephysicalpower += ueap;
+	//如果当前体力值小于最大体力值
+	if (_ephysicalpower < _emaxphysicalpower)
+	{
+		_ephysicalpower += ueap;
+		//如果当前体力值大于最大体力值 那么当前体力值就等于最大体力值
+		if (_ephysicalpower > _emaxphysicalpower)
+		{
+			_ephysicalpower = _emaxphysicalpower;
+		}
+	}
+		
 }
 
 //设置减少体力
 void Elfin::Set_EReducePhysicalPower(uint32 uerp)
 {
 	_ephysicalpower -= uerp;
+	//如果当前体力 小于 0 那么当前体力值就等于0
+	if (_ephysicalpower < 0)
+	{
+		_ephysicalpower = 0;
+	}
 }
 
-//获取体力
+//获取当前体力
 int Elfin::Get_EPhysicalPower()
 {
 	return _ephysicalpower;
@@ -104,6 +117,7 @@ int Elfin::Get_EPhysicalPower()
 //设置最大体力
 void Elfin::Set_EMaxPhysicalPower(uint32 uempp)
 {
+	//小精灵每升一级,最大体力就会相应增加
 	_emaxphysicalpower += uempp;
 }
 
@@ -112,3 +126,16 @@ int Elfin::Get_EMaxPhysicalPower()
 {
 	return _emaxphysicalpower;
 }
+
+//设置小精灵的ID
+void Elfin::Set_EToID(uint32 etoid)
+{
+	uEid = etoid;
+}
+
+//获取小精灵的ID
+int Elfin::Get_ID()
+{
+	return uEid;
+}
+

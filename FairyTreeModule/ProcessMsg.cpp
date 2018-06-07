@@ -4,7 +4,7 @@
 //登录请求1
 void Process_LoginRequest(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage)
 {	
-	//首先从从数据库里对比密码
+	//首先从数据库里对比密码
 	LoginRequest logreq;
 
 	//判断账号和密码(密码要转换成MD5码在与数据库里的密码进行对比)是否正确并返回结果给客户端
@@ -12,7 +12,7 @@ void Process_LoginRequest(const GameMessage& pMsg, CServerObject* pServerObj, IM
 
 	char* pin = NULL;
 	std::string pinput = logreq.passwd();
-	uint32 ulen = pinput.length();
+	uint32 ulen = (uint32)pinput.length();
 	memcpy_safe((char*)&pinput, (uint32)ulen, (char*)&pin, (uint32)ulen);
 	char poutput[MAX_BUFF_50];
 	CMD5 cmd5;
@@ -304,16 +304,18 @@ void Process_RegisterRequest(const GameMessage & pMsg, CServerObject * pServerOb
 {
 	RegisterRequest pregReq;
 	//当收到请求时,对比数据库里是否有相同的账号名.如果有,就返回错误(账号已存在).
-	//如果没有就将密码转换成MD5码,并且将账号和密码存入数据库.并返回成功
+	//如果没有就将密码转换成MD5码,并且将(账号,密码,名字)存入数据库.并返回成功
 	pregReq.account();
 
 	char* pin = NULL;
 	std::string pinput = pregReq.passwd();
-	uint32 ulen = pinput.length();
+	uint32 ulen = (uint32)pinput.length();
 	memcpy_safe((char*)&pinput, (uint32)ulen, (char*)&pin, (uint32)ulen);
 	char poutput[MAX_BUFF_50];
 	CMD5 cmd5;
 	cmd5.ENCODE_DATA(pin,ulen,poutput);
+
+	pregReq.name();
 	
 
 	//应答函数
@@ -386,17 +388,13 @@ void Process_ElfinResponse(const GameMessage& pMsg, CServerObject* pServerObj, I
 	ElfinResponse* pelf = pRes->release_elfin();
 	pelf = pRes->mutable_elfin();
 
-	//神仙树的用户信息
-	//FairyTreeUserClasses* user;
-	//组织应答消息内容(等级,经验,最大经验,体力,最大体力,类型)
+	//组织应答消息内容(ID,等级,体力,最大体力,类型)
 	pelf->set_id(123456);
 	pelf->set_level(1);
 	pelf->set_power(100);
 	pelf->set_maxpower(100);
 	pelf->set_etype(ElfinResponse_Elfintype_Jin);
 	
-	
-
 	//设置消息应答(枚举  3011)
 	gameMsg.set_msg(Elfin_Response);
 
@@ -559,7 +557,7 @@ void Process_TasksResponse(const GameMessage & pMsg, CServerObject * pServerObj,
 	std::string sn("HelloWorld");
 	ptasks->set_details(sn);
 	ptasks->set_type(TasksResponse_TaskType_Received);
-	Prize* spr;
+	Prize* spr = nullptr;
 	ptasks->set_allocated_prize1(spr);
 	ptasks->set_allocated_prize2(spr);
 	ptasks->set_allocated_prize3(spr);
@@ -605,7 +603,7 @@ void Process_MailsResponse(const GameMessage& pMsg, CServerObject* pServerObj, I
 	std::string sn("HelloYouJian");
 	pmail->set_details(sn);
 	pmail->set_received(true);
-	Prize* spr;
+	Prize* spr = nullptr;
 	pmail->set_allocated_prize1(spr);
 	pmail->set_allocated_prize2(spr);
 	pmail->set_allocated_prize3(spr);
@@ -727,7 +725,7 @@ void Process_StoreAllResponse(const GameMessage & pMsg, CServerObject * pServerO
 	pstoall->set_goldprice(11);
 	pstoall->set_diaprice(10);
 	pstoall->set_discount(9);
-	StdMode stdmode;
+	StdMode stdmode = Res_Water;
 	pstoall->set_type(stdmode);
 	std::string sds("商店所有物品:水,装备,特殊道具");
 	pstoall->set_describe(sds);
@@ -1019,7 +1017,7 @@ void Process_RecTaskAwardResponse(const GameMessage & pMsg, CServerObject * pSer
 	prectask = pRes->mutable_rectaskaward();
 
 	//组织应答消息内容(ID编号,名字,描述,数量)
-	Prize* spr;
+	Prize* spr = nullptr;
 	prectask->set_allocated_prize1(spr);
 	prectask->set_allocated_prize2(spr);
 	prectask->set_allocated_prize3(spr);

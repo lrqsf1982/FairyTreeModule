@@ -34,9 +34,13 @@ SkillType CSkill::Get_Skill_Type()
 }
 
 //设置技能等级
-void CSkill::Set_Skill_Level(uint32 ssl)
+void CSkill::Set_Skill_Level(bool ssl)
 {
-	uskillLevel += ssl;
+	if (ssl)
+	{
+		uskillLevel += 1;
+	}
+	
 }
 
 //获取技能等级

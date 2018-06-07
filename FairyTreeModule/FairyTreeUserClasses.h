@@ -19,6 +19,8 @@
 #include "Water.h"
 #include "./TinyXML/tinyxml.h"
 #include "./TinyXML/tinyxml.h"
+#include "XmlConfigManager.h"
+#include "CharacterClass.h"
 
 
 
@@ -29,8 +31,13 @@ public:
 	FairyTreeUserClasses();
 	~FairyTreeUserClasses();
 
+	//设置用户ID
+	void Set_UserId(uint32 suid);
+	//获得用户ID
+	int Get_UserId();
+
 	//获取小精灵
-	Elfin* Get_Elfin(uint32 id);
+	Elfin Get_Elfin();
 
 	//获取神仙树
 	FairyTree Get_FairyTree();
@@ -59,6 +66,9 @@ public:
 	//获取排行榜
 	RankingList Get_RankingList();
 
+	//角色类
+	CharacterClass Get_Characlass();
+
 	//获取技能
 	CSkill Get_CSkill();
 
@@ -75,9 +85,43 @@ public:
 	//获取钻石
 	int Get_UserDiamond();
 
+	//小精灵升级函数
+	void vUpgradeElfinFun(uint32 uelfid);
+	//神仙树升级函数
+	void vUpgradeFairyTreeFun(uint32 uid);
+	//技能升级函数
+	void vUpgradeSkillFun(uint32 usklid);
+
+	//设置升级普通水消耗的数量
+	void vSetUpgradeWaterNum(uint32 num);
+	//获取升级普通水消耗的数量
+	int vGetUpgradeWaterNum();
+	//设置升级神仙水消耗的数量
+	void vSetUpgradeFairyTreeNum(uint32 num);
+	//获取升级神仙水消耗的数量
+	int vGetUpgradeFairyTreeWaterNum();
+	//设置升级金币消耗的数量
+	void vSetUpgradeGoldNum(uint32 num);
+	//获取升级金币消耗的数量
+	int vGetUpgradeGoldNum();
+	//设置升级阳光消耗的数量
+	void vSetUpgradeSunNum(uint32 num);
+	//获取升级阳光消耗的数量
+	int vGetUpgradeSunNum();
+	//设置升级小精灵体力消耗的数量
+	void vSetUpgradeElfinTiliNum(uint32 num);
+	//获取升级小精灵体力消耗的数量
+	int vGetUpgradeElfinTiliNum();
+	//设置升级钻石消耗的数量
+	void vSetUpgradeDiamoNum(uint32 num);
+	//获取升级钻石消耗的数量
+	int vGetUpgradeDiamoNum();
 private:
+	//用户ID
+	uint32 userid;
+
 	//小精灵(链表)
-	std::list<Elfin*> slistElfin;
+	Elfin elf;
 
 	//神仙树
 	FairyTree fairytree;
@@ -106,6 +150,9 @@ private:
 	//排行榜
 	RankingList rankinglist;
 
+	//角色类
+	CharacterClass characlass;
+
 	//技能
 	CSkill skill;
 
@@ -116,10 +163,19 @@ private:
 	//钻石
 	uint32 udiamond;
 
+	//升级需要的普通水的数量
+	uint32 uUpwaterNum;
+	//升级需要的神仙水的数量
+	uint32 uUpfairywaterNum;
+	//升级需要的金币的数量
+	uint32 uUpgoldNum;
+	//升级需要的阳光的数量
+	uint32 uUpsunNum;
+	//升级需要的小精灵体力的数量
+	uint32 uUpelfinTiliNUM;
+	//升级需要的钻石的数量
+	uint32 uUpdiaNum;
 };
-
-//读Xml文件
-//bool bPaintXml(const char* pfilepath);
 
 
 #endif

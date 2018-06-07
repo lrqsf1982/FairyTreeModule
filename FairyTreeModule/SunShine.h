@@ -24,16 +24,6 @@ public:
 	//获取等级
 	int Get_FGrade();
 
-	//设置消耗阳光数量
-	void Set_FSunCoNum(uint32 setfsun);
-	//获取消耗阳光数量
-	int Get_FSunCoNum();
-
-	//设置消耗金币数量
-	void Set_FCoGoldNum(uint32 setfco);
-	//获取消耗金币数量
-	int Get_FCoGoldNum();
-
 	//设置阳光的产出能力
 	void Set_FSunProCap(uint32 setpro);
 	//获取阳光的产出能力
@@ -43,6 +33,13 @@ public:
 	void Set_FSunProTime(uint32 setftime);
 	//获取阳光的生产时间
 	int Get_FSunProTime();
+
+	//设置增加阳光的数量
+	void Set_FAddSunNumber(uint32 unum);
+	//设置减少阳光的数量
+	void Set_FSubSunNum(uint32 unum);
+	//获取阳光的数量
+	int Get_FSunNumber();
 private:
 	//普通水
 	uint32 fwater;
@@ -61,6 +58,9 @@ private:
 
 	//阳光的生产时间
 	uint32 ufSunPTime;
+
+	//阳光的数量
+	uint32 usunnum;
 };
 
 

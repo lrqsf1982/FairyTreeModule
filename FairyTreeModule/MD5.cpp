@@ -11,6 +11,7 @@ using namespace std;
 
 //CONSTRUCTOR
 CMD5::CMD5()
+	: m_aucIn()
 {
 	m_auiBuf[0] = 0x67452301;
 	m_auiBuf[1] = 0xefcdab89;
@@ -18,6 +19,7 @@ CMD5::CMD5()
 	m_auiBuf[3] = 0x10325476;
 	m_auiBits[0] = 0;
 	m_auiBits[1] = 0;
+	m_bAddData = true;
 }
 
 //Update context to reflect the concatenation of another buffer of bytes.

@@ -5,16 +5,19 @@
 #include "./TinyXML/tinyxml.h"
 #include "./TinyXML/tinyxml.h"
 
+
+
 //物品
-struct ArticleInfo
+struct ItemInfo
 {
-	uint32 articleID; //物品
+	uint32 articleID; //物品ID
 	std::string articlename; //物品名
 	std::string articledescribe; //物品描述
 	uint32 goldprice; //金币价格
 	uint32 diamondprice; //钻石价格
-	uint32 discountrate; //折扣率
+	double discountrate; //折扣率
 	std::string type; //类型
+	std::string photoname; //图片名
 };
 
 //小精灵
@@ -47,6 +50,7 @@ struct SunshineInfo
 	uint32 cowaternumber; //消耗水的数量
 	uint32 cosunnum; //阳光数量消耗
 	uint32 cogoldnum; //金币数量消耗
+	uint32 codiamondnum; //钻石消耗数量
 	uint32 producompet; //产出能力
 	uint32 produtime; //生产时间
 };
@@ -73,9 +77,10 @@ struct TreeInfo
 	uint32 cowaternum; //消耗水的数量
 	uint32 cosunnum; //阳光数量消耗
 	uint32 cogoldnum; //金币数量消耗
+	uint32 codiamondnum; //钻石消耗数量
 	uint32 elfinprodco; //小精灵体力消耗
 	uint32 productivity; //生产力
-	uint32 treehigh; //树的高度
+	double treehigh; //树的高度
 };
 
 //树结界
@@ -85,26 +90,29 @@ struct TreeEnchantmentInfo
 	uint32 enchantdefense; //结界防御
 };
 
+
 class XmlConfigManager
 {
 public:
-	std::map<uint32, SkillInfo> SkillInfos;
-	static XmlConfigManager* GetInstance()
-	{
-		if (Instance != nullptr)
-			Instance = new XmlConfigManager();
-		return Instance;
-	}
+	std::map<uint32, ItemInfo*> ItemInfos;
+	std::map<uint32, ElfinInfo*> ElfinInfos;
+	std::map<uint32, SkillInfo*> SkillInfos;
+	std::map<uint32, SunshineInfo*> SunInfos;
+	std::map<uint32, TaskInfo*> TaskInfos;
+	std::map<uint32, TreeInfo*> TreeInfos;
+	std::map<uint32, TreeEnchantmentInfo*> TreeEnchantInfos;
+	static XmlConfigManager* GetInstance();
 	~XmlConfigManager();
 private:
 	XmlConfigManager();
-	bool ParseXmlToArticle();//物品
-	bool ParseXmlToElfin();//小精灵
-	bool ParseXmlToSkill();//技能
-	bool ParseXmlToSunshine();//阳光
-	bool ParseXmlToTask();//任务
-	bool ParseXmlToTree();//神仙树
-	bool ParseXmlToTreeEnchantment();//树结界
+	bool ParseXmlToItem();//读取物品Xml文件函数
+	bool ParseXmlToElfin();//读取小精灵Xml文件函数
+	bool ParseXmlToSkill();//读取技能Xml文件函数
+	bool ParseXmlToSunshine();//读取阳光Xml文件函数
+	bool ParseXmlToTask();//读取任务Xml文件函数
+	bool ParseXmlToTree();//读取神仙树Xml文件函数
+	bool ParseXmlToTreeEnchantment();//读取树结界Xml文件函数
 	static XmlConfigManager* Instance;
 };
+
 

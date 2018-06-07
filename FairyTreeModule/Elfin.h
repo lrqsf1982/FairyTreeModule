@@ -9,7 +9,7 @@
 #include <windows.h>
 #include <time.h>
 
-#define SEGMAXPHYSICALPOWER 100 //最大体力的增长值
+#define SEGMAXPHYSICALPOWER 10 //最大体力的增长值
 
 enum ElfinSkillType//技能类型
 {
@@ -43,7 +43,7 @@ public:
 	void Set_EAddPhysicalPower(uint32 ueap);
 	//设置减少体力
 	void Set_EReducePhysicalPower(uint32 uerp);
-	//获取体力
+	//获取当前体力
 	int Get_EPhysicalPower();
 
 	//设置最大体力
@@ -51,14 +51,17 @@ public:
 	//获取最大体力
 	int Get_EMaxPhysicalPower();
 
-	int Get_ID() { return id; }
+	//设置小精灵的ID
+	void Set_EToID(uint32 etoid);
+	//获取小精灵的ID
+	int Get_ID();
 private:
 
 	//技能格(多个)
 	std::vector<CSkill*> vec;
 	
 	//小精灵的ID
-	uint32 id;
+	uint32 uEid;
 
 	//物品(预留)
 	//----------
