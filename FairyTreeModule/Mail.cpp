@@ -93,3 +93,9 @@ void CMailbox::CloseMail(uint32 closemail)
 	}
 
 }
+
+//±éÀúÓÊ¼ş
+Mail * CMailbox::ErgodicMail(uint32 uid)
+{
+	return vecmail[uid];
+}

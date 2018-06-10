@@ -1,7 +1,6 @@
 #include "TaskClass.h"
 
 
-//std::map<uint32, uint32> vecwareone;
 TaskClass::TaskClass()
 {
 	tserialnumber = 0; //任务编号
@@ -58,53 +57,22 @@ string TaskClass::Get_TTaskContent()
 	return staskcontent;
 }
 
-//设置任务奖励(物品类的表,(编号,数量))1
-void TaskClass::Set_TTaskAwardOne(uint32 stta, uint32 unum)
+//设置任务奖励(物品类的表,(编号,数量))
+void TaskClass::Set_TTaskAward(uint32 stta, uint32 unum)
 {
-	vecwareone.insert(pair<uint32, uint32>(stta,unum));
+	mapware[stta] = unum;
 }
 
-//获取任务奖励(物品类的表,(编号,数量))1
-std::map<uint32, uint32> TaskClass::Get_TTaskAwardOne()
+//获取任务奖励(物品类的表,(编号,数量))
+std::map<uint32, uint32> TaskClass::Get_TTaskAward()
 {
-	return vecwareone;
-}
-
-//设置任务奖励(物品类的表,(编号,数量))2
-void TaskClass::Set_TTaskAwardTwo(uint32 stta, uint32 unum)
-{
-	vecwaretwo.insert(pair<uint32, uint32>(stta, unum));
-}
-
-//获取任务奖励(物品类的表,(编号,数量))2
-std::map<uint32, uint32> TaskClass::Get_TTaskAwardTwo()
-{
-	return vecwaretwo;
-}
-
-//设置任务奖励(物品类的表,(编号,数量))3
-void TaskClass::Set_TTaskAwardThree(uint32 stta, uint32 unum)
-{
-	vecwarethree.insert(pair<uint32, uint32>(stta, unum));
-}
-
-//获取任务奖励(物品类的表,(编号,数量))3
-std::map<uint32, uint32> TaskClass::Get_TTaskAwardThree()
-{
-	return vecwarethree;
+	return mapware;
 }
 
 //任务状态(result结果)
-TaskState TaskClass::TaskStateResult(uint32 utsr)
+TaskState TaskClass::TaskStateResult()
 {
 	//设置任务状态
-	switch (utsr)
-	{
-	case 0: {taskstate = NotYet; break; }
-	case 1: {taskstate = Already; break; }
-	case 2: {taskstate = Done; break; }
-	case 3: {taskstate = Received; break; }
-	}
 	return taskstate;
 }
 
@@ -137,6 +105,7 @@ int TaskClass::Get_TaskSumUpComp()
 //任务列表类
 CTaskListClass::CTaskListClass()
 {
+	taskc = new TaskClass;
 }
 
 CTaskListClass::~CTaskListClass()
@@ -163,5 +132,12 @@ void CTaskListClass::Erase_Task(TaskClass * addtask)
 		vectc.erase(ittask);
 	}
 
+}
+
+
+//遍历任务
+TaskClass * CTaskListClass::ErgodicTask(uint32 index)
+{
+	return vectc[index];
 }
 

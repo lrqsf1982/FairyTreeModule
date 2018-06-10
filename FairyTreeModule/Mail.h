@@ -33,6 +33,11 @@ public:
 	//领取(标记邮件领取状态)(false为未取，true为已取)
 	bool MailArticleGetState();
 
+	//
+	std::map<uint32, uint32> GetPrizes() {
+		return vecmailArt;
+	}
+
 private:
 	//邮件编号
 	uint32 umailSerialNumber;
@@ -43,8 +48,8 @@ private:
 	//邮件内容
 	std::string smailcontent;
 
-	//邮件物品 物品类名是Key 数量为值
-	std::map<CWarehouseArticle*,int> vecmailArt;
+	//邮件物品 物品id是Key 数量为值
+	std::map<uint32,uint32> vecmailArt;
 
 	//邮件物品的领取状态(false为未取，true为已取)
 	bool bmailArtGetState;
@@ -61,9 +66,15 @@ public:
 	void AddMail(Mail* cmail);
 	//删除邮件
 	void CloseMail(uint32 closemail);
+	//遍历邮件
+	Mail* ErgodicMail(uint32 uid);
+	//邮件的数量
+	inline int MailNumber() { return (int)vecmail.size(); }
 
+	//邮件类map
+	std::map<uint32, Mail*> map_mail;
 private:
-	//商品的 map
+	//邮件的 map
 	std::vector<Mail*> vecmail;
 };
 

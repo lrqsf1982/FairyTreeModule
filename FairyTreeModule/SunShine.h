@@ -4,6 +4,9 @@
 #define _FAIRY_WELL_H
 
 #include "define.h"
+#include <map>
+
+#define SOLARPROCAP 10 //太阳的生产能力
 
 
 //太阳类 读取阳光Xml文件
@@ -20,7 +23,7 @@ public:
 	int Get_FWater();
 
 	//设置等级
-	void Set_FGrade(uint32 setgrad);
+	void Set_FGrade(bool setgrad);
 	//获取等级
 	int Get_FGrade();
 
@@ -40,18 +43,35 @@ public:
 	void Set_FSubSunNum(uint32 unum);
 	//获取阳光的数量
 	int Get_FSunNumber();
+
+	//设置消耗水的数量
+	void Set_SunCoWaterNum(uint32 num);
+	//获取消耗水的数量
+	int Get_SunCoWaterNum();
+
+	//设置阳光数量消耗
+	void Set_SunCoSunNum(uint32 num);
+	//获取阳光数量消耗
+	int Get_SunCoSunNum();
+
+	//设置金币数量消耗
+	void Set_SunCoGoldNum(uint32 num);
+	//获取金币数量消耗
+	int Get_SunCoGoldNum();
+
+	//设置钻石数量消耗
+	void Set_SunCoJewelNum(uint32 num);
+	//获取钻石数量消耗
+	int Get_SunCoJewelNum();
+
+	//太阳的map
+	std::map<uint32, CSunshine*> map_sunshine;
 private:
 	//普通水
 	uint32 fwater;
 
 	//等级
 	uint32 ufgrade;
-
-	//消耗阳光数量
-	uint32 ufCoSun;
-
-	//消耗金币数量
-	uint32 ufCoGold;
 
 	//阳光的产出能力
 	uint32 ufSunPCapa;
@@ -61,6 +81,15 @@ private:
 
 	//阳光的数量
 	uint32 usunnum;
+
+	//消耗水的数量
+	uint32 ucowaternum;
+	//阳光数量消耗
+	uint32 ucosunnum;
+	//金币数量消耗
+	uint32 ucogoldnum;
+	//钻石数量消耗
+	uint32 ucojewel;
 };
 
 

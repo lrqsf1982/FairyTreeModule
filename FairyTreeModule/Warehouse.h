@@ -5,6 +5,7 @@
 
 #include "define.h"
 #include <vector>
+#include <map>
 
 
 //物品类别
@@ -47,8 +48,19 @@ public:
 	//获取物品描述(Describe)
 	string Get_CArticleDescribe();
 
+	//设置物品类型
+	void Set_eArticleType(EArticleCategory ear);
+	//获得物品类型
+	EArticleCategory Get_eArticleType();
+
 	//使用物品 通过物品编号 来确定使用的物品类别
-	virtual void ArticleSerialNumberCategory() = 0;
+	//virtual void ArticleSerialNumberCategory() = 0;
+
+	//设置物品名字
+	void Set_WareName(std::string& swn);
+	//获取物品名字
+	string Get_WareName();
+
 
 private:
 	//物品编号
@@ -68,10 +80,13 @@ private:
 
 	//物品描述(Describe)
 	std::string eartDescribe;
+
+	//物品名
+	std::string warename;
 };
 
 
-//仓库类(预留)
+//仓库类
 class Warehouse
 {
 public:
@@ -82,6 +97,9 @@ public:
 	void AddArticle(CWarehouseArticle* addart);
 	//删除物品
 	void CloseArticle(uint32 cloart);
+
+	//物品类的map
+	std::map<uint32, CWarehouseArticle*> map_warehouse;
 private:
 	//物品(预留)
 	std::vector<CWarehouseArticle*> vec;

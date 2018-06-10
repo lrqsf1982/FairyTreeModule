@@ -4,6 +4,7 @@
 #define _WATER_H
 
 #include "define.h"
+#include <map>
 
 
 //水资源类
@@ -25,6 +26,9 @@ public:
 	void Set_WReduceFairyWater(uint32 sfw);
 	//获取神仙水的数量
 	int Get_WFairyWater();
+
+	//水资源的map
+	std::map<uint32, Water*> map_water;
 private:
 	//普通水
 	uint32 uordinarywater;

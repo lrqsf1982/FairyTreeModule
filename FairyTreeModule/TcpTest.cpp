@@ -40,6 +40,7 @@ extern "C"
 CBaseCommand*        g_BaseCommand   = NULL;
 CServerObject*       g_pServerObject = NULL;
 
+
 int LoadModuleData(CServerObject* pServerObject)
 {
     g_pServerObject = pServerObject;

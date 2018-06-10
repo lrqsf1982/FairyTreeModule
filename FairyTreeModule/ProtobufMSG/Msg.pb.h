@@ -37,7 +37,7 @@ namespace protobuf_Msg_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[54];
+  static const ::google::protobuf::internal::ParseTable schema[62];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -145,6 +145,22 @@ void InitDefaultsRegisterRequestImpl();
 void InitDefaultsRegisterRequest();
 void InitDefaultsRegisterResponseImpl();
 void InitDefaultsRegisterResponse();
+void InitDefaultsSolarUpgradeRequestImpl();
+void InitDefaultsSolarUpgradeRequest();
+void InitDefaultsSolarUpgradeResponseImpl();
+void InitDefaultsSolarUpgradeResponse();
+void InitDefaultsSkillUpgradeRequestImpl();
+void InitDefaultsSkillUpgradeRequest();
+void InitDefaultsSkillUpgradeResponseImpl();
+void InitDefaultsSkillUpgradeResponse();
+void InitDefaultsTreeUpgradeRequestImpl();
+void InitDefaultsTreeUpgradeRequest();
+void InitDefaultsTreeUpgradeResponseImpl();
+void InitDefaultsTreeUpgradeResponse();
+void InitDefaultsElfinUpgradeRequestImpl();
+void InitDefaultsElfinUpgradeRequest();
+void InitDefaultsElfinUpgradeResponseImpl();
+void InitDefaultsElfinUpgradeResponse();
 void InitDefaultsRequestImpl();
 void InitDefaultsRequest();
 void InitDefaultsResponseImpl();
@@ -203,6 +219,14 @@ inline void InitDefaults() {
   InitDefaultsRankingResponse();
   InitDefaultsRegisterRequest();
   InitDefaultsRegisterResponse();
+  InitDefaultsSolarUpgradeRequest();
+  InitDefaultsSolarUpgradeResponse();
+  InitDefaultsSkillUpgradeRequest();
+  InitDefaultsSkillUpgradeResponse();
+  InitDefaultsTreeUpgradeRequest();
+  InitDefaultsTreeUpgradeResponse();
+  InitDefaultsElfinUpgradeRequest();
+  InitDefaultsElfinUpgradeResponse();
   InitDefaultsRequest();
   InitDefaultsResponse();
   InitDefaultsGameMessage();
@@ -226,6 +250,12 @@ extern ElfinRequestDefaultTypeInternal _ElfinRequest_default_instance_;
 class ElfinResponse;
 class ElfinResponseDefaultTypeInternal;
 extern ElfinResponseDefaultTypeInternal _ElfinResponse_default_instance_;
+class ElfinUpgradeRequest;
+class ElfinUpgradeRequestDefaultTypeInternal;
+extern ElfinUpgradeRequestDefaultTypeInternal _ElfinUpgradeRequest_default_instance_;
+class ElfinUpgradeResponse;
+class ElfinUpgradeResponseDefaultTypeInternal;
+extern ElfinUpgradeResponseDefaultTypeInternal _ElfinUpgradeResponse_default_instance_;
 class EnemiesRequest;
 class EnemiesRequestDefaultTypeInternal;
 extern EnemiesRequestDefaultTypeInternal _EnemiesRequest_default_instance_;
@@ -310,6 +340,18 @@ extern SettleAccountRequestDefaultTypeInternal _SettleAccountRequest_default_ins
 class SettleAccountResponse;
 class SettleAccountResponseDefaultTypeInternal;
 extern SettleAccountResponseDefaultTypeInternal _SettleAccountResponse_default_instance_;
+class SkillUpgradeRequest;
+class SkillUpgradeRequestDefaultTypeInternal;
+extern SkillUpgradeRequestDefaultTypeInternal _SkillUpgradeRequest_default_instance_;
+class SkillUpgradeResponse;
+class SkillUpgradeResponseDefaultTypeInternal;
+extern SkillUpgradeResponseDefaultTypeInternal _SkillUpgradeResponse_default_instance_;
+class SolarUpgradeRequest;
+class SolarUpgradeRequestDefaultTypeInternal;
+extern SolarUpgradeRequestDefaultTypeInternal _SolarUpgradeRequest_default_instance_;
+class SolarUpgradeResponse;
+class SolarUpgradeResponseDefaultTypeInternal;
+extern SolarUpgradeResponseDefaultTypeInternal _SolarUpgradeResponse_default_instance_;
 class StoreAllRequest;
 class StoreAllRequestDefaultTypeInternal;
 extern StoreAllRequestDefaultTypeInternal _StoreAllRequest_default_instance_;
@@ -358,6 +400,12 @@ extern TreeRequestDefaultTypeInternal _TreeRequest_default_instance_;
 class TreeResponse;
 class TreeResponseDefaultTypeInternal;
 extern TreeResponseDefaultTypeInternal _TreeResponse_default_instance_;
+class TreeUpgradeRequest;
+class TreeUpgradeRequestDefaultTypeInternal;
+extern TreeUpgradeRequestDefaultTypeInternal _TreeUpgradeRequest_default_instance_;
+class TreeUpgradeResponse;
+class TreeUpgradeResponseDefaultTypeInternal;
+extern TreeUpgradeResponseDefaultTypeInternal _TreeUpgradeResponse_default_instance_;
 class UseItemRequest;
 class UseItemRequestDefaultTypeInternal;
 extern UseItemRequestDefaultTypeInternal _UseItemRequest_default_instance_;
@@ -494,12 +542,20 @@ enum GameMsgCode {
   ForgetSkill_Response = 3231,
   Register_Request = 3240,
   Register_Response = 3241,
+  SolarUpgrade_Request = 3250,
+  SolarUpgrade_Response = 3251,
+  SkillUpgrade_Request = 3260,
+  SkillUpgrade_Response = 3261,
+  TreeUpgrade_Request = 3270,
+  TreeUpgrade_Response = 3271,
+  ElfinUpgrade_Request = 3280,
+  ElfinUpgrade_Response = 3281,
   GameMsgCode_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   GameMsgCode_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool GameMsgCode_IsValid(int value);
 const GameMsgCode GameMsgCode_MIN = GameMsgCodeStart;
-const GameMsgCode GameMsgCode_MAX = Register_Response;
+const GameMsgCode GameMsgCode_MAX = ElfinUpgrade_Response;
 const int GameMsgCode_ARRAYSIZE = GameMsgCode_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* GameMsgCode_descriptor();
@@ -1248,11 +1304,11 @@ class RollResponse : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::google::protobuf::uint32 id() const;
   void set_id(::google::protobuf::uint32 value);
 
-  // uint32 Level = 3;
-  void clear_level();
-  static const int kLevelFieldNumber = 3;
-  ::google::protobuf::uint32 level() const;
-  void set_level(::google::protobuf::uint32 value);
+  // uint32 GrowthValue = 3;
+  void clear_growthvalue();
+  static const int kGrowthValueFieldNumber = 3;
+  ::google::protobuf::uint32 growthvalue() const;
+  void set_growthvalue(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:RollResponse)
  private:
@@ -1260,7 +1316,7 @@ class RollResponse : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr name_;
   ::google::protobuf::uint32 id_;
-  ::google::protobuf::uint32 level_;
+  ::google::protobuf::uint32 growthvalue_;
   mutable int _cached_size_;
   friend struct ::protobuf_Msg_2eproto::TableStruct;
   friend void ::protobuf_Msg_2eproto::InitDefaultsRollResponseImpl();
@@ -6399,6 +6455,826 @@ class RegisterResponse : public ::google::protobuf::Message /* @@protoc_insertio
 };
 // -------------------------------------------------------------------
 
+class SolarUpgradeRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:SolarUpgradeRequest) */ {
+ public:
+  SolarUpgradeRequest();
+  virtual ~SolarUpgradeRequest();
+
+  SolarUpgradeRequest(const SolarUpgradeRequest& from);
+
+  inline SolarUpgradeRequest& operator=(const SolarUpgradeRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  SolarUpgradeRequest(SolarUpgradeRequest&& from) noexcept
+    : SolarUpgradeRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline SolarUpgradeRequest& operator=(SolarUpgradeRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SolarUpgradeRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const SolarUpgradeRequest* internal_default_instance() {
+    return reinterpret_cast<const SolarUpgradeRequest*>(
+               &_SolarUpgradeRequest_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    51;
+
+  void Swap(SolarUpgradeRequest* other);
+  friend void swap(SolarUpgradeRequest& a, SolarUpgradeRequest& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline SolarUpgradeRequest* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  SolarUpgradeRequest* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const SolarUpgradeRequest& from);
+  void MergeFrom(const SolarUpgradeRequest& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(SolarUpgradeRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // bool Solar = 1;
+  void clear_solar();
+  static const int kSolarFieldNumber = 1;
+  bool solar() const;
+  void set_solar(bool value);
+
+  // @@protoc_insertion_point(class_scope:SolarUpgradeRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool solar_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_Msg_2eproto::TableStruct;
+  friend void ::protobuf_Msg_2eproto::InitDefaultsSolarUpgradeRequestImpl();
+};
+// -------------------------------------------------------------------
+
+class SolarUpgradeResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:SolarUpgradeResponse) */ {
+ public:
+  SolarUpgradeResponse();
+  virtual ~SolarUpgradeResponse();
+
+  SolarUpgradeResponse(const SolarUpgradeResponse& from);
+
+  inline SolarUpgradeResponse& operator=(const SolarUpgradeResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  SolarUpgradeResponse(SolarUpgradeResponse&& from) noexcept
+    : SolarUpgradeResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline SolarUpgradeResponse& operator=(SolarUpgradeResponse&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SolarUpgradeResponse& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const SolarUpgradeResponse* internal_default_instance() {
+    return reinterpret_cast<const SolarUpgradeResponse*>(
+               &_SolarUpgradeResponse_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    52;
+
+  void Swap(SolarUpgradeResponse* other);
+  friend void swap(SolarUpgradeResponse& a, SolarUpgradeResponse& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline SolarUpgradeResponse* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  SolarUpgradeResponse* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const SolarUpgradeResponse& from);
+  void MergeFrom(const SolarUpgradeResponse& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(SolarUpgradeResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // bool Solar = 1;
+  void clear_solar();
+  static const int kSolarFieldNumber = 1;
+  bool solar() const;
+  void set_solar(bool value);
+
+  // @@protoc_insertion_point(class_scope:SolarUpgradeResponse)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool solar_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_Msg_2eproto::TableStruct;
+  friend void ::protobuf_Msg_2eproto::InitDefaultsSolarUpgradeResponseImpl();
+};
+// -------------------------------------------------------------------
+
+class SkillUpgradeRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:SkillUpgradeRequest) */ {
+ public:
+  SkillUpgradeRequest();
+  virtual ~SkillUpgradeRequest();
+
+  SkillUpgradeRequest(const SkillUpgradeRequest& from);
+
+  inline SkillUpgradeRequest& operator=(const SkillUpgradeRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  SkillUpgradeRequest(SkillUpgradeRequest&& from) noexcept
+    : SkillUpgradeRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline SkillUpgradeRequest& operator=(SkillUpgradeRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SkillUpgradeRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const SkillUpgradeRequest* internal_default_instance() {
+    return reinterpret_cast<const SkillUpgradeRequest*>(
+               &_SkillUpgradeRequest_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    53;
+
+  void Swap(SkillUpgradeRequest* other);
+  friend void swap(SkillUpgradeRequest& a, SkillUpgradeRequest& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline SkillUpgradeRequest* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  SkillUpgradeRequest* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const SkillUpgradeRequest& from);
+  void MergeFrom(const SkillUpgradeRequest& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(SkillUpgradeRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint32 ElfinID = 1;
+  void clear_elfinid();
+  static const int kElfinIDFieldNumber = 1;
+  ::google::protobuf::uint32 elfinid() const;
+  void set_elfinid(::google::protobuf::uint32 value);
+
+  // uint32 SkillID = 2;
+  void clear_skillid();
+  static const int kSkillIDFieldNumber = 2;
+  ::google::protobuf::uint32 skillid() const;
+  void set_skillid(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:SkillUpgradeRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 elfinid_;
+  ::google::protobuf::uint32 skillid_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_Msg_2eproto::TableStruct;
+  friend void ::protobuf_Msg_2eproto::InitDefaultsSkillUpgradeRequestImpl();
+};
+// -------------------------------------------------------------------
+
+class SkillUpgradeResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:SkillUpgradeResponse) */ {
+ public:
+  SkillUpgradeResponse();
+  virtual ~SkillUpgradeResponse();
+
+  SkillUpgradeResponse(const SkillUpgradeResponse& from);
+
+  inline SkillUpgradeResponse& operator=(const SkillUpgradeResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  SkillUpgradeResponse(SkillUpgradeResponse&& from) noexcept
+    : SkillUpgradeResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline SkillUpgradeResponse& operator=(SkillUpgradeResponse&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SkillUpgradeResponse& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const SkillUpgradeResponse* internal_default_instance() {
+    return reinterpret_cast<const SkillUpgradeResponse*>(
+               &_SkillUpgradeResponse_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    54;
+
+  void Swap(SkillUpgradeResponse* other);
+  friend void swap(SkillUpgradeResponse& a, SkillUpgradeResponse& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline SkillUpgradeResponse* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  SkillUpgradeResponse* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const SkillUpgradeResponse& from);
+  void MergeFrom(const SkillUpgradeResponse& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(SkillUpgradeResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // bool Success = 1;
+  void clear_success();
+  static const int kSuccessFieldNumber = 1;
+  bool success() const;
+  void set_success(bool value);
+
+  // uint32 ElfinID = 2;
+  void clear_elfinid();
+  static const int kElfinIDFieldNumber = 2;
+  ::google::protobuf::uint32 elfinid() const;
+  void set_elfinid(::google::protobuf::uint32 value);
+
+  // uint32 SkillID = 3;
+  void clear_skillid();
+  static const int kSkillIDFieldNumber = 3;
+  ::google::protobuf::uint32 skillid() const;
+  void set_skillid(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:SkillUpgradeResponse)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool success_;
+  ::google::protobuf::uint32 elfinid_;
+  ::google::protobuf::uint32 skillid_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_Msg_2eproto::TableStruct;
+  friend void ::protobuf_Msg_2eproto::InitDefaultsSkillUpgradeResponseImpl();
+};
+// -------------------------------------------------------------------
+
+class TreeUpgradeRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:TreeUpgradeRequest) */ {
+ public:
+  TreeUpgradeRequest();
+  virtual ~TreeUpgradeRequest();
+
+  TreeUpgradeRequest(const TreeUpgradeRequest& from);
+
+  inline TreeUpgradeRequest& operator=(const TreeUpgradeRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  TreeUpgradeRequest(TreeUpgradeRequest&& from) noexcept
+    : TreeUpgradeRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline TreeUpgradeRequest& operator=(TreeUpgradeRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TreeUpgradeRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const TreeUpgradeRequest* internal_default_instance() {
+    return reinterpret_cast<const TreeUpgradeRequest*>(
+               &_TreeUpgradeRequest_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    55;
+
+  void Swap(TreeUpgradeRequest* other);
+  friend void swap(TreeUpgradeRequest& a, TreeUpgradeRequest& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline TreeUpgradeRequest* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  TreeUpgradeRequest* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const TreeUpgradeRequest& from);
+  void MergeFrom(const TreeUpgradeRequest& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(TreeUpgradeRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // bool Tree = 1;
+  void clear_tree();
+  static const int kTreeFieldNumber = 1;
+  bool tree() const;
+  void set_tree(bool value);
+
+  // @@protoc_insertion_point(class_scope:TreeUpgradeRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool tree_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_Msg_2eproto::TableStruct;
+  friend void ::protobuf_Msg_2eproto::InitDefaultsTreeUpgradeRequestImpl();
+};
+// -------------------------------------------------------------------
+
+class TreeUpgradeResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:TreeUpgradeResponse) */ {
+ public:
+  TreeUpgradeResponse();
+  virtual ~TreeUpgradeResponse();
+
+  TreeUpgradeResponse(const TreeUpgradeResponse& from);
+
+  inline TreeUpgradeResponse& operator=(const TreeUpgradeResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  TreeUpgradeResponse(TreeUpgradeResponse&& from) noexcept
+    : TreeUpgradeResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline TreeUpgradeResponse& operator=(TreeUpgradeResponse&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TreeUpgradeResponse& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const TreeUpgradeResponse* internal_default_instance() {
+    return reinterpret_cast<const TreeUpgradeResponse*>(
+               &_TreeUpgradeResponse_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    56;
+
+  void Swap(TreeUpgradeResponse* other);
+  friend void swap(TreeUpgradeResponse& a, TreeUpgradeResponse& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline TreeUpgradeResponse* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  TreeUpgradeResponse* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const TreeUpgradeResponse& from);
+  void MergeFrom(const TreeUpgradeResponse& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(TreeUpgradeResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // bool Success = 1;
+  void clear_success();
+  static const int kSuccessFieldNumber = 1;
+  bool success() const;
+  void set_success(bool value);
+
+  // @@protoc_insertion_point(class_scope:TreeUpgradeResponse)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool success_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_Msg_2eproto::TableStruct;
+  friend void ::protobuf_Msg_2eproto::InitDefaultsTreeUpgradeResponseImpl();
+};
+// -------------------------------------------------------------------
+
+class ElfinUpgradeRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ElfinUpgradeRequest) */ {
+ public:
+  ElfinUpgradeRequest();
+  virtual ~ElfinUpgradeRequest();
+
+  ElfinUpgradeRequest(const ElfinUpgradeRequest& from);
+
+  inline ElfinUpgradeRequest& operator=(const ElfinUpgradeRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  ElfinUpgradeRequest(ElfinUpgradeRequest&& from) noexcept
+    : ElfinUpgradeRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline ElfinUpgradeRequest& operator=(ElfinUpgradeRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ElfinUpgradeRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const ElfinUpgradeRequest* internal_default_instance() {
+    return reinterpret_cast<const ElfinUpgradeRequest*>(
+               &_ElfinUpgradeRequest_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    57;
+
+  void Swap(ElfinUpgradeRequest* other);
+  friend void swap(ElfinUpgradeRequest& a, ElfinUpgradeRequest& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ElfinUpgradeRequest* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  ElfinUpgradeRequest* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const ElfinUpgradeRequest& from);
+  void MergeFrom(const ElfinUpgradeRequest& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(ElfinUpgradeRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint32 ElfinID = 1;
+  void clear_elfinid();
+  static const int kElfinIDFieldNumber = 1;
+  ::google::protobuf::uint32 elfinid() const;
+  void set_elfinid(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:ElfinUpgradeRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 elfinid_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_Msg_2eproto::TableStruct;
+  friend void ::protobuf_Msg_2eproto::InitDefaultsElfinUpgradeRequestImpl();
+};
+// -------------------------------------------------------------------
+
+class ElfinUpgradeResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ElfinUpgradeResponse) */ {
+ public:
+  ElfinUpgradeResponse();
+  virtual ~ElfinUpgradeResponse();
+
+  ElfinUpgradeResponse(const ElfinUpgradeResponse& from);
+
+  inline ElfinUpgradeResponse& operator=(const ElfinUpgradeResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  ElfinUpgradeResponse(ElfinUpgradeResponse&& from) noexcept
+    : ElfinUpgradeResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline ElfinUpgradeResponse& operator=(ElfinUpgradeResponse&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ElfinUpgradeResponse& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const ElfinUpgradeResponse* internal_default_instance() {
+    return reinterpret_cast<const ElfinUpgradeResponse*>(
+               &_ElfinUpgradeResponse_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    58;
+
+  void Swap(ElfinUpgradeResponse* other);
+  friend void swap(ElfinUpgradeResponse& a, ElfinUpgradeResponse& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ElfinUpgradeResponse* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  ElfinUpgradeResponse* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const ElfinUpgradeResponse& from);
+  void MergeFrom(const ElfinUpgradeResponse& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(ElfinUpgradeResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // bool Success = 1;
+  void clear_success();
+  static const int kSuccessFieldNumber = 1;
+  bool success() const;
+  void set_success(bool value);
+
+  // uint32 ElfinID = 2;
+  void clear_elfinid();
+  static const int kElfinIDFieldNumber = 2;
+  ::google::protobuf::uint32 elfinid() const;
+  void set_elfinid(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:ElfinUpgradeResponse)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool success_;
+  ::google::protobuf::uint32 elfinid_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_Msg_2eproto::TableStruct;
+  friend void ::protobuf_Msg_2eproto::InitDefaultsElfinUpgradeResponseImpl();
+};
+// -------------------------------------------------------------------
+
 class Request : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Request) */ {
  public:
   Request();
@@ -6434,7 +7310,7 @@ class Request : public ::google::protobuf::Message /* @@protoc_insertion_point(c
                &_Request_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    51;
+    59;
 
   void Swap(Request* other);
   friend void swap(Request& a, Request& b) {
@@ -6706,6 +7582,42 @@ class Request : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::RegisterRequest* mutable_register_();
   void set_allocated_register_(::RegisterRequest* register_);
 
+  // .SolarUpgradeRequest SolarUpgrade = 26;
+  bool has_solarupgrade() const;
+  void clear_solarupgrade();
+  static const int kSolarUpgradeFieldNumber = 26;
+  const ::SolarUpgradeRequest& solarupgrade() const;
+  ::SolarUpgradeRequest* release_solarupgrade();
+  ::SolarUpgradeRequest* mutable_solarupgrade();
+  void set_allocated_solarupgrade(::SolarUpgradeRequest* solarupgrade);
+
+  // .SkillUpgradeRequest SkillUpgrade = 27;
+  bool has_skillupgrade() const;
+  void clear_skillupgrade();
+  static const int kSkillUpgradeFieldNumber = 27;
+  const ::SkillUpgradeRequest& skillupgrade() const;
+  ::SkillUpgradeRequest* release_skillupgrade();
+  ::SkillUpgradeRequest* mutable_skillupgrade();
+  void set_allocated_skillupgrade(::SkillUpgradeRequest* skillupgrade);
+
+  // .TreeUpgradeRequest TreeUpgrade = 28;
+  bool has_treeupgrade() const;
+  void clear_treeupgrade();
+  static const int kTreeUpgradeFieldNumber = 28;
+  const ::TreeUpgradeRequest& treeupgrade() const;
+  ::TreeUpgradeRequest* release_treeupgrade();
+  ::TreeUpgradeRequest* mutable_treeupgrade();
+  void set_allocated_treeupgrade(::TreeUpgradeRequest* treeupgrade);
+
+  // .ElfinUpgradeRequest ElfinUpgrade = 29;
+  bool has_elfinupgrade() const;
+  void clear_elfinupgrade();
+  static const int kElfinUpgradeFieldNumber = 29;
+  const ::ElfinUpgradeRequest& elfinupgrade() const;
+  ::ElfinUpgradeRequest* release_elfinupgrade();
+  ::ElfinUpgradeRequest* mutable_elfinupgrade();
+  void set_allocated_elfinupgrade(::ElfinUpgradeRequest* elfinupgrade);
+
   // @@protoc_insertion_point(class_scope:Request)
  private:
 
@@ -6735,6 +7647,10 @@ class Request : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::RankingRequest* ranking_;
   ::ForgetSkillRequest* forgetskill_;
   ::RegisterRequest* register__;
+  ::SolarUpgradeRequest* solarupgrade_;
+  ::SkillUpgradeRequest* skillupgrade_;
+  ::TreeUpgradeRequest* treeupgrade_;
+  ::ElfinUpgradeRequest* elfinupgrade_;
   mutable int _cached_size_;
   friend struct ::protobuf_Msg_2eproto::TableStruct;
   friend void ::protobuf_Msg_2eproto::InitDefaultsRequestImpl();
@@ -6776,7 +7692,7 @@ class Response : public ::google::protobuf::Message /* @@protoc_insertion_point(
                &_Response_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    52;
+    60;
 
   void Swap(Response* other);
   friend void swap(Response& a, Response& b) {
@@ -7048,6 +7964,42 @@ class Response : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::RegisterResponse* mutable_register_();
   void set_allocated_register_(::RegisterResponse* register_);
 
+  // .SolarUpgradeResponse SolarUpgrade = 26;
+  bool has_solarupgrade() const;
+  void clear_solarupgrade();
+  static const int kSolarUpgradeFieldNumber = 26;
+  const ::SolarUpgradeResponse& solarupgrade() const;
+  ::SolarUpgradeResponse* release_solarupgrade();
+  ::SolarUpgradeResponse* mutable_solarupgrade();
+  void set_allocated_solarupgrade(::SolarUpgradeResponse* solarupgrade);
+
+  // .SkillUpgradeResponse SkillUpgrade = 27;
+  bool has_skillupgrade() const;
+  void clear_skillupgrade();
+  static const int kSkillUpgradeFieldNumber = 27;
+  const ::SkillUpgradeResponse& skillupgrade() const;
+  ::SkillUpgradeResponse* release_skillupgrade();
+  ::SkillUpgradeResponse* mutable_skillupgrade();
+  void set_allocated_skillupgrade(::SkillUpgradeResponse* skillupgrade);
+
+  // .TreeUpgradeResponse TreeUpgrade = 28;
+  bool has_treeupgrade() const;
+  void clear_treeupgrade();
+  static const int kTreeUpgradeFieldNumber = 28;
+  const ::TreeUpgradeResponse& treeupgrade() const;
+  ::TreeUpgradeResponse* release_treeupgrade();
+  ::TreeUpgradeResponse* mutable_treeupgrade();
+  void set_allocated_treeupgrade(::TreeUpgradeResponse* treeupgrade);
+
+  // .ElfinUpgradeResponse ElfinUpgrade = 29;
+  bool has_elfinupgrade() const;
+  void clear_elfinupgrade();
+  static const int kElfinUpgradeFieldNumber = 29;
+  const ::ElfinUpgradeResponse& elfinupgrade() const;
+  ::ElfinUpgradeResponse* release_elfinupgrade();
+  ::ElfinUpgradeResponse* mutable_elfinupgrade();
+  void set_allocated_elfinupgrade(::ElfinUpgradeResponse* elfinupgrade);
+
   // @@protoc_insertion_point(class_scope:Response)
  private:
 
@@ -7077,6 +8029,10 @@ class Response : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::RankingResponse* ranking_;
   ::ForgetSkillResponse* forgetskill_;
   ::RegisterResponse* register__;
+  ::SolarUpgradeResponse* solarupgrade_;
+  ::SkillUpgradeResponse* skillupgrade_;
+  ::TreeUpgradeResponse* treeupgrade_;
+  ::ElfinUpgradeResponse* elfinupgrade_;
   mutable int _cached_size_;
   friend struct ::protobuf_Msg_2eproto::TableStruct;
   friend void ::protobuf_Msg_2eproto::InitDefaultsResponseImpl();
@@ -7118,7 +8074,7 @@ class GameMessage : public ::google::protobuf::Message /* @@protoc_insertion_poi
                &_GameMessage_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    53;
+    61;
 
   void Swap(GameMessage* other);
   friend void swap(GameMessage& a, GameMessage& b) {
@@ -7516,18 +8472,18 @@ inline void RollResponse::set_allocated_name(::std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:RollResponse.Name)
 }
 
-// uint32 Level = 3;
-inline void RollResponse::clear_level() {
-  level_ = 0u;
+// uint32 GrowthValue = 3;
+inline void RollResponse::clear_growthvalue() {
+  growthvalue_ = 0u;
 }
-inline ::google::protobuf::uint32 RollResponse::level() const {
-  // @@protoc_insertion_point(field_get:RollResponse.Level)
-  return level_;
+inline ::google::protobuf::uint32 RollResponse::growthvalue() const {
+  // @@protoc_insertion_point(field_get:RollResponse.GrowthValue)
+  return growthvalue_;
 }
-inline void RollResponse::set_level(::google::protobuf::uint32 value) {
+inline void RollResponse::set_growthvalue(::google::protobuf::uint32 value) {
   
-  level_ = value;
-  // @@protoc_insertion_point(field_set:RollResponse.Level)
+  growthvalue_ = value;
+  // @@protoc_insertion_point(field_set:RollResponse.GrowthValue)
 }
 
 // -------------------------------------------------------------------
@@ -10320,6 +11276,206 @@ inline void RegisterResponse::set_success(bool value) {
 
 // -------------------------------------------------------------------
 
+// SolarUpgradeRequest
+
+// bool Solar = 1;
+inline void SolarUpgradeRequest::clear_solar() {
+  solar_ = false;
+}
+inline bool SolarUpgradeRequest::solar() const {
+  // @@protoc_insertion_point(field_get:SolarUpgradeRequest.Solar)
+  return solar_;
+}
+inline void SolarUpgradeRequest::set_solar(bool value) {
+  
+  solar_ = value;
+  // @@protoc_insertion_point(field_set:SolarUpgradeRequest.Solar)
+}
+
+// -------------------------------------------------------------------
+
+// SolarUpgradeResponse
+
+// bool Solar = 1;
+inline void SolarUpgradeResponse::clear_solar() {
+  solar_ = false;
+}
+inline bool SolarUpgradeResponse::solar() const {
+  // @@protoc_insertion_point(field_get:SolarUpgradeResponse.Solar)
+  return solar_;
+}
+inline void SolarUpgradeResponse::set_solar(bool value) {
+  
+  solar_ = value;
+  // @@protoc_insertion_point(field_set:SolarUpgradeResponse.Solar)
+}
+
+// -------------------------------------------------------------------
+
+// SkillUpgradeRequest
+
+// uint32 ElfinID = 1;
+inline void SkillUpgradeRequest::clear_elfinid() {
+  elfinid_ = 0u;
+}
+inline ::google::protobuf::uint32 SkillUpgradeRequest::elfinid() const {
+  // @@protoc_insertion_point(field_get:SkillUpgradeRequest.ElfinID)
+  return elfinid_;
+}
+inline void SkillUpgradeRequest::set_elfinid(::google::protobuf::uint32 value) {
+  
+  elfinid_ = value;
+  // @@protoc_insertion_point(field_set:SkillUpgradeRequest.ElfinID)
+}
+
+// uint32 SkillID = 2;
+inline void SkillUpgradeRequest::clear_skillid() {
+  skillid_ = 0u;
+}
+inline ::google::protobuf::uint32 SkillUpgradeRequest::skillid() const {
+  // @@protoc_insertion_point(field_get:SkillUpgradeRequest.SkillID)
+  return skillid_;
+}
+inline void SkillUpgradeRequest::set_skillid(::google::protobuf::uint32 value) {
+  
+  skillid_ = value;
+  // @@protoc_insertion_point(field_set:SkillUpgradeRequest.SkillID)
+}
+
+// -------------------------------------------------------------------
+
+// SkillUpgradeResponse
+
+// bool Success = 1;
+inline void SkillUpgradeResponse::clear_success() {
+  success_ = false;
+}
+inline bool SkillUpgradeResponse::success() const {
+  // @@protoc_insertion_point(field_get:SkillUpgradeResponse.Success)
+  return success_;
+}
+inline void SkillUpgradeResponse::set_success(bool value) {
+  
+  success_ = value;
+  // @@protoc_insertion_point(field_set:SkillUpgradeResponse.Success)
+}
+
+// uint32 ElfinID = 2;
+inline void SkillUpgradeResponse::clear_elfinid() {
+  elfinid_ = 0u;
+}
+inline ::google::protobuf::uint32 SkillUpgradeResponse::elfinid() const {
+  // @@protoc_insertion_point(field_get:SkillUpgradeResponse.ElfinID)
+  return elfinid_;
+}
+inline void SkillUpgradeResponse::set_elfinid(::google::protobuf::uint32 value) {
+  
+  elfinid_ = value;
+  // @@protoc_insertion_point(field_set:SkillUpgradeResponse.ElfinID)
+}
+
+// uint32 SkillID = 3;
+inline void SkillUpgradeResponse::clear_skillid() {
+  skillid_ = 0u;
+}
+inline ::google::protobuf::uint32 SkillUpgradeResponse::skillid() const {
+  // @@protoc_insertion_point(field_get:SkillUpgradeResponse.SkillID)
+  return skillid_;
+}
+inline void SkillUpgradeResponse::set_skillid(::google::protobuf::uint32 value) {
+  
+  skillid_ = value;
+  // @@protoc_insertion_point(field_set:SkillUpgradeResponse.SkillID)
+}
+
+// -------------------------------------------------------------------
+
+// TreeUpgradeRequest
+
+// bool Tree = 1;
+inline void TreeUpgradeRequest::clear_tree() {
+  tree_ = false;
+}
+inline bool TreeUpgradeRequest::tree() const {
+  // @@protoc_insertion_point(field_get:TreeUpgradeRequest.Tree)
+  return tree_;
+}
+inline void TreeUpgradeRequest::set_tree(bool value) {
+  
+  tree_ = value;
+  // @@protoc_insertion_point(field_set:TreeUpgradeRequest.Tree)
+}
+
+// -------------------------------------------------------------------
+
+// TreeUpgradeResponse
+
+// bool Success = 1;
+inline void TreeUpgradeResponse::clear_success() {
+  success_ = false;
+}
+inline bool TreeUpgradeResponse::success() const {
+  // @@protoc_insertion_point(field_get:TreeUpgradeResponse.Success)
+  return success_;
+}
+inline void TreeUpgradeResponse::set_success(bool value) {
+  
+  success_ = value;
+  // @@protoc_insertion_point(field_set:TreeUpgradeResponse.Success)
+}
+
+// -------------------------------------------------------------------
+
+// ElfinUpgradeRequest
+
+// uint32 ElfinID = 1;
+inline void ElfinUpgradeRequest::clear_elfinid() {
+  elfinid_ = 0u;
+}
+inline ::google::protobuf::uint32 ElfinUpgradeRequest::elfinid() const {
+  // @@protoc_insertion_point(field_get:ElfinUpgradeRequest.ElfinID)
+  return elfinid_;
+}
+inline void ElfinUpgradeRequest::set_elfinid(::google::protobuf::uint32 value) {
+  
+  elfinid_ = value;
+  // @@protoc_insertion_point(field_set:ElfinUpgradeRequest.ElfinID)
+}
+
+// -------------------------------------------------------------------
+
+// ElfinUpgradeResponse
+
+// bool Success = 1;
+inline void ElfinUpgradeResponse::clear_success() {
+  success_ = false;
+}
+inline bool ElfinUpgradeResponse::success() const {
+  // @@protoc_insertion_point(field_get:ElfinUpgradeResponse.Success)
+  return success_;
+}
+inline void ElfinUpgradeResponse::set_success(bool value) {
+  
+  success_ = value;
+  // @@protoc_insertion_point(field_set:ElfinUpgradeResponse.Success)
+}
+
+// uint32 ElfinID = 2;
+inline void ElfinUpgradeResponse::clear_elfinid() {
+  elfinid_ = 0u;
+}
+inline ::google::protobuf::uint32 ElfinUpgradeResponse::elfinid() const {
+  // @@protoc_insertion_point(field_get:ElfinUpgradeResponse.ElfinID)
+  return elfinid_;
+}
+inline void ElfinUpgradeResponse::set_elfinid(::google::protobuf::uint32 value) {
+  
+  elfinid_ = value;
+  // @@protoc_insertion_point(field_set:ElfinUpgradeResponse.ElfinID)
+}
+
+// -------------------------------------------------------------------
+
 // Request
 
 // .LoginRequest Login = 1;
@@ -11570,6 +12726,206 @@ inline void Request::set_allocated_register_(::RegisterRequest* register_) {
   }
   register__ = register_;
   // @@protoc_insertion_point(field_set_allocated:Request.Register)
+}
+
+// .SolarUpgradeRequest SolarUpgrade = 26;
+inline bool Request::has_solarupgrade() const {
+  return this != internal_default_instance() && solarupgrade_ != NULL;
+}
+inline void Request::clear_solarupgrade() {
+  if (GetArenaNoVirtual() == NULL && solarupgrade_ != NULL) {
+    delete solarupgrade_;
+  }
+  solarupgrade_ = NULL;
+}
+inline const ::SolarUpgradeRequest& Request::solarupgrade() const {
+  const ::SolarUpgradeRequest* p = solarupgrade_;
+  // @@protoc_insertion_point(field_get:Request.SolarUpgrade)
+  return p != NULL ? *p : *reinterpret_cast<const ::SolarUpgradeRequest*>(
+      &::_SolarUpgradeRequest_default_instance_);
+}
+inline ::SolarUpgradeRequest* Request::release_solarupgrade() {
+  // @@protoc_insertion_point(field_release:Request.SolarUpgrade)
+  
+  ::SolarUpgradeRequest* temp = solarupgrade_;
+  solarupgrade_ = NULL;
+  return temp;
+}
+inline ::SolarUpgradeRequest* Request::mutable_solarupgrade() {
+  
+  if (solarupgrade_ == NULL) {
+    solarupgrade_ = new ::SolarUpgradeRequest;
+  }
+  // @@protoc_insertion_point(field_mutable:Request.SolarUpgrade)
+  return solarupgrade_;
+}
+inline void Request::set_allocated_solarupgrade(::SolarUpgradeRequest* solarupgrade) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete solarupgrade_;
+  }
+  if (solarupgrade) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      solarupgrade = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, solarupgrade, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  solarupgrade_ = solarupgrade;
+  // @@protoc_insertion_point(field_set_allocated:Request.SolarUpgrade)
+}
+
+// .SkillUpgradeRequest SkillUpgrade = 27;
+inline bool Request::has_skillupgrade() const {
+  return this != internal_default_instance() && skillupgrade_ != NULL;
+}
+inline void Request::clear_skillupgrade() {
+  if (GetArenaNoVirtual() == NULL && skillupgrade_ != NULL) {
+    delete skillupgrade_;
+  }
+  skillupgrade_ = NULL;
+}
+inline const ::SkillUpgradeRequest& Request::skillupgrade() const {
+  const ::SkillUpgradeRequest* p = skillupgrade_;
+  // @@protoc_insertion_point(field_get:Request.SkillUpgrade)
+  return p != NULL ? *p : *reinterpret_cast<const ::SkillUpgradeRequest*>(
+      &::_SkillUpgradeRequest_default_instance_);
+}
+inline ::SkillUpgradeRequest* Request::release_skillupgrade() {
+  // @@protoc_insertion_point(field_release:Request.SkillUpgrade)
+  
+  ::SkillUpgradeRequest* temp = skillupgrade_;
+  skillupgrade_ = NULL;
+  return temp;
+}
+inline ::SkillUpgradeRequest* Request::mutable_skillupgrade() {
+  
+  if (skillupgrade_ == NULL) {
+    skillupgrade_ = new ::SkillUpgradeRequest;
+  }
+  // @@protoc_insertion_point(field_mutable:Request.SkillUpgrade)
+  return skillupgrade_;
+}
+inline void Request::set_allocated_skillupgrade(::SkillUpgradeRequest* skillupgrade) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete skillupgrade_;
+  }
+  if (skillupgrade) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      skillupgrade = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, skillupgrade, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  skillupgrade_ = skillupgrade;
+  // @@protoc_insertion_point(field_set_allocated:Request.SkillUpgrade)
+}
+
+// .TreeUpgradeRequest TreeUpgrade = 28;
+inline bool Request::has_treeupgrade() const {
+  return this != internal_default_instance() && treeupgrade_ != NULL;
+}
+inline void Request::clear_treeupgrade() {
+  if (GetArenaNoVirtual() == NULL && treeupgrade_ != NULL) {
+    delete treeupgrade_;
+  }
+  treeupgrade_ = NULL;
+}
+inline const ::TreeUpgradeRequest& Request::treeupgrade() const {
+  const ::TreeUpgradeRequest* p = treeupgrade_;
+  // @@protoc_insertion_point(field_get:Request.TreeUpgrade)
+  return p != NULL ? *p : *reinterpret_cast<const ::TreeUpgradeRequest*>(
+      &::_TreeUpgradeRequest_default_instance_);
+}
+inline ::TreeUpgradeRequest* Request::release_treeupgrade() {
+  // @@protoc_insertion_point(field_release:Request.TreeUpgrade)
+  
+  ::TreeUpgradeRequest* temp = treeupgrade_;
+  treeupgrade_ = NULL;
+  return temp;
+}
+inline ::TreeUpgradeRequest* Request::mutable_treeupgrade() {
+  
+  if (treeupgrade_ == NULL) {
+    treeupgrade_ = new ::TreeUpgradeRequest;
+  }
+  // @@protoc_insertion_point(field_mutable:Request.TreeUpgrade)
+  return treeupgrade_;
+}
+inline void Request::set_allocated_treeupgrade(::TreeUpgradeRequest* treeupgrade) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete treeupgrade_;
+  }
+  if (treeupgrade) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      treeupgrade = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, treeupgrade, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  treeupgrade_ = treeupgrade;
+  // @@protoc_insertion_point(field_set_allocated:Request.TreeUpgrade)
+}
+
+// .ElfinUpgradeRequest ElfinUpgrade = 29;
+inline bool Request::has_elfinupgrade() const {
+  return this != internal_default_instance() && elfinupgrade_ != NULL;
+}
+inline void Request::clear_elfinupgrade() {
+  if (GetArenaNoVirtual() == NULL && elfinupgrade_ != NULL) {
+    delete elfinupgrade_;
+  }
+  elfinupgrade_ = NULL;
+}
+inline const ::ElfinUpgradeRequest& Request::elfinupgrade() const {
+  const ::ElfinUpgradeRequest* p = elfinupgrade_;
+  // @@protoc_insertion_point(field_get:Request.ElfinUpgrade)
+  return p != NULL ? *p : *reinterpret_cast<const ::ElfinUpgradeRequest*>(
+      &::_ElfinUpgradeRequest_default_instance_);
+}
+inline ::ElfinUpgradeRequest* Request::release_elfinupgrade() {
+  // @@protoc_insertion_point(field_release:Request.ElfinUpgrade)
+  
+  ::ElfinUpgradeRequest* temp = elfinupgrade_;
+  elfinupgrade_ = NULL;
+  return temp;
+}
+inline ::ElfinUpgradeRequest* Request::mutable_elfinupgrade() {
+  
+  if (elfinupgrade_ == NULL) {
+    elfinupgrade_ = new ::ElfinUpgradeRequest;
+  }
+  // @@protoc_insertion_point(field_mutable:Request.ElfinUpgrade)
+  return elfinupgrade_;
+}
+inline void Request::set_allocated_elfinupgrade(::ElfinUpgradeRequest* elfinupgrade) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete elfinupgrade_;
+  }
+  if (elfinupgrade) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      elfinupgrade = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, elfinupgrade, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  elfinupgrade_ = elfinupgrade;
+  // @@protoc_insertion_point(field_set_allocated:Request.ElfinUpgrade)
 }
 
 // -------------------------------------------------------------------
@@ -12826,6 +14182,206 @@ inline void Response::set_allocated_register_(::RegisterResponse* register_) {
   // @@protoc_insertion_point(field_set_allocated:Response.Register)
 }
 
+// .SolarUpgradeResponse SolarUpgrade = 26;
+inline bool Response::has_solarupgrade() const {
+  return this != internal_default_instance() && solarupgrade_ != NULL;
+}
+inline void Response::clear_solarupgrade() {
+  if (GetArenaNoVirtual() == NULL && solarupgrade_ != NULL) {
+    delete solarupgrade_;
+  }
+  solarupgrade_ = NULL;
+}
+inline const ::SolarUpgradeResponse& Response::solarupgrade() const {
+  const ::SolarUpgradeResponse* p = solarupgrade_;
+  // @@protoc_insertion_point(field_get:Response.SolarUpgrade)
+  return p != NULL ? *p : *reinterpret_cast<const ::SolarUpgradeResponse*>(
+      &::_SolarUpgradeResponse_default_instance_);
+}
+inline ::SolarUpgradeResponse* Response::release_solarupgrade() {
+  // @@protoc_insertion_point(field_release:Response.SolarUpgrade)
+  
+  ::SolarUpgradeResponse* temp = solarupgrade_;
+  solarupgrade_ = NULL;
+  return temp;
+}
+inline ::SolarUpgradeResponse* Response::mutable_solarupgrade() {
+  
+  if (solarupgrade_ == NULL) {
+    solarupgrade_ = new ::SolarUpgradeResponse;
+  }
+  // @@protoc_insertion_point(field_mutable:Response.SolarUpgrade)
+  return solarupgrade_;
+}
+inline void Response::set_allocated_solarupgrade(::SolarUpgradeResponse* solarupgrade) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete solarupgrade_;
+  }
+  if (solarupgrade) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      solarupgrade = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, solarupgrade, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  solarupgrade_ = solarupgrade;
+  // @@protoc_insertion_point(field_set_allocated:Response.SolarUpgrade)
+}
+
+// .SkillUpgradeResponse SkillUpgrade = 27;
+inline bool Response::has_skillupgrade() const {
+  return this != internal_default_instance() && skillupgrade_ != NULL;
+}
+inline void Response::clear_skillupgrade() {
+  if (GetArenaNoVirtual() == NULL && skillupgrade_ != NULL) {
+    delete skillupgrade_;
+  }
+  skillupgrade_ = NULL;
+}
+inline const ::SkillUpgradeResponse& Response::skillupgrade() const {
+  const ::SkillUpgradeResponse* p = skillupgrade_;
+  // @@protoc_insertion_point(field_get:Response.SkillUpgrade)
+  return p != NULL ? *p : *reinterpret_cast<const ::SkillUpgradeResponse*>(
+      &::_SkillUpgradeResponse_default_instance_);
+}
+inline ::SkillUpgradeResponse* Response::release_skillupgrade() {
+  // @@protoc_insertion_point(field_release:Response.SkillUpgrade)
+  
+  ::SkillUpgradeResponse* temp = skillupgrade_;
+  skillupgrade_ = NULL;
+  return temp;
+}
+inline ::SkillUpgradeResponse* Response::mutable_skillupgrade() {
+  
+  if (skillupgrade_ == NULL) {
+    skillupgrade_ = new ::SkillUpgradeResponse;
+  }
+  // @@protoc_insertion_point(field_mutable:Response.SkillUpgrade)
+  return skillupgrade_;
+}
+inline void Response::set_allocated_skillupgrade(::SkillUpgradeResponse* skillupgrade) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete skillupgrade_;
+  }
+  if (skillupgrade) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      skillupgrade = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, skillupgrade, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  skillupgrade_ = skillupgrade;
+  // @@protoc_insertion_point(field_set_allocated:Response.SkillUpgrade)
+}
+
+// .TreeUpgradeResponse TreeUpgrade = 28;
+inline bool Response::has_treeupgrade() const {
+  return this != internal_default_instance() && treeupgrade_ != NULL;
+}
+inline void Response::clear_treeupgrade() {
+  if (GetArenaNoVirtual() == NULL && treeupgrade_ != NULL) {
+    delete treeupgrade_;
+  }
+  treeupgrade_ = NULL;
+}
+inline const ::TreeUpgradeResponse& Response::treeupgrade() const {
+  const ::TreeUpgradeResponse* p = treeupgrade_;
+  // @@protoc_insertion_point(field_get:Response.TreeUpgrade)
+  return p != NULL ? *p : *reinterpret_cast<const ::TreeUpgradeResponse*>(
+      &::_TreeUpgradeResponse_default_instance_);
+}
+inline ::TreeUpgradeResponse* Response::release_treeupgrade() {
+  // @@protoc_insertion_point(field_release:Response.TreeUpgrade)
+  
+  ::TreeUpgradeResponse* temp = treeupgrade_;
+  treeupgrade_ = NULL;
+  return temp;
+}
+inline ::TreeUpgradeResponse* Response::mutable_treeupgrade() {
+  
+  if (treeupgrade_ == NULL) {
+    treeupgrade_ = new ::TreeUpgradeResponse;
+  }
+  // @@protoc_insertion_point(field_mutable:Response.TreeUpgrade)
+  return treeupgrade_;
+}
+inline void Response::set_allocated_treeupgrade(::TreeUpgradeResponse* treeupgrade) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete treeupgrade_;
+  }
+  if (treeupgrade) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      treeupgrade = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, treeupgrade, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  treeupgrade_ = treeupgrade;
+  // @@protoc_insertion_point(field_set_allocated:Response.TreeUpgrade)
+}
+
+// .ElfinUpgradeResponse ElfinUpgrade = 29;
+inline bool Response::has_elfinupgrade() const {
+  return this != internal_default_instance() && elfinupgrade_ != NULL;
+}
+inline void Response::clear_elfinupgrade() {
+  if (GetArenaNoVirtual() == NULL && elfinupgrade_ != NULL) {
+    delete elfinupgrade_;
+  }
+  elfinupgrade_ = NULL;
+}
+inline const ::ElfinUpgradeResponse& Response::elfinupgrade() const {
+  const ::ElfinUpgradeResponse* p = elfinupgrade_;
+  // @@protoc_insertion_point(field_get:Response.ElfinUpgrade)
+  return p != NULL ? *p : *reinterpret_cast<const ::ElfinUpgradeResponse*>(
+      &::_ElfinUpgradeResponse_default_instance_);
+}
+inline ::ElfinUpgradeResponse* Response::release_elfinupgrade() {
+  // @@protoc_insertion_point(field_release:Response.ElfinUpgrade)
+  
+  ::ElfinUpgradeResponse* temp = elfinupgrade_;
+  elfinupgrade_ = NULL;
+  return temp;
+}
+inline ::ElfinUpgradeResponse* Response::mutable_elfinupgrade() {
+  
+  if (elfinupgrade_ == NULL) {
+    elfinupgrade_ = new ::ElfinUpgradeResponse;
+  }
+  // @@protoc_insertion_point(field_mutable:Response.ElfinUpgrade)
+  return elfinupgrade_;
+}
+inline void Response::set_allocated_elfinupgrade(::ElfinUpgradeResponse* elfinupgrade) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete elfinupgrade_;
+  }
+  if (elfinupgrade) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      elfinupgrade = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, elfinupgrade, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  elfinupgrade_ = elfinupgrade;
+  // @@protoc_insertion_point(field_set_allocated:Response.ElfinUpgrade)
+}
+
 // -------------------------------------------------------------------
 
 // GameMessage
@@ -12947,6 +14503,22 @@ inline void GameMessage::set_allocated_res(::Response* res) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

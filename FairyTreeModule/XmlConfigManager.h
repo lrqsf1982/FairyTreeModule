@@ -4,6 +4,7 @@
 #include <map>
 #include "./TinyXML/tinyxml.h"
 #include "./TinyXML/tinyxml.h"
+#include "FairyTreeUserClasses.h"
 
 
 
@@ -81,6 +82,7 @@ struct TreeInfo
 	uint32 elfinprodco; //小精灵体力消耗
 	uint32 productivity; //生产力
 	double treehigh; //树的高度
+	uint32 breakthReq; //突破所需
 };
 
 //树结界
@@ -103,6 +105,21 @@ public:
 	std::map<uint32, TreeEnchantmentInfo*> TreeEnchantInfos;
 	static XmlConfigManager* GetInstance();
 	~XmlConfigManager();
+	//存储物品到商店类
+	void StoreItemsInStores(uint32 uid);
+	//初始化小精灵数据到小精灵类
+	void InitElfinData(uint32 uid);
+	//初始化技能数据到技能类
+	void InitSkillData(uint32 id);
+	//初始化太阳数据到太阳类
+	void InitSunData(uint32 id);
+	//初始化任务数据到任务类
+	void InitTaskData(uint32 id);
+	//初始化神仙树数据到神仙树类
+	void InitTreeData(uint32 id);
+	//初始化树结界数据到树结界类
+	void InitTreeEnchantData(uint32 id);
+
 private:
 	XmlConfigManager();
 	bool ParseXmlToItem();//读取物品Xml文件函数
@@ -113,6 +130,13 @@ private:
 	bool ParseXmlToTree();//读取神仙树Xml文件函数
 	bool ParseXmlToTreeEnchantment();//读取树结界Xml文件函数
 	static XmlConfigManager* Instance;
+	Shop* shop; // 商店
+	Elfin* elfin; //小精灵
+	CSkill* skill; //技能
+	CSunshine* sunshine; //太阳
+	CTaskListClass tasklistclass; //任务
+	FairyTree* fairytree; //神仙树
+	TreeEnchantment* treeenchantment; //树结界
 };
 
 

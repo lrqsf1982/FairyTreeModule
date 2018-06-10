@@ -8,15 +8,19 @@ CSunshine::CSunshine()
 
 	ufgrade = 0; //等级
 
-	ufCoSun = 0; //消耗阳光数量
-
-	ufCoGold = 0; //消耗金币数量
-
 	ufSunPCapa = 0; //阳光的产出能力
 
 	ufSunPTime = 0; //阳光的生产时间
 
 	usunnum = 0; //阳光的数量
+	 
+	ucowaternum = 0;//消耗水的数量
+	
+	ucosunnum = 0;//阳光数量消耗
+	
+	ucogoldnum = 0;//金币数量消耗
+	
+	ucojewel = 0;//钻石数量消耗
 }
 
 
@@ -47,9 +51,18 @@ int CSunshine::Get_FWater()
 
 
 //设置等级
-void CSunshine::Set_FGrade(uint32 setgrad)
+void CSunshine::Set_FGrade(bool setgrad)
 {
-	ufgrade = setgrad;
+	if (setgrad)
+	{
+		ufgrade += 1;
+
+		//太阳每增加一级 产出能力也会增加
+		Set_FSunProCap(SOLARPROCAP);
+
+		//那么升级所需要的物品数量也会增加
+	}
+
 }
 
 //获取等级
@@ -98,6 +111,54 @@ void CSunshine::Set_FSubSunNum(uint32 unum)
 int CSunshine::Get_FSunNumber()
 {
 	return usunnum;
+}
+
+//设置消耗水的数量
+void CSunshine::Set_SunCoWaterNum(uint32 num)
+{
+	ucowaternum = num;
+}
+
+//获取消耗水的数量
+int CSunshine::Get_SunCoWaterNum()
+{
+	return ucowaternum;
+}
+
+//设置阳光数量消耗
+void CSunshine::Set_SunCoSunNum(uint32 num)
+{
+	ucosunnum = num;
+}
+
+//获取阳光数量消耗
+int CSunshine::Get_SunCoSunNum()
+{
+	return ucosunnum;
+}
+
+//设置金币数量消耗
+void CSunshine::Set_SunCoGoldNum(uint32 num)
+{
+	ucogoldnum = num;
+}
+
+//获取金币数量消耗
+int CSunshine::Get_SunCoGoldNum()
+{
+	return ucogoldnum;
+}
+
+//设置钻石数量消耗
+void CSunshine::Set_SunCoJewelNum(uint32 num)
+{
+	ucojewel = num;
+}
+
+//获取钻石数量消耗
+int CSunshine::Get_SunCoJewelNum()
+{
+	return ucojewel;
 }
 
 

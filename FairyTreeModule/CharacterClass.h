@@ -4,6 +4,7 @@
 #define _CHARACTER_CLASS_H
 
 #include "define.h"
+#include <map>
 
 //角色类
 class CharacterClass
@@ -22,25 +23,19 @@ public:
 	//获取角色名字
 	string Get_Role_Name();
 
-	//设置角色等级
-	void Set_RoleLevel(uint32 srl);
-	//获取角色等级
-	int Get_RoleLevel();
-
 	//设置角色成长值
 	void Set_RoleGrowthValue(uint32 srgv);
 	//获取角色成长值
 	int Get_RoleGrowthValue();
 
+	//角色类map
+	std::map<uint32, CharacterClass*> map_haracter;
 private:
 	//角色ID
 	uint32 uroleID;
 
 	//角色名字
 	std::string sroleName;
-
-	//角色等级
-	uint32 urolelevel;
 
 	//角色成长值
 	uint32 urolegrowthvalue;

@@ -8,10 +8,11 @@
 #include <vector>
 #include <windows.h>
 #include <time.h>
+#include <map>
 
 #define SEGMAXPHYSICALPOWER 10 //最大体力的增长值
 
-enum ElfinSkillType//技能类型
+enum ElfinType//技能类型
 {
 	EGOLD,   //金
 	EWOOD,   //木
@@ -32,10 +33,10 @@ public:
 	//设置删除技能
 	void Set_EReduceSkillStyle(uint32 iderss);
 	//获取技能格
-	int Get_ESkillStyle();
+	ElfinType Get_ESkillStyle();
 
 	//设置等级
-	void Set_EGrade(bool beg);
+	void Set_EGrade(uint32 beg);
 	//获取等级
 	int Get_EGrade();
 
@@ -55,6 +56,29 @@ public:
 	void Set_EToID(uint32 etoid);
 	//获取小精灵的ID
 	int Get_ID();
+
+	//设置消耗水的数量
+	void Set_uCoWaterNum(uint32 num);
+	//获取消耗水的数量
+	int Get_uCoWaterNum();
+
+	//设置阳光数量消耗
+	void Set_uCoSunNum(uint32 num);
+	//获取阳光数量消耗
+	int Get_uCoSunNum();
+
+	//设置金币数量消耗
+	void Set_uCoGoldNum(uint32 num);
+	//获取金币数量消耗
+	int Get_uCoGoldNum();
+
+	//设置钻石消耗数量
+	void Set_uCoJewelNum(uint32 num);
+	//获取钻石消耗数量
+	int Get_uCoJewelNum();
+
+	//小精灵的map
+	std::map<uint32, Elfin*> map_elfin;
 private:
 
 	//技能格(多个)
@@ -75,7 +99,16 @@ private:
 	uint32 _emaxphysicalpower;
 
 	//枚举类型的技能属性
-	ElfinSkillType estype;
+	ElfinType estype;
+
+	//消耗水的数量
+	uint32 ucowaternum;
+	//阳光数量消耗
+	uint32 ucosunnum;
+	//金币数量消耗
+	uint32 ucogoldnum;
+	//钻石消耗数量
+	uint32 ujewelnum;
 
 	//类型(包括以下几种)
 	//1:金(第一技能 储存金币) 2:木(第一技能 栽培树效率更高) 3:水(第一技能 浇水)

@@ -4,6 +4,7 @@
 #define _TREE_ENCHANTMENT_H
 
 #include "define.h"
+#include <map>
 
 //树结界类
 class TreeEnchantment
@@ -30,6 +31,9 @@ public:
 	bool OpenPitfall(bool bop);
 	//关闭陷阱
 	bool ClosePitfall(bool bcp);
+
+	//树结界的map
+	std::map<uint32, TreeEnchantment*> map_treeEn;
 private:
 	//等级
 	uint32 ugrade;

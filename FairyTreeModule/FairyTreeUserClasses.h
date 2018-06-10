@@ -24,12 +24,18 @@
 
 
 
+
 //神仙树用户类
 class FairyTreeUserClasses
 {
 public:
 	FairyTreeUserClasses();
 	~FairyTreeUserClasses();
+
+	//设置记录用户的个数
+	void Set_RecordUserCount(uint32 ucon);
+	//获取记录用户的个数
+	int Get_RecordUserCount();
 
 	//设置用户ID
 	void Set_UserId(uint32 suid);
@@ -42,8 +48,11 @@ public:
 	//获取神仙树
 	FairyTree Get_FairyTree();
 
-	//获取神仙井
+	//获取阳光
 	CSunshine Get_SunShine();
+
+	//获取商店
+	Shop Get_Shop();
 
 	//获取树结界
 	TreeEnchantment Get_TreeEnchantment();
@@ -51,13 +60,10 @@ public:
 	//获取仓库
 	Warehouse Get_Warehouse();
 
-	//获取商店
-	Shop Get_Shop();
-
 	//获取邮箱
 	CMailbox Get_CMailbox();
 
-	//获取任务列表
+	//获取任务类
 	CTaskListClass Get_CTaskListClass();
 
 	//获取关系
@@ -82,9 +88,11 @@ public:
 	void Set_UserAddDiamond(uint32 sd);
 	//设置减少钻石
 	void Set_UserRedDiamond(uint32 surd);
-	//获取钻石
+	//获取钻石数量
 	int Get_UserDiamond();
 
+	//太阳升级函数
+	void vUpgradeSolarFun(uint32 uid);
 	//小精灵升级函数
 	void vUpgradeElfinFun(uint32 uelfid);
 	//神仙树升级函数
@@ -117,6 +125,9 @@ public:
 	//获取升级钻石消耗的数量
 	int vGetUpgradeDiamoNum();
 private:
+	//记录用户的个数
+	uint32 uRecordUserCount;
+
 	//用户ID
 	uint32 userid;
 
@@ -128,6 +139,9 @@ private:
 
 	//太阳
 	CSunshine sunshine;
+	
+	//商店
+	Shop cshop;
 
 	//树结界
 	TreeEnchantment treeenchantment;
@@ -135,13 +149,10 @@ private:
 	//仓库
 	Warehouse warehouse;
 
-	//商店
-	Shop shop;
-
 	//邮箱
 	CMailbox mailbox;
 
-	//任务列表
+	//任务类
 	CTaskListClass tasklist;
 
 	//关系
@@ -177,6 +188,14 @@ private:
 	uint32 uUpdiaNum;
 };
 
+class CAllUserInfoInstance 
+{
+	CAllUserInfoInstance() {};
+	static CAllUserInfoInstance* _instance;
+public:
+	static CAllUserInfoInstance * GetInstance();
+	std::map<uint32, FairyTreeUserClasses*> ConnetedUser;
 
+};
 #endif
 

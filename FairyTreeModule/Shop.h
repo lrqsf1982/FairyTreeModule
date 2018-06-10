@@ -4,7 +4,7 @@
 #define _SHOP_H
 
 #include "Warehouse.h"
-
+#include "map"
 #include "define.h"
 
 #define WATERCOMMODITYID 10001 //水资源类商品ID 大于它
@@ -37,9 +37,17 @@ public:
 	//获取购买物品后的总价格
 	float Get_ShopBuyGoodsTotalPrice();
 
-private:
-	//物品类
+	//获取物品类 遍历物品
+	CWarehouseArticle* Get_ArticleClass(uint32 uid);
+
+	//map用来存储物品的信息<物品的ID,物品类>
+	std::map<uint32, CWarehouseArticle*> storeItemInfo;
+	//商店里物品的数量
+	inline int WarehouSize() { return (int)storeItemInfo.size(); }
+
+	//物品类 遍历物品
 	CWarehouseArticle * pwareArt;
+private:
 
 	//(WATERRESOURCECLASS)水资源类商品 vector表
 	std::vector<CWarehouseArticle*> vecwater;

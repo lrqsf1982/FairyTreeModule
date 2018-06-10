@@ -15,6 +15,8 @@ CWarehouseArticle::CWarehouseArticle()
 	eartCat = WATERRESOURCECLASS; //水资源类
 
 	eartDescribe = ""; //物品描述(Describe)
+
+	warename = "";//物品名
 }
 
 CWarehouseArticle::~CWarehouseArticle()
@@ -79,6 +81,30 @@ void CWarehouseArticle::Set_CArticleDescribe(std::string & scad)
 string CWarehouseArticle::Get_CArticleDescribe()
 {
 	return eartDescribe;
+}
+
+//设置物品类型
+void CWarehouseArticle::Set_eArticleType(EArticleCategory ear)
+{
+	eartCat = ear;
+}
+
+//获得物品类型
+EArticleCategory CWarehouseArticle::Get_eArticleType()
+{
+	return eartCat;
+}
+
+//设置物品名字
+void CWarehouseArticle::Set_WareName(std::string & swn)
+{
+	warename = swn;
+}
+
+//获取物品名字
+string CWarehouseArticle::Get_WareName()
+{
+	return warename;
 }
 
 

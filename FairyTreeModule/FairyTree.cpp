@@ -13,6 +13,18 @@ FairyTree::FairyTree()
 	fgoldtime = FMAXGOLDTIME; //生产金币的时间
 
 	cfaiTreStoGol = 0;//神仙树存储金币
+		  
+	ucowaternum = 0;//消耗水的数量
+	
+	ucosunnum = 0;//阳光数量消耗
+	
+	ucogoldnum = 0;//金币数量消耗
+	
+	ucojewelnum = 0;//钻石数量消耗
+	
+	ucoeflinnum = 0;//小精灵体力消耗
+	
+	ucobreakthnum = 0;//突破所需
 
 }
 
@@ -105,6 +117,78 @@ int FairyTree::Get_FFaiTreStoGol()
 {
 	//得到总存储的金币数量
 	return cfaiTreStoGol;
+}
+
+//设置消耗水的数量
+void FairyTree::Set_FCoWaterNum(uint32 num)
+{
+	ucowaternum = num;
+}
+
+//获取消耗水的数量
+int FairyTree::Get_FCoWaterNum()
+{
+	return ucowaternum;
+}
+
+//设置阳光数量消耗
+void FairyTree::Set_FCoSunNum(uint32 num)
+{
+	ucosunnum = num;
+}
+
+//获取阳光数量消耗
+int FairyTree::Get_FCoSunNum()
+{
+	return ucosunnum;
+}
+
+//设置金币数量消耗
+void FairyTree::Set_FCoGoldNum(uint32 num)
+{
+	ucogoldnum = num;
+}
+
+//获取金币数量消耗
+int FairyTree::Get_FCoGoldNum()
+{
+	return ucogoldnum;
+}
+
+//设置钻石数量消耗
+void FairyTree::Set_FCoJewelNum(uint32 num)
+{
+	ucojewelnum = num;
+}
+
+//获取钻石数量消耗
+int FairyTree::Get_FCoJewelNum()
+{
+	return ucojewelnum;
+}
+
+//设置小精灵体力消耗
+void FairyTree::Set_FCoeflinNum(uint32 num)
+{
+	ucoeflinnum = num;
+}
+
+//获取小精灵体力消耗
+int FairyTree::Get_FCoeflinNum()
+{
+	return ucoeflinnum;
+}
+
+//设置突破所需
+void FairyTree::Set_FCoBreakthNum(uint32 num)
+{
+	ucobreakthnum = num;
+}
+
+//获取突破所需
+int FairyTree::Get_FCoBreakthNum()
+{
+	return ucobreakthnum;
 }
 
 

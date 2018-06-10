@@ -8,8 +8,6 @@ CharacterClass::CharacterClass()
 
 	sroleName = ""; //角色名字
 
-	urolelevel = 0; //角色等级
-
 	urolegrowthvalue = 0; //角色成长值
 }
 
@@ -40,18 +38,6 @@ void CharacterClass::Set_Role_Name(std::string srname)
 string CharacterClass::Get_Role_Name()
 {
 	return sroleName;
-}
-
-//设置角色等级
-void CharacterClass::Set_RoleLevel(uint32 srl)
-{
-	urolelevel += srl;
-}
-
-//获取角色等级
-int CharacterClass::Get_RoleLevel()
-{
-	return urolelevel;
 }
 
 //设置角色成长值

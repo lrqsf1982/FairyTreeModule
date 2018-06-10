@@ -36,6 +36,11 @@ void CMessageManage::Init()
 	MsgMap[Ranking_Request] = Process_RankingRequest;					   //请求获取排行榜列表23
 	MsgMap[ForgetSkill_Request] = Process_ForgetSkillRequest;			   //遗忘技能请求24
 	MsgMap[Register_Request] = Process_RegisterRequest;                    //注册请求25
+	MsgMap[SolarUpgrade_Request] = Process_SolarUpgradeRequest;            //太阳升级请求26
+	MsgMap[SkillUpgrade_Request] = Process_SkillUpgradeRequest;            //技能升级请求27
+	MsgMap[TreeUpgrade_Request] = Process_TreeUpgradeRequest;              //神仙树升级请求28
+	MsgMap[ElfinUpgrade_Request] = Process_ElfinUpgradeRequest;            //小精灵升级请求29
+
 
 	//应答
 	MsgMap[Login_Response] = Process_LoginResponse;                        //登录应答1
@@ -63,6 +68,10 @@ void CMessageManage::Init()
 	MsgMap[Ranking_Response] = Process_RankingResponse;					   //应答获取排行榜列表23
 	MsgMap[ForgetSkill_Response] = Process_ForgetSkillResponse;			   //遗忘技能应答24
 	MsgMap[Register_Response] = Process_RegisterResponse;                  //注册应答25
+	MsgMap[SolarUpgrade_Response] = Process_SolarUpgradeResponse;          //太阳升级应答26
+	MsgMap[SkillUpgrade_Response] = Process_SkillUpgradeResponse;          //技能升级应答27
+	MsgMap[TreeUpgrade_Response] = Process_TreeUpgradeResponse;            //神仙树升级应答28
+	MsgMap[ElfinUpgrade_Response] = Process_ElfinUpgradeResponse;          //小精灵升级应答29
 	
 }
 

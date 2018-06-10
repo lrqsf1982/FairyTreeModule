@@ -4,7 +4,9 @@
 
 FairyTreeUserClasses::FairyTreeUserClasses()
 {
-	userid = 0; //用户ID
+	uRecordUserCount = 0;//记录用户的个数
+
+	userid = 10000; //用户ID
 
 	udiamond = 0; //钻石
 
@@ -26,10 +28,29 @@ FairyTreeUserClasses::~FairyTreeUserClasses()
 {
 }
 
+//设置记录用户的个数
+void FairyTreeUserClasses::Set_RecordUserCount(uint32 ucon)
+{
+	//用户的个数加 1 
+	uRecordUserCount += ucon;
+	//用户的ID好加 1;
+	Set_UserId(ucon);
+}
+
+//获取记录用户的个数
+int FairyTreeUserClasses::Get_RecordUserCount()
+{
+	return uRecordUserCount;
+}
+
 //设置用户ID
 void FairyTreeUserClasses::Set_UserId(uint32 suid)
 {
-	userid = suid;
+	//用户ID号
+	userid += suid;
+	//角色ID号
+	characlass.Set_Role_ID(userid);
+
 }
 
 //获得用户ID
@@ -56,6 +77,12 @@ CSunshine FairyTreeUserClasses::Get_SunShine()
 	return sunshine;
 }
 
+//获取商店
+Shop FairyTreeUserClasses::Get_Shop()
+{
+	return cshop;
+}
+
 //获取树结界
 TreeEnchantment FairyTreeUserClasses::Get_TreeEnchantment()
 {
@@ -68,19 +95,13 @@ Warehouse FairyTreeUserClasses::Get_Warehouse()
 	return warehouse;
 }
 
-//获取商店
-Shop FairyTreeUserClasses::Get_Shop()
-{
-	return shop;
-}
-
 //获取邮箱
 CMailbox FairyTreeUserClasses::Get_CMailbox()
 {
 	return mailbox;
 }
 
-//获取任务列表
+//获取任务类
 CTaskListClass FairyTreeUserClasses::Get_CTaskListClass()
 {
 	return tasklist;
@@ -138,6 +159,20 @@ void FairyTreeUserClasses::Set_UserRedDiamond(uint32 surd)
 int FairyTreeUserClasses::Get_UserDiamond()
 {
 	return udiamond;
+}
+
+//太阳升级函数
+void FairyTreeUserClasses::vUpgradeSolarFun(uint32 uid)
+{
+	if (characlass.Get_Role_ID() == uid
+		&& water.Get_WOrdinaryWater() >= vGetUpgradeWaterNum()
+		&& gold.Get_GGoldNumber() >= vGetUpgradeGoldNum()
+		&& sunshine.Get_FSunNumber() >= vGetUpgradeSunNum()
+		&& Get_UserDiamond() >= vGetUpgradeDiamoNum()
+		&& elf.Get_EPhysicalPower() >= vGetUpgradeElfinTiliNum())
+	{
+		sunshine.Set_FGrade(true);
+	}
 }
 
 //小精灵升级函数
@@ -244,3 +279,8 @@ int FairyTreeUserClasses::vGetUpgradeDiamoNum()
 	return uUpdiaNum;
 }
 
+CAllUserInfoInstance* CAllUserInfoInstance::_instance = new CAllUserInfoInstance();
+CAllUserInfoInstance * CAllUserInfoInstance::GetInstance()
+{
+	return _instance;
+}

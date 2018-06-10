@@ -13,6 +13,14 @@ Elfin::Elfin()
 	_emaxphysicalpower = SEGMAXPHYSICALPOWER;//最大体力
 
 	estype = EGOLD;//枚举类型的技能属性
+
+	ucowaternum = 0;//消耗水的数量
+	
+	ucosunnum = 0;//阳光数量消耗
+	
+	ucogoldnum = 0;//金币数量消耗
+	
+	ujewelnum = 0;//钻石消耗数量
 }
 
 
@@ -43,7 +51,7 @@ void Elfin::Set_EReduceSkillStyle(uint32 iderss)
 }
 
 //获取技能格
-int Elfin::Get_ESkillStyle()
+ElfinType Elfin::Get_ESkillStyle()
 {
 	//随机设置一个技能
 	srand((uint32)time(0));
@@ -63,16 +71,15 @@ int Elfin::Get_ESkillStyle()
 }
 
 //设置等级
-void Elfin::Set_EGrade(bool beg)
+void Elfin::Set_EGrade(uint32 beg)
 {
-	if (beg)
-	{
-		_egrade += 1;
+	
+	_egrade += beg;
 
-		//每增加一级 最大体力值就增加指定值
-		Set_EMaxPhysicalPower(SEGMAXPHYSICALPOWER);
+	//每增加一级 最大体力值就增加指定值
+	Set_EMaxPhysicalPower(SEGMAXPHYSICALPOWER);
 
-	}
+	
 }
 
 //获取等级
@@ -137,5 +144,53 @@ void Elfin::Set_EToID(uint32 etoid)
 int Elfin::Get_ID()
 {
 	return uEid;
+}
+
+//设置消耗水的数量
+void Elfin::Set_uCoWaterNum(uint32 num)
+{
+	ucowaternum = num;
+}
+
+//获取消耗水的数量
+int Elfin::Get_uCoWaterNum()
+{
+	return ucowaternum;
+}
+
+//设置阳光数量消耗
+void Elfin::Set_uCoSunNum(uint32 num)
+{
+	ucosunnum = num;
+}
+
+//获取阳光数量消耗
+int Elfin::Get_uCoSunNum()
+{
+	return ucosunnum;
+}
+
+//设置金币数量消耗
+void Elfin::Set_uCoGoldNum(uint32 num)
+{
+	ucogoldnum = num;
+}
+
+//获取金币数量消耗
+int Elfin::Get_uCoGoldNum()
+{
+	return ucogoldnum;
+}
+
+//设置钻石消耗数量
+void Elfin::Set_uCoJewelNum(uint32 num)
+{
+	ujewelnum = num;
+}
+
+//获取钻石消耗数量
+int Elfin::Get_uCoJewelNum()
+{
+	return ujewelnum;
 }
 

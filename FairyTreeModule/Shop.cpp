@@ -4,7 +4,7 @@
 
 Shop::Shop()
 {
-	pwareArt = NULL;
+	pwareArt = new CWarehouseArticle;
 	ubuyGoodsTotalPrice = 0;//购买物品后的总价格
 }
 
@@ -109,6 +109,12 @@ void Shop::Set_ShopBuyGoodsTotalPrice(float sbgtp)
 float Shop::Get_ShopBuyGoodsTotalPrice()
 {
 	return ubuyGoodsTotalPrice;
+}
+
+//获取物品类  遍历物品
+CWarehouseArticle * Shop::Get_ArticleClass(uint32 uid)
+{
+	return storeItemInfo[uid];
 }
 
 

@@ -41,21 +41,13 @@ public:
 	//获取任务内容
 	string Get_TTaskContent();
 
-	//设置任务奖励(物品类的表,(编号,数量))1
-	void Set_TTaskAwardOne(uint32 stta, uint32 unum);
-	//获取任务奖励(物品类的表,(编号,数量))1
-	std::map<uint32, uint32> Get_TTaskAwardOne();
-	//设置任务奖励(物品类的表,(编号,数量))2
-	void Set_TTaskAwardTwo(uint32 stta, uint32 unum);
-	//获取任务奖励(物品类的表,(编号,数量))2
-	std::map<uint32, uint32> Get_TTaskAwardTwo();
-	//设置任务奖励(物品类的表,(编号,数量))3
-	void Set_TTaskAwardThree(uint32 stta, uint32 unum);
-	//获取任务奖励(物品类的表,(编号,数量))3
-	std::map<uint32, uint32> Get_TTaskAwardThree();
+	//设置任务奖励(物品类的表,(编号,数量))
+	void Set_TTaskAward(uint32 stta, uint32 unum);
+	//获取任务奖励(物品类的表,(编号,数量))
+	std::map<uint32, uint32> Get_TTaskAward();
 
 	//任务状态(result结果)
-	TaskState TaskStateResult(uint32 utsr);
+	TaskState TaskStateResult();
 
 	//设置任务当前完成度
 	void Set_TaskCurComp(uint32 stcc);
@@ -77,12 +69,9 @@ private:
 	//任务内容
 	std::string staskcontent;
 
-	//任务奖励(物品类的表,(编号,数量))1
-	std::map<uint32,uint32> vecwareone;
-	//任务奖励(物品类的表,(编号,数量))2
-	std::map<uint32, uint32> vecwaretwo;
-	//任务奖励(物品类的表,(编号,数量))3
-	std::map<uint32, uint32> vecwarethree;
+	//任务奖励(物品类的表,(编号,数量))
+	std::map<uint32,uint32> mapware;
+	
 
 	//任务状态
 	TaskState taskstate;
@@ -106,9 +95,19 @@ public:
 	void Add_Task(TaskClass* addtask);
 	//删除任务
 	void Erase_Task(TaskClass* addtask);
+	//遍历任务
+	TaskClass* ErgodicTask(uint32 uid);
+	//任务个数
+	inline int GetTaskCount() { return (int)vectc.size(); }
+
+	//任务类map
+	std::map<uint32, TaskClass*> map_task;
+
+	TaskClass* taskc;
 private:
 	//任务列表
 	std::vector<TaskClass*> vectc;
+	
 };
 
 
