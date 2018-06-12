@@ -3,7 +3,7 @@
 #ifndef _RANKING_LIST_H
 #define _RANKING_LIST_H
 
-#include "define.h"
+#include "Gamedefine.h"
 #include <list>
 #include "CharacterClass.h"
 
@@ -14,20 +14,30 @@ public:
 	RankingList();
 	~RankingList();
 	//增加角色
-	void RankingList_AddCharacter(CharacterClass* addch);
+	void RankingList_AddCharacter(CharacterClass* uid);
 	//删除角色
 	void RankingList_DelCharacter(uint32 delc);
 
-	//获取得角色信息
-	CharacterClass Get_CharaMessage(CharacterClass* addch);
+	//获取排行榜
+	std::list<CharacterClass*> Get_Rankinglist();
+
+	//设置用户ID
+	void Set_RoleID(uint32 uid);
+	//获取用户ID
+	uint32 Get_RoleID();
 
 private:
-	//排行榜链表
-	std::list<CharacterClass*> rlist;
+
+	//用户ID
+	uint32 m_roleID;
+
+	CharacterClass * pcharass;
 	
+	std::list<CharacterClass*> list_ranking;
+
 };
 
-//判断角色等级
+//排行榜角色成长值排序
 inline bool JudgeCharaLevel(CharacterClass* charaleve, CharacterClass* charalevel)
 {
 	return (charaleve->Get_RoleGrowthValue()) > (charalevel->Get_RoleGrowthValue());

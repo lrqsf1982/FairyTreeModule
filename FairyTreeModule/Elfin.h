@@ -4,17 +4,15 @@
 #define _ELFIN_H
 
 #include "Skill.h"
-#include "define.h"
+#include "Gamedefine.h"
 #include <vector>
-#include <windows.h>
-#include <time.h>
 #include <map>
 
 #define SEGMAXPHYSICALPOWER 10 //最大体力的增长值
 
-enum ElfinType//技能类型
+enum class ElfinType//技能类型
 {
-	EGOLD,   //金
+	EGOLD = 0,   //金
 	EWOOD,   //木
 	EWATER,  //水
 	EFIRE,   //火
@@ -38,49 +36,58 @@ public:
 	//设置等级
 	void Set_EGrade(uint32 beg);
 	//获取等级
-	int Get_EGrade();
+	uint32 Get_EGrade();
 
 	//设置增加体力
 	void Set_EAddPhysicalPower(uint32 ueap);
 	//设置减少体力
 	void Set_EReducePhysicalPower(uint32 uerp);
 	//获取当前体力
-	int Get_EPhysicalPower();
+	uint32 Get_EPhysicalPower();
 
 	//设置最大体力
 	void Set_EMaxPhysicalPower(uint32 uempp);
 	//获取最大体力
-	int Get_EMaxPhysicalPower();
+	uint32 Get_EMaxPhysicalPower();
 
 	//设置小精灵的ID
 	void Set_EToID(uint32 etoid);
 	//获取小精灵的ID
-	int Get_ID();
+	uint32 Get_ID();
 
 	//设置消耗水的数量
 	void Set_uCoWaterNum(uint32 num);
 	//获取消耗水的数量
-	int Get_uCoWaterNum();
+	uint32 Get_uCoWaterNum();
 
 	//设置阳光数量消耗
 	void Set_uCoSunNum(uint32 num);
 	//获取阳光数量消耗
-	int Get_uCoSunNum();
+	uint32 Get_uCoSunNum();
 
 	//设置金币数量消耗
 	void Set_uCoGoldNum(uint32 num);
 	//获取金币数量消耗
-	int Get_uCoGoldNum();
+	uint32 Get_uCoGoldNum();
 
 	//设置钻石消耗数量
 	void Set_uCoJewelNum(uint32 num);
 	//获取钻石消耗数量
-	int Get_uCoJewelNum();
+	uint32 Get_uCoJewelNum();
+
+	//设置用户ID
+	void Set_RoleID(uint32 uid);
+	//获取用户ID
+	uint32 Get_RoleID();
 
 	//小精灵的map
-	std::map<uint32, Elfin*> map_elfin;
+	static std::map<uint32, Elfin*> map_elfin;
 private:
 
+	//用户ID
+	uint32 m_roleID;
+
+	CSkill * cskill;
 	//技能格(多个)
 	std::vector<CSkill*> vec;
 	

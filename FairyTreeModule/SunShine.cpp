@@ -4,6 +4,8 @@
 
 CSunshine::CSunshine()
 {
+	m_roleID = 0;//用户ID
+
 	fwater = 0; //普通水
 
 	ufgrade = 0; //等级
@@ -43,7 +45,7 @@ void CSunshine::Set_FMinusWater(uint32 ufmw)
 }
 
 //获取普通水
-int CSunshine::Get_FWater()
+uint32 CSunshine::Get_FWater()
 {
 	//最终普通水的数量
 	return fwater;
@@ -66,7 +68,7 @@ void CSunshine::Set_FGrade(bool setgrad)
 }
 
 //获取等级
-int CSunshine::Get_FGrade()
+uint32 CSunshine::Get_FGrade()
 {
 	return ufgrade;
 }
@@ -78,7 +80,7 @@ void CSunshine::Set_FSunProCap(uint32 setpro)
 }
 
 //获取阳光的产出能力
-int CSunshine::Get_FSunProCap()
+uint32 CSunshine::Get_FSunProCap()
 {
 	return ufSunPCapa;
 }
@@ -90,7 +92,7 @@ void CSunshine::Set_FSunProTime(uint32 setftime)
 }
 
 //获取阳光的生产时间
-int CSunshine::Get_FSunProTime()
+uint32 CSunshine::Get_FSunProTime()
 {
 	return ufSunPTime;
 }
@@ -108,7 +110,7 @@ void CSunshine::Set_FSubSunNum(uint32 unum)
 }
 
 //获取阳光的数量
-int CSunshine::Get_FSunNumber()
+uint32 CSunshine::Get_FSunNumber()
 {
 	return usunnum;
 }
@@ -120,7 +122,7 @@ void CSunshine::Set_SunCoWaterNum(uint32 num)
 }
 
 //获取消耗水的数量
-int CSunshine::Get_SunCoWaterNum()
+uint32 CSunshine::Get_SunCoWaterNum()
 {
 	return ucowaternum;
 }
@@ -132,7 +134,7 @@ void CSunshine::Set_SunCoSunNum(uint32 num)
 }
 
 //获取阳光数量消耗
-int CSunshine::Get_SunCoSunNum()
+uint32 CSunshine::Get_SunCoSunNum()
 {
 	return ucosunnum;
 }
@@ -144,7 +146,7 @@ void CSunshine::Set_SunCoGoldNum(uint32 num)
 }
 
 //获取金币数量消耗
-int CSunshine::Get_SunCoGoldNum()
+uint32 CSunshine::Get_SunCoGoldNum()
 {
 	return ucogoldnum;
 }
@@ -156,9 +158,21 @@ void CSunshine::Set_SunCoJewelNum(uint32 num)
 }
 
 //获取钻石数量消耗
-int CSunshine::Get_SunCoJewelNum()
+uint32 CSunshine::Get_SunCoJewelNum()
 {
 	return ucojewel;
+}
+
+//设置用户ID
+void CSunshine::Set_RoleID(uint32 uid)
+{
+	m_roleID = uid;//用户ID
+}
+
+//获取用户ID
+uint32 CSunshine::Get_RoleID()
+{
+	return m_roleID;
 }
 
 

@@ -4,6 +4,7 @@
 
 Shop::Shop()
 {
+	m_roleID = 0;//用户ID
 	pwareArt = new CWarehouseArticle;
 	ubuyGoodsTotalPrice = 0;//购买物品后的总价格
 }
@@ -11,12 +12,13 @@ Shop::Shop()
 
 Shop::~Shop()
 {
+	delete pwareArt;
 }
 
-//结算 物品编号 物品数量
-bool Shop::ShopCloseAnAccountFun(uint32 ugoodsID, uint32 ugoodsNum)
+//结算(按金币) 物品编号 物品数量
+bool Shop::ShopCloseAnGoldFun(uint32 ugoodsID, uint32 ugoodsNum)
 {
-	//10001 < 水资源类物品的ID范围 < 20001
+	//1001 < 水资源类物品的ID范围 < 2001
 	if (WATERCOMMODITYID < ugoodsID && ugoodsID < EQUIPPEDWITHID)
 	{
 		//通过物品编号查找是否是水资源类的
@@ -34,7 +36,7 @@ bool Shop::ShopCloseAnAccountFun(uint32 ugoodsID, uint32 ugoodsNum)
 		}
 	}
 
-	//20001 < 装备类物品的ID范围 < 30001
+	//2001 < 装备类物品的ID范围 < 3001
 	if (EQUIPPEDWITHID < ugoodsID && ugoodsID < SPECIALPROPSID)
 	{
 		//通过物品编号查找是否是装备类的
@@ -52,7 +54,7 @@ bool Shop::ShopCloseAnAccountFun(uint32 ugoodsID, uint32 ugoodsNum)
 		}
 	}
 
-	//30001 < 特殊道具类物品的ID范围
+	//3001 < 特殊道具类物品的ID范围
 	if (ugoodsID > SPECIALPROPSID)
 	{
 		//通过物品编号查找是否是特殊道具类的
@@ -69,6 +71,67 @@ bool Shop::ShopCloseAnAccountFun(uint32 ugoodsID, uint32 ugoodsNum)
 			}
 		}
 	}
+
+	return false;
+}
+
+//结算(按钻石) 物品编号 物品数量
+bool Shop::ShopCloseAnJewelFun(uint32 ugoodsID, uint32 ugoodsNum)
+{
+	//1001 < 水资源类物品的ID范围 < 2001
+	if (WATERCOMMODITYID < ugoodsID && ugoodsID < EQUIPPEDWITHID)
+	{
+		//通过物品编号查找是否是水资源类的
+		for (std::vector<CWarehouseArticle*>::iterator itwater = vecwater.begin(); itwater != vecwater.end(); itwater++)
+		{
+			if (ugoodsID == (*itwater)->Get_CArticleSerialNumber())
+			{
+				//找到
+				float utotalprice = 0.0f; //临时的总价格
+										  //根据物品的数量 * 钻石(注:不是金币) * 折扣 = 来计算总价格
+				utotalprice = ugoodsNum * (*itwater)->Get_CArticleJewelPrice() * (*itwater)->Get_CArticleDiscount();
+				Set_ShopBuyGoodsTotalPrice(utotalprice);
+				return true;
+			}
+		}
+	}
+
+	//2001 < 装备类物品的ID范围 < 3001
+	if (EQUIPPEDWITHID < ugoodsID && ugoodsID < SPECIALPROPSID)
+	{
+		//通过物品编号查找是否是装备类的
+		for (std::vector<CWarehouseArticle*>::iterator itequ = vecequ.begin(); itequ != vecequ.end(); itequ++)
+		{
+			if (ugoodsID == (*itequ)->Get_CArticleSerialNumber())
+			{
+				//找到
+				float utotalprice = 0.0f; //临时的总价格
+										  //根据物品的数量 * 钻石(注:不是金币) * 折扣 = 来计算总价格
+				utotalprice = ugoodsNum * (*itequ)->Get_CArticleJewelPrice() * (*itequ)->Get_CArticleDiscount();
+				Set_ShopBuyGoodsTotalPrice(utotalprice);
+				return true;
+			}
+		}
+	}
+
+	//3001 < 特殊道具类物品的ID范围
+	if (ugoodsID > SPECIALPROPSID)
+	{
+		//通过物品编号查找是否是特殊道具类的
+		for (std::vector<CWarehouseArticle*>::iterator itspe = vecspe.begin(); itspe != vecspe.end(); itspe++)
+		{
+			if (ugoodsID == (*itspe)->Get_CArticleSerialNumber())
+			{
+				//找到
+				float utotalprice = 0.0f; //临时的总价格
+										  //根据物品的数量 * 钻石(注:不是金币) * 折扣 = 来计算总价格
+				utotalprice = ugoodsNum * (*itspe)->Get_CArticleJewelPrice() * (*itspe)->Get_CArticleDiscount();
+				Set_ShopBuyGoodsTotalPrice(utotalprice);
+				return true;
+			}
+		}
+	}
+
 
 	return false;
 }
@@ -115,6 +178,18 @@ float Shop::Get_ShopBuyGoodsTotalPrice()
 CWarehouseArticle * Shop::Get_ArticleClass(uint32 uid)
 {
 	return storeItemInfo[uid];
+}
+
+//设置用户ID
+void Shop::Set_RoleID(uint32 uid)
+{
+	m_roleID = uid;
+}
+
+//获取用户ID
+uint32 Shop::Get_RoleID()
+{
+	return m_roleID;
 }
 
 

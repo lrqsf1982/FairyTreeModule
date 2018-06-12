@@ -4,6 +4,8 @@
 
 TreeEnchantment::TreeEnchantment()
 {
+	m_roleID = 0;//用户ID
+
 	ugrade = 0;//等级
 
 	udefense = 0; //结界防御
@@ -30,7 +32,7 @@ void TreeEnchantment::Set_TEGrade(uint32 sg)
 }
 
 //获取等级
-int TreeEnchantment::Get_TEGrade()
+uint32 TreeEnchantment::Get_TEGrade()
 {
 	return ugrade;
 }
@@ -42,7 +44,7 @@ void TreeEnchantment::Set_TEDefense(uint32 sted)
 }
 
 //获取结界防御
-int TreeEnchantment::Get_TEDefense()
+uint32 TreeEnchantment::Get_TEDefense()
 {
 	return udefense;
 }
@@ -86,6 +88,18 @@ bool TreeEnchantment::ClosePitfall(bool bcp)
 	if (bclosepitfall)
 		OpenPitfall(false);
 	return bclosepitfall;
+}
+
+//设置用户ID
+void TreeEnchantment::Set_RoleID(uint32 uid)
+{
+	m_roleID = uid;//用户ID
+}
+
+//获取用户ID
+uint32 TreeEnchantment::Get_RoleID()
+{
+	return m_roleID;
 }
 
 

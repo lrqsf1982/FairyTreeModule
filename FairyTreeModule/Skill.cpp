@@ -4,6 +4,8 @@
 
 CSkill::CSkill()
 {
+	m_roleID = 0;//用户ID
+
 	skilltype = INITIATIVE; //技能类型
 
 	uskillLevel = 0; //技能等级
@@ -56,7 +58,7 @@ void CSkill::Set_Skill_Level(bool ssl)
 }
 
 //获取技能等级
-int CSkill::Get_Skill_Level()
+uint32 CSkill::Get_Skill_Level()
 {
 	return uskillLevel;
 }
@@ -68,13 +70,13 @@ void CSkill::Set_Skill_ID(uint32 ssid)
 }
 
 //获取技能ID
-int CSkill::Get_Skill_ID()
+uint32 CSkill::Get_Skill_ID()
 {
 	return uskillID;
 }
 
 //设置技能描述
-void CSkill::Set_Skill_Describe(std::string skill)
+void CSkill::Set_Skill_Describe(const std::string& skill)
 {
 	skilldescribe = skill;
 }
@@ -92,7 +94,7 @@ void CSkill::Set_uPillageEffect(uint32 uset)
 }
 
 //获取掠夺效果
-int CSkill::Get_uPillageEffect()
+uint32 CSkill::Get_uPillageEffect()
 {
 	return upillageEffect;
 }
@@ -104,7 +106,7 @@ void CSkill::Set_uWateringEffect(uint32 uset)
 }
 
 //获取浇水效果
-int CSkill::Get_uWateringEffect()
+uint32 CSkill::Get_uWateringEffect()
 {
 	return uwateringEffect;
 }
@@ -116,7 +118,7 @@ void CSkill::Set_uReserveGold(uint32 uset)
 }
 
 //获取储存金币
-int CSkill::Get_uReserveGold()
+uint32 CSkill::Get_uReserveGold()
 {
 	return ureserveGold;
 }
@@ -128,7 +130,7 @@ void CSkill::Set_uPlantEffect(uint32 uset)
 }
 
 //获取栽培效果
-int CSkill::Get_uPlantEffect()
+uint32 CSkill::Get_uPlantEffect()
 {
 	return uplantEffect;
 }
@@ -140,7 +142,7 @@ void CSkill::Set_uDodgeAbility(uint32 uset)
 }
 
 //获取躲避能力
-int CSkill::Get_uDodgeAbility()
+uint32 CSkill::Get_uDodgeAbility()
 {
 	return udodgeAbility;
 }
@@ -152,7 +154,18 @@ void CSkill::Set_uRobAddition(uint32 uset)
 }
 
 //获取抢劫加成
-int CSkill::Get_uRobAddition()
+uint32 CSkill::Get_uRobAddition()
 {
 	return urobAddition;
+}
+
+//设置用户ID
+void CSkill::Set_RoleID(uint32 uid)
+{
+}
+
+//获取用户ID
+uint32 CSkill::Get_RoleID()
+{
+	return m_roleID;
 }

@@ -3,7 +3,7 @@
 #ifndef _SKILL_H
 #define _SKILL_H
 
-#include "define.h"
+#include "Gamedefine.h"
 #include <map>
 
 //技能类型
@@ -26,51 +26,60 @@ public:
 	//设置技能等级
 	void Set_Skill_Level(bool ssl);
 	//获取技能等级
-	int Get_Skill_Level();
+	uint32 Get_Skill_Level();
 
 	//设置技能ID
 	void Set_Skill_ID(uint32 ssid);
 	//获取技能ID
-	int Get_Skill_ID();
+	uint32 Get_Skill_ID();
 
 	//设置技能描述
-	void Set_Skill_Describe(std::string skill);
+	void Set_Skill_Describe(const std::string& skill);
 	//获取技能描述
 	std::string Get_Skill_Describe();
 	
 	//设置掠夺效果
 	void Set_uPillageEffect(uint32 uset);
 	//获取掠夺效果
-	int Get_uPillageEffect();
+	uint32 Get_uPillageEffect();
 
 	//设置浇水效果
 	void Set_uWateringEffect(uint32 uset);
 	//获取浇水效果
-	int Get_uWateringEffect();
+	uint32 Get_uWateringEffect();
 
 	//设置储存金币
 	void Set_uReserveGold(uint32 uset);
 	//获取储存金币
-	int Get_uReserveGold();
+	uint32 Get_uReserveGold();
 
 	//设置栽培效果
 	void Set_uPlantEffect(uint32 uset);
 	//获取栽培效果
-	int Get_uPlantEffect();
+	uint32 Get_uPlantEffect();
 
 	//设置躲避能力
 	void Set_uDodgeAbility(uint32 uset);
 	//获取躲避能力
-	int Get_uDodgeAbility();
+	uint32 Get_uDodgeAbility();
 
 	//设置抢劫加成
 	void Set_uRobAddition(uint32 uset);
 	//获取抢劫加成
-	int Get_uRobAddition();
+	uint32 Get_uRobAddition();
+
+	//设置用户ID
+	void Set_RoleID(uint32 uid);
+	//获取用户ID
+	uint32 Get_RoleID();
 
 	//技能map
 	std::map<uint32, CSkill*> map_skill;
 private:
+
+	//用户ID
+	uint32 m_roleID;
+
 	//技能类型
 	SkillType skilltype;
 

@@ -4,6 +4,7 @@
 
 Water::Water()
 {
+	m_roleID = 0;//用户ID
 	uordinarywater = 0; //普通水
 	ufairywater = 0; //神仙水
 }
@@ -26,7 +27,7 @@ void Water::Set_ReduceOrdinaryWater(uint32 srow)
 }
 
 //获取普通水的数量
-int Water::Get_WOrdinaryWater()
+uint32 Water::Get_WOrdinaryWater()
 {
 	return uordinarywater;
 }
@@ -44,7 +45,19 @@ void Water::Set_WReduceFairyWater(uint32 sfw)
 }
 
 //获取神仙水的数量
-int Water::Get_WFairyWater()
+uint32 Water::Get_WFairyWater()
 {
 	return ufairywater;
+}
+
+//设置用户ID
+void Water::Set_RoleID(uint32 uid)
+{
+	m_roleID = uid;//用户ID
+}
+
+//获取用户ID
+uint32 Water::Get_RoleID()
+{
+	return m_roleID;
 }

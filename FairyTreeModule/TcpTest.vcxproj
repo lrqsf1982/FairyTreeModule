@@ -79,6 +79,7 @@
     <OutDir>$(PSS_ROOT)\PurenessScopeServer\Windows_Bin\</OutDir>
     <IntDir>Debug\FairyTreeModule\AMD64\</IntDir>
     <LinkIncremental>true</LinkIncremental>
+    <SourcePath>$(PSS_ROOT)\Common;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>..\..\PurenessScopeServer\Windows_Bin\</OutDir>
@@ -180,7 +181,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalOptions>/machine:AMD64 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>ACEd.lib;libprotobufd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ACEd.lib;libprotobufd.lib;DbgHelp.lib;psapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)FairyTreeModule.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>.;$(ACE_ROOT)\lib;$(Protobuf_Root)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -259,6 +260,7 @@
     <ClInclude Include="Elfin.h" />
     <ClInclude Include="FairyTree.h" />
     <ClInclude Include="FairyTreeUserClasses.h" />
+    <ClInclude Include="Gamedefine.h" />
     <ClInclude Include="SunShine.h" />
     <ClInclude Include="Gold.h" />
     <ClInclude Include="Mail.h" />

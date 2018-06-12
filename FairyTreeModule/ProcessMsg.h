@@ -46,6 +46,7 @@ void Process_SolarUpgradeRequest(const GameMessage& pMsg, CServerObject* pServer
 void Process_SkillUpgradeRequest(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage);     //技能升级请求27
 void Process_TreeUpgradeRequest(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage);      //神仙树升级请求28
 void Process_ElfinUpgradeRequest(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage);     //小精灵升级请求29
+void Process_HeartBeatRequest(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage);        //心跳包请求30
 
 
 //应答
@@ -78,6 +79,7 @@ void Process_SolarUpgradeResponse(const GameMessage& pMsg, CServerObject* pServe
 void Process_SkillUpgradeResponse(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage);    //技能升级应答27
 void Process_TreeUpgradeResponse(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage);     //神仙树升级应答28
 void Process_ElfinUpgradeResponse(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage);    //小精灵升级应答29
+void Process_HeartBeatResponse(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage);       //心跳包应答30
 
 
 }

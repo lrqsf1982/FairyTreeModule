@@ -3,7 +3,7 @@
 #ifndef _FAIRY_TREE_USER_CLASSES_H
 #define _FAIRY_TREE_USER_CLASSES_H
 
-#include "define.h"
+#include "Gamedefine.h"
 #include "Elfin.h"
 #include "FairyTree.h"
 #include "SunShine.h"
@@ -17,7 +17,6 @@
 #include "TreeEnchantment.h"
 #include "Warehouse.h"
 #include "Water.h"
-#include "./TinyXML/tinyxml.h"
 #include "./TinyXML/tinyxml.h"
 #include "XmlConfigManager.h"
 #include "CharacterClass.h"
@@ -35,61 +34,61 @@ public:
 	//设置记录用户的个数
 	void Set_RecordUserCount(uint32 ucon);
 	//获取记录用户的个数
-	int Get_RecordUserCount();
+	uint32 Get_RecordUserCount();
 
 	//设置用户ID
 	void Set_UserId(uint32 suid);
 	//获得用户ID
-	int Get_UserId();
+	uint32 Get_UserId();
 
 	//获取小精灵
-	Elfin Get_Elfin();
+	Elfin& Get_Elfin();
 
 	//获取神仙树
-	FairyTree Get_FairyTree();
+	FairyTree& Get_FairyTree();
 
 	//获取阳光
-	CSunshine Get_SunShine();
+	CSunshine& Get_SunShine();
 
 	//获取商店
-	Shop Get_Shop();
+	Shop& Get_Shop();
 
 	//获取树结界
-	TreeEnchantment Get_TreeEnchantment();
+	TreeEnchantment& Get_TreeEnchantment();
 
 	//获取仓库
-	Warehouse Get_Warehouse();
+	Warehouse& Get_Warehouse();
 
 	//获取邮箱
-	CMailbox Get_CMailbox();
+	CMailbox& Get_CMailbox();
 
 	//获取任务类
-	CTaskListClass Get_CTaskListClass();
+	CTaskListClass& Get_CTaskListClass();
 
 	//获取关系
-	Relation Get_Relation();
+	Relation& Get_Relation();
 
 	//获取排行榜
-	RankingList Get_RankingList();
+	RankingList& Get_RankingList();
 
 	//角色类
-	CharacterClass Get_Characlass();
+	CharacterClass& Get_Characlass();
 
 	//获取技能
-	CSkill Get_CSkill();
+	CSkill& Get_CSkill();
 
 	//获取资源水
-	Water Get_Water();
+	Water& Get_Water();
 
 	//获取资源金币
-	Gold Get_Gold();
+	Gold& Get_Gold();
 
 	//设置增加钻石
 	void Set_UserAddDiamond(uint32 sd);
 	//设置减少钻石
 	void Set_UserRedDiamond(uint32 surd);
 	//获取钻石数量
-	int Get_UserDiamond();
+	uint32 Get_UserDiamond();
 
 	//太阳升级函数
 	void vUpgradeSolarFun(uint32 uid);
@@ -103,33 +102,33 @@ public:
 	//设置升级普通水消耗的数量
 	void vSetUpgradeWaterNum(uint32 num);
 	//获取升级普通水消耗的数量
-	int vGetUpgradeWaterNum();
+	uint32 vGetUpgradeWaterNum();
 	//设置升级神仙水消耗的数量
 	void vSetUpgradeFairyTreeNum(uint32 num);
 	//获取升级神仙水消耗的数量
-	int vGetUpgradeFairyTreeWaterNum();
+	uint32 vGetUpgradeFairyTreeWaterNum();
 	//设置升级金币消耗的数量
 	void vSetUpgradeGoldNum(uint32 num);
 	//获取升级金币消耗的数量
-	int vGetUpgradeGoldNum();
+	uint32 vGetUpgradeGoldNum();
 	//设置升级阳光消耗的数量
 	void vSetUpgradeSunNum(uint32 num);
 	//获取升级阳光消耗的数量
-	int vGetUpgradeSunNum();
+	uint32 vGetUpgradeSunNum();
 	//设置升级小精灵体力消耗的数量
 	void vSetUpgradeElfinTiliNum(uint32 num);
 	//获取升级小精灵体力消耗的数量
-	int vGetUpgradeElfinTiliNum();
+	uint32 vGetUpgradeElfinTiliNum();
 	//设置升级钻石消耗的数量
 	void vSetUpgradeDiamoNum(uint32 num);
 	//获取升级钻石消耗的数量
-	int vGetUpgradeDiamoNum();
+	uint32 vGetUpgradeDiamoNum();
 private:
 	//记录用户的个数
 	uint32 uRecordUserCount;
 
 	//用户ID
-	uint32 userid;
+	uint32 m_roleID;
 
 	//小精灵(链表)
 	Elfin elf;
@@ -192,9 +191,12 @@ class CAllUserInfoInstance
 {
 	CAllUserInfoInstance() {};
 	static CAllUserInfoInstance* _instance;
+	FairyTreeUserClasses fairy;
 public:
 	static CAllUserInfoInstance * GetInstance();
 	std::map<uint32, FairyTreeUserClasses*> ConnetedUser;
+
+	std::map<uint32, FairyTreeUserClasses*> fun(uint32 uid);
 
 };
 #endif

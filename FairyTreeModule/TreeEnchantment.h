@@ -3,7 +3,7 @@
 #ifndef _TREE_ENCHANTMENT_H
 #define _TREE_ENCHANTMENT_H
 
-#include "define.h"
+#include "Gamedefine.h"
 #include <map>
 
 //树结界类
@@ -15,12 +15,12 @@ public:
 	//设置等级
 	void Set_TEGrade(uint32 sg);
 	//获取等级
-	int Get_TEGrade();
+	uint32 Get_TEGrade();
 
 	//设置结界防御
 	void Set_TEDefense(uint32 sted);
 	//获取结界防御
-	int Get_TEDefense();
+	uint32 Get_TEDefense();
 
 	//打开保护罩
 	bool OpenGuard(bool bog);
@@ -32,9 +32,18 @@ public:
 	//关闭陷阱
 	bool ClosePitfall(bool bcp);
 
+	//设置用户ID
+	void Set_RoleID(uint32 uid);
+	//获取用户ID
+	uint32 Get_RoleID();
+
 	//树结界的map
 	std::map<uint32, TreeEnchantment*> map_treeEn;
 private:
+
+	//用户ID
+	uint32 m_roleID;
+
 	//等级
 	uint32 ugrade;
 	//结界防御

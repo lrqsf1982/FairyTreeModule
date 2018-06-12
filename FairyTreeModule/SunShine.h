@@ -3,7 +3,7 @@
 #ifndef _FAIRY_WELL_H
 #define _FAIRY_WELL_H
 
-#include "define.h"
+#include "Gamedefine.h"
 #include <map>
 
 #define SOLARPROCAP 10 //太阳的生产能力
@@ -20,53 +20,62 @@ public:
 	//设置减少普通水
 	void Set_FMinusWater(uint32 ufmw);
 	//获取普通水
-	int Get_FWater();
+	uint32 Get_FWater();
 
 	//设置等级
 	void Set_FGrade(bool setgrad);
 	//获取等级
-	int Get_FGrade();
+	uint32 Get_FGrade();
 
 	//设置阳光的产出能力
 	void Set_FSunProCap(uint32 setpro);
 	//获取阳光的产出能力
-	int Get_FSunProCap();
+	uint32 Get_FSunProCap();
 
 	//设置阳光的生产时间
 	void Set_FSunProTime(uint32 setftime);
 	//获取阳光的生产时间
-	int Get_FSunProTime();
+	uint32 Get_FSunProTime();
 
 	//设置增加阳光的数量
 	void Set_FAddSunNumber(uint32 unum);
 	//设置减少阳光的数量
 	void Set_FSubSunNum(uint32 unum);
 	//获取阳光的数量
-	int Get_FSunNumber();
+	uint32 Get_FSunNumber();
 
 	//设置消耗水的数量
 	void Set_SunCoWaterNum(uint32 num);
 	//获取消耗水的数量
-	int Get_SunCoWaterNum();
+	uint32 Get_SunCoWaterNum();
 
 	//设置阳光数量消耗
 	void Set_SunCoSunNum(uint32 num);
 	//获取阳光数量消耗
-	int Get_SunCoSunNum();
+	uint32 Get_SunCoSunNum();
 
 	//设置金币数量消耗
 	void Set_SunCoGoldNum(uint32 num);
 	//获取金币数量消耗
-	int Get_SunCoGoldNum();
+	uint32 Get_SunCoGoldNum();
 
 	//设置钻石数量消耗
 	void Set_SunCoJewelNum(uint32 num);
 	//获取钻石数量消耗
-	int Get_SunCoJewelNum();
+	uint32 Get_SunCoJewelNum();
+
+	//设置用户ID
+	void Set_RoleID(uint32 uid);
+	//获取用户ID
+	uint32 Get_RoleID();
 
 	//太阳的map
 	std::map<uint32, CSunshine*> map_sunshine;
 private:
+
+	//用户ID
+	uint32 m_roleID;
+
 	//普通水
 	uint32 fwater;
 

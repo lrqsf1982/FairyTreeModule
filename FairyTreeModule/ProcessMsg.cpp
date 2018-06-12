@@ -6,6 +6,13 @@ void Process_LoginRequest(const GameMessage& pMsg, CServerObject* pServerObj, IM
 {	
 	//首先从数据库里对比id
 	LoginRequest logreq;
+
+	//登录时间放入数据库
+	time_t timep;
+	time(&timep);
+	char tmp[64];
+	strftime(tmp, sizeof(tmp), "%Y-%m-%d %H:%M:%S", localtime(&timep));
+
 	//调用数据库查找登录账号ID
 	//FairyTreeUserClasses* faitreUser = SelectUserById(logreq.account());
 	//if (faitreUser == null)
@@ -27,10 +34,7 @@ void Process_LoginRequest(const GameMessage& pMsg, CServerObject* pServerObj, IM
 //小精灵请求2
 void Process_ElfinRequest(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage)
 {
-	ElfinRequest pelfReq;
-
 	//收到请求返回数据
-	pelfReq.elfin();
 
 	//应答函数
 	Process_ElfinResponse(pMsg, pServerObj, pMessage);
@@ -118,7 +122,7 @@ void Process_TreeEnchantmentRequest(const GameMessage& pMsg, CServerObject* pSer
 	TreeEnchantmentRequest ptreEncReq;
 
 	//收到请求 返回数据
-	ptreEncReq.well();
+	ptreEncReq.treeench();
 
 	//应答函数
 	Process_TreeEnchantmentResponse(pMsg, pServerObj, pMessage);
@@ -195,11 +199,19 @@ void Process_DelMailRequest(const GameMessage & pMsg, CServerObject * pServerObj
 {
 	DelMailRequest delmail;
 
-	//收到删除邮件请求
-	delmail.id();
-
 	//应答函数
 	Process_DelMailResponse(pMsg, pServerObj, pMessage);
+
+	//得到消息连接ID
+	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
+	//神仙树用户类指针 
+	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
+
+	//收到删除邮件请求
+	if (delmail.id() == faitreUser->Get_CMailbox().map_mail[delmail.id()]->Get_MailSerialNumber())
+	{
+		faitreUser->Get_CMailbox().CloseMail(delmail.id());
+	}
 
 }
 
@@ -208,11 +220,21 @@ void Process_ClaimedTaskRequest(const GameMessage & pMsg, CServerObject * pServe
 {
 	ClaimedTaskRequest clatask;
 
-	//收到领取任务请求
-	clatask.id();
-
 	//应答函数
 	Process_ClaimedTaskResponse(pMsg, pServerObj, pMessage);
+
+	//得到消息连接ID
+	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
+	//神仙树用户类指针 
+	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
+
+	//收到领取任务请求 并设置为当前任务状态
+	if (clatask.id() == faitreUser->Get_CTaskListClass().map_task[clatask.id()]->Get_TSerialNumber())
+	{
+		faitreUser->Get_CTaskListClass().map_task[clatask.id()]->Set_TaskStateResult(1);
+	}
+
+	
 
 }
 
@@ -221,11 +243,16 @@ void Process_RecTaskAwardRequest(const GameMessage & pMsg, CServerObject * pServ
 {
 	RecTaskAwardRequest rectaskaward;
 
-	//收到任务奖励请求
-	rectaskaward.id();
-
 	//应答函数
 	Process_RecTaskAwardResponse(pMsg, pServerObj, pMessage);
+
+	//得到消息连接ID
+	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
+	//神仙树用户类指针 
+	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
+
+	//收到任务奖励请求 并将奖励的物品存入该用户的仓库里面(?物品的类型是什么,物品的数量是多少)
+	rectaskaward.id();
 
 }
 
@@ -260,8 +287,13 @@ void Process_PlunderRequest(const GameMessage& pMsg, CServerObject* pServerObj, 
 {
 	PlunderRequest ppluReq;
 
-	//掠夺请求
-	ppluReq.plunder();
+	// 得到消息连接ID
+	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
+	//神仙树用户类指针 
+	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
+
+	//掠夺请求 小精灵的ID
+	ppluReq.elfinid();
 
 	//应答函数
 	Process_PlunderResponse(pMsg, pServerObj, pMessage);
@@ -273,11 +305,23 @@ void Process_UseItemRequest(const GameMessage & pMsg, CServerObject * pServerObj
 {
 	UseItemRequest useitereq;
 
-	//收到使用物品请求
-	useitereq.id();
-
 	//应答函数
 	Process_UseItemResponse(pMsg, pServerObj, pMessage);
+
+	//得到消息连接ID
+	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
+	//神仙树用户类指针 
+	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
+	
+	//收到使用物品请求 使用物品过后小精灵的相应的属性就增加
+	// if(useitereq.itemid() == faitreUser->Get_Warehouse().map_warehouse[useitereq.itemid()]->Get_CArticleSerialNumber())
+	//{
+	//		faitreUser->Get_Warehouse().CloseArticle(useitereq.itemid());
+	//		设置增加小精灵的各个属性
+	useitereq.itemid();
+	useitereq.elfinid();
+
+	
 
 }
 
@@ -311,12 +355,17 @@ void Process_RankingRequest(const GameMessage& pMsg, CServerObject* pServerObj, 
 //遗忘技能请求24
 void Process_ForgetSkillRequest(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage)
 {
+	//收到请求
 	ForgetSkillRequest pforSkiReq;
 
-	//收到请求
-	pforSkiReq.skillid();
-	pforSkiReq.elfinid();
+	//得到消息连接ID
+	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
+	//神仙树用户类指针 
+	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
 
+	//设置遗忘小精灵的技能
+	faitreUser->Get_Elfin().map_elfin[pforSkiReq.elfinid()]->Set_EReduceSkillStyle(pforSkiReq.skillid());
+	
 	//应答函数
 	Process_ForgetSkillResponse(pMsg, pServerObj, pMessage);
 
@@ -352,13 +401,17 @@ void Process_RegisterRequest(const GameMessage & pMsg, CServerObject * pServerOb
 //太阳升级请求26
 void Process_SolarUpgradeRequest(const GameMessage & pMsg, CServerObject * pServerObj, IMessage * pMessage)
 {
-	SolarUpgradeRequest solReq;
 	//收到升级太阳的请求
+	SolarUpgradeRequest solReq;
+	
+	//逻辑处理太阳升级
 	solReq.solar();
 
-	//神仙树用户类
-	//FairyTreeUserClasses faitreUser;
-	//faitreUser.vUpgradeSolarFun(faitreUser.Get_Characlass().Get_Role_ID());
+	//得到消息连接ID
+	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
+	//神仙树用户类指针 
+	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
+	
 
 	Process_SolarUpgradeResponse(pMsg, pServerObj, pMessage);
 }
@@ -366,17 +419,17 @@ void Process_SolarUpgradeRequest(const GameMessage & pMsg, CServerObject * pServ
 //技能升级请求27
 void Process_SkillUpgradeRequest(const GameMessage & pMsg, CServerObject * pServerObj, IMessage * pMessage)
 {
+	//收到技能升级请求
 	SkillUpgradeRequest skiReq;
 
-	//神仙树用户类
-	//FairyTreeUserClasses faitreUser;
-
-	//收到升级技能的请求
-	/*if (skiReq.elfinid() == faitreUser.Get_Elfin().Get_ID() && skiReq.skillid() == faitreUser.Get_CSkill().Get_Skill_ID())
-	{
-		faitreUser.vUpgradeSkillFun(skiReq.skillid());
-	}*/
+	//逻辑处理技能升级
+	skiReq.elfinid();
+	skiReq.skillid();
 	
+	//得到消息连接ID
+	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
+	//神仙树用户类指针 
+	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
 
 	Process_SkillUpgradeResponse(pMsg, pServerObj, pMessage);
 }
@@ -384,13 +437,16 @@ void Process_SkillUpgradeRequest(const GameMessage & pMsg, CServerObject * pServ
 //神仙树升级请求28
 void Process_TreeUpgradeRequest(const GameMessage & pMsg, CServerObject * pServerObj, IMessage * pMessage)
 {
-	TreeUpgradeRequest trReq;
 	//收到升级神仙树的请求
+	TreeUpgradeRequest trReq;
+	
+	//逻辑处理神仙树的升级
 	trReq.tree();
 
-	//神仙树用户类
-	//FairyTreeUserClasses faitreUser;
-	//faitreUser.vUpgradeFairyTreeFun(faitreUser.Get_Characlass().Get_Role_ID());
+	//得到消息连接ID
+	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
+	//神仙树用户类指针 
+	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
 
 	Process_TreeUpgradeResponse(pMsg, pServerObj, pMessage);
 }
@@ -398,18 +454,23 @@ void Process_TreeUpgradeRequest(const GameMessage & pMsg, CServerObject * pServe
 //小精灵升级请求29
 void Process_ElfinUpgradeRequest(const GameMessage & pMsg, CServerObject * pServerObj, IMessage * pMessage)
 {
+	//收到小精灵的升级请求
 	ElfinUpgradeRequest elReq;
 
-	//神仙树用户类
-	//FairyTreeUserClasses faitreUser;
-
-	//收到升级小精灵的请求
-	/*if (elReq.elfinid() == faitreUser.Get_Elfin().Get_ID())
-	{
-		faitreUser.vUpgradeElfinFun(elReq.elfinid());
-	}*/
+	//逻辑处理小精灵的升级
+	elReq.elfinid();
+	//得到消息连接ID
+	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
+	//神仙树用户类指针 
+	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
 
 	Process_ElfinUpgradeResponse(pMsg, pServerObj, pMessage);
+}
+
+//心跳包请求30
+void Process_HeartBeatRequest(const GameMessage & pMsg, CServerObject * pServerObj, IMessage * pMessage)
+{
+	//不做任何处理
 }
 
 
@@ -475,27 +536,27 @@ void Process_ElfinResponse(const GameMessage& pMsg, CServerObject* pServerObj, I
 	pelf->set_maxpower(faitreUser->Get_Elfin().Get_EMaxPhysicalPower());
 	switch (faitreUser->Get_Elfin().Get_ESkillStyle())
 	{
-	case EGOLD:
+	case ElfinType::EGOLD:
 	{
 		pelf->set_etype(ElfinResponse_Elfintype_Jin);
 		break;
 	}
-	case EWOOD:
+	case ElfinType::EWOOD:
 	{
 		pelf->set_etype(ElfinResponse_Elfintype_Mu);
 		break;
 	}
-	case EWATER:
+	case ElfinType::EWATER:
 	{
 		pelf->set_etype(ElfinResponse_Elfintype_Shui);
 		break;
 	}
-	case EFIRE:
+	case ElfinType::EFIRE:
 	{
 		pelf->set_etype(ElfinResponse_Elfintype_Huo);
 		break;
 	}
-	case ESOIL:
+	case ElfinType::ESOIL:
 	{
 		pelf->set_etype(ElfinResponse_Elfintype_Tu);
 		break;
@@ -541,10 +602,11 @@ void Process_RollResponse(const GameMessage & pMsg, CServerObject * pServerObj, 
 	//神仙树用户类指针 
 	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
 
-	//组织应答消息内容(ID,名字)
+	//组织应答消息内容(ID,名字,成长值,图片的地址)
 	proll->set_id(faitreUser->Get_Characlass().Get_Role_ID()); 
 	proll->set_name(faitreUser->Get_Characlass().Get_Role_Name());
-	proll->set_growthvalue(faitreUser->Get_Characlass().Get_RoleGrowthValue());
+	proll->set_growrate(faitreUser->Get_Characlass().Get_RoleGrowthValue());
+	//proll->set_headurl();
 
 
 	//设置消息应答(枚举 3021)
@@ -677,7 +739,7 @@ void Process_TasksResponse(const GameMessage & pMsg, CServerObject * pServerObj,
 	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
 
 
-	for (int i = 0; i < faitreUser->Get_CTaskListClass().GetTaskCount(); ++i)
+	for (uint32 i = 0; i < faitreUser->Get_CTaskListClass().GetTaskCount(); ++i)
 	{
 		TaskClass* taskclass = faitreUser->Get_CTaskListClass().ErgodicTask(i);
 
@@ -685,7 +747,7 @@ void Process_TasksResponse(const GameMessage & pMsg, CServerObject * pServerObj,
 		ptasks->set_id(taskclass->Get_TSerialNumber());
 		ptasks->set_title(taskclass->Get_TTaskheadline());
 		ptasks->set_details(taskclass->Get_TTaskContent());
-		switch (taskclass->TaskStateResult())
+		switch (taskclass->Get_TaskStateResult())
 		{
 		case NotYet:
 		{
@@ -778,7 +840,7 @@ void Process_MailsResponse(const GameMessage& pMsg, CServerObject* pServerObj, I
 	//神仙树用户类指针 
 	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
 	
-	for (int i = 0; i < faitreUser->Get_CMailbox().MailNumber(); i++)
+	for (uint32 i = 0; i < faitreUser->Get_CMailbox().MailNumber(); i++)
 	{
 		Mail* mail = faitreUser->Get_CMailbox().ErgodicMail(i);
 
@@ -947,7 +1009,7 @@ void Process_StoreAllResponse(const GameMessage & pMsg, CServerObject * pServerO
 	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
 
 	//for循环物品的数量 数量有多少就循环发送几次
-	for (int i = 0; i < faitreUser->Get_Shop().WarehouSize(); ++i)
+	for (uint32 i = 0; i < faitreUser->Get_Shop().WarehouSize(); ++i)
 	{
 		CWarehouseArticle* cware = faitreUser->Get_Shop().Get_ArticleClass(i);
 		//组织应答消息内容(ID,金币价格,钻石价格,折扣,类型,描述,名字)
@@ -955,7 +1017,6 @@ void Process_StoreAllResponse(const GameMessage & pMsg, CServerObject * pServerO
 		pstoall->set_goldprice(cware->Get_CArticleGoldPrice());
 		pstoall->set_diaprice(cware->Get_CArticleJewelPrice());
 		pstoall->set_discount(cware->Get_CArticleDiscount());
-
 
 		//设置消息应答(枚举 3091)
 		gameMsg.set_msg(StoreAll_Response);
@@ -998,16 +1059,20 @@ void Process_StoreEquResponse(const GameMessage & pMsg, CServerObject * pServerO
 	//神仙树用户类指针 
 	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
 
-	//组织应答消息内容(ID,金币价格,钻石价格,折扣,类型(装备类),描述,名字)
-	pstoequ->set_id(101);
-	pstoequ->set_goldprice(1000);
-	pstoequ->set_diaprice(200);
-	pstoequ->set_discount(95);
-	pstoequ->set_type(Res_Equip);
-	std::string sds("商店物品:装备类");
-	pstoequ->set_describe(sds);
-	std::string name("ZhuangBei");
-	pstoequ->set_name(name);
+	uint32 utemp = 10002;//装备类ID
+	for (int i = 0; i < faitreUser->Get_Shop().storeItemInfo.size(); ++i)
+	{
+		if (utemp == faitreUser->Get_Shop().storeItemInfo[i]->Get_CArticleSerialNumber())
+		{
+			//组织应答消息内容(ID,金币价格,钻石价格,折扣,类型(装备类),描述,名字)
+			pstoequ->set_id(faitreUser->Get_Shop().storeItemInfo[i]->Get_CArticleSerialNumber());
+			pstoequ->set_goldprice(faitreUser->Get_Shop().storeItemInfo[i]->Get_CArticleGoldPrice());
+			pstoequ->set_diaprice(faitreUser->Get_Shop().storeItemInfo[i]->Get_CArticleJewelPrice());
+			pstoequ->set_discount(faitreUser->Get_Shop().storeItemInfo[i]->Get_CArticleDiscount());
+			pstoequ->set_type(Res_Equip);
+			break;
+		}
+	}
 
 	//设置消息应答(枚举 3101)
 	gameMsg.set_msg(StoreEqu_Response);
@@ -1048,17 +1113,21 @@ void Process_StoreWaterResponse(const GameMessage & pMsg, CServerObject * pServe
 	//神仙树用户类指针 
 	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
 
-	//组织应答消息内容(ID,金币价格,钻石价格,折扣,类型(水资源类),描述,名字)
-	pstowat->set_id(100);
-	pstowat->set_goldprice(500);
-	pstowat->set_diaprice(50);
-	pstowat->set_discount(95);
-	pstowat->set_type(Res_Water);
-	std::string sds("商店物品:水资源类");
-	pstowat->set_describe(sds);
-	std::string name("ShuiZiYuan");
-	pstowat->set_name(name);
-
+	uint32 utemp = 10001; //水资源类ID
+	for (int i = 0; i < faitreUser->Get_Shop().storeItemInfo.size(); ++i)
+	{
+		if (utemp == faitreUser->Get_Shop().storeItemInfo[i]->Get_CArticleSerialNumber())
+		{
+			//组织应答消息内容(ID,金币价格,钻石价格,折扣,类型(水资源类),描述,名字)
+			pstowat->set_id(faitreUser->Get_Shop().storeItemInfo[i]->Get_CArticleSerialNumber());
+			pstowat->set_goldprice(faitreUser->Get_Shop().storeItemInfo[i]->Get_CArticleGoldPrice());
+			pstowat->set_diaprice(faitreUser->Get_Shop().storeItemInfo[i]->Get_CArticleJewelPrice());
+			pstowat->set_discount(faitreUser->Get_Shop().storeItemInfo[i]->Get_CArticleDiscount());
+			pstowat->set_type(Res_Water);
+			break;
+		}
+	}
+	
 	//设置消息应答(枚举 3111)
 	gameMsg.set_msg(StoreWater_Response);
 
@@ -1098,16 +1167,20 @@ void Process_StoreSpePropsResponse(const GameMessage & pMsg, CServerObject * pSe
 	//神仙树用户类指针 
 	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
 
-	//组织应答消息内容(ID,金币价格,钻石价格,折扣,类型(特殊类),描述,名字)
-	pstospe->set_id(102);
-	pstospe->set_goldprice(124);
-	pstospe->set_diaprice(62);
-	pstospe->set_discount(95);
-	pstospe->set_type(Res_SpeProps);
-	std::string sds("商店物品:特殊类");
-	pstospe->set_describe(sds);
-	std::string sname("TeShuDaoJu");
-	pstospe->set_name(sname);
+	uint32 utemp = 10003; //特殊类ID
+	for (int i = 0; i < faitreUser->Get_Shop().storeItemInfo.size(); ++i)
+	{
+		if (utemp == faitreUser->Get_Shop().storeItemInfo[i]->Get_CArticleSerialNumber())
+		{
+			//组织应答消息内容(ID,金币价格,钻石价格,折扣,类型(特殊类),描述,名字)
+			pstospe->set_id(faitreUser->Get_Shop().storeItemInfo[i]->Get_CArticleSerialNumber());
+			pstospe->set_goldprice(faitreUser->Get_Shop().storeItemInfo[i]->Get_CArticleGoldPrice());
+			pstospe->set_diaprice(faitreUser->Get_Shop().storeItemInfo[i]->Get_CArticleJewelPrice());
+			pstospe->set_discount(faitreUser->Get_Shop().storeItemInfo[i]->Get_CArticleDiscount());
+			pstospe->set_type(Res_SpeProps);
+			break;
+		}
+	}
 
 	//设置消息应答(枚举 3121)
 	gameMsg.set_msg(StoreSpeProps_Response);
@@ -1148,33 +1221,56 @@ void Process_WarehouseResponse(const GameMessage & pMsg, CServerObject * pServer
 	//神仙树用户类指针 
 	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
 
-	//组织应答消息内容(ID,数量)
-	pwareh->set_id(996);
-	pwareh->set_number(1);
+
+	//水资源的id
+	uint32 uwid = 10001;
+	//装备的id
+	uint32 ueid = 10002;
+	//特殊道具的id
+	uint32 usid = 10003;
+	for (int i = 0; i < faitreUser->Get_Warehouse().map_warehouse.size(); ++i)
+	{
+		//组织应答消息内容(ID,数量)
+		if (uwid == faitreUser->Get_Warehouse().map_warehouse[i]->Get_CArticleSerialNumber())
+		{
+			pwareh->set_id(faitreUser->Get_Warehouse().map_warehouse[i]->Get_CArticleSerialNumber());
+			pwareh->set_number(faitreUser->Get_Warehouse().Get_ArticleToWaterCount());
+		}
+		if (ueid == faitreUser->Get_Warehouse().map_warehouse[i]->Get_CArticleSerialNumber())
+		{
+			pwareh->set_id(faitreUser->Get_Warehouse().map_warehouse[i]->Get_CArticleSerialNumber());
+			pwareh->set_number(faitreUser->Get_Warehouse().Get_ArticleToEquipCount());
+		}
+		if (usid == faitreUser->Get_Warehouse().map_warehouse[i]->Get_CArticleSerialNumber())
+		{
+			pwareh->set_id(faitreUser->Get_Warehouse().map_warehouse[i]->Get_CArticleSerialNumber());
+			pwareh->set_number(faitreUser->Get_Warehouse().Get_ArticleToSepProCount());
+		}
+		
+		//设置消息应答(枚举 3131)
+		gameMsg.set_msg(Warehouse_Response);
+
+		//得到长度
+		uint32 msgLen = gameMsg.ByteSize();
+		//序列化数据
+		char buff[MAX_BUFF_100] = { 0 };
+		memcpy_safe((char*)&msgLen, sizeof(uint32), (char*)buff, sizeof(uint32));
+		gameMsg.SerializeToArray(buff + sizeof(uint32), msgLen);
+
+		//将数据放入存储数据里面 立刻发送
+		uint16 u2PostCommandID = COMMAND_BASE_ID;
+		int nMessageID = 1;
+		IBuffPacket* pbuffPacket = pServerObj->GetPacketManager()->Create();
+		pbuffPacket->WriteStream(buff, msgLen + sizeof(uint32));
+		pServerObj->GetConnectManager()->PostMessage(pMessage->GetMessageBase()->m_u4ConnectID,
+			pbuffPacket,
+			SENDMESSAGE_NOMAL,
+			u2PostCommandID,
+			PACKET_SEND_IMMEDIATLY,
+			PACKET_IS_FRAMEWORK_RECYC,
+			nMessageID);
+	}
 	
-	//设置消息应答(枚举 3131)
-	gameMsg.set_msg(Warehouse_Response);
-
-	//得到长度
-	uint32 msgLen = gameMsg.ByteSize();
-	//序列化数据
-	char buff[MAX_BUFF_100] = { 0 };
-	memcpy_safe((char*)&msgLen, sizeof(uint32), (char*)buff, sizeof(uint32));
-	gameMsg.SerializeToArray(buff + sizeof(uint32), msgLen);
-
-	//将数据放入存储数据里面 立刻发送
-	uint16 u2PostCommandID = COMMAND_BASE_ID;
-	int nMessageID = 1;
-	IBuffPacket* pbuffPacket = pServerObj->GetPacketManager()->Create();
-	pbuffPacket->WriteStream(buff, msgLen + sizeof(uint32));
-	pServerObj->GetConnectManager()->PostMessage(pMessage->GetMessageBase()->m_u4ConnectID,
-		pbuffPacket,
-		SENDMESSAGE_NOMAL,
-		u2PostCommandID,
-		PACKET_SEND_IMMEDIATLY,
-		PACKET_IS_FRAMEWORK_RECYC,
-		nMessageID);
-
 }
 
 //删除邮件应答15
@@ -1186,14 +1282,16 @@ void Process_DelMailResponse(const GameMessage & pMsg, CServerObject * pServerOb
 	DelMailResponse* pdelmail = pRes->release_delmail();
 	pdelmail = pRes->mutable_delmail();
 
+	DelMailRequest delmail;
+
 	//得到消息连接ID
-	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
+	//uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
 	//神仙树用户类指针 
-	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
+	//FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
 
 	//组织应答消息内容(结果bool,ID)
 	pdelmail->set_success(true);
-	pdelmail->set_id(135);
+	pdelmail->set_id(delmail.id());
 
 	//设置消息应答(枚举 3141)
 	gameMsg.set_msg(DelMail_Response);
@@ -1229,14 +1327,16 @@ void Process_ClaimedTaskResponse(const GameMessage & pMsg, CServerObject * pServ
 	ClaimedTaskResponse* pclatask = pRes->release_claimedtask();
 	pclatask = pRes->mutable_claimedtask();
 
+	ClaimedTaskRequest clatask;
+
 	//得到消息连接ID
-	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
+	//uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
 	//神仙树用户类指针 
-	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
+	//FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
 
 	//组织应答消息内容(结果bool,ID)
 	pclatask->set_success(true);
-	pclatask->set_id(456);
+	pclatask->set_id(clatask.id());
 
 	//设置消息应答(枚举 3151)
 	gameMsg.set_msg(ClaimedTask_Response);
@@ -1272,18 +1372,17 @@ void Process_RecTaskAwardResponse(const GameMessage & pMsg, CServerObject * pSer
 	RecTaskAwardResponse* prectask = pRes->release_rectaskaward();
 	prectask = pRes->mutable_rectaskaward();
 
+	RecTaskAwardRequest rectaskaward;
+
 	//得到消息连接ID
-	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
+	//uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
 	//神仙树用户类指针 
-	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
+	//FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
 
 	//组织应答消息内容(ID编号,名字,描述,数量)
-	Prize* spr = nullptr;
-	prectask->set_allocated_prize1(spr);
-	prectask->set_allocated_prize2(spr);
-	prectask->set_allocated_prize3(spr);
+	prectask->set_success(true);
+	prectask->set_id(rectaskaward.id());
 	
-
 	//设置消息应答(枚举 3161)
 	gameMsg.set_msg(RecTaskAward_Response);
 
@@ -1324,35 +1423,40 @@ void Process_FriendsResponse(const GameMessage & pMsg, CServerObject * pServerOb
 	//神仙树用户类指针 
 	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
 
-	//组织应答消息内容(ID,名字,树的等级)
-	pfeds->set_id(333);
-	std::string name("FriendsName");
-	pfeds->set_name(name);
-	pfeds->set_level(1);
+	for (std::list<CharacterClass*>::iterator i = faitreUser->Get_Relation().Get_RelationRfriendRanking().begin();
+		i != faitreUser->Get_Relation().Get_RelationRfriendRanking().end(); i++)
+	{
+		//组织应答消息内容(ID,名字,树的等级)
+		pfeds->set_id((*i)->Get_Role_ID());
+		pfeds->set_name((*i)->Get_Role_Name());
+		pfeds->set_level((*i)->Get_TreeToGread());
+		pfeds->set_headurl((*i)->Get_HaracterHeadPortraitSite());
+		pfeds->set_growrate((*i)->Get_RoleGrowthValue());
 
-	//设置消息应答(枚举 3171)
-	gameMsg.set_msg(Friends_Response);
+		//设置消息应答(枚举 3171)
+		gameMsg.set_msg(Friends_Response);
 
-	//得到长度
-	uint32 msgLen = gameMsg.ByteSize();
-	uint32 len = msgLen + sizeof(uint32);
-	//序列化数据
-	char buff[MAX_BUFF_100] = { 0 };
-	memcpy_safe((char*)&len, sizeof(uint32), (char*)buff, sizeof(uint32));
-	gameMsg.SerializeToArray(buff + sizeof(uint32), msgLen);
+		//得到长度
+		uint32 msgLen = gameMsg.ByteSize();
+		uint32 len = msgLen + sizeof(uint32);
+		//序列化数据
+		char buff[MAX_BUFF_100] = { 0 };
+		memcpy_safe((char*)&len, sizeof(uint32), (char*)buff, sizeof(uint32));
+		gameMsg.SerializeToArray(buff + sizeof(uint32), msgLen);
 
-	//将数据放入存储数据里面 立刻发送
-	uint16 u2PostCommandID = COMMAND_BASE_ID;
-	int nMessageID = 1;
-	IBuffPacket* pbuffPacket = pServerObj->GetPacketManager()->Create();
-	pbuffPacket->WriteStream(buff, msgLen + sizeof(uint32));
-	pServerObj->GetConnectManager()->PostMessage(pMessage->GetMessageBase()->m_u4ConnectID,
-		pbuffPacket,
-		SENDMESSAGE_NOMAL,
-		u2PostCommandID,
-		PACKET_SEND_IMMEDIATLY,
-		PACKET_IS_FRAMEWORK_RECYC,
-		nMessageID);
+		//将数据放入存储数据里面 立刻发送
+		uint16 u2PostCommandID = COMMAND_BASE_ID;
+		int nMessageID = 1;
+		IBuffPacket* pbuffPacket = pServerObj->GetPacketManager()->Create();
+		pbuffPacket->WriteStream(buff, msgLen + sizeof(uint32));
+		pServerObj->GetConnectManager()->PostMessage(pMessage->GetMessageBase()->m_u4ConnectID,
+			pbuffPacket,
+			SENDMESSAGE_NOMAL,
+			u2PostCommandID,
+			PACKET_SEND_IMMEDIATLY,
+			PACKET_IS_FRAMEWORK_RECYC,
+			nMessageID);
+	}
 
 }
 
@@ -1370,35 +1474,40 @@ void Process_EnemiesResponse(const GameMessage & pMsg, CServerObject * pServerOb
 	//神仙树用户类指针 
 	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
 
-	//组织应答消息内容(ID,名字,树的等级)
-	peneres->set_id(444);
-	std::string name("EnemiesName");
-	peneres->set_name(name);
-	peneres->set_level(1);
+	for (std::list<CharacterClass*>::iterator i = faitreUser->Get_Relation().Get_RelationRenemyRanking().begin();
+		i != faitreUser->Get_Relation().Get_RelationRenemyRanking().end(); i++)
+	{
+		//组织应答消息内容(ID,名字,树的等级)
+		peneres->set_id((*i)->Get_Role_ID());
+		peneres->set_name((*i)->Get_Role_Name());
+		peneres->set_level((*i)->Get_TreeToGread());
+		peneres->set_headurl((*i)->Get_HaracterHeadPortraitSite());
+		peneres->set_growrate((*i)->Get_RoleGrowthValue());
 
-	//设置消息应答(枚举 3181)
-	gameMsg.set_msg(Enemies_Response);
+		//设置消息应答(枚举 3181)
+		gameMsg.set_msg(Enemies_Response);
 
-	//得到长度
-	uint32 msgLen = gameMsg.ByteSize();
-	uint32 len = msgLen + sizeof(uint32);
-	//序列化数据
-	char buff[MAX_BUFF_100] = { 0 };
-	memcpy_safe((char*)&len, sizeof(uint32), (char*)buff, sizeof(uint32));
-	gameMsg.SerializeToArray(buff + sizeof(uint32), msgLen);
+		//得到长度
+		uint32 msgLen = gameMsg.ByteSize();
+		uint32 len = msgLen + sizeof(uint32);
+		//序列化数据
+		char buff[MAX_BUFF_100] = { 0 };
+		memcpy_safe((char*)&len, sizeof(uint32), (char*)buff, sizeof(uint32));
+		gameMsg.SerializeToArray(buff + sizeof(uint32), msgLen);
 
-	//将数据放入存储数据里面 立刻发送
-	uint16 u2PostCommandID = COMMAND_BASE_ID;
-	int nMessageID = 1;
-	IBuffPacket* pbuffPacket = pServerObj->GetPacketManager()->Create();
-	pbuffPacket->WriteStream(buff, msgLen + sizeof(uint32));
-	pServerObj->GetConnectManager()->PostMessage(pMessage->GetMessageBase()->m_u4ConnectID,
-		pbuffPacket,
-		SENDMESSAGE_NOMAL,
-		u2PostCommandID,
-		PACKET_SEND_IMMEDIATLY,
-		PACKET_IS_FRAMEWORK_RECYC,
-		nMessageID);
+		//将数据放入存储数据里面 立刻发送
+		uint16 u2PostCommandID = COMMAND_BASE_ID;
+		int nMessageID = 1;
+		IBuffPacket* pbuffPacket = pServerObj->GetPacketManager()->Create();
+		pbuffPacket->WriteStream(buff, msgLen + sizeof(uint32));
+		pServerObj->GetConnectManager()->PostMessage(pMessage->GetMessageBase()->m_u4ConnectID,
+			pbuffPacket,
+			SENDMESSAGE_NOMAL,
+			u2PostCommandID,
+			PACKET_SEND_IMMEDIATLY,
+			PACKET_IS_FRAMEWORK_RECYC,
+			nMessageID);
+	}
 
 }
 
@@ -1415,8 +1524,8 @@ void Process_PlunderResponse(const GameMessage& pMsg, CServerObject* pServerObj,
 	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
 	//神仙树用户类指针 
 	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
-
-	//组织应答消息内容(结果,ID,金币数量)
+	
+	//组织应答消息内容(抢夺结果,被掠夺者的ID,小精灵的ID,金币数量)
 	pplures->set_success(true);
 	pplures->set_id(798);
 	pplures->set_goldnum(22);
@@ -1456,14 +1565,12 @@ void Process_UseItemResponse(const GameMessage & pMsg, CServerObject * pServerOb
 	UseItemResponse* puseres = pRes->release_useitem();
 	puseres = pRes->mutable_useitem();
 
-	//得到消息连接ID
-	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
-	//神仙树用户类指针 
-	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
+	UseItemRequest useitereq;
 
-	//组织应答消息内容(结果,ID)
+	//组织应答消息内容(结果,请求里的物品ID,小精灵ID)
 	puseres->set_success(true);
-	puseres->set_id(112233);
+	puseres->set_id(useitereq.itemid());
+	puseres->set_elfinid(useitereq.elfinid());
 
 	//设置消息应答(枚举 3201)
 	gameMsg.set_msg(UseItem_Response);
@@ -1500,6 +1607,8 @@ void Process_SettleAccountResponse(const GameMessage& pMsg, CServerObject* pServ
 	SettleAccountResponse* psetres = pRes->release_settleaccount();
 	psetres = pRes->mutable_settleaccount();
 
+	SettleAccountRequest psetAccReq;
+
 	//得到消息连接ID
 	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
 	//神仙树用户类指针 
@@ -1507,9 +1616,16 @@ void Process_SettleAccountResponse(const GameMessage& pMsg, CServerObject* pServ
 
 	//组织应答消息内容(结果,ID,数量,总的价格)
 	psetres->set_success(true);
-	psetres->set_id(755555);
-	psetres->set_number(9);
-	psetres->set_price(13579);
+	psetres->set_id(psetAccReq.itemnum());
+	psetres->set_number(psetAccReq.number());
+	//返回总的金币的价格
+	faitreUser->Get_Shop().ShopCloseAnGoldFun(psetAccReq.itemnum(),psetAccReq.number());
+	uint32 uZGold = faitreUser->Get_Shop().Get_ShopBuyGoodsTotalPrice();
+	psetres->set_goldprice(uZGold);
+	//返回总的钻石的价格
+	faitreUser->Get_Shop().ShopCloseAnJewelFun(psetAccReq.itemnum(), psetAccReq.number());
+	uint32 uZJewel = faitreUser->Get_Shop().Get_ShopBuyGoodsTotalPrice();
+	psetres->set_diaprice(uZJewel);
 
 	//设置消息应答(枚举 3211)
 	gameMsg.set_msg(SettleAccount_Response);
@@ -1551,37 +1667,45 @@ void Process_RankingResponse(const GameMessage& pMsg, CServerObject* pServerObj,
 	//神仙树用户类指针 
 	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
 
-	//组织应答消息内容(ID,名字,树的等级,该用户的排名)
-	pranres->set_id(987654321);
-	std::string name("排行榜列表");
-	pranres->set_name(name);
-	pranres->set_level(1);
-	pranres->set_ranking(1);
+	uint32 urank = 1;//角色排名
+	for (std::list<CharacterClass*>::iterator it = faitreUser->Get_RankingList().Get_Rankinglist().begin();
+		it != faitreUser->Get_RankingList().Get_Rankinglist().end(); it++)
+	{
+		//组织应答消息内容(ID,名字,树的等级,该用户的排名)
+		pranres->set_id((*it)->Get_Role_ID());
+		pranres->set_name((*it)->Get_Role_Name());
+		pranres->set_level((*it)->Get_TreeToGread());
+		pranres->set_growrate((*it)->Get_RoleGrowthValue());
+		pranres->set_ranking(urank);
+		pranres->set_headurl((*it)->Get_HaracterHeadPortraitSite());
 
-	//设置消息应答(枚举 3221)
-	gameMsg.set_msg(Ranking_Response);
+		//设置消息应答(枚举 3221)
+		gameMsg.set_msg(Ranking_Response);
 
-	//得到长度
-	uint32 msgLen = gameMsg.ByteSize();
-	uint32 len = msgLen + sizeof(uint32);
-	//序列化数据
-	char buff[MAX_BUFF_100] = { 0 };
-	memcpy_safe((char*)&len, sizeof(uint32), (char*)buff, sizeof(uint32));
-	gameMsg.SerializeToArray(buff + sizeof(uint32), msgLen);
+		//得到长度
+		uint32 msgLen = gameMsg.ByteSize();
+		uint32 len = msgLen + sizeof(uint32);
+		//序列化数据
+		char buff[MAX_BUFF_100] = { 0 };
+		memcpy_safe((char*)&len, sizeof(uint32), (char*)buff, sizeof(uint32));
+		gameMsg.SerializeToArray(buff + sizeof(uint32), msgLen);
 
-	//将数据放入存储数据里面 立刻发送
-	uint16 u2PostCommandID = COMMAND_BASE_ID;
-	int nMessageID = 1;
-	IBuffPacket* pbuffPacket = pServerObj->GetPacketManager()->Create();
-	pbuffPacket->WriteStream(buff, msgLen + sizeof(uint32));
-	pServerObj->GetConnectManager()->PostMessage(pMessage->GetMessageBase()->m_u4ConnectID,
-		pbuffPacket,
-		SENDMESSAGE_NOMAL,
-		u2PostCommandID,
-		PACKET_SEND_IMMEDIATLY,
-		PACKET_IS_FRAMEWORK_RECYC,
-		nMessageID);
+		//将数据放入存储数据里面 立刻发送
+		uint16 u2PostCommandID = COMMAND_BASE_ID;
+		int nMessageID = 1;
+		IBuffPacket* pbuffPacket = pServerObj->GetPacketManager()->Create();
+		pbuffPacket->WriteStream(buff, msgLen + sizeof(uint32));
+		pServerObj->GetConnectManager()->PostMessage(pMessage->GetMessageBase()->m_u4ConnectID,
+			pbuffPacket,
+			SENDMESSAGE_NOMAL,
+			u2PostCommandID,
+			PACKET_SEND_IMMEDIATLY,
+			PACKET_IS_FRAMEWORK_RECYC,
+			nMessageID);
 
+		urank += 1; //角色排名
+	}
+	
 }
 
 //遗忘技能应答24
@@ -1593,15 +1717,12 @@ void Process_ForgetSkillResponse(const GameMessage& pMsg, CServerObject* pServer
 	ForgetSkillResponse* pforres = pRes->release_forgetskill();
 	pforres = pRes->mutable_forgetskill();
 
-	//得到消息连接ID
-	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
-	//神仙树用户类指针 
-	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
+	ForgetSkillRequest pforSkiReq;
 
 	//组织应答消息内容(结果,ID)
 	pforres->set_success(true);
-	pforres->set_skillid(123);
-	pforres->set_elfinid(345);
+	pforres->set_skillid(pforSkiReq.skillid());
+	pforres->set_elfinid(pforSkiReq.elfinid());
 
 	//设置消息应答(枚举 3231)
 	gameMsg.set_msg(ForgetSkill_Response);
@@ -1679,11 +1800,6 @@ void Process_SolarUpgradeResponse(const GameMessage & pMsg, CServerObject * pSer
 	SolarUpgradeResponse* psol = pres->release_solarupgrade();
 	psol = pres->mutable_solarupgrade();
 
-	//得到消息连接ID
-	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
-	//神仙树用户类指针 
-	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
-
 	//组织应答消息内容(返回 0为失败 1 成功)
 	psol->set_solar(true);
 
@@ -1722,15 +1838,11 @@ void Process_SkillUpgradeResponse(const GameMessage & pMsg, CServerObject * pSer
 	SkillUpgradeResponse* skRes = pres->release_skillupgrade();
 	skRes = pres->mutable_skillupgrade();
 
-	//得到消息连接ID
-	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
-	//神仙树用户类指针 
-	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
-
+	SkillUpgradeRequest skiReq;
 	//组织应答消息内容(返回 0为失败 1为成功, 小精灵的Id, 技能的ID)
 	skRes->set_success(true);
-	skRes->set_elfinid(123456);
-	skRes->set_skillid(456789);
+	skRes->set_elfinid(skiReq.elfinid());
+	skRes->set_skillid(skiReq.skillid());
 
 	//设置消息应答(枚举 3261)
 	gamemsg.set_msg(SkillUpgrade_Response);
@@ -1766,11 +1878,6 @@ void Process_TreeUpgradeResponse(const GameMessage & pMsg, CServerObject * pServ
 	pres = gamemsg.mutable_res();
 	TreeUpgradeResponse* trRes = pres->release_treeupgrade();
 	trRes = pres->mutable_treeupgrade();
-
-	//得到消息连接ID
-	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
-	//神仙树用户类指针 
-	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
 
 	//组织应答消息内容(返回 0为失败 1为成功)
 	trRes->set_success(true);
@@ -1810,14 +1917,10 @@ void Process_ElfinUpgradeResponse(const GameMessage & pMsg, CServerObject * pSer
 	ElfinUpgradeResponse* elRes = pres->release_elfinupgrade();
 	elRes = pres->mutable_elfinupgrade();
 
-	//得到消息连接ID
-	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
-	//神仙树用户类指针 
-	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
-
+	ElfinUpgradeRequest elReq;
 	//组织应答消息内容(返回 0为失败 1为成功, 小精灵的ID)
 	elRes->set_success(true);
-	elRes->set_elfinid(123456);
+	elRes->set_elfinid(elReq.elfinid());
 
 	//设置消息应答(枚举 3281)
 	gamemsg.set_msg(ElfinUpgrade_Response);
@@ -1843,5 +1946,11 @@ void Process_ElfinUpgradeResponse(const GameMessage & pMsg, CServerObject * pSer
 		PACKET_IS_FRAMEWORK_RECYC,
 		nMessageID);
 
+}
+
+//心跳包应答30
+void Process_HeartBeatResponse(const GameMessage & pMsg, CServerObject * pServerObj, IMessage * pMessage)
+{
+	//不做任何处理
 }
 

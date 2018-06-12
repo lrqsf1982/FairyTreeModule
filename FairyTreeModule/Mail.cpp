@@ -4,6 +4,8 @@
 
 Mail::Mail()
 {
+	m_roleID = 0;//用户ID
+
 	umailSerialNumber = 0; //邮件编号
 
 	smailheadline = ""; //邮件标题
@@ -25,31 +27,31 @@ void Mail::Set_MailSerialNumber(uint32 smsn)
 }
 
 //获取邮件编号
-int Mail::Get_MailSerialNumber()
+uint32 Mail::Get_MailSerialNumber()
 {
 	return umailSerialNumber;
 }
 
 //设置邮件标题
-void Mail::Set_MailHeadline(std::string smh)
+void Mail::Set_MailHeadline(const std::string& smh)
 {
 	smailheadline = smh;
 }
 
 //获取邮件标题
-string Mail::Get_MailHeadline()
+std::string Mail::Get_MailHeadline()
 {
 	return smailheadline;
 }
 
 //设置邮件内容
-void Mail::Set_MailContent(std::string smc)
+void Mail::Set_MailContent(const std::string& smc)
 {
 	smailcontent = smc;
 }
 
 //获取邮件内容
-string Mail::Get_MailContent()
+std::string Mail::Get_MailContent()
 {
 	return smailcontent;
 }
@@ -61,21 +63,36 @@ bool Mail::MailArticleGetState()
 	return bmailArtGetState;
 }
 
+//设置用户ID
+void Mail::Set_RoleID(uint32 uid)
+{
+	m_roleID = uid;
+}
+
+//获取用户ID
+uint32 Mail::Get_RoleID()
+{
+	return m_roleID;
+}
+
 
 
 //邮箱类
 CMailbox::CMailbox()
 {
+	m_roleID = 0;//用户ID
+	pboxmail = new Mail;
 }
 
 CMailbox::~CMailbox()
 {
+	delete pboxmail;
 }
 
 //增加邮件
-void CMailbox::AddMail(Mail* cmail)
+void CMailbox::AddMail(uint32 uid)
 {
-	vecmail.push_back(cmail);
+	map_mail[uid] = pboxmail;
 }
 
 //删除邮件
@@ -83,12 +100,12 @@ void CMailbox::CloseMail(uint32 closemail)
 {
 	
 	//通过邮件编号 查找要删除的邮件
-	for (std::vector<Mail*>::iterator itmail = vecmail.begin(); itmail != vecmail.end(); itmail++)
+	for (std::map<uint32, Mail*>::iterator itmail = map_mail.begin(); itmail != map_mail.end(); itmail++)
 	{
-		if (closemail == (*itmail)->Get_MailSerialNumber())
+		if (closemail == itmail->second->Get_MailSerialNumber())
 		{
 			//找到了 删除邮件
-			vecmail.erase(itmail);
+			map_mail.erase(itmail);
 		}
 	}
 
@@ -97,5 +114,17 @@ void CMailbox::CloseMail(uint32 closemail)
 //遍历邮件
 Mail * CMailbox::ErgodicMail(uint32 uid)
 {
-	return vecmail[uid];
+	return map_mail[uid];
+}
+
+//设置用户ID
+void CMailbox::Set_RoleID(uint32 uid)
+{
+	m_roleID = uid;
+}
+
+//获取用户ID
+uint32 CMailbox::Get_RoleID()
+{
+	return m_roleID;
 }

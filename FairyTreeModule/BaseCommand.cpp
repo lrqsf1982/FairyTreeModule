@@ -114,6 +114,13 @@ int CBaseCommand::Do_DisConnect(IMessage* pMessage)
     //处理连接断开事件
     OUR_DEBUG((LM_ERROR, "[CBaseCommand::Do_DisConnect](%d)CLIENT_LINK_CDISCONNET OK.\n", pMessage->GetMessageBase()->m_u4ConnectID));
 
+	//将玩家退出游戏时间放入数据库
+	time_t timep;
+	time(&timep);
+	char tmp[64];
+	strftime(tmp, sizeof(tmp), "%Y-%m-%d %H:%M:%S", localtime(&timep));
+	//数据库的接口
+
     return 0;
 }
 

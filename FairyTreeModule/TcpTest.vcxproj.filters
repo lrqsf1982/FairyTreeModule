@@ -31,6 +31,9 @@
     <Filter Include="ConfigurationManager">
       <UniqueIdentifier>{dc834346-f6d8-4651-9ef6-7bf7a27ff8b9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TinyXML">
+      <UniqueIdentifier>{0c54f213-5d73-4b60-a83d-27ac4e0f9c08}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseCommand.cpp">
@@ -90,18 +93,6 @@
     <ClCompile Include="ProtobufMSG\Msg.pb.cc">
       <Filter>ProtoMsg</Filter>
     </ClCompile>
-    <ClCompile Include="TinyXML\tinystr.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TinyXML\tinyxml.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TinyXML\tinyxmlerror.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TinyXML\tinyxmlparser.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MD5.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -110,6 +101,18 @@
     </ClCompile>
     <ClCompile Include="XmlConfigManager.cpp">
       <Filter>ConfigurationManager</Filter>
+    </ClCompile>
+    <ClCompile Include="TinyXML\tinyxml.cpp">
+      <Filter>TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="TinyXML\tinystr.cpp">
+      <Filter>TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="TinyXML\tinyxmlerror.cpp">
+      <Filter>TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="TinyXML\tinyxmlparser.cpp">
+      <Filter>TinyXML</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -167,12 +170,6 @@
     <ClInclude Include="ProtobufMSG\Msg.pb.h">
       <Filter>ProtoMsg</Filter>
     </ClInclude>
-    <ClInclude Include="TinyXML\tinystr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TinyXML\tinyxml.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MD5.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -181,6 +178,15 @@
     </ClInclude>
     <ClInclude Include="XmlConfigManager.h">
       <Filter>ConfigurationManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Gamedefine.h">
+      <Filter>FairyTreeCampaign\hfile</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyXML\tinystr.h">
+      <Filter>TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyXML\tinyxml.h">
+      <Filter>TinyXML</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

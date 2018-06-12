@@ -40,6 +40,7 @@ void CMessageManage::Init()
 	MsgMap[SkillUpgrade_Request] = Process_SkillUpgradeRequest;            //技能升级请求27
 	MsgMap[TreeUpgrade_Request] = Process_TreeUpgradeRequest;              //神仙树升级请求28
 	MsgMap[ElfinUpgrade_Request] = Process_ElfinUpgradeRequest;            //小精灵升级请求29
+	MsgMap[HeartBeat_Request] = Process_HeartBeatRequest;                  //心跳包请求30
 
 
 	//应答
@@ -72,6 +73,7 @@ void CMessageManage::Init()
 	MsgMap[SkillUpgrade_Response] = Process_SkillUpgradeResponse;          //技能升级应答27
 	MsgMap[TreeUpgrade_Response] = Process_TreeUpgradeResponse;            //神仙树升级应答28
 	MsgMap[ElfinUpgrade_Response] = Process_ElfinUpgradeResponse;          //小精灵升级应答29
+	MsgMap[HeartBeat_Response] = Process_HeartBeatResponse;                //心跳包应答30
 	
 }
 

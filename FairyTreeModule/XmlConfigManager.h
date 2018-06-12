@@ -130,13 +130,13 @@ private:
 	bool ParseXmlToTree();//读取神仙树Xml文件函数
 	bool ParseXmlToTreeEnchantment();//读取树结界Xml文件函数
 	static XmlConfigManager* Instance;
-	Shop* shop; // 商店
-	Elfin* elfin; //小精灵
-	CSkill* skill; //技能
-	CSunshine* sunshine; //太阳
-	CTaskListClass tasklistclass; //任务
-	FairyTree* fairytree; //神仙树
-	TreeEnchantment* treeenchantment; //树结界
+	Shop* xmlshop; // 商店
+	Elfin* xmlelfin; //小精灵
+	CSkill* xmlskill; //技能
+	CSunshine* xmlsunshine; //太阳
+	CTaskListClass xmltasklistclass; //任务
+	FairyTree* xmlfairytree; //神仙树
+	TreeEnchantment* xmltreeenchantment; //树结界
 };
 
 

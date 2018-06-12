@@ -320,6 +320,16 @@ class ElfinUpgradeResponseDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<ElfinUpgradeResponse>
       _instance;
 } _ElfinUpgradeResponse_default_instance_;
+class HeartBeatRequestDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<HeartBeatRequest>
+      _instance;
+} _HeartBeatRequest_default_instance_;
+class HeartBeatResponseDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<HeartBeatResponse>
+      _instance;
+} _HeartBeatResponse_default_instance_;
 class RequestDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<Request>
@@ -1578,6 +1588,48 @@ void InitDefaultsElfinUpgradeResponse() {
   ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsElfinUpgradeResponseImpl);
 }
 
+void InitDefaultsHeartBeatRequestImpl() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  {
+    void* ptr = &::_HeartBeatRequest_default_instance_;
+    new (ptr) ::HeartBeatRequest();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::HeartBeatRequest::InitAsDefaultInstance();
+}
+
+void InitDefaultsHeartBeatRequest() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsHeartBeatRequestImpl);
+}
+
+void InitDefaultsHeartBeatResponseImpl() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  {
+    void* ptr = &::_HeartBeatResponse_default_instance_;
+    new (ptr) ::HeartBeatResponse();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::HeartBeatResponse::InitAsDefaultInstance();
+}
+
+void InitDefaultsHeartBeatResponse() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsHeartBeatResponseImpl);
+}
+
 void InitDefaultsRequestImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -1615,6 +1667,7 @@ void InitDefaultsRequestImpl() {
   protobuf_Msg_2eproto::InitDefaultsSkillUpgradeRequest();
   protobuf_Msg_2eproto::InitDefaultsTreeUpgradeRequest();
   protobuf_Msg_2eproto::InitDefaultsElfinUpgradeRequest();
+  protobuf_Msg_2eproto::InitDefaultsHeartBeatRequest();
   {
     void* ptr = &::_Request_default_instance_;
     new (ptr) ::Request();
@@ -1665,6 +1718,7 @@ void InitDefaultsResponseImpl() {
   protobuf_Msg_2eproto::InitDefaultsSkillUpgradeResponse();
   protobuf_Msg_2eproto::InitDefaultsTreeUpgradeResponse();
   protobuf_Msg_2eproto::InitDefaultsElfinUpgradeResponse();
+  protobuf_Msg_2eproto::InitDefaultsHeartBeatResponse();
   {
     void* ptr = &::_Response_default_instance_;
     new (ptr) ::Response();
@@ -1701,7 +1755,7 @@ void InitDefaultsGameMessage() {
   ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGameMessageImpl);
 }
 
-::google::protobuf::Metadata file_level_metadata[62];
+::google::protobuf::Metadata file_level_metadata[64];
 const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[5];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
@@ -1711,7 +1765,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::LoginRequest, account_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::LoginRequest, passwd_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::LoginRequest, headurl_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::LoginResponse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -1734,6 +1788,9 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ElfinResponse, power_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ElfinResponse, maxpower_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ElfinResponse, etype_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ElfinResponse, plunderstate_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ElfinResponse, enemyid_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ElfinResponse, plundergold_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RollRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -1747,7 +1804,8 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RollResponse, id_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RollResponse, name_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RollResponse, growthvalue_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RollResponse, growrate_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RollResponse, headurl_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::TreeRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -1838,7 +1896,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::TreeEnchantmentRequest, well_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::TreeEnchantmentRequest, treeench_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::TreeEnchantmentResponse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -1968,6 +2026,8 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RecTaskAwardResponse, success_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RecTaskAwardResponse, id_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RecTaskAwardResponse, prize1_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RecTaskAwardResponse, prize2_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RecTaskAwardResponse, prize3_),
@@ -1984,7 +2044,9 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FriendsResponse, id_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FriendsResponse, name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FriendsResponse, headurl_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FriendsResponse, level_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::FriendsResponse, growrate_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::EnemiesRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -1998,13 +2060,15 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::EnemiesResponse, id_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::EnemiesResponse, name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::EnemiesResponse, headurl_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::EnemiesResponse, level_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::EnemiesResponse, growrate_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::PlunderRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::PlunderRequest, plunder_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::PlunderRequest, elfinid_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::PlunderResponse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -2012,13 +2076,15 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::PlunderResponse, success_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::PlunderResponse, id_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::PlunderResponse, elfinid_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::PlunderResponse, goldnum_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::UseItemRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::UseItemRequest, id_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::UseItemRequest, itemid_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::UseItemRequest, elfinid_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::UseItemResponse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -2026,6 +2092,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::UseItemResponse, success_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::UseItemResponse, id_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::UseItemResponse, elfinid_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ForgetSkillRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -2056,7 +2123,8 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SettleAccountResponse, success_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SettleAccountResponse, id_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SettleAccountResponse, number_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SettleAccountResponse, price_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SettleAccountResponse, goldprice_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SettleAccountResponse, diaprice_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RankingRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -2071,7 +2139,9 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RankingResponse, id_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RankingResponse, name_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RankingResponse, level_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RankingResponse, growrate_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RankingResponse, ranking_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RankingResponse, headurl_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RegisterRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -2139,6 +2209,17 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ElfinUpgradeResponse, success_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ElfinUpgradeResponse, elfinid_),
   ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::HeartBeatRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::HeartBeatRequest, connected_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::HeartBeatResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Request, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -2172,6 +2253,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Request, skillupgrade_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Request, treeupgrade_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Request, elfinupgrade_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Request, heartbeat_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Response, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -2206,6 +2288,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Response, skillupgrade_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Response, treeupgrade_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Response, elfinupgrade_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Response, heartbeat_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::GameMessage, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -2220,64 +2303,66 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 7, -1, sizeof(::LoginResponse)},
   { 13, -1, sizeof(::ElfinRequest)},
   { 19, -1, sizeof(::ElfinResponse)},
-  { 29, -1, sizeof(::RollRequest)},
-  { 35, -1, sizeof(::RollResponse)},
-  { 43, -1, sizeof(::TreeRequest)},
-  { 49, -1, sizeof(::TreeResponse)},
-  { 57, -1, sizeof(::ResourceRequest)},
-  { 63, -1, sizeof(::ResourceResponse)},
-  { 72, -1, sizeof(::TasksRequest)},
-  { 78, -1, sizeof(::TasksResponse)},
-  { 90, -1, sizeof(::Prize)},
-  { 97, -1, sizeof(::MailsRequest)},
-  { 103, -1, sizeof(::MailsResponse)},
-  { 115, -1, sizeof(::SunRequest)},
-  { 121, -1, sizeof(::SunResponse)},
-  { 128, -1, sizeof(::TreeEnchantmentRequest)},
-  { 134, -1, sizeof(::TreeEnchantmentResponse)},
-  { 141, -1, sizeof(::StoreAllRequest)},
-  { 147, -1, sizeof(::StoreAllResponse)},
-  { 159, -1, sizeof(::StoreEquRequest)},
-  { 165, -1, sizeof(::StoreEquResponse)},
-  { 177, -1, sizeof(::StoreWaterRequest)},
-  { 183, -1, sizeof(::StoreWaterResponse)},
-  { 195, -1, sizeof(::StoreSpePropsRequest)},
-  { 201, -1, sizeof(::StoreSpePropsResponse)},
-  { 213, -1, sizeof(::WarehouseRequest)},
-  { 219, -1, sizeof(::WarehouseResponse)},
-  { 226, -1, sizeof(::DelMailRequest)},
-  { 232, -1, sizeof(::DelMailResponse)},
-  { 239, -1, sizeof(::ClaimedTaskRequest)},
-  { 245, -1, sizeof(::ClaimedTaskResponse)},
-  { 252, -1, sizeof(::RecTaskAwardRequest)},
-  { 258, -1, sizeof(::RecTaskAwardResponse)},
-  { 266, -1, sizeof(::FriendsRequest)},
-  { 272, -1, sizeof(::FriendsResponse)},
-  { 280, -1, sizeof(::EnemiesRequest)},
-  { 286, -1, sizeof(::EnemiesResponse)},
-  { 294, -1, sizeof(::PlunderRequest)},
-  { 300, -1, sizeof(::PlunderResponse)},
-  { 308, -1, sizeof(::UseItemRequest)},
-  { 314, -1, sizeof(::UseItemResponse)},
-  { 321, -1, sizeof(::ForgetSkillRequest)},
-  { 328, -1, sizeof(::ForgetSkillResponse)},
-  { 336, -1, sizeof(::SettleAccountRequest)},
-  { 343, -1, sizeof(::SettleAccountResponse)},
-  { 352, -1, sizeof(::RankingRequest)},
-  { 358, -1, sizeof(::RankingResponse)},
-  { 367, -1, sizeof(::RegisterRequest)},
-  { 375, -1, sizeof(::RegisterResponse)},
-  { 381, -1, sizeof(::SolarUpgradeRequest)},
-  { 387, -1, sizeof(::SolarUpgradeResponse)},
-  { 393, -1, sizeof(::SkillUpgradeRequest)},
-  { 400, -1, sizeof(::SkillUpgradeResponse)},
-  { 408, -1, sizeof(::TreeUpgradeRequest)},
-  { 414, -1, sizeof(::TreeUpgradeResponse)},
-  { 420, -1, sizeof(::ElfinUpgradeRequest)},
-  { 426, -1, sizeof(::ElfinUpgradeResponse)},
-  { 433, -1, sizeof(::Request)},
-  { 467, -1, sizeof(::Response)},
-  { 501, -1, sizeof(::GameMessage)},
+  { 32, -1, sizeof(::RollRequest)},
+  { 38, -1, sizeof(::RollResponse)},
+  { 47, -1, sizeof(::TreeRequest)},
+  { 53, -1, sizeof(::TreeResponse)},
+  { 61, -1, sizeof(::ResourceRequest)},
+  { 67, -1, sizeof(::ResourceResponse)},
+  { 76, -1, sizeof(::TasksRequest)},
+  { 82, -1, sizeof(::TasksResponse)},
+  { 94, -1, sizeof(::Prize)},
+  { 101, -1, sizeof(::MailsRequest)},
+  { 107, -1, sizeof(::MailsResponse)},
+  { 119, -1, sizeof(::SunRequest)},
+  { 125, -1, sizeof(::SunResponse)},
+  { 132, -1, sizeof(::TreeEnchantmentRequest)},
+  { 138, -1, sizeof(::TreeEnchantmentResponse)},
+  { 145, -1, sizeof(::StoreAllRequest)},
+  { 151, -1, sizeof(::StoreAllResponse)},
+  { 163, -1, sizeof(::StoreEquRequest)},
+  { 169, -1, sizeof(::StoreEquResponse)},
+  { 181, -1, sizeof(::StoreWaterRequest)},
+  { 187, -1, sizeof(::StoreWaterResponse)},
+  { 199, -1, sizeof(::StoreSpePropsRequest)},
+  { 205, -1, sizeof(::StoreSpePropsResponse)},
+  { 217, -1, sizeof(::WarehouseRequest)},
+  { 223, -1, sizeof(::WarehouseResponse)},
+  { 230, -1, sizeof(::DelMailRequest)},
+  { 236, -1, sizeof(::DelMailResponse)},
+  { 243, -1, sizeof(::ClaimedTaskRequest)},
+  { 249, -1, sizeof(::ClaimedTaskResponse)},
+  { 256, -1, sizeof(::RecTaskAwardRequest)},
+  { 262, -1, sizeof(::RecTaskAwardResponse)},
+  { 272, -1, sizeof(::FriendsRequest)},
+  { 278, -1, sizeof(::FriendsResponse)},
+  { 288, -1, sizeof(::EnemiesRequest)},
+  { 294, -1, sizeof(::EnemiesResponse)},
+  { 304, -1, sizeof(::PlunderRequest)},
+  { 310, -1, sizeof(::PlunderResponse)},
+  { 319, -1, sizeof(::UseItemRequest)},
+  { 326, -1, sizeof(::UseItemResponse)},
+  { 334, -1, sizeof(::ForgetSkillRequest)},
+  { 341, -1, sizeof(::ForgetSkillResponse)},
+  { 349, -1, sizeof(::SettleAccountRequest)},
+  { 356, -1, sizeof(::SettleAccountResponse)},
+  { 366, -1, sizeof(::RankingRequest)},
+  { 372, -1, sizeof(::RankingResponse)},
+  { 383, -1, sizeof(::RegisterRequest)},
+  { 391, -1, sizeof(::RegisterResponse)},
+  { 397, -1, sizeof(::SolarUpgradeRequest)},
+  { 403, -1, sizeof(::SolarUpgradeResponse)},
+  { 409, -1, sizeof(::SkillUpgradeRequest)},
+  { 416, -1, sizeof(::SkillUpgradeResponse)},
+  { 424, -1, sizeof(::TreeUpgradeRequest)},
+  { 430, -1, sizeof(::TreeUpgradeResponse)},
+  { 436, -1, sizeof(::ElfinUpgradeRequest)},
+  { 442, -1, sizeof(::ElfinUpgradeResponse)},
+  { 449, -1, sizeof(::HeartBeatRequest)},
+  { 455, -1, sizeof(::HeartBeatResponse)},
+  { 460, -1, sizeof(::Request)},
+  { 495, -1, sizeof(::Response)},
+  { 530, -1, sizeof(::GameMessage)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -2340,6 +2425,8 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::_TreeUpgradeResponse_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::_ElfinUpgradeRequest_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::_ElfinUpgradeResponse_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::_HeartBeatRequest_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::_HeartBeatResponse_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::_Request_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::_Response_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::_GameMessage_default_instance_),
@@ -2361,204 +2448,215 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 62);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 64);
 }
 
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\tMsg.proto\"/\n\014LoginRequest\022\017\n\007Account\030\001"
-      " \001(\t\022\016\n\006Passwd\030\002 \001(\t\"x\n\rLoginResponse\022)\n"
-      "\006result\030\001 \001(\0162\031.LoginResponse.ResultType"
-      "\"<\n\nResultType\022\013\n\007Success\020\000\022\017\n\013PsswadErr"
-      "or\020\001\022\020\n\014UnknownError\020\002\"\035\n\014ElfinRequest\022\r"
-      "\n\005Elfin\030\001 \001(\010\"\276\001\n\rElfinResponse\022\n\n\002Id\030\001 "
-      "\001(\r\022\r\n\005Level\030\002 \001(\r\022\r\n\005Power\030\003 \001(\r\022\020\n\010Max"
-      "Power\030\004 \001(\r\022\'\n\005Etype\030\005 \001(\0162\030.ElfinRespon"
-      "se.Elfintype\"H\n\tElfintype\022\007\n\003Jin\020\000\022\006\n\002Mu"
-      "\020\001\022\010\n\004Shui\020\002\022\007\n\003Huo\020\003\022\006\n\002Tu\020\004\022\007\n\003Sum\020\005\022\006"
-      "\n\002An\020\006\"\033\n\013RollRequest\022\014\n\004Roll\030\001 \001(\010\"=\n\014R"
-      "ollResponse\022\n\n\002Id\030\001 \001(\r\022\014\n\004Name\030\002 \001(\t\022\023\n"
-      "\013GrowthValue\030\003 \001(\r\"\033\n\013TreeRequest\022\014\n\004Tre"
-      "e\030\001 \001(\010\">\n\014TreeResponse\022\r\n\005Level\030\001 \001(\r\022\r"
-      "\n\005Hight\030\002 \001(\r\022\020\n\010ProdGold\030\004 \001(\r\"#\n\017Resou"
-      "rceRequest\022\020\n\010resource\030\001 \001(\010\"R\n\020Resource"
-      "Response\022\014\n\004Gold\030\001 \001(\r\022\r\n\005Water\030\002 \001(\r\022\020\n"
-      "\010SunShine\030\003 \001(\r\022\017\n\007Diamond\030\004 \001(\r\"\035\n\014Task"
-      "sRequest\022\r\n\005Tasks\030\001 \001(\010\"\347\001\n\rTasksRespons"
-      "e\022\n\n\002Id\030\001 \001(\r\022\r\n\005Title\030\002 \001(\t\022\017\n\007Details\030"
-      "\003 \001(\t\022%\n\004Type\030\004 \001(\0162\027.TasksResponse.Task"
-      "Type\022\026\n\006Prize1\030\005 \001(\0132\006.Prize\022\026\n\006Prize2\030\006"
-      " \001(\0132\006.Prize\022\026\n\006Prize3\030\007 \001(\0132\006.Prize\";\n\010"
-      "TaskType\022\n\n\006NotYet\020\000\022\013\n\007Already\020\001\022\010\n\004Don"
-      "e\020\002\022\014\n\010Received\020\003\"#\n\005Prize\022\n\n\002Id\030\001 \001(\r\022\016"
-      "\n\006Number\030\002 \001(\r\"\035\n\014MailsRequest\022\r\n\005Mails\030"
-      "\001 \001(\010\"\225\001\n\rMailsResponse\022\n\n\002Id\030\001 \001(\r\022\r\n\005T"
-      "itle\030\002 \001(\t\022\017\n\007Details\030\003 \001(\t\022\020\n\010Received\030"
-      "\004 \001(\010\022\026\n\006Prize1\030\005 \001(\0132\006.Prize\022\026\n\006Prize2\030"
-      "\006 \001(\0132\006.Prize\022\026\n\006Prize3\030\007 \001(\0132\006.Prize\"\031\n"
-      "\nSunRequest\022\013\n\003Sun\030\001 \001(\010\".\n\013SunResponse\022"
-      "\r\n\005Level\030\001 \001(\r\022\020\n\010SunShine\030\002 \001(\r\"&\n\026Tree"
-      "EnchantmentRequest\022\014\n\004Well\030\001 \001(\010\">\n\027Tree"
-      "EnchantmentResponse\022\r\n\005Level\030\001 \001(\r\022\024\n\014De"
-      "fenseLevel\030\002 \001(\r\"#\n\017StoreAllRequest\022\020\n\010S"
-      "toreAll\030\001 \001(\010\"\215\001\n\020StoreAllResponse\022\n\n\002Id"
-      "\030\001 \001(\r\022\021\n\tGoldPrice\030\002 \001(\r\022\020\n\010DiaPrice\030\003 "
-      "\001(\r\022\020\n\010Discount\030\004 \001(\r\022\026\n\004Type\030\005 \001(\0162\010.St"
-      "dMode\022\020\n\010Describe\030\006 \001(\t\022\014\n\004Name\030\007 \001(\t\"#\n"
-      "\017StoreEquRequest\022\020\n\010StoreEqu\030\001 \001(\010\"\215\001\n\020S"
-      "toreEquResponse\022\n\n\002Id\030\001 \001(\r\022\021\n\tGoldPrice"
-      "\030\002 \001(\r\022\020\n\010DiaPrice\030\003 \001(\r\022\020\n\010Discount\030\004 \001"
-      "(\r\022\026\n\004Type\030\005 \001(\0162\010.StdMode\022\020\n\010Describe\030\006"
-      " \001(\t\022\014\n\004Name\030\007 \001(\t\"\'\n\021StoreWaterRequest\022"
-      "\022\n\nStoreWater\030\001 \001(\010\"\217\001\n\022StoreWaterRespon"
-      "se\022\n\n\002Id\030\001 \001(\r\022\021\n\tGoldPrice\030\002 \001(\r\022\020\n\010Dia"
-      "Price\030\003 \001(\r\022\020\n\010Discount\030\004 \001(\r\022\026\n\004Type\030\005 "
-      "\001(\0162\010.StdMode\022\020\n\010Describe\030\006 \001(\t\022\014\n\004Name\030"
-      "\007 \001(\t\"-\n\024StoreSpePropsRequest\022\025\n\rStoreSp"
-      "eprops\030\001 \001(\010\"\222\001\n\025StoreSpePropsResponse\022\n"
-      "\n\002Id\030\001 \001(\r\022\021\n\tGoldPrice\030\002 \001(\r\022\020\n\010DiaPric"
-      "e\030\003 \001(\r\022\020\n\010Discount\030\004 \001(\r\022\026\n\004Type\030\005 \001(\0162"
-      "\010.StdMode\022\020\n\010Describe\030\006 \001(\t\022\014\n\004Name\030\007 \001("
-      "\t\"%\n\020WarehouseRequest\022\021\n\tWarehouse\030\001 \001(\010"
-      "\"/\n\021WarehouseResponse\022\n\n\002Id\030\001 \001(\r\022\016\n\006Num"
-      "ber\030\002 \001(\r\"\034\n\016DelMailRequest\022\n\n\002Id\030\001 \001(\r\""
-      ".\n\017DelMailResponse\022\017\n\007Success\030\001 \001(\010\022\n\n\002I"
-      "d\030\002 \001(\r\" \n\022ClaimedTaskRequest\022\n\n\002Id\030\001 \001("
-      "\r\"2\n\023ClaimedTaskResponse\022\017\n\007Success\030\001 \001("
-      "\010\022\n\n\002Id\030\002 \001(\r\"!\n\023RecTaskAwardRequest\022\n\n\002"
-      "Id\030\001 \001(\r\"^\n\024RecTaskAwardResponse\022\026\n\006priz"
-      "e1\030\001 \001(\0132\006.Prize\022\026\n\006prize2\030\002 \001(\0132\006.Prize"
-      "\022\026\n\006prize3\030\003 \001(\0132\006.Prize\"!\n\016FriendsReque"
-      "st\022\017\n\007Friends\030\001 \001(\010\":\n\017FriendsResponse\022\n"
-      "\n\002Id\030\001 \001(\r\022\014\n\004Name\030\002 \001(\t\022\r\n\005Level\030\003 \001(\r\""
-      "!\n\016EnemiesRequest\022\017\n\007Enemies\030\001 \001(\010\":\n\017En"
-      "emiesResponse\022\n\n\002Id\030\001 \001(\r\022\014\n\004Name\030\002 \001(\t\022"
-      "\r\n\005Level\030\003 \001(\r\"!\n\016PlunderRequest\022\017\n\007Plun"
-      "der\030\001 \001(\010\"\?\n\017PlunderResponse\022\017\n\007Success\030"
-      "\001 \001(\010\022\n\n\002Id\030\002 \001(\r\022\017\n\007GoldNum\030\003 \001(\r\"\034\n\016Us"
-      "eItemRequest\022\n\n\002Id\030\001 \001(\r\".\n\017UseItemRespo"
-      "nse\022\017\n\007Success\030\001 \001(\010\022\n\n\002Id\030\002 \001(\r\"6\n\022Forg"
-      "etSkillRequest\022\017\n\007skillId\030\001 \001(\r\022\017\n\007elfin"
-      "Id\030\002 \001(\r\"H\n\023ForgetSkillResponse\022\017\n\007Succe"
-      "ss\030\001 \001(\010\022\017\n\007skillId\030\002 \001(\r\022\017\n\007elfinId\030\003 \001"
-      "(\r\"7\n\024SettleAccountRequest\022\017\n\007ItemNum\030\001 "
-      "\001(\r\022\016\n\006Number\030\002 \001(\r\"S\n\025SettleAccountResp"
-      "onse\022\017\n\007success\030\001 \001(\010\022\n\n\002Id\030\002 \001(\r\022\016\n\006Num"
-      "ber\030\003 \001(\r\022\r\n\005price\030\004 \001(\r\"!\n\016RankingReque"
-      "st\022\017\n\007Ranking\030\001 \001(\010\"K\n\017RankingResponse\022\n"
-      "\n\002Id\030\001 \001(\r\022\014\n\004Name\030\002 \001(\t\022\r\n\005Level\030\003 \001(\r\022"
-      "\017\n\007Ranking\030\004 \001(\r\"@\n\017RegisterRequest\022\017\n\007A"
-      "ccount\030\001 \001(\t\022\016\n\006Passwd\030\002 \001(\t\022\014\n\004Name\030\003 \001"
-      "(\t\"#\n\020RegisterResponse\022\017\n\007Success\030\001 \001(\010\""
-      "$\n\023SolarUpgradeRequest\022\r\n\005Solar\030\001 \001(\010\"%\n"
-      "\024SolarUpgradeResponse\022\r\n\005Solar\030\001 \001(\010\"7\n\023"
-      "SkillUpgradeRequest\022\017\n\007ElfinID\030\001 \001(\r\022\017\n\007"
-      "SkillID\030\002 \001(\r\"I\n\024SkillUpgradeResponse\022\017\n"
-      "\007Success\030\001 \001(\010\022\017\n\007ElfinID\030\002 \001(\r\022\017\n\007Skill"
-      "ID\030\003 \001(\r\"\"\n\022TreeUpgradeRequest\022\014\n\004Tree\030\001"
-      " \001(\010\"&\n\023TreeUpgradeResponse\022\017\n\007Success\030\001"
-      " \001(\010\"&\n\023ElfinUpgradeRequest\022\017\n\007ElfinID\030\001"
-      " \001(\r\"8\n\024ElfinUpgradeResponse\022\017\n\007Success\030"
-      "\001 \001(\010\022\017\n\007ElfinID\030\002 \001(\r\"\271\010\n\007Request\022\034\n\005Lo"
-      "gin\030\001 \001(\0132\r.LoginRequest\022\034\n\005Elfin\030\002 \001(\0132"
-      "\r.ElfinRequest\022\032\n\004Roll\030\003 \001(\0132\014.RollReque"
-      "st\022\032\n\004Tree\030\004 \001(\0132\014.TreeRequest\022\"\n\010Resour"
-      "ce\030\005 \001(\0132\020.ResourceRequest\022\034\n\005Tasks\030\006 \001("
-      "\0132\r.TasksRequest\022\034\n\005Mails\030\007 \001(\0132\r.MailsR"
-      "equest\022\030\n\003Sun\030\010 \001(\0132\013.SunRequest\0220\n\017Tree"
-      "Enchantment\030\t \001(\0132\027.TreeEnchantmentReque"
-      "st\022\"\n\010StoreAll\030\n \001(\0132\020.StoreAllRequest\022\""
-      "\n\010StoreEqu\030\013 \001(\0132\020.StoreEquRequest\022&\n\nSt"
-      "oreWater\030\014 \001(\0132\022.StoreWaterRequest\022,\n\rSt"
-      "oreSpeProps\030\r \001(\0132\025.StoreSpePropsRequest"
-      "\022$\n\tWarehouse\030\016 \001(\0132\021.WarehouseRequest\022 "
-      "\n\007DelMail\030\017 \001(\0132\017.DelMailRequest\022(\n\013Clai"
-      "medTask\030\020 \001(\0132\023.ClaimedTaskRequest\022*\n\014Re"
-      "cTaskAward\030\021 \001(\0132\024.RecTaskAwardRequest\022 "
-      "\n\007Friends\030\022 \001(\0132\017.FriendsRequest\022 \n\007Enem"
-      "ies\030\023 \001(\0132\017.EnemiesRequest\022 \n\007Plunder\030\024 "
-      "\001(\0132\017.PlunderRequest\022 \n\007UseItem\030\025 \001(\0132\017."
-      "UseItemRequest\022,\n\rSettleAccount\030\026 \001(\0132\025."
-      "SettleAccountRequest\022 \n\007Ranking\030\027 \001(\0132\017."
-      "RankingRequest\022(\n\013ForgetSkill\030\030 \001(\0132\023.Fo"
-      "rgetSkillRequest\022\"\n\010Register\030\031 \001(\0132\020.Reg"
-      "isterRequest\022*\n\014SolarUpgrade\030\032 \001(\0132\024.Sol"
-      "arUpgradeRequest\022*\n\014SkillUpgrade\030\033 \001(\0132\024"
-      ".SkillUpgradeRequest\022(\n\013TreeUpgrade\030\034 \001("
-      "\0132\023.TreeUpgradeRequest\022*\n\014ElfinUpgrade\030\035"
-      " \001(\0132\024.ElfinUpgradeRequest\"\327\010\n\010Response\022"
-      "\035\n\005Login\030\001 \001(\0132\016.LoginResponse\022\035\n\005Elfin\030"
-      "\002 \001(\0132\016.ElfinResponse\022\033\n\004Roll\030\003 \001(\0132\r.Ro"
-      "llResponse\022\033\n\004Tree\030\004 \001(\0132\r.TreeResponse\022"
-      "#\n\010Resource\030\005 \001(\0132\021.ResourceResponse\022\035\n\005"
-      "Tasks\030\006 \001(\0132\016.TasksResponse\022\035\n\005Mails\030\007 \001"
-      "(\0132\016.MailsResponse\022\031\n\003Sun\030\010 \001(\0132\014.SunRes"
-      "ponse\0221\n\017TreeEnchantment\030\t \001(\0132\030.TreeEnc"
-      "hantmentResponse\022#\n\010StoreAll\030\n \001(\0132\021.Sto"
-      "reAllResponse\022#\n\010StoreEqu\030\013 \001(\0132\021.StoreE"
-      "quResponse\022\'\n\nStoreWater\030\014 \001(\0132\023.StoreWa"
-      "terResponse\022-\n\rStoreSpeProps\030\r \001(\0132\026.Sto"
-      "reSpePropsResponse\022%\n\tWarehouse\030\016 \001(\0132\022."
-      "WarehouseResponse\022!\n\007DelMail\030\017 \001(\0132\020.Del"
-      "MailResponse\022)\n\013ClaimedTask\030\020 \001(\0132\024.Clai"
-      "medTaskResponse\022+\n\014RecTaskAward\030\021 \001(\0132\025."
-      "RecTaskAwardResponse\022!\n\007Friends\030\022 \001(\0132\020."
-      "FriendsResponse\022!\n\007Enemies\030\023 \001(\0132\020.Enemi"
-      "esResponse\022!\n\007Plunder\030\024 \001(\0132\020.PlunderRes"
-      "ponse\022!\n\007UseItem\030\025 \001(\0132\020.UseItemResponse"
-      "\022-\n\rSettleAccount\030\026 \001(\0132\026.SettleAccountR"
-      "esponse\022!\n\007Ranking\030\027 \001(\0132\020.RankingRespon"
-      "se\022)\n\013ForgetSkill\030\030 \001(\0132\024.ForgetSkillRes"
-      "ponse\022#\n\010Register\030\031 \001(\0132\021.RegisterRespon"
-      "se\022+\n\014SolarUpgrade\030\032 \001(\0132\025.SolarUpgradeR"
-      "esponse\022+\n\014SkillUpgrade\030\033 \001(\0132\025.SkillUpg"
-      "radeResponse\022)\n\013TreeUpgrade\030\034 \001(\0132\024.Tree"
-      "UpgradeResponse\022+\n\014ElfinUpgrade\030\035 \001(\0132\025."
-      "ElfinUpgradeResponse\"W\n\013GameMessage\022\031\n\003m"
-      "sg\030\001 \001(\0162\014.GameMsgCode\022\025\n\003req\030\002 \001(\0132\010.Re"
-      "quest\022\026\n\003res\030\003 \001(\0132\t.Response*\222\013\n\013GameMs"
-      "gCode\022\024\n\020GameMsgCodeStart\020\000\022\022\n\rLogin_Req"
-      "uest\020\270\027\022\023\n\016Login_Response\020\271\027\022\022\n\rElfin_Re"
-      "quest\020\302\027\022\023\n\016Elfin_Response\020\303\027\022\021\n\014Roll_Re"
-      "quest\020\314\027\022\022\n\rRoll_Response\020\315\027\022\021\n\014Tree_Req"
-      "uest\020\326\027\022\022\n\rTree_Response\020\327\027\022\025\n\020Resource_"
-      "Request\020\340\027\022\026\n\021Resource_Response\020\341\027\022\022\n\rTa"
-      "sks_Request\020\352\027\022\023\n\016Tasks_Response\020\353\027\022\022\n\rM"
-      "ails_Request\020\364\027\022\023\n\016Mails_Response\020\365\027\022\020\n\013"
-      "Sun_Request\020\376\027\022\021\n\014Sun_Response\020\377\027\022\034\n\027Tre"
-      "eEnchantment_Request\020\210\030\022\035\n\030TreeEnchantme"
-      "nt_Response\020\211\030\022\025\n\020StoreAll_Request\020\222\030\022\026\n"
-      "\021StoreAll_Response\020\223\030\022\025\n\020StoreEqu_Reques"
-      "t\020\234\030\022\026\n\021StoreEqu_Response\020\235\030\022\027\n\022StoreWat"
-      "er_Request\020\246\030\022\030\n\023StoreWater_Response\020\247\030\022"
-      "\032\n\025StoreSpeProps_Request\020\260\030\022\033\n\026StoreSpeP"
-      "rops_Response\020\261\030\022\026\n\021Warehouse_Request\020\272\030"
-      "\022\027\n\022Warehouse_Response\020\273\030\022\024\n\017DelMail_Req"
-      "uest\020\304\030\022\025\n\020DelMail_Response\020\305\030\022\030\n\023Claime"
-      "dTask_Request\020\316\030\022\031\n\024ClaimedTask_Response"
-      "\020\317\030\022\031\n\024RecTaskAward_Request\020\330\030\022\032\n\025RecTas"
-      "kAward_Response\020\331\030\022\024\n\017Friends_Request\020\342\030"
-      "\022\025\n\020Friends_Response\020\343\030\022\024\n\017Enemies_Reque"
-      "st\020\354\030\022\025\n\020Enemies_Response\020\355\030\022\024\n\017Plunder_"
-      "Request\020\366\030\022\025\n\020Plunder_Response\020\367\030\022\024\n\017Use"
-      "Item_Request\020\200\031\022\025\n\020UseItem_Response\020\201\031\022\032"
-      "\n\025SettleAccount_Request\020\212\031\022\033\n\026SettleAcco"
-      "unt_Response\020\213\031\022\024\n\017Ranking_Request\020\224\031\022\025\n"
-      "\020Ranking_Response\020\225\031\022\030\n\023ForgetSkill_Requ"
-      "est\020\236\031\022\031\n\024ForgetSkill_Response\020\237\031\022\025\n\020Reg"
-      "ister_Request\020\250\031\022\026\n\021Register_Response\020\251\031"
-      "\022\031\n\024SolarUpgrade_Request\020\262\031\022\032\n\025SolarUpgr"
-      "ade_Response\020\263\031\022\031\n\024SkillUpgrade_Request\020"
-      "\274\031\022\032\n\025SkillUpgrade_Response\020\275\031\022\030\n\023TreeUp"
-      "grade_Request\020\306\031\022\031\n\024TreeUpgrade_Response"
-      "\020\307\031\022\031\n\024ElfinUpgrade_Request\020\320\031\022\032\n\025ElfinU"
-      "pgrade_Response\020\321\031*9\n\007StdMode\022\r\n\tRes_Wat"
-      "er\020\000\022\r\n\tRes_Equip\020\001\022\020\n\014Res_SpeProps\020\002b\006p"
-      "roto3"
+      "\n\tMsg.proto\"0\n\014LoginRequest\022\017\n\007Account\030\001"
+      " \001(\t\022\017\n\007HeadURL\030\002 \001(\t\"x\n\rLoginResponse\022)"
+      "\n\006result\030\001 \001(\0162\031.LoginResponse.ResultTyp"
+      "e\"<\n\nResultType\022\013\n\007Success\020\000\022\017\n\013PsswadEr"
+      "ror\020\001\022\020\n\014UnknownError\020\002\"\035\n\014ElfinRequest\022"
+      "\r\n\005Elfin\030\001 \001(\010\"\361\001\n\rElfinResponse\022\n\n\002Id\030\001"
+      " \001(\r\022\r\n\005Level\030\002 \001(\r\022\r\n\005Power\030\003 \001(\r\022\020\n\010Ma"
+      "xPower\030\004 \001(\r\022\'\n\005Etype\030\005 \001(\0162\030.ElfinRespo"
+      "nse.Elfintype\022\024\n\014PlunderState\030\006 \001(\010\022\017\n\007E"
+      "nemyID\030\007 \001(\r\022\023\n\013PlunderGold\030\010 \001(\r\"\?\n\tElf"
+      "intype\022\007\n\003Jin\020\000\022\006\n\002Mu\020\001\022\010\n\004Shui\020\002\022\007\n\003Huo"
+      "\020\003\022\006\n\002Tu\020\004\022\006\n\002An\020\005\"\033\n\013RollRequest\022\014\n\004Rol"
+      "l\030\001 \001(\010\"K\n\014RollResponse\022\n\n\002Id\030\001 \001(\r\022\014\n\004N"
+      "ame\030\002 \001(\t\022\020\n\010GrowRate\030\003 \001(\r\022\017\n\007HeadURL\030\004"
+      " \001(\t\"\033\n\013TreeRequest\022\014\n\004Tree\030\001 \001(\010\">\n\014Tre"
+      "eResponse\022\r\n\005Level\030\001 \001(\r\022\r\n\005Hight\030\002 \001(\r\022"
+      "\020\n\010ProdGold\030\004 \001(\r\"#\n\017ResourceRequest\022\020\n\010"
+      "resource\030\001 \001(\010\"R\n\020ResourceResponse\022\014\n\004Go"
+      "ld\030\001 \001(\r\022\r\n\005Water\030\002 \001(\r\022\020\n\010SunShine\030\003 \001("
+      "\r\022\017\n\007Diamond\030\004 \001(\r\"\035\n\014TasksRequest\022\r\n\005Ta"
+      "sks\030\001 \001(\010\"\347\001\n\rTasksResponse\022\n\n\002Id\030\001 \001(\r\022"
+      "\r\n\005Title\030\002 \001(\t\022\017\n\007Details\030\003 \001(\t\022%\n\004Type\030"
+      "\004 \001(\0162\027.TasksResponse.TaskType\022\026\n\006Prize1"
+      "\030\005 \001(\0132\006.Prize\022\026\n\006Prize2\030\006 \001(\0132\006.Prize\022\026"
+      "\n\006Prize3\030\007 \001(\0132\006.Prize\";\n\010TaskType\022\n\n\006No"
+      "tYet\020\000\022\013\n\007Already\020\001\022\010\n\004Done\020\002\022\014\n\010Receive"
+      "d\020\003\"#\n\005Prize\022\n\n\002Id\030\001 \001(\r\022\016\n\006Number\030\002 \001(\r"
+      "\"\035\n\014MailsRequest\022\r\n\005Mails\030\001 \001(\010\"\225\001\n\rMail"
+      "sResponse\022\n\n\002Id\030\001 \001(\r\022\r\n\005Title\030\002 \001(\t\022\017\n\007"
+      "Details\030\003 \001(\t\022\020\n\010Received\030\004 \001(\010\022\026\n\006Prize"
+      "1\030\005 \001(\0132\006.Prize\022\026\n\006Prize2\030\006 \001(\0132\006.Prize\022"
+      "\026\n\006Prize3\030\007 \001(\0132\006.Prize\"\031\n\nSunRequest\022\013\n"
+      "\003Sun\030\001 \001(\010\".\n\013SunResponse\022\r\n\005Level\030\001 \001(\r"
+      "\022\020\n\010SunShine\030\002 \001(\r\"*\n\026TreeEnchantmentReq"
+      "uest\022\020\n\010TreeEnch\030\001 \001(\010\">\n\027TreeEnchantmen"
+      "tResponse\022\r\n\005Level\030\001 \001(\r\022\024\n\014DefenseLevel"
+      "\030\002 \001(\r\"#\n\017StoreAllRequest\022\020\n\010StoreAll\030\001 "
+      "\001(\010\"\215\001\n\020StoreAllResponse\022\n\n\002Id\030\001 \001(\r\022\021\n\t"
+      "GoldPrice\030\002 \001(\r\022\020\n\010DiaPrice\030\003 \001(\r\022\020\n\010Dis"
+      "count\030\004 \001(\002\022\026\n\004Type\030\005 \001(\0162\010.StdMode\022\020\n\010D"
+      "escribe\030\006 \001(\t\022\014\n\004Name\030\007 \001(\t\"#\n\017StoreEquR"
+      "equest\022\020\n\010StoreEqu\030\001 \001(\010\"\215\001\n\020StoreEquRes"
+      "ponse\022\n\n\002Id\030\001 \001(\r\022\021\n\tGoldPrice\030\002 \001(\r\022\020\n\010"
+      "DiaPrice\030\003 \001(\r\022\020\n\010Discount\030\004 \001(\002\022\026\n\004Type"
+      "\030\005 \001(\0162\010.StdMode\022\020\n\010Describe\030\006 \001(\t\022\014\n\004Na"
+      "me\030\007 \001(\t\"\'\n\021StoreWaterRequest\022\022\n\nStoreWa"
+      "ter\030\001 \001(\010\"\217\001\n\022StoreWaterResponse\022\n\n\002Id\030\001"
+      " \001(\r\022\021\n\tGoldPrice\030\002 \001(\r\022\020\n\010DiaPrice\030\003 \001("
+      "\r\022\020\n\010Discount\030\004 \001(\002\022\026\n\004Type\030\005 \001(\0162\010.StdM"
+      "ode\022\020\n\010Describe\030\006 \001(\t\022\014\n\004Name\030\007 \001(\t\"-\n\024S"
+      "toreSpePropsRequest\022\025\n\rStoreSpeprops\030\001 \001"
+      "(\010\"\222\001\n\025StoreSpePropsResponse\022\n\n\002Id\030\001 \001(\r"
+      "\022\021\n\tGoldPrice\030\002 \001(\r\022\020\n\010DiaPrice\030\003 \001(\r\022\020\n"
+      "\010Discount\030\004 \001(\002\022\026\n\004Type\030\005 \001(\0162\010.StdMode\022"
+      "\020\n\010Describe\030\006 \001(\t\022\014\n\004Name\030\007 \001(\t\"%\n\020Wareh"
+      "ouseRequest\022\021\n\tWarehouse\030\001 \001(\010\"/\n\021Wareho"
+      "useResponse\022\n\n\002Id\030\001 \001(\r\022\016\n\006Number\030\002 \001(\r\""
+      "\034\n\016DelMailRequest\022\n\n\002Id\030\001 \001(\r\".\n\017DelMail"
+      "Response\022\017\n\007Success\030\001 \001(\010\022\n\n\002Id\030\002 \001(\r\" \n"
+      "\022ClaimedTaskRequest\022\n\n\002Id\030\001 \001(\r\"2\n\023Claim"
+      "edTaskResponse\022\017\n\007Success\030\001 \001(\010\022\n\n\002Id\030\002 "
+      "\001(\r\"!\n\023RecTaskAwardRequest\022\n\n\002Id\030\001 \001(\r\"{"
+      "\n\024RecTaskAwardResponse\022\017\n\007Success\030\001 \001(\010\022"
+      "\n\n\002Id\030\002 \001(\r\022\026\n\006prize1\030\003 \001(\0132\006.Prize\022\026\n\006p"
+      "rize2\030\004 \001(\0132\006.Prize\022\026\n\006prize3\030\005 \001(\0132\006.Pr"
+      "ize\"!\n\016FriendsRequest\022\017\n\007Friends\030\001 \001(\010\"]"
+      "\n\017FriendsResponse\022\n\n\002Id\030\001 \001(\r\022\014\n\004Name\030\002 "
+      "\001(\t\022\017\n\007HeadURL\030\003 \001(\t\022\r\n\005Level\030\004 \001(\r\022\020\n\010G"
+      "rowRate\030\005 \001(\r\"!\n\016EnemiesRequest\022\017\n\007Enemi"
+      "es\030\001 \001(\010\"]\n\017EnemiesResponse\022\n\n\002Id\030\001 \001(\r\022"
+      "\014\n\004Name\030\002 \001(\t\022\017\n\007HeadURL\030\003 \001(\t\022\r\n\005Level\030"
+      "\004 \001(\r\022\020\n\010GrowRate\030\005 \001(\r\"!\n\016PlunderReques"
+      "t\022\017\n\007elfinID\030\001 \001(\r\"P\n\017PlunderResponse\022\017\n"
+      "\007Success\030\001 \001(\010\022\n\n\002Id\030\002 \001(\r\022\017\n\007ElfinID\030\003 "
+      "\001(\r\022\017\n\007GoldNum\030\004 \001(\r\"1\n\016UseItemRequest\022\016"
+      "\n\006ItemId\030\001 \001(\r\022\017\n\007ElfinID\030\002 \001(\r\"\?\n\017UseIt"
+      "emResponse\022\017\n\007Success\030\001 \001(\010\022\n\n\002Id\030\002 \001(\r\022"
+      "\017\n\007ElfinID\030\003 \001(\r\"6\n\022ForgetSkillRequest\022\017"
+      "\n\007skillId\030\001 \001(\r\022\017\n\007elfinId\030\002 \001(\r\"H\n\023Forg"
+      "etSkillResponse\022\017\n\007Success\030\001 \001(\010\022\017\n\007skil"
+      "lId\030\002 \001(\r\022\017\n\007elfinId\030\003 \001(\r\"7\n\024SettleAcco"
+      "untRequest\022\017\n\007ItemNum\030\001 \001(\r\022\016\n\006Number\030\002 "
+      "\001(\r\"i\n\025SettleAccountResponse\022\017\n\007success\030"
+      "\001 \001(\010\022\n\n\002Id\030\002 \001(\r\022\016\n\006Number\030\003 \001(\r\022\021\n\tGol"
+      "dPrice\030\004 \001(\r\022\020\n\010DiaPrice\030\005 \001(\r\"!\n\016Rankin"
+      "gRequest\022\017\n\007Ranking\030\001 \001(\010\"n\n\017RankingResp"
+      "onse\022\n\n\002Id\030\001 \001(\r\022\014\n\004Name\030\002 \001(\t\022\r\n\005Level\030"
+      "\003 \001(\r\022\020\n\010GrowRate\030\004 \001(\r\022\017\n\007Ranking\030\005 \001(\r"
+      "\022\017\n\007HeadURL\030\006 \001(\t\"@\n\017RegisterRequest\022\017\n\007"
+      "Account\030\001 \001(\t\022\016\n\006Passwd\030\002 \001(\t\022\014\n\004Name\030\003 "
+      "\001(\t\"#\n\020RegisterResponse\022\017\n\007Success\030\001 \001(\010"
+      "\"$\n\023SolarUpgradeRequest\022\r\n\005Solar\030\001 \001(\010\"%"
+      "\n\024SolarUpgradeResponse\022\r\n\005Solar\030\001 \001(\010\"7\n"
+      "\023SkillUpgradeRequest\022\017\n\007ElfinID\030\001 \001(\r\022\017\n"
+      "\007SkillID\030\002 \001(\r\"I\n\024SkillUpgradeResponse\022\017"
+      "\n\007Success\030\001 \001(\010\022\017\n\007ElfinID\030\002 \001(\r\022\017\n\007Skil"
+      "lID\030\003 \001(\r\"\"\n\022TreeUpgradeRequest\022\014\n\004Tree\030"
+      "\001 \001(\010\"&\n\023TreeUpgradeResponse\022\017\n\007Success\030"
+      "\001 \001(\010\"&\n\023ElfinUpgradeRequest\022\017\n\007ElfinID\030"
+      "\001 \001(\r\"8\n\024ElfinUpgradeResponse\022\017\n\007Success"
+      "\030\001 \001(\010\022\017\n\007ElfinID\030\002 \001(\r\"%\n\020HeartBeatRequ"
+      "est\022\021\n\tConnected\030\001 \001(\010\"\023\n\021HeartBeatRespo"
+      "nse\"\337\010\n\007Request\022\034\n\005Login\030\001 \001(\0132\r.LoginRe"
+      "quest\022\034\n\005Elfin\030\002 \001(\0132\r.ElfinRequest\022\032\n\004R"
+      "oll\030\003 \001(\0132\014.RollRequest\022\032\n\004Tree\030\004 \001(\0132\014."
+      "TreeRequest\022\"\n\010Resource\030\005 \001(\0132\020.Resource"
+      "Request\022\034\n\005Tasks\030\006 \001(\0132\r.TasksRequest\022\034\n"
+      "\005Mails\030\007 \001(\0132\r.MailsRequest\022\030\n\003Sun\030\010 \001(\013"
+      "2\013.SunRequest\0220\n\017TreeEnchantment\030\t \001(\0132\027"
+      ".TreeEnchantmentRequest\022\"\n\010StoreAll\030\n \001("
+      "\0132\020.StoreAllRequest\022\"\n\010StoreEqu\030\013 \001(\0132\020."
+      "StoreEquRequest\022&\n\nStoreWater\030\014 \001(\0132\022.St"
+      "oreWaterRequest\022,\n\rStoreSpeProps\030\r \001(\0132\025"
+      ".StoreSpePropsRequest\022$\n\tWarehouse\030\016 \001(\013"
+      "2\021.WarehouseRequest\022 \n\007DelMail\030\017 \001(\0132\017.D"
+      "elMailRequest\022(\n\013ClaimedTask\030\020 \001(\0132\023.Cla"
+      "imedTaskRequest\022*\n\014RecTaskAward\030\021 \001(\0132\024."
+      "RecTaskAwardRequest\022 \n\007Friends\030\022 \001(\0132\017.F"
+      "riendsRequest\022 \n\007Enemies\030\023 \001(\0132\017.Enemies"
+      "Request\022 \n\007Plunder\030\024 \001(\0132\017.PlunderReques"
+      "t\022 \n\007UseItem\030\025 \001(\0132\017.UseItemRequest\022,\n\rS"
+      "ettleAccount\030\026 \001(\0132\025.SettleAccountReques"
+      "t\022 \n\007Ranking\030\027 \001(\0132\017.RankingRequest\022(\n\013F"
+      "orgetSkill\030\030 \001(\0132\023.ForgetSkillRequest\022\"\n"
+      "\010Register\030\031 \001(\0132\020.RegisterRequest\022*\n\014Sol"
+      "arUpgrade\030\032 \001(\0132\024.SolarUpgradeRequest\022*\n"
+      "\014SkillUpgrade\030\033 \001(\0132\024.SkillUpgradeReques"
+      "t\022(\n\013TreeUpgrade\030\034 \001(\0132\023.TreeUpgradeRequ"
+      "est\022*\n\014ElfinUpgrade\030\035 \001(\0132\024.ElfinUpgrade"
+      "Request\022$\n\tHeartBeat\030\036 \001(\0132\021.HeartBeatRe"
+      "quest\"\376\010\n\010Response\022\035\n\005Login\030\001 \001(\0132\016.Logi"
+      "nResponse\022\035\n\005Elfin\030\002 \001(\0132\016.ElfinResponse"
+      "\022\033\n\004Roll\030\003 \001(\0132\r.RollResponse\022\033\n\004Tree\030\004 "
+      "\001(\0132\r.TreeResponse\022#\n\010Resource\030\005 \001(\0132\021.R"
+      "esourceResponse\022\035\n\005Tasks\030\006 \001(\0132\016.TasksRe"
+      "sponse\022\035\n\005Mails\030\007 \001(\0132\016.MailsResponse\022\031\n"
+      "\003Sun\030\010 \001(\0132\014.SunResponse\0221\n\017TreeEnchantm"
+      "ent\030\t \001(\0132\030.TreeEnchantmentResponse\022#\n\010S"
+      "toreAll\030\n \001(\0132\021.StoreAllResponse\022#\n\010Stor"
+      "eEqu\030\013 \001(\0132\021.StoreEquResponse\022\'\n\nStoreWa"
+      "ter\030\014 \001(\0132\023.StoreWaterResponse\022-\n\rStoreS"
+      "peProps\030\r \001(\0132\026.StoreSpePropsResponse\022%\n"
+      "\tWarehouse\030\016 \001(\0132\022.WarehouseResponse\022!\n\007"
+      "DelMail\030\017 \001(\0132\020.DelMailResponse\022)\n\013Claim"
+      "edTask\030\020 \001(\0132\024.ClaimedTaskResponse\022+\n\014Re"
+      "cTaskAward\030\021 \001(\0132\025.RecTaskAwardResponse\022"
+      "!\n\007Friends\030\022 \001(\0132\020.FriendsResponse\022!\n\007En"
+      "emies\030\023 \001(\0132\020.EnemiesResponse\022!\n\007Plunder"
+      "\030\024 \001(\0132\020.PlunderResponse\022!\n\007UseItem\030\025 \001("
+      "\0132\020.UseItemResponse\022-\n\rSettleAccount\030\026 \001"
+      "(\0132\026.SettleAccountResponse\022!\n\007Ranking\030\027 "
+      "\001(\0132\020.RankingResponse\022)\n\013ForgetSkill\030\030 \001"
+      "(\0132\024.ForgetSkillResponse\022#\n\010Register\030\031 \001"
+      "(\0132\021.RegisterResponse\022+\n\014SolarUpgrade\030\032 "
+      "\001(\0132\025.SolarUpgradeResponse\022+\n\014SkillUpgra"
+      "de\030\033 \001(\0132\025.SkillUpgradeResponse\022)\n\013TreeU"
+      "pgrade\030\034 \001(\0132\024.TreeUpgradeResponse\022+\n\014El"
+      "finUpgrade\030\035 \001(\0132\025.ElfinUpgradeResponse\022"
+      "%\n\tHeartBeat\030\036 \001(\0132\022.HeartBeatResponse\"W"
+      "\n\013GameMessage\022\031\n\003msg\030\001 \001(\0162\014.GameMsgCode"
+      "\022\025\n\003req\030\002 \001(\0132\010.Request\022\026\n\003res\030\003 \001(\0132\t.R"
+      "esponse*\303\013\n\013GameMsgCode\022\024\n\020GameMsgCodeSt"
+      "art\020\000\022\022\n\rLogin_Request\020\270\027\022\023\n\016Login_Respo"
+      "nse\020\271\027\022\022\n\rElfin_Request\020\302\027\022\023\n\016Elfin_Resp"
+      "onse\020\303\027\022\021\n\014Roll_Request\020\314\027\022\022\n\rRoll_Respo"
+      "nse\020\315\027\022\021\n\014Tree_Request\020\326\027\022\022\n\rTree_Respon"
+      "se\020\327\027\022\025\n\020Resource_Request\020\340\027\022\026\n\021Resource"
+      "_Response\020\341\027\022\022\n\rTasks_Request\020\352\027\022\023\n\016Task"
+      "s_Response\020\353\027\022\022\n\rMails_Request\020\364\027\022\023\n\016Mai"
+      "ls_Response\020\365\027\022\020\n\013Sun_Request\020\376\027\022\021\n\014Sun_"
+      "Response\020\377\027\022\034\n\027TreeEnchantment_Request\020\210"
+      "\030\022\035\n\030TreeEnchantment_Response\020\211\030\022\025\n\020Stor"
+      "eAll_Request\020\222\030\022\026\n\021StoreAll_Response\020\223\030\022"
+      "\025\n\020StoreEqu_Request\020\234\030\022\026\n\021StoreEqu_Respo"
+      "nse\020\235\030\022\027\n\022StoreWater_Request\020\246\030\022\030\n\023Store"
+      "Water_Response\020\247\030\022\032\n\025StoreSpeProps_Reque"
+      "st\020\260\030\022\033\n\026StoreSpeProps_Response\020\261\030\022\026\n\021Wa"
+      "rehouse_Request\020\272\030\022\027\n\022Warehouse_Response"
+      "\020\273\030\022\024\n\017DelMail_Request\020\304\030\022\025\n\020DelMail_Res"
+      "ponse\020\305\030\022\030\n\023ClaimedTask_Request\020\316\030\022\031\n\024Cl"
+      "aimedTask_Response\020\317\030\022\031\n\024RecTaskAward_Re"
+      "quest\020\330\030\022\032\n\025RecTaskAward_Response\020\331\030\022\024\n\017"
+      "Friends_Request\020\342\030\022\025\n\020Friends_Response\020\343"
+      "\030\022\024\n\017Enemies_Request\020\354\030\022\025\n\020Enemies_Respo"
+      "nse\020\355\030\022\024\n\017Plunder_Request\020\366\030\022\025\n\020Plunder_"
+      "Response\020\367\030\022\024\n\017UseItem_Request\020\200\031\022\025\n\020Use"
+      "Item_Response\020\201\031\022\032\n\025SettleAccount_Reques"
+      "t\020\212\031\022\033\n\026SettleAccount_Response\020\213\031\022\024\n\017Ran"
+      "king_Request\020\224\031\022\025\n\020Ranking_Response\020\225\031\022\030"
+      "\n\023ForgetSkill_Request\020\236\031\022\031\n\024ForgetSkill_"
+      "Response\020\237\031\022\025\n\020Register_Request\020\250\031\022\026\n\021Re"
+      "gister_Response\020\251\031\022\031\n\024SolarUpgrade_Reque"
+      "st\020\262\031\022\032\n\025SolarUpgrade_Response\020\263\031\022\031\n\024Ski"
+      "llUpgrade_Request\020\274\031\022\032\n\025SkillUpgrade_Res"
+      "ponse\020\275\031\022\030\n\023TreeUpgrade_Request\020\306\031\022\031\n\024Tr"
+      "eeUpgrade_Response\020\307\031\022\031\n\024ElfinUpgrade_Re"
+      "quest\020\320\031\022\032\n\025ElfinUpgrade_Response\020\321\031\022\026\n\021"
+      "HeartBeat_Request\020\332\031\022\027\n\022HeartBeat_Respon"
+      "se\020\333\031*9\n\007StdMode\022\r\n\tRes_Water\020\000\022\r\n\tRes_E"
+      "quip\020\001\022\020\n\014Res_SpeProps\020\002b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 7525);
+      descriptor, 7992);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "Msg.proto", &protobuf_RegisterTypes);
 }
@@ -2609,7 +2707,6 @@ bool ElfinResponse_Elfintype_IsValid(int value) {
     case 3:
     case 4:
     case 5:
-    case 6:
       return true;
     default:
       return false;
@@ -2622,7 +2719,6 @@ const ElfinResponse_Elfintype ElfinResponse::Mu;
 const ElfinResponse_Elfintype ElfinResponse::Shui;
 const ElfinResponse_Elfintype ElfinResponse::Huo;
 const ElfinResponse_Elfintype ElfinResponse::Tu;
-const ElfinResponse_Elfintype ElfinResponse::Sum;
 const ElfinResponse_Elfintype ElfinResponse::An;
 const ElfinResponse_Elfintype ElfinResponse::Elfintype_MIN;
 const ElfinResponse_Elfintype ElfinResponse::Elfintype_MAX;
@@ -2718,6 +2814,8 @@ bool GameMsgCode_IsValid(int value) {
     case 3271:
     case 3280:
     case 3281:
+    case 3290:
+    case 3291:
       return true;
     default:
       return false;
@@ -2746,7 +2844,7 @@ void LoginRequest::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int LoginRequest::kAccountFieldNumber;
-const int LoginRequest::kPasswdFieldNumber;
+const int LoginRequest::kHeadURLFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 LoginRequest::LoginRequest()
@@ -2766,16 +2864,16 @@ LoginRequest::LoginRequest(const LoginRequest& from)
   if (from.account().size() > 0) {
     account_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.account_);
   }
-  passwd_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.passwd().size() > 0) {
-    passwd_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.passwd_);
+  headurl_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.headurl().size() > 0) {
+    headurl_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.headurl_);
   }
   // @@protoc_insertion_point(copy_constructor:LoginRequest)
 }
 
 void LoginRequest::SharedCtor() {
   account_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  passwd_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  headurl_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   _cached_size_ = 0;
 }
 
@@ -2786,7 +2884,7 @@ LoginRequest::~LoginRequest() {
 
 void LoginRequest::SharedDtor() {
   account_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  passwd_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  headurl_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void LoginRequest::SetCachedSize(int size) const {
@@ -2819,7 +2917,7 @@ void LoginRequest::Clear() {
   (void) cached_has_bits;
 
   account_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  passwd_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  headurl_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   _internal_metadata_.Clear();
 }
 
@@ -2849,16 +2947,16 @@ bool LoginRequest::MergePartialFromCodedStream(
         break;
       }
 
-      // string Passwd = 2;
+      // string HeadURL = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_passwd()));
+                input, this->mutable_headurl()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->passwd().data(), static_cast<int>(this->passwd().length()),
+            this->headurl().data(), static_cast<int>(this->headurl().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "LoginRequest.Passwd"));
+            "LoginRequest.HeadURL"));
         } else {
           goto handle_unusual;
         }
@@ -2901,14 +2999,14 @@ void LoginRequest::SerializeWithCachedSizes(
       1, this->account(), output);
   }
 
-  // string Passwd = 2;
-  if (this->passwd().size() > 0) {
+  // string HeadURL = 2;
+  if (this->headurl().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->passwd().data(), static_cast<int>(this->passwd().length()),
+      this->headurl().data(), static_cast<int>(this->headurl().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "LoginRequest.Passwd");
+      "LoginRequest.HeadURL");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->passwd(), output);
+      2, this->headurl(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -2936,15 +3034,15 @@ void LoginRequest::SerializeWithCachedSizes(
         1, this->account(), target);
   }
 
-  // string Passwd = 2;
-  if (this->passwd().size() > 0) {
+  // string HeadURL = 2;
+  if (this->headurl().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->passwd().data(), static_cast<int>(this->passwd().length()),
+      this->headurl().data(), static_cast<int>(this->headurl().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "LoginRequest.Passwd");
+      "LoginRequest.HeadURL");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->passwd(), target);
+        2, this->headurl(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -2971,11 +3069,11 @@ size_t LoginRequest::ByteSizeLong() const {
         this->account());
   }
 
-  // string Passwd = 2;
-  if (this->passwd().size() > 0) {
+  // string HeadURL = 2;
+  if (this->headurl().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->passwd());
+        this->headurl());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -3011,9 +3109,9 @@ void LoginRequest::MergeFrom(const LoginRequest& from) {
 
     account_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.account_);
   }
-  if (from.passwd().size() > 0) {
+  if (from.headurl().size() > 0) {
 
-    passwd_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.passwd_);
+    headurl_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.headurl_);
   }
 }
 
@@ -3042,7 +3140,7 @@ void LoginRequest::Swap(LoginRequest* other) {
 void LoginRequest::InternalSwap(LoginRequest* other) {
   using std::swap;
   account_.Swap(&other->account_);
-  passwd_.Swap(&other->passwd_);
+  headurl_.Swap(&other->headurl_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -3539,6 +3637,9 @@ const int ElfinResponse::kLevelFieldNumber;
 const int ElfinResponse::kPowerFieldNumber;
 const int ElfinResponse::kMaxPowerFieldNumber;
 const int ElfinResponse::kEtypeFieldNumber;
+const int ElfinResponse::kPlunderStateFieldNumber;
+const int ElfinResponse::kEnemyIDFieldNumber;
+const int ElfinResponse::kPlunderGoldFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 ElfinResponse::ElfinResponse()
@@ -3555,15 +3656,15 @@ ElfinResponse::ElfinResponse(const ElfinResponse& from)
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&id_, &from.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&etype_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(etype_));
+    static_cast<size_t>(reinterpret_cast<char*>(&plundergold_) -
+    reinterpret_cast<char*>(&id_)) + sizeof(plundergold_));
   // @@protoc_insertion_point(copy_constructor:ElfinResponse)
 }
 
 void ElfinResponse::SharedCtor() {
   ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&etype_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(etype_));
+      reinterpret_cast<char*>(&plundergold_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(plundergold_));
   _cached_size_ = 0;
 }
 
@@ -3605,8 +3706,8 @@ void ElfinResponse::Clear() {
   (void) cached_has_bits;
 
   ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&etype_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(etype_));
+      reinterpret_cast<char*>(&plundergold_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(plundergold_));
   _internal_metadata_.Clear();
 }
 
@@ -3691,6 +3792,48 @@ bool ElfinResponse::MergePartialFromCodedStream(
         break;
       }
 
+      // bool PlunderState = 6;
+      case 6: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(48u /* 48 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &plunderstate_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 EnemyID = 7;
+      case 7: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(56u /* 56 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &enemyid_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 PlunderGold = 8;
+      case 8: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(64u /* 64 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &plundergold_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -3743,6 +3886,21 @@ void ElfinResponse::SerializeWithCachedSizes(
       5, this->etype(), output);
   }
 
+  // bool PlunderState = 6;
+  if (this->plunderstate() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(6, this->plunderstate(), output);
+  }
+
+  // uint32 EnemyID = 7;
+  if (this->enemyid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(7, this->enemyid(), output);
+  }
+
+  // uint32 PlunderGold = 8;
+  if (this->plundergold() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(8, this->plundergold(), output);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -3781,6 +3939,21 @@ void ElfinResponse::SerializeWithCachedSizes(
   if (this->etype() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       5, this->etype(), target);
+  }
+
+  // bool PlunderState = 6;
+  if (this->plunderstate() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(6, this->plunderstate(), target);
+  }
+
+  // uint32 EnemyID = 7;
+  if (this->enemyid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(7, this->enemyid(), target);
+  }
+
+  // uint32 PlunderGold = 8;
+  if (this->plundergold() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(8, this->plundergold(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -3834,6 +4007,25 @@ size_t ElfinResponse::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->etype());
   }
 
+  // bool PlunderState = 6;
+  if (this->plunderstate() != 0) {
+    total_size += 1 + 1;
+  }
+
+  // uint32 EnemyID = 7;
+  if (this->enemyid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->enemyid());
+  }
+
+  // uint32 PlunderGold = 8;
+  if (this->plundergold() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->plundergold());
+  }
+
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = cached_size;
@@ -3878,6 +4070,15 @@ void ElfinResponse::MergeFrom(const ElfinResponse& from) {
   if (from.etype() != 0) {
     set_etype(from.etype());
   }
+  if (from.plunderstate() != 0) {
+    set_plunderstate(from.plunderstate());
+  }
+  if (from.enemyid() != 0) {
+    set_enemyid(from.enemyid());
+  }
+  if (from.plundergold() != 0) {
+    set_plundergold(from.plundergold());
+  }
 }
 
 void ElfinResponse::CopyFrom(const ::google::protobuf::Message& from) {
@@ -3909,6 +4110,9 @@ void ElfinResponse::InternalSwap(ElfinResponse* other) {
   swap(power_, other->power_);
   swap(maxpower_, other->maxpower_);
   swap(etype_, other->etype_);
+  swap(plunderstate_, other->plunderstate_);
+  swap(enemyid_, other->enemyid_);
+  swap(plundergold_, other->plundergold_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -4162,7 +4366,8 @@ void RollResponse::InitAsDefaultInstance() {
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int RollResponse::kIdFieldNumber;
 const int RollResponse::kNameFieldNumber;
-const int RollResponse::kGrowthValueFieldNumber;
+const int RollResponse::kGrowRateFieldNumber;
+const int RollResponse::kHeadURLFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 RollResponse::RollResponse()
@@ -4182,17 +4387,22 @@ RollResponse::RollResponse(const RollResponse& from)
   if (from.name().size() > 0) {
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
+  headurl_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.headurl().size() > 0) {
+    headurl_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.headurl_);
+  }
   ::memcpy(&id_, &from.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&growthvalue_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(growthvalue_));
+    static_cast<size_t>(reinterpret_cast<char*>(&growrate_) -
+    reinterpret_cast<char*>(&id_)) + sizeof(growrate_));
   // @@protoc_insertion_point(copy_constructor:RollResponse)
 }
 
 void RollResponse::SharedCtor() {
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  headurl_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&growthvalue_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(growthvalue_));
+      reinterpret_cast<char*>(&growrate_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(growrate_));
   _cached_size_ = 0;
 }
 
@@ -4203,6 +4413,7 @@ RollResponse::~RollResponse() {
 
 void RollResponse::SharedDtor() {
   name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  headurl_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void RollResponse::SetCachedSize(int size) const {
@@ -4235,9 +4446,10 @@ void RollResponse::Clear() {
   (void) cached_has_bits;
 
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  headurl_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&growthvalue_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(growthvalue_));
+      reinterpret_cast<char*>(&growrate_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(growrate_));
   _internal_metadata_.Clear();
 }
 
@@ -4281,14 +4493,30 @@ bool RollResponse::MergePartialFromCodedStream(
         break;
       }
 
-      // uint32 GrowthValue = 3;
+      // uint32 GrowRate = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &growthvalue_)));
+                 input, &growrate_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string HeadURL = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_headurl()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->headurl().data(), static_cast<int>(this->headurl().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "RollResponse.HeadURL"));
         } else {
           goto handle_unusual;
         }
@@ -4336,9 +4564,19 @@ void RollResponse::SerializeWithCachedSizes(
       2, this->name(), output);
   }
 
-  // uint32 GrowthValue = 3;
-  if (this->growthvalue() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->growthvalue(), output);
+  // uint32 GrowRate = 3;
+  if (this->growrate() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->growrate(), output);
+  }
+
+  // string HeadURL = 4;
+  if (this->headurl().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->headurl().data(), static_cast<int>(this->headurl().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "RollResponse.HeadURL");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      4, this->headurl(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -4371,9 +4609,20 @@ void RollResponse::SerializeWithCachedSizes(
         2, this->name(), target);
   }
 
-  // uint32 GrowthValue = 3;
-  if (this->growthvalue() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->growthvalue(), target);
+  // uint32 GrowRate = 3;
+  if (this->growrate() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->growrate(), target);
+  }
+
+  // string HeadURL = 4;
+  if (this->headurl().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->headurl().data(), static_cast<int>(this->headurl().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "RollResponse.HeadURL");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->headurl(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -4400,6 +4649,13 @@ size_t RollResponse::ByteSizeLong() const {
         this->name());
   }
 
+  // string HeadURL = 4;
+  if (this->headurl().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->headurl());
+  }
+
   // uint32 Id = 1;
   if (this->id() != 0) {
     total_size += 1 +
@@ -4407,11 +4663,11 @@ size_t RollResponse::ByteSizeLong() const {
         this->id());
   }
 
-  // uint32 GrowthValue = 3;
-  if (this->growthvalue() != 0) {
+  // uint32 GrowRate = 3;
+  if (this->growrate() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->growthvalue());
+        this->growrate());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -4447,11 +4703,15 @@ void RollResponse::MergeFrom(const RollResponse& from) {
 
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
+  if (from.headurl().size() > 0) {
+
+    headurl_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.headurl_);
+  }
   if (from.id() != 0) {
     set_id(from.id());
   }
-  if (from.growthvalue() != 0) {
-    set_growthvalue(from.growthvalue());
+  if (from.growrate() != 0) {
+    set_growrate(from.growrate());
   }
 }
 
@@ -4480,8 +4740,9 @@ void RollResponse::Swap(RollResponse* other) {
 void RollResponse::InternalSwap(RollResponse* other) {
   using std::swap;
   name_.Swap(&other->name_);
+  headurl_.Swap(&other->headurl_);
   swap(id_, other->id_);
-  swap(growthvalue_, other->growthvalue_);
+  swap(growrate_, other->growrate_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -7987,7 +8248,7 @@ void SunResponse::InternalSwap(SunResponse* other) {
 void TreeEnchantmentRequest::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TreeEnchantmentRequest::kWellFieldNumber;
+const int TreeEnchantmentRequest::kTreeEnchFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 TreeEnchantmentRequest::TreeEnchantmentRequest()
@@ -8003,12 +8264,12 @@ TreeEnchantmentRequest::TreeEnchantmentRequest(const TreeEnchantmentRequest& fro
       _internal_metadata_(NULL),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  well_ = from.well_;
+  treeench_ = from.treeench_;
   // @@protoc_insertion_point(copy_constructor:TreeEnchantmentRequest)
 }
 
 void TreeEnchantmentRequest::SharedCtor() {
-  well_ = false;
+  treeench_ = false;
   _cached_size_ = 0;
 }
 
@@ -8049,7 +8310,7 @@ void TreeEnchantmentRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  well_ = false;
+  treeench_ = false;
   _internal_metadata_.Clear();
 }
 
@@ -8063,14 +8324,14 @@ bool TreeEnchantmentRequest::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // bool Well = 1;
+      // bool TreeEnch = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &well_)));
+                 input, &treeench_)));
         } else {
           goto handle_unusual;
         }
@@ -8103,9 +8364,9 @@ void TreeEnchantmentRequest::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bool Well = 1;
-  if (this->well() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->well(), output);
+  // bool TreeEnch = 1;
+  if (this->treeench() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->treeench(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -8122,9 +8383,9 @@ void TreeEnchantmentRequest::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bool Well = 1;
-  if (this->well() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->well(), target);
+  // bool TreeEnch = 1;
+  if (this->treeench() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->treeench(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -8144,8 +8405,8 @@ size_t TreeEnchantmentRequest::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // bool Well = 1;
-  if (this->well() != 0) {
+  // bool TreeEnch = 1;
+  if (this->treeench() != 0) {
     total_size += 1 + 1;
   }
 
@@ -8178,8 +8439,8 @@ void TreeEnchantmentRequest::MergeFrom(const TreeEnchantmentRequest& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.well() != 0) {
-    set_well(from.well());
+  if (from.treeench() != 0) {
+    set_treeench(from.treeench());
   }
 }
 
@@ -8207,7 +8468,7 @@ void TreeEnchantmentRequest::Swap(TreeEnchantmentRequest* other) {
 }
 void TreeEnchantmentRequest::InternalSwap(TreeEnchantmentRequest* other) {
   using std::swap;
-  swap(well_, other->well_);
+  swap(treeench_, other->treeench_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -8883,13 +9144,13 @@ bool StoreAllResponse::MergePartialFromCodedStream(
         break;
       }
 
-      // uint32 Discount = 4;
+      // float Discount = 4;
       case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(37u /* 37 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
                  input, &discount_)));
         } else {
           goto handle_unusual;
@@ -8985,9 +9246,9 @@ void StoreAllResponse::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->diaprice(), output);
   }
 
-  // uint32 Discount = 4;
+  // float Discount = 4;
   if (this->discount() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->discount(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->discount(), output);
   }
 
   // .StdMode Type = 5;
@@ -9045,9 +9306,9 @@ void StoreAllResponse::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->diaprice(), target);
   }
 
-  // uint32 Discount = 4;
+  // float Discount = 4;
   if (this->discount() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->discount(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->discount(), target);
   }
 
   // .StdMode Type = 5;
@@ -9130,11 +9391,9 @@ size_t StoreAllResponse::ByteSizeLong() const {
         this->diaprice());
   }
 
-  // uint32 Discount = 4;
+  // float Discount = 4;
   if (this->discount() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->discount());
+    total_size += 1 + 4;
   }
 
   // .StdMode Type = 5;
@@ -9623,13 +9882,13 @@ bool StoreEquResponse::MergePartialFromCodedStream(
         break;
       }
 
-      // uint32 Discount = 4;
+      // float Discount = 4;
       case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(37u /* 37 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
                  input, &discount_)));
         } else {
           goto handle_unusual;
@@ -9725,9 +9984,9 @@ void StoreEquResponse::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->diaprice(), output);
   }
 
-  // uint32 Discount = 4;
+  // float Discount = 4;
   if (this->discount() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->discount(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->discount(), output);
   }
 
   // .StdMode Type = 5;
@@ -9785,9 +10044,9 @@ void StoreEquResponse::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->diaprice(), target);
   }
 
-  // uint32 Discount = 4;
+  // float Discount = 4;
   if (this->discount() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->discount(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->discount(), target);
   }
 
   // .StdMode Type = 5;
@@ -9870,11 +10129,9 @@ size_t StoreEquResponse::ByteSizeLong() const {
         this->diaprice());
   }
 
-  // uint32 Discount = 4;
+  // float Discount = 4;
   if (this->discount() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->discount());
+    total_size += 1 + 4;
   }
 
   // .StdMode Type = 5;
@@ -10363,13 +10620,13 @@ bool StoreWaterResponse::MergePartialFromCodedStream(
         break;
       }
 
-      // uint32 Discount = 4;
+      // float Discount = 4;
       case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(37u /* 37 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
                  input, &discount_)));
         } else {
           goto handle_unusual;
@@ -10465,9 +10722,9 @@ void StoreWaterResponse::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->diaprice(), output);
   }
 
-  // uint32 Discount = 4;
+  // float Discount = 4;
   if (this->discount() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->discount(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->discount(), output);
   }
 
   // .StdMode Type = 5;
@@ -10525,9 +10782,9 @@ void StoreWaterResponse::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->diaprice(), target);
   }
 
-  // uint32 Discount = 4;
+  // float Discount = 4;
   if (this->discount() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->discount(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->discount(), target);
   }
 
   // .StdMode Type = 5;
@@ -10610,11 +10867,9 @@ size_t StoreWaterResponse::ByteSizeLong() const {
         this->diaprice());
   }
 
-  // uint32 Discount = 4;
+  // float Discount = 4;
   if (this->discount() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->discount());
+    total_size += 1 + 4;
   }
 
   // .StdMode Type = 5;
@@ -11103,13 +11358,13 @@ bool StoreSpePropsResponse::MergePartialFromCodedStream(
         break;
       }
 
-      // uint32 Discount = 4;
+      // float Discount = 4;
       case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(37u /* 37 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
                  input, &discount_)));
         } else {
           goto handle_unusual;
@@ -11205,9 +11460,9 @@ void StoreSpePropsResponse::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->diaprice(), output);
   }
 
-  // uint32 Discount = 4;
+  // float Discount = 4;
   if (this->discount() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->discount(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->discount(), output);
   }
 
   // .StdMode Type = 5;
@@ -11265,9 +11520,9 @@ void StoreSpePropsResponse::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->diaprice(), target);
   }
 
-  // uint32 Discount = 4;
+  // float Discount = 4;
   if (this->discount() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->discount(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->discount(), target);
   }
 
   // .StdMode Type = 5;
@@ -11350,11 +11605,9 @@ size_t StoreSpePropsResponse::ByteSizeLong() const {
         this->diaprice());
   }
 
-  // uint32 Discount = 4;
+  // float Discount = 4;
   if (this->discount() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->discount());
+    total_size += 1 + 4;
   }
 
   // .StdMode Type = 5;
@@ -13255,6 +13508,8 @@ void RecTaskAwardResponse::InitAsDefaultInstance() {
       ::Prize::internal_default_instance());
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int RecTaskAwardResponse::kSuccessFieldNumber;
+const int RecTaskAwardResponse::kIdFieldNumber;
 const int RecTaskAwardResponse::kPrize1FieldNumber;
 const int RecTaskAwardResponse::kPrize2FieldNumber;
 const int RecTaskAwardResponse::kPrize3FieldNumber;
@@ -13288,13 +13543,16 @@ RecTaskAwardResponse::RecTaskAwardResponse(const RecTaskAwardResponse& from)
   } else {
     prize3_ = NULL;
   }
+  ::memcpy(&success_, &from.success_,
+    static_cast<size_t>(reinterpret_cast<char*>(&id_) -
+    reinterpret_cast<char*>(&success_)) + sizeof(id_));
   // @@protoc_insertion_point(copy_constructor:RecTaskAwardResponse)
 }
 
 void RecTaskAwardResponse::SharedCtor() {
   ::memset(&prize1_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&prize3_) -
-      reinterpret_cast<char*>(&prize1_)) + sizeof(prize3_));
+      reinterpret_cast<char*>(&id_) -
+      reinterpret_cast<char*>(&prize1_)) + sizeof(id_));
   _cached_size_ = 0;
 }
 
@@ -13350,6 +13608,9 @@ void RecTaskAwardResponse::Clear() {
     delete prize3_;
   }
   prize3_ = NULL;
+  ::memset(&success_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&id_) -
+      reinterpret_cast<char*>(&success_)) + sizeof(id_));
   _internal_metadata_.Clear();
 }
 
@@ -13363,10 +13624,38 @@ bool RecTaskAwardResponse::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // .Prize prize1 = 1;
+      // bool Success = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &success_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 Id = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &id_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .Prize prize1 = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_prize1()));
         } else {
@@ -13375,10 +13664,10 @@ bool RecTaskAwardResponse::MergePartialFromCodedStream(
         break;
       }
 
-      // .Prize prize2 = 2;
-      case 2: {
+      // .Prize prize2 = 4;
+      case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_prize2()));
         } else {
@@ -13387,10 +13676,10 @@ bool RecTaskAwardResponse::MergePartialFromCodedStream(
         break;
       }
 
-      // .Prize prize3 = 3;
-      case 3: {
+      // .Prize prize3 = 5;
+      case 5: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_prize3()));
         } else {
@@ -13425,22 +13714,32 @@ void RecTaskAwardResponse::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .Prize prize1 = 1;
+  // bool Success = 1;
+  if (this->success() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->success(), output);
+  }
+
+  // uint32 Id = 2;
+  if (this->id() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->id(), output);
+  }
+
+  // .Prize prize1 = 3;
   if (this->has_prize1()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, *this->prize1_, output);
+      3, *this->prize1_, output);
   }
 
-  // .Prize prize2 = 2;
+  // .Prize prize2 = 4;
   if (this->has_prize2()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, *this->prize2_, output);
+      4, *this->prize2_, output);
   }
 
-  // .Prize prize3 = 3;
+  // .Prize prize3 = 5;
   if (this->has_prize3()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, *this->prize3_, output);
+      5, *this->prize3_, output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -13457,25 +13756,35 @@ void RecTaskAwardResponse::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .Prize prize1 = 1;
+  // bool Success = 1;
+  if (this->success() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->success(), target);
+  }
+
+  // uint32 Id = 2;
+  if (this->id() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->id(), target);
+  }
+
+  // .Prize prize1 = 3;
   if (this->has_prize1()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        1, *this->prize1_, deterministic, target);
+        3, *this->prize1_, deterministic, target);
   }
 
-  // .Prize prize2 = 2;
+  // .Prize prize2 = 4;
   if (this->has_prize2()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        2, *this->prize2_, deterministic, target);
+        4, *this->prize2_, deterministic, target);
   }
 
-  // .Prize prize3 = 3;
+  // .Prize prize3 = 5;
   if (this->has_prize3()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        3, *this->prize3_, deterministic, target);
+        5, *this->prize3_, deterministic, target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -13495,25 +13804,37 @@ size_t RecTaskAwardResponse::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // .Prize prize1 = 1;
+  // .Prize prize1 = 3;
   if (this->has_prize1()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
         *this->prize1_);
   }
 
-  // .Prize prize2 = 2;
+  // .Prize prize2 = 4;
   if (this->has_prize2()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
         *this->prize2_);
   }
 
-  // .Prize prize3 = 3;
+  // .Prize prize3 = 5;
   if (this->has_prize3()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
         *this->prize3_);
+  }
+
+  // bool Success = 1;
+  if (this->success() != 0) {
+    total_size += 1 + 1;
+  }
+
+  // uint32 Id = 2;
+  if (this->id() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->id());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -13554,6 +13875,12 @@ void RecTaskAwardResponse::MergeFrom(const RecTaskAwardResponse& from) {
   if (from.has_prize3()) {
     mutable_prize3()->::Prize::MergeFrom(from.prize3());
   }
+  if (from.success() != 0) {
+    set_success(from.success());
+  }
+  if (from.id() != 0) {
+    set_id(from.id());
+  }
 }
 
 void RecTaskAwardResponse::CopyFrom(const ::google::protobuf::Message& from) {
@@ -13583,6 +13910,8 @@ void RecTaskAwardResponse::InternalSwap(RecTaskAwardResponse* other) {
   swap(prize1_, other->prize1_);
   swap(prize2_, other->prize2_);
   swap(prize3_, other->prize3_);
+  swap(success_, other->success_);
+  swap(id_, other->id_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -13836,7 +14165,9 @@ void FriendsResponse::InitAsDefaultInstance() {
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int FriendsResponse::kIdFieldNumber;
 const int FriendsResponse::kNameFieldNumber;
+const int FriendsResponse::kHeadURLFieldNumber;
 const int FriendsResponse::kLevelFieldNumber;
+const int FriendsResponse::kGrowRateFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 FriendsResponse::FriendsResponse()
@@ -13856,17 +14187,22 @@ FriendsResponse::FriendsResponse(const FriendsResponse& from)
   if (from.name().size() > 0) {
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
+  headurl_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.headurl().size() > 0) {
+    headurl_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.headurl_);
+  }
   ::memcpy(&id_, &from.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&level_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(level_));
+    static_cast<size_t>(reinterpret_cast<char*>(&growrate_) -
+    reinterpret_cast<char*>(&id_)) + sizeof(growrate_));
   // @@protoc_insertion_point(copy_constructor:FriendsResponse)
 }
 
 void FriendsResponse::SharedCtor() {
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  headurl_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&level_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(level_));
+      reinterpret_cast<char*>(&growrate_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(growrate_));
   _cached_size_ = 0;
 }
 
@@ -13877,6 +14213,7 @@ FriendsResponse::~FriendsResponse() {
 
 void FriendsResponse::SharedDtor() {
   name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  headurl_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void FriendsResponse::SetCachedSize(int size) const {
@@ -13909,9 +14246,10 @@ void FriendsResponse::Clear() {
   (void) cached_has_bits;
 
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  headurl_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&level_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(level_));
+      reinterpret_cast<char*>(&growrate_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(growrate_));
   _internal_metadata_.Clear();
 }
 
@@ -13955,14 +14293,44 @@ bool FriendsResponse::MergePartialFromCodedStream(
         break;
       }
 
-      // uint32 Level = 3;
+      // string HeadURL = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_headurl()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->headurl().data(), static_cast<int>(this->headurl().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "FriendsResponse.HeadURL"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 Level = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &level_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 GrowRate = 5;
+      case 5: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(40u /* 40 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &growrate_)));
         } else {
           goto handle_unusual;
         }
@@ -14010,9 +14378,24 @@ void FriendsResponse::SerializeWithCachedSizes(
       2, this->name(), output);
   }
 
-  // uint32 Level = 3;
+  // string HeadURL = 3;
+  if (this->headurl().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->headurl().data(), static_cast<int>(this->headurl().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "FriendsResponse.HeadURL");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->headurl(), output);
+  }
+
+  // uint32 Level = 4;
   if (this->level() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->level(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->level(), output);
+  }
+
+  // uint32 GrowRate = 5;
+  if (this->growrate() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->growrate(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -14045,9 +14428,25 @@ void FriendsResponse::SerializeWithCachedSizes(
         2, this->name(), target);
   }
 
-  // uint32 Level = 3;
+  // string HeadURL = 3;
+  if (this->headurl().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->headurl().data(), static_cast<int>(this->headurl().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "FriendsResponse.HeadURL");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->headurl(), target);
+  }
+
+  // uint32 Level = 4;
   if (this->level() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->level(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->level(), target);
+  }
+
+  // uint32 GrowRate = 5;
+  if (this->growrate() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->growrate(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -14074,6 +14473,13 @@ size_t FriendsResponse::ByteSizeLong() const {
         this->name());
   }
 
+  // string HeadURL = 3;
+  if (this->headurl().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->headurl());
+  }
+
   // uint32 Id = 1;
   if (this->id() != 0) {
     total_size += 1 +
@@ -14081,11 +14487,18 @@ size_t FriendsResponse::ByteSizeLong() const {
         this->id());
   }
 
-  // uint32 Level = 3;
+  // uint32 Level = 4;
   if (this->level() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
         this->level());
+  }
+
+  // uint32 GrowRate = 5;
+  if (this->growrate() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->growrate());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -14121,11 +14534,18 @@ void FriendsResponse::MergeFrom(const FriendsResponse& from) {
 
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
+  if (from.headurl().size() > 0) {
+
+    headurl_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.headurl_);
+  }
   if (from.id() != 0) {
     set_id(from.id());
   }
   if (from.level() != 0) {
     set_level(from.level());
+  }
+  if (from.growrate() != 0) {
+    set_growrate(from.growrate());
   }
 }
 
@@ -14154,8 +14574,10 @@ void FriendsResponse::Swap(FriendsResponse* other) {
 void FriendsResponse::InternalSwap(FriendsResponse* other) {
   using std::swap;
   name_.Swap(&other->name_);
+  headurl_.Swap(&other->headurl_);
   swap(id_, other->id_);
   swap(level_, other->level_);
+  swap(growrate_, other->growrate_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -14409,7 +14831,9 @@ void EnemiesResponse::InitAsDefaultInstance() {
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int EnemiesResponse::kIdFieldNumber;
 const int EnemiesResponse::kNameFieldNumber;
+const int EnemiesResponse::kHeadURLFieldNumber;
 const int EnemiesResponse::kLevelFieldNumber;
+const int EnemiesResponse::kGrowRateFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 EnemiesResponse::EnemiesResponse()
@@ -14429,17 +14853,22 @@ EnemiesResponse::EnemiesResponse(const EnemiesResponse& from)
   if (from.name().size() > 0) {
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
+  headurl_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.headurl().size() > 0) {
+    headurl_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.headurl_);
+  }
   ::memcpy(&id_, &from.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&level_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(level_));
+    static_cast<size_t>(reinterpret_cast<char*>(&growrate_) -
+    reinterpret_cast<char*>(&id_)) + sizeof(growrate_));
   // @@protoc_insertion_point(copy_constructor:EnemiesResponse)
 }
 
 void EnemiesResponse::SharedCtor() {
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  headurl_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&level_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(level_));
+      reinterpret_cast<char*>(&growrate_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(growrate_));
   _cached_size_ = 0;
 }
 
@@ -14450,6 +14879,7 @@ EnemiesResponse::~EnemiesResponse() {
 
 void EnemiesResponse::SharedDtor() {
   name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  headurl_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void EnemiesResponse::SetCachedSize(int size) const {
@@ -14482,9 +14912,10 @@ void EnemiesResponse::Clear() {
   (void) cached_has_bits;
 
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  headurl_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&level_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(level_));
+      reinterpret_cast<char*>(&growrate_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(growrate_));
   _internal_metadata_.Clear();
 }
 
@@ -14528,14 +14959,44 @@ bool EnemiesResponse::MergePartialFromCodedStream(
         break;
       }
 
-      // uint32 Level = 3;
+      // string HeadURL = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_headurl()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->headurl().data(), static_cast<int>(this->headurl().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "EnemiesResponse.HeadURL"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 Level = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &level_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 GrowRate = 5;
+      case 5: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(40u /* 40 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &growrate_)));
         } else {
           goto handle_unusual;
         }
@@ -14583,9 +15044,24 @@ void EnemiesResponse::SerializeWithCachedSizes(
       2, this->name(), output);
   }
 
-  // uint32 Level = 3;
+  // string HeadURL = 3;
+  if (this->headurl().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->headurl().data(), static_cast<int>(this->headurl().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "EnemiesResponse.HeadURL");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->headurl(), output);
+  }
+
+  // uint32 Level = 4;
   if (this->level() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->level(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->level(), output);
+  }
+
+  // uint32 GrowRate = 5;
+  if (this->growrate() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->growrate(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -14618,9 +15094,25 @@ void EnemiesResponse::SerializeWithCachedSizes(
         2, this->name(), target);
   }
 
-  // uint32 Level = 3;
+  // string HeadURL = 3;
+  if (this->headurl().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->headurl().data(), static_cast<int>(this->headurl().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "EnemiesResponse.HeadURL");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->headurl(), target);
+  }
+
+  // uint32 Level = 4;
   if (this->level() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->level(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->level(), target);
+  }
+
+  // uint32 GrowRate = 5;
+  if (this->growrate() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->growrate(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -14647,6 +15139,13 @@ size_t EnemiesResponse::ByteSizeLong() const {
         this->name());
   }
 
+  // string HeadURL = 3;
+  if (this->headurl().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->headurl());
+  }
+
   // uint32 Id = 1;
   if (this->id() != 0) {
     total_size += 1 +
@@ -14654,11 +15153,18 @@ size_t EnemiesResponse::ByteSizeLong() const {
         this->id());
   }
 
-  // uint32 Level = 3;
+  // uint32 Level = 4;
   if (this->level() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
         this->level());
+  }
+
+  // uint32 GrowRate = 5;
+  if (this->growrate() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->growrate());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -14694,11 +15200,18 @@ void EnemiesResponse::MergeFrom(const EnemiesResponse& from) {
 
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
+  if (from.headurl().size() > 0) {
+
+    headurl_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.headurl_);
+  }
   if (from.id() != 0) {
     set_id(from.id());
   }
   if (from.level() != 0) {
     set_level(from.level());
+  }
+  if (from.growrate() != 0) {
+    set_growrate(from.growrate());
   }
 }
 
@@ -14727,8 +15240,10 @@ void EnemiesResponse::Swap(EnemiesResponse* other) {
 void EnemiesResponse::InternalSwap(EnemiesResponse* other) {
   using std::swap;
   name_.Swap(&other->name_);
+  headurl_.Swap(&other->headurl_);
   swap(id_, other->id_);
   swap(level_, other->level_);
+  swap(growrate_, other->growrate_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -14744,7 +15259,7 @@ void EnemiesResponse::InternalSwap(EnemiesResponse* other) {
 void PlunderRequest::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int PlunderRequest::kPlunderFieldNumber;
+const int PlunderRequest::kElfinIDFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 PlunderRequest::PlunderRequest()
@@ -14760,12 +15275,12 @@ PlunderRequest::PlunderRequest(const PlunderRequest& from)
       _internal_metadata_(NULL),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  plunder_ = from.plunder_;
+  elfinid_ = from.elfinid_;
   // @@protoc_insertion_point(copy_constructor:PlunderRequest)
 }
 
 void PlunderRequest::SharedCtor() {
-  plunder_ = false;
+  elfinid_ = 0u;
   _cached_size_ = 0;
 }
 
@@ -14806,7 +15321,7 @@ void PlunderRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  plunder_ = false;
+  elfinid_ = 0u;
   _internal_metadata_.Clear();
 }
 
@@ -14820,14 +15335,14 @@ bool PlunderRequest::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // bool Plunder = 1;
+      // uint32 elfinID = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &plunder_)));
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &elfinid_)));
         } else {
           goto handle_unusual;
         }
@@ -14860,9 +15375,9 @@ void PlunderRequest::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bool Plunder = 1;
-  if (this->plunder() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->plunder(), output);
+  // uint32 elfinID = 1;
+  if (this->elfinid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->elfinid(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -14879,9 +15394,9 @@ void PlunderRequest::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bool Plunder = 1;
-  if (this->plunder() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->plunder(), target);
+  // uint32 elfinID = 1;
+  if (this->elfinid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->elfinid(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -14901,9 +15416,11 @@ size_t PlunderRequest::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // bool Plunder = 1;
-  if (this->plunder() != 0) {
-    total_size += 1 + 1;
+  // uint32 elfinID = 1;
+  if (this->elfinid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->elfinid());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -14935,8 +15452,8 @@ void PlunderRequest::MergeFrom(const PlunderRequest& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.plunder() != 0) {
-    set_plunder(from.plunder());
+  if (from.elfinid() != 0) {
+    set_elfinid(from.elfinid());
   }
 }
 
@@ -14964,7 +15481,7 @@ void PlunderRequest::Swap(PlunderRequest* other) {
 }
 void PlunderRequest::InternalSwap(PlunderRequest* other) {
   using std::swap;
-  swap(plunder_, other->plunder_);
+  swap(elfinid_, other->elfinid_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -14982,6 +15499,7 @@ void PlunderResponse::InitAsDefaultInstance() {
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int PlunderResponse::kSuccessFieldNumber;
 const int PlunderResponse::kIdFieldNumber;
+const int PlunderResponse::kElfinIDFieldNumber;
 const int PlunderResponse::kGoldNumFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -15092,10 +15610,24 @@ bool PlunderResponse::MergePartialFromCodedStream(
         break;
       }
 
-      // uint32 GoldNum = 3;
+      // uint32 ElfinID = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &elfinid_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 GoldNum = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
@@ -15142,9 +15674,14 @@ void PlunderResponse::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->id(), output);
   }
 
-  // uint32 GoldNum = 3;
+  // uint32 ElfinID = 3;
+  if (this->elfinid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->elfinid(), output);
+  }
+
+  // uint32 GoldNum = 4;
   if (this->goldnum() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->goldnum(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->goldnum(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -15171,9 +15708,14 @@ void PlunderResponse::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->id(), target);
   }
 
-  // uint32 GoldNum = 3;
+  // uint32 ElfinID = 3;
+  if (this->elfinid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->elfinid(), target);
+  }
+
+  // uint32 GoldNum = 4;
   if (this->goldnum() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->goldnum(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->goldnum(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -15205,7 +15747,14 @@ size_t PlunderResponse::ByteSizeLong() const {
         this->id());
   }
 
-  // uint32 GoldNum = 3;
+  // uint32 ElfinID = 3;
+  if (this->elfinid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->elfinid());
+  }
+
+  // uint32 GoldNum = 4;
   if (this->goldnum() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
@@ -15247,6 +15796,9 @@ void PlunderResponse::MergeFrom(const PlunderResponse& from) {
   if (from.id() != 0) {
     set_id(from.id());
   }
+  if (from.elfinid() != 0) {
+    set_elfinid(from.elfinid());
+  }
   if (from.goldnum() != 0) {
     set_goldnum(from.goldnum());
   }
@@ -15278,6 +15830,7 @@ void PlunderResponse::InternalSwap(PlunderResponse* other) {
   using std::swap;
   swap(success_, other->success_);
   swap(id_, other->id_);
+  swap(elfinid_, other->elfinid_);
   swap(goldnum_, other->goldnum_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
@@ -15294,7 +15847,8 @@ void PlunderResponse::InternalSwap(PlunderResponse* other) {
 void UseItemRequest::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int UseItemRequest::kIdFieldNumber;
+const int UseItemRequest::kItemIdFieldNumber;
+const int UseItemRequest::kElfinIDFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 UseItemRequest::UseItemRequest()
@@ -15310,12 +15864,16 @@ UseItemRequest::UseItemRequest(const UseItemRequest& from)
       _internal_metadata_(NULL),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  id_ = from.id_;
+  ::memcpy(&itemid_, &from.itemid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&elfinid_) -
+    reinterpret_cast<char*>(&itemid_)) + sizeof(elfinid_));
   // @@protoc_insertion_point(copy_constructor:UseItemRequest)
 }
 
 void UseItemRequest::SharedCtor() {
-  id_ = 0u;
+  ::memset(&itemid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&elfinid_) -
+      reinterpret_cast<char*>(&itemid_)) + sizeof(elfinid_));
   _cached_size_ = 0;
 }
 
@@ -15356,7 +15914,9 @@ void UseItemRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  id_ = 0u;
+  ::memset(&itemid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&elfinid_) -
+      reinterpret_cast<char*>(&itemid_)) + sizeof(elfinid_));
   _internal_metadata_.Clear();
 }
 
@@ -15370,14 +15930,28 @@ bool UseItemRequest::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // uint32 Id = 1;
+      // uint32 ItemId = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &id_)));
+                 input, &itemid_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 ElfinID = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &elfinid_)));
         } else {
           goto handle_unusual;
         }
@@ -15410,9 +15984,14 @@ void UseItemRequest::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 Id = 1;
-  if (this->id() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->id(), output);
+  // uint32 ItemId = 1;
+  if (this->itemid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->itemid(), output);
+  }
+
+  // uint32 ElfinID = 2;
+  if (this->elfinid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->elfinid(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -15429,9 +16008,14 @@ void UseItemRequest::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 Id = 1;
-  if (this->id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->id(), target);
+  // uint32 ItemId = 1;
+  if (this->itemid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->itemid(), target);
+  }
+
+  // uint32 ElfinID = 2;
+  if (this->elfinid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->elfinid(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -15451,11 +16035,18 @@ size_t UseItemRequest::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // uint32 Id = 1;
-  if (this->id() != 0) {
+  // uint32 ItemId = 1;
+  if (this->itemid() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->id());
+        this->itemid());
+  }
+
+  // uint32 ElfinID = 2;
+  if (this->elfinid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->elfinid());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -15487,8 +16078,11 @@ void UseItemRequest::MergeFrom(const UseItemRequest& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.id() != 0) {
-    set_id(from.id());
+  if (from.itemid() != 0) {
+    set_itemid(from.itemid());
+  }
+  if (from.elfinid() != 0) {
+    set_elfinid(from.elfinid());
   }
 }
 
@@ -15516,7 +16110,8 @@ void UseItemRequest::Swap(UseItemRequest* other) {
 }
 void UseItemRequest::InternalSwap(UseItemRequest* other) {
   using std::swap;
-  swap(id_, other->id_);
+  swap(itemid_, other->itemid_);
+  swap(elfinid_, other->elfinid_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -15534,6 +16129,7 @@ void UseItemResponse::InitAsDefaultInstance() {
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int UseItemResponse::kSuccessFieldNumber;
 const int UseItemResponse::kIdFieldNumber;
+const int UseItemResponse::kElfinIDFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 UseItemResponse::UseItemResponse()
@@ -15550,15 +16146,15 @@ UseItemResponse::UseItemResponse(const UseItemResponse& from)
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&success_, &from.success_,
-    static_cast<size_t>(reinterpret_cast<char*>(&id_) -
-    reinterpret_cast<char*>(&success_)) + sizeof(id_));
+    static_cast<size_t>(reinterpret_cast<char*>(&elfinid_) -
+    reinterpret_cast<char*>(&success_)) + sizeof(elfinid_));
   // @@protoc_insertion_point(copy_constructor:UseItemResponse)
 }
 
 void UseItemResponse::SharedCtor() {
   ::memset(&success_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&id_) -
-      reinterpret_cast<char*>(&success_)) + sizeof(id_));
+      reinterpret_cast<char*>(&elfinid_) -
+      reinterpret_cast<char*>(&success_)) + sizeof(elfinid_));
   _cached_size_ = 0;
 }
 
@@ -15600,8 +16196,8 @@ void UseItemResponse::Clear() {
   (void) cached_has_bits;
 
   ::memset(&success_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&id_) -
-      reinterpret_cast<char*>(&success_)) + sizeof(id_));
+      reinterpret_cast<char*>(&elfinid_) -
+      reinterpret_cast<char*>(&success_)) + sizeof(elfinid_));
   _internal_metadata_.Clear();
 }
 
@@ -15637,6 +16233,20 @@ bool UseItemResponse::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &id_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 ElfinID = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &elfinid_)));
         } else {
           goto handle_unusual;
         }
@@ -15679,6 +16289,11 @@ void UseItemResponse::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->id(), output);
   }
 
+  // uint32 ElfinID = 3;
+  if (this->elfinid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->elfinid(), output);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -15701,6 +16316,11 @@ void UseItemResponse::SerializeWithCachedSizes(
   // uint32 Id = 2;
   if (this->id() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->id(), target);
+  }
+
+  // uint32 ElfinID = 3;
+  if (this->elfinid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->elfinid(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -15730,6 +16350,13 @@ size_t UseItemResponse::ByteSizeLong() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
         this->id());
+  }
+
+  // uint32 ElfinID = 3;
+  if (this->elfinid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->elfinid());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -15767,6 +16394,9 @@ void UseItemResponse::MergeFrom(const UseItemResponse& from) {
   if (from.id() != 0) {
     set_id(from.id());
   }
+  if (from.elfinid() != 0) {
+    set_elfinid(from.elfinid());
+  }
 }
 
 void UseItemResponse::CopyFrom(const ::google::protobuf::Message& from) {
@@ -15795,6 +16425,7 @@ void UseItemResponse::InternalSwap(UseItemResponse* other) {
   using std::swap;
   swap(success_, other->success_);
   swap(id_, other->id_);
+  swap(elfinid_, other->elfinid_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -16687,7 +17318,8 @@ void SettleAccountResponse::InitAsDefaultInstance() {
 const int SettleAccountResponse::kSuccessFieldNumber;
 const int SettleAccountResponse::kIdFieldNumber;
 const int SettleAccountResponse::kNumberFieldNumber;
-const int SettleAccountResponse::kPriceFieldNumber;
+const int SettleAccountResponse::kGoldPriceFieldNumber;
+const int SettleAccountResponse::kDiaPriceFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 SettleAccountResponse::SettleAccountResponse()
@@ -16704,15 +17336,15 @@ SettleAccountResponse::SettleAccountResponse(const SettleAccountResponse& from)
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&success_, &from.success_,
-    static_cast<size_t>(reinterpret_cast<char*>(&price_) -
-    reinterpret_cast<char*>(&success_)) + sizeof(price_));
+    static_cast<size_t>(reinterpret_cast<char*>(&diaprice_) -
+    reinterpret_cast<char*>(&success_)) + sizeof(diaprice_));
   // @@protoc_insertion_point(copy_constructor:SettleAccountResponse)
 }
 
 void SettleAccountResponse::SharedCtor() {
   ::memset(&success_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&price_) -
-      reinterpret_cast<char*>(&success_)) + sizeof(price_));
+      reinterpret_cast<char*>(&diaprice_) -
+      reinterpret_cast<char*>(&success_)) + sizeof(diaprice_));
   _cached_size_ = 0;
 }
 
@@ -16754,8 +17386,8 @@ void SettleAccountResponse::Clear() {
   (void) cached_has_bits;
 
   ::memset(&success_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&price_) -
-      reinterpret_cast<char*>(&success_)) + sizeof(price_));
+      reinterpret_cast<char*>(&diaprice_) -
+      reinterpret_cast<char*>(&success_)) + sizeof(diaprice_));
   _internal_metadata_.Clear();
 }
 
@@ -16811,14 +17443,28 @@ bool SettleAccountResponse::MergePartialFromCodedStream(
         break;
       }
 
-      // uint32 price = 4;
+      // uint32 GoldPrice = 4;
       case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &price_)));
+                 input, &goldprice_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 DiaPrice = 5;
+      case 5: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(40u /* 40 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &diaprice_)));
         } else {
           goto handle_unusual;
         }
@@ -16866,9 +17512,14 @@ void SettleAccountResponse::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->number(), output);
   }
 
-  // uint32 price = 4;
-  if (this->price() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->price(), output);
+  // uint32 GoldPrice = 4;
+  if (this->goldprice() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->goldprice(), output);
+  }
+
+  // uint32 DiaPrice = 5;
+  if (this->diaprice() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->diaprice(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -16900,9 +17551,14 @@ void SettleAccountResponse::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->number(), target);
   }
 
-  // uint32 price = 4;
-  if (this->price() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->price(), target);
+  // uint32 GoldPrice = 4;
+  if (this->goldprice() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->goldprice(), target);
+  }
+
+  // uint32 DiaPrice = 5;
+  if (this->diaprice() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->diaprice(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -16941,11 +17597,18 @@ size_t SettleAccountResponse::ByteSizeLong() const {
         this->number());
   }
 
-  // uint32 price = 4;
-  if (this->price() != 0) {
+  // uint32 GoldPrice = 4;
+  if (this->goldprice() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->price());
+        this->goldprice());
+  }
+
+  // uint32 DiaPrice = 5;
+  if (this->diaprice() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->diaprice());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -16986,8 +17649,11 @@ void SettleAccountResponse::MergeFrom(const SettleAccountResponse& from) {
   if (from.number() != 0) {
     set_number(from.number());
   }
-  if (from.price() != 0) {
-    set_price(from.price());
+  if (from.goldprice() != 0) {
+    set_goldprice(from.goldprice());
+  }
+  if (from.diaprice() != 0) {
+    set_diaprice(from.diaprice());
   }
 }
 
@@ -17018,7 +17684,8 @@ void SettleAccountResponse::InternalSwap(SettleAccountResponse* other) {
   swap(success_, other->success_);
   swap(id_, other->id_);
   swap(number_, other->number_);
-  swap(price_, other->price_);
+  swap(goldprice_, other->goldprice_);
+  swap(diaprice_, other->diaprice_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -17273,7 +17940,9 @@ void RankingResponse::InitAsDefaultInstance() {
 const int RankingResponse::kIdFieldNumber;
 const int RankingResponse::kNameFieldNumber;
 const int RankingResponse::kLevelFieldNumber;
+const int RankingResponse::kGrowRateFieldNumber;
 const int RankingResponse::kRankingFieldNumber;
+const int RankingResponse::kHeadURLFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 RankingResponse::RankingResponse()
@@ -17293,6 +17962,10 @@ RankingResponse::RankingResponse(const RankingResponse& from)
   if (from.name().size() > 0) {
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
+  headurl_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.headurl().size() > 0) {
+    headurl_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.headurl_);
+  }
   ::memcpy(&id_, &from.id_,
     static_cast<size_t>(reinterpret_cast<char*>(&ranking_) -
     reinterpret_cast<char*>(&id_)) + sizeof(ranking_));
@@ -17301,6 +17974,7 @@ RankingResponse::RankingResponse(const RankingResponse& from)
 
 void RankingResponse::SharedCtor() {
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  headurl_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&id_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&ranking_) -
       reinterpret_cast<char*>(&id_)) + sizeof(ranking_));
@@ -17314,6 +17988,7 @@ RankingResponse::~RankingResponse() {
 
 void RankingResponse::SharedDtor() {
   name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  headurl_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void RankingResponse::SetCachedSize(int size) const {
@@ -17346,6 +18021,7 @@ void RankingResponse::Clear() {
   (void) cached_has_bits;
 
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  headurl_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&id_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&ranking_) -
       reinterpret_cast<char*>(&id_)) + sizeof(ranking_));
@@ -17406,14 +18082,44 @@ bool RankingResponse::MergePartialFromCodedStream(
         break;
       }
 
-      // uint32 Ranking = 4;
+      // uint32 GrowRate = 4;
       case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &growrate_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 Ranking = 5;
+      case 5: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(40u /* 40 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &ranking_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string HeadURL = 6;
+      case 6: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_headurl()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->headurl().data(), static_cast<int>(this->headurl().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "RankingResponse.HeadURL"));
         } else {
           goto handle_unusual;
         }
@@ -17466,9 +18172,24 @@ void RankingResponse::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->level(), output);
   }
 
-  // uint32 Ranking = 4;
+  // uint32 GrowRate = 4;
+  if (this->growrate() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->growrate(), output);
+  }
+
+  // uint32 Ranking = 5;
   if (this->ranking() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->ranking(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->ranking(), output);
+  }
+
+  // string HeadURL = 6;
+  if (this->headurl().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->headurl().data(), static_cast<int>(this->headurl().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "RankingResponse.HeadURL");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      6, this->headurl(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -17506,9 +18227,25 @@ void RankingResponse::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->level(), target);
   }
 
-  // uint32 Ranking = 4;
+  // uint32 GrowRate = 4;
+  if (this->growrate() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->growrate(), target);
+  }
+
+  // uint32 Ranking = 5;
   if (this->ranking() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->ranking(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->ranking(), target);
+  }
+
+  // string HeadURL = 6;
+  if (this->headurl().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->headurl().data(), static_cast<int>(this->headurl().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "RankingResponse.HeadURL");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        6, this->headurl(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -17535,6 +18272,13 @@ size_t RankingResponse::ByteSizeLong() const {
         this->name());
   }
 
+  // string HeadURL = 6;
+  if (this->headurl().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->headurl());
+  }
+
   // uint32 Id = 1;
   if (this->id() != 0) {
     total_size += 1 +
@@ -17549,7 +18293,14 @@ size_t RankingResponse::ByteSizeLong() const {
         this->level());
   }
 
-  // uint32 Ranking = 4;
+  // uint32 GrowRate = 4;
+  if (this->growrate() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->growrate());
+  }
+
+  // uint32 Ranking = 5;
   if (this->ranking() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
@@ -17589,11 +18340,18 @@ void RankingResponse::MergeFrom(const RankingResponse& from) {
 
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
+  if (from.headurl().size() > 0) {
+
+    headurl_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.headurl_);
+  }
   if (from.id() != 0) {
     set_id(from.id());
   }
   if (from.level() != 0) {
     set_level(from.level());
+  }
+  if (from.growrate() != 0) {
+    set_growrate(from.growrate());
   }
   if (from.ranking() != 0) {
     set_ranking(from.ranking());
@@ -17625,8 +18383,10 @@ void RankingResponse::Swap(RankingResponse* other) {
 void RankingResponse::InternalSwap(RankingResponse* other) {
   using std::swap;
   name_.Swap(&other->name_);
+  headurl_.Swap(&other->headurl_);
   swap(id_, other->id_);
   swap(level_, other->level_);
+  swap(growrate_, other->growrate_);
   swap(ranking_, other->ranking_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
@@ -20300,6 +21060,436 @@ void ElfinUpgradeResponse::InternalSwap(ElfinUpgradeResponse* other) {
 
 // ===================================================================
 
+void HeartBeatRequest::InitAsDefaultInstance() {
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int HeartBeatRequest::kConnectedFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+HeartBeatRequest::HeartBeatRequest()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_Msg_2eproto::InitDefaultsHeartBeatRequest();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:HeartBeatRequest)
+}
+HeartBeatRequest::HeartBeatRequest(const HeartBeatRequest& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  connected_ = from.connected_;
+  // @@protoc_insertion_point(copy_constructor:HeartBeatRequest)
+}
+
+void HeartBeatRequest::SharedCtor() {
+  connected_ = false;
+  _cached_size_ = 0;
+}
+
+HeartBeatRequest::~HeartBeatRequest() {
+  // @@protoc_insertion_point(destructor:HeartBeatRequest)
+  SharedDtor();
+}
+
+void HeartBeatRequest::SharedDtor() {
+}
+
+void HeartBeatRequest::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* HeartBeatRequest::descriptor() {
+  ::protobuf_Msg_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_Msg_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const HeartBeatRequest& HeartBeatRequest::default_instance() {
+  ::protobuf_Msg_2eproto::InitDefaultsHeartBeatRequest();
+  return *internal_default_instance();
+}
+
+HeartBeatRequest* HeartBeatRequest::New(::google::protobuf::Arena* arena) const {
+  HeartBeatRequest* n = new HeartBeatRequest;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void HeartBeatRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:HeartBeatRequest)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  connected_ = false;
+  _internal_metadata_.Clear();
+}
+
+bool HeartBeatRequest::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:HeartBeatRequest)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // bool Connected = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &connected_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:HeartBeatRequest)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:HeartBeatRequest)
+  return false;
+#undef DO_
+}
+
+void HeartBeatRequest::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:HeartBeatRequest)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bool Connected = 1;
+  if (this->connected() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->connected(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:HeartBeatRequest)
+}
+
+::google::protobuf::uint8* HeartBeatRequest::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:HeartBeatRequest)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bool Connected = 1;
+  if (this->connected() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->connected(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:HeartBeatRequest)
+  return target;
+}
+
+size_t HeartBeatRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:HeartBeatRequest)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // bool Connected = 1;
+  if (this->connected() != 0) {
+    total_size += 1 + 1;
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void HeartBeatRequest::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:HeartBeatRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const HeartBeatRequest* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const HeartBeatRequest>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:HeartBeatRequest)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:HeartBeatRequest)
+    MergeFrom(*source);
+  }
+}
+
+void HeartBeatRequest::MergeFrom(const HeartBeatRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:HeartBeatRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.connected() != 0) {
+    set_connected(from.connected());
+  }
+}
+
+void HeartBeatRequest::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:HeartBeatRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void HeartBeatRequest::CopyFrom(const HeartBeatRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:HeartBeatRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool HeartBeatRequest::IsInitialized() const {
+  return true;
+}
+
+void HeartBeatRequest::Swap(HeartBeatRequest* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void HeartBeatRequest::InternalSwap(HeartBeatRequest* other) {
+  using std::swap;
+  swap(connected_, other->connected_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata HeartBeatRequest::GetMetadata() const {
+  protobuf_Msg_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_Msg_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void HeartBeatResponse::InitAsDefaultInstance() {
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+HeartBeatResponse::HeartBeatResponse()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_Msg_2eproto::InitDefaultsHeartBeatResponse();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:HeartBeatResponse)
+}
+HeartBeatResponse::HeartBeatResponse(const HeartBeatResponse& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:HeartBeatResponse)
+}
+
+void HeartBeatResponse::SharedCtor() {
+  _cached_size_ = 0;
+}
+
+HeartBeatResponse::~HeartBeatResponse() {
+  // @@protoc_insertion_point(destructor:HeartBeatResponse)
+  SharedDtor();
+}
+
+void HeartBeatResponse::SharedDtor() {
+}
+
+void HeartBeatResponse::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* HeartBeatResponse::descriptor() {
+  ::protobuf_Msg_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_Msg_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const HeartBeatResponse& HeartBeatResponse::default_instance() {
+  ::protobuf_Msg_2eproto::InitDefaultsHeartBeatResponse();
+  return *internal_default_instance();
+}
+
+HeartBeatResponse* HeartBeatResponse::New(::google::protobuf::Arena* arena) const {
+  HeartBeatResponse* n = new HeartBeatResponse;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void HeartBeatResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:HeartBeatResponse)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _internal_metadata_.Clear();
+}
+
+bool HeartBeatResponse::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:HeartBeatResponse)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+  handle_unusual:
+    if (tag == 0) {
+      goto success;
+    }
+    DO_(::google::protobuf::internal::WireFormat::SkipField(
+          input, tag, _internal_metadata_.mutable_unknown_fields()));
+  }
+success:
+  // @@protoc_insertion_point(parse_success:HeartBeatResponse)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:HeartBeatResponse)
+  return false;
+#undef DO_
+}
+
+void HeartBeatResponse::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:HeartBeatResponse)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:HeartBeatResponse)
+}
+
+::google::protobuf::uint8* HeartBeatResponse::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:HeartBeatResponse)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:HeartBeatResponse)
+  return target;
+}
+
+size_t HeartBeatResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:HeartBeatResponse)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void HeartBeatResponse::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:HeartBeatResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const HeartBeatResponse* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const HeartBeatResponse>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:HeartBeatResponse)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:HeartBeatResponse)
+    MergeFrom(*source);
+  }
+}
+
+void HeartBeatResponse::MergeFrom(const HeartBeatResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:HeartBeatResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+}
+
+void HeartBeatResponse::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:HeartBeatResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void HeartBeatResponse::CopyFrom(const HeartBeatResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:HeartBeatResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool HeartBeatResponse::IsInitialized() const {
+  return true;
+}
+
+void HeartBeatResponse::Swap(HeartBeatResponse* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void HeartBeatResponse::InternalSwap(HeartBeatResponse* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata HeartBeatResponse::GetMetadata() const {
+  protobuf_Msg_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_Msg_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
 void Request::InitAsDefaultInstance() {
   ::_Request_default_instance_._instance.get_mutable()->login_ = const_cast< ::LoginRequest*>(
       ::LoginRequest::internal_default_instance());
@@ -20359,6 +21549,8 @@ void Request::InitAsDefaultInstance() {
       ::TreeUpgradeRequest::internal_default_instance());
   ::_Request_default_instance_._instance.get_mutable()->elfinupgrade_ = const_cast< ::ElfinUpgradeRequest*>(
       ::ElfinUpgradeRequest::internal_default_instance());
+  ::_Request_default_instance_._instance.get_mutable()->heartbeat_ = const_cast< ::HeartBeatRequest*>(
+      ::HeartBeatRequest::internal_default_instance());
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int Request::kLoginFieldNumber;
@@ -20390,6 +21582,7 @@ const int Request::kSolarUpgradeFieldNumber;
 const int Request::kSkillUpgradeFieldNumber;
 const int Request::kTreeUpgradeFieldNumber;
 const int Request::kElfinUpgradeFieldNumber;
+const int Request::kHeartBeatFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 Request::Request()
@@ -20550,13 +21743,18 @@ Request::Request(const Request& from)
   } else {
     elfinupgrade_ = NULL;
   }
+  if (from.has_heartbeat()) {
+    heartbeat_ = new ::HeartBeatRequest(*from.heartbeat_);
+  } else {
+    heartbeat_ = NULL;
+  }
   // @@protoc_insertion_point(copy_constructor:Request)
 }
 
 void Request::SharedCtor() {
   ::memset(&login_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&elfinupgrade_) -
-      reinterpret_cast<char*>(&login_)) + sizeof(elfinupgrade_));
+      reinterpret_cast<char*>(&heartbeat_) -
+      reinterpret_cast<char*>(&login_)) + sizeof(heartbeat_));
   _cached_size_ = 0;
 }
 
@@ -20595,6 +21793,7 @@ void Request::SharedDtor() {
   if (this != internal_default_instance()) delete skillupgrade_;
   if (this != internal_default_instance()) delete treeupgrade_;
   if (this != internal_default_instance()) delete elfinupgrade_;
+  if (this != internal_default_instance()) delete heartbeat_;
 }
 
 void Request::SetCachedSize(int size) const {
@@ -20742,6 +21941,10 @@ void Request::Clear() {
     delete elfinupgrade_;
   }
   elfinupgrade_ = NULL;
+  if (GetArenaNoVirtual() == NULL && heartbeat_ != NULL) {
+    delete heartbeat_;
+  }
+  heartbeat_ = NULL;
   _internal_metadata_.Clear();
 }
 
@@ -21103,6 +22306,18 @@ bool Request::MergePartialFromCodedStream(
         break;
       }
 
+      // .HeartBeatRequest HeartBeat = 30;
+      case 30: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(242u /* 242 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_heartbeat()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -21301,6 +22516,12 @@ void Request::SerializeWithCachedSizes(
   if (this->has_elfinupgrade()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       29, *this->elfinupgrade_, output);
+  }
+
+  // .HeartBeatRequest HeartBeat = 30;
+  if (this->has_heartbeat()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      30, *this->heartbeat_, output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -21518,6 +22739,13 @@ void Request::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
         29, *this->elfinupgrade_, deterministic, target);
+  }
+
+  // .HeartBeatRequest HeartBeat = 30;
+  if (this->has_heartbeat()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        30, *this->heartbeat_, deterministic, target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -21740,6 +22968,13 @@ size_t Request::ByteSizeLong() const {
         *this->elfinupgrade_);
   }
 
+  // .HeartBeatRequest HeartBeat = 30;
+  if (this->has_heartbeat()) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *this->heartbeat_);
+  }
+
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = cached_size;
@@ -21856,6 +23091,9 @@ void Request::MergeFrom(const Request& from) {
   if (from.has_elfinupgrade()) {
     mutable_elfinupgrade()->::ElfinUpgradeRequest::MergeFrom(from.elfinupgrade());
   }
+  if (from.has_heartbeat()) {
+    mutable_heartbeat()->::HeartBeatRequest::MergeFrom(from.heartbeat());
+  }
 }
 
 void Request::CopyFrom(const ::google::protobuf::Message& from) {
@@ -21911,6 +23149,7 @@ void Request::InternalSwap(Request* other) {
   swap(skillupgrade_, other->skillupgrade_);
   swap(treeupgrade_, other->treeupgrade_);
   swap(elfinupgrade_, other->elfinupgrade_);
+  swap(heartbeat_, other->heartbeat_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -21982,6 +23221,8 @@ void Response::InitAsDefaultInstance() {
       ::TreeUpgradeResponse::internal_default_instance());
   ::_Response_default_instance_._instance.get_mutable()->elfinupgrade_ = const_cast< ::ElfinUpgradeResponse*>(
       ::ElfinUpgradeResponse::internal_default_instance());
+  ::_Response_default_instance_._instance.get_mutable()->heartbeat_ = const_cast< ::HeartBeatResponse*>(
+      ::HeartBeatResponse::internal_default_instance());
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int Response::kLoginFieldNumber;
@@ -22013,6 +23254,7 @@ const int Response::kSolarUpgradeFieldNumber;
 const int Response::kSkillUpgradeFieldNumber;
 const int Response::kTreeUpgradeFieldNumber;
 const int Response::kElfinUpgradeFieldNumber;
+const int Response::kHeartBeatFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 Response::Response()
@@ -22173,13 +23415,18 @@ Response::Response(const Response& from)
   } else {
     elfinupgrade_ = NULL;
   }
+  if (from.has_heartbeat()) {
+    heartbeat_ = new ::HeartBeatResponse(*from.heartbeat_);
+  } else {
+    heartbeat_ = NULL;
+  }
   // @@protoc_insertion_point(copy_constructor:Response)
 }
 
 void Response::SharedCtor() {
   ::memset(&login_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&elfinupgrade_) -
-      reinterpret_cast<char*>(&login_)) + sizeof(elfinupgrade_));
+      reinterpret_cast<char*>(&heartbeat_) -
+      reinterpret_cast<char*>(&login_)) + sizeof(heartbeat_));
   _cached_size_ = 0;
 }
 
@@ -22218,6 +23465,7 @@ void Response::SharedDtor() {
   if (this != internal_default_instance()) delete skillupgrade_;
   if (this != internal_default_instance()) delete treeupgrade_;
   if (this != internal_default_instance()) delete elfinupgrade_;
+  if (this != internal_default_instance()) delete heartbeat_;
 }
 
 void Response::SetCachedSize(int size) const {
@@ -22365,6 +23613,10 @@ void Response::Clear() {
     delete elfinupgrade_;
   }
   elfinupgrade_ = NULL;
+  if (GetArenaNoVirtual() == NULL && heartbeat_ != NULL) {
+    delete heartbeat_;
+  }
+  heartbeat_ = NULL;
   _internal_metadata_.Clear();
 }
 
@@ -22726,6 +23978,18 @@ bool Response::MergePartialFromCodedStream(
         break;
       }
 
+      // .HeartBeatResponse HeartBeat = 30;
+      case 30: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(242u /* 242 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_heartbeat()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -22924,6 +24188,12 @@ void Response::SerializeWithCachedSizes(
   if (this->has_elfinupgrade()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       29, *this->elfinupgrade_, output);
+  }
+
+  // .HeartBeatResponse HeartBeat = 30;
+  if (this->has_heartbeat()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      30, *this->heartbeat_, output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -23141,6 +24411,13 @@ void Response::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
         29, *this->elfinupgrade_, deterministic, target);
+  }
+
+  // .HeartBeatResponse HeartBeat = 30;
+  if (this->has_heartbeat()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        30, *this->heartbeat_, deterministic, target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -23363,6 +24640,13 @@ size_t Response::ByteSizeLong() const {
         *this->elfinupgrade_);
   }
 
+  // .HeartBeatResponse HeartBeat = 30;
+  if (this->has_heartbeat()) {
+    total_size += 2 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *this->heartbeat_);
+  }
+
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = cached_size;
@@ -23479,6 +24763,9 @@ void Response::MergeFrom(const Response& from) {
   if (from.has_elfinupgrade()) {
     mutable_elfinupgrade()->::ElfinUpgradeResponse::MergeFrom(from.elfinupgrade());
   }
+  if (from.has_heartbeat()) {
+    mutable_heartbeat()->::HeartBeatResponse::MergeFrom(from.heartbeat());
+  }
 }
 
 void Response::CopyFrom(const ::google::protobuf::Message& from) {
@@ -23534,6 +24821,7 @@ void Response::InternalSwap(Response* other) {
   swap(skillupgrade_, other->skillupgrade_);
   swap(treeupgrade_, other->treeupgrade_);
   swap(elfinupgrade_, other->elfinupgrade_);
+  swap(heartbeat_, other->heartbeat_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }

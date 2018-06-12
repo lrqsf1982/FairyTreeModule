@@ -37,7 +37,7 @@ namespace protobuf_Msg_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[62];
+  static const ::google::protobuf::internal::ParseTable schema[64];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -161,6 +161,10 @@ void InitDefaultsElfinUpgradeRequestImpl();
 void InitDefaultsElfinUpgradeRequest();
 void InitDefaultsElfinUpgradeResponseImpl();
 void InitDefaultsElfinUpgradeResponse();
+void InitDefaultsHeartBeatRequestImpl();
+void InitDefaultsHeartBeatRequest();
+void InitDefaultsHeartBeatResponseImpl();
+void InitDefaultsHeartBeatResponse();
 void InitDefaultsRequestImpl();
 void InitDefaultsRequest();
 void InitDefaultsResponseImpl();
@@ -227,6 +231,8 @@ inline void InitDefaults() {
   InitDefaultsTreeUpgradeResponse();
   InitDefaultsElfinUpgradeRequest();
   InitDefaultsElfinUpgradeResponse();
+  InitDefaultsHeartBeatRequest();
+  InitDefaultsHeartBeatResponse();
   InitDefaultsRequest();
   InitDefaultsResponse();
   InitDefaultsGameMessage();
@@ -277,6 +283,12 @@ extern FriendsResponseDefaultTypeInternal _FriendsResponse_default_instance_;
 class GameMessage;
 class GameMessageDefaultTypeInternal;
 extern GameMessageDefaultTypeInternal _GameMessage_default_instance_;
+class HeartBeatRequest;
+class HeartBeatRequestDefaultTypeInternal;
+extern HeartBeatRequestDefaultTypeInternal _HeartBeatRequest_default_instance_;
+class HeartBeatResponse;
+class HeartBeatResponseDefaultTypeInternal;
+extern HeartBeatResponseDefaultTypeInternal _HeartBeatResponse_default_instance_;
 class LoginRequest;
 class LoginRequestDefaultTypeInternal;
 extern LoginRequestDefaultTypeInternal _LoginRequest_default_instance_;
@@ -447,8 +459,7 @@ enum ElfinResponse_Elfintype {
   ElfinResponse_Elfintype_Shui = 2,
   ElfinResponse_Elfintype_Huo = 3,
   ElfinResponse_Elfintype_Tu = 4,
-  ElfinResponse_Elfintype_Sum = 5,
-  ElfinResponse_Elfintype_An = 6,
+  ElfinResponse_Elfintype_An = 5,
   ElfinResponse_Elfintype_ElfinResponse_Elfintype_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   ElfinResponse_Elfintype_ElfinResponse_Elfintype_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
@@ -550,12 +561,14 @@ enum GameMsgCode {
   TreeUpgrade_Response = 3271,
   ElfinUpgrade_Request = 3280,
   ElfinUpgrade_Response = 3281,
+  HeartBeat_Request = 3290,
+  HeartBeat_Response = 3291,
   GameMsgCode_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   GameMsgCode_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool GameMsgCode_IsValid(int value);
 const GameMsgCode GameMsgCode_MIN = GameMsgCodeStart;
-const GameMsgCode GameMsgCode_MAX = ElfinUpgrade_Response;
+const GameMsgCode GameMsgCode_MAX = HeartBeat_Response;
 const int GameMsgCode_ARRAYSIZE = GameMsgCode_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* GameMsgCode_descriptor();
@@ -688,26 +701,26 @@ class LoginRequest : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::std::string* release_account();
   void set_allocated_account(::std::string* account);
 
-  // string Passwd = 2;
-  void clear_passwd();
-  static const int kPasswdFieldNumber = 2;
-  const ::std::string& passwd() const;
-  void set_passwd(const ::std::string& value);
+  // string HeadURL = 2;
+  void clear_headurl();
+  static const int kHeadURLFieldNumber = 2;
+  const ::std::string& headurl() const;
+  void set_headurl(const ::std::string& value);
   #if LANG_CXX11
-  void set_passwd(::std::string&& value);
+  void set_headurl(::std::string&& value);
   #endif
-  void set_passwd(const char* value);
-  void set_passwd(const char* value, size_t size);
-  ::std::string* mutable_passwd();
-  ::std::string* release_passwd();
-  void set_allocated_passwd(::std::string* passwd);
+  void set_headurl(const char* value);
+  void set_headurl(const char* value, size_t size);
+  ::std::string* mutable_headurl();
+  ::std::string* release_headurl();
+  void set_allocated_headurl(::std::string* headurl);
 
   // @@protoc_insertion_point(class_scope:LoginRequest)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr account_;
-  ::google::protobuf::internal::ArenaStringPtr passwd_;
+  ::google::protobuf::internal::ArenaStringPtr headurl_;
   mutable int _cached_size_;
   friend struct ::protobuf_Msg_2eproto::TableStruct;
   friend void ::protobuf_Msg_2eproto::InitDefaultsLoginRequestImpl();
@@ -1031,8 +1044,6 @@ class ElfinResponse : public ::google::protobuf::Message /* @@protoc_insertion_p
     ElfinResponse_Elfintype_Huo;
   static const Elfintype Tu =
     ElfinResponse_Elfintype_Tu;
-  static const Elfintype Sum =
-    ElfinResponse_Elfintype_Sum;
   static const Elfintype An =
     ElfinResponse_Elfintype_An;
   static inline bool Elfintype_IsValid(int value) {
@@ -1088,6 +1099,24 @@ class ElfinResponse : public ::google::protobuf::Message /* @@protoc_insertion_p
   ::ElfinResponse_Elfintype etype() const;
   void set_etype(::ElfinResponse_Elfintype value);
 
+  // bool PlunderState = 6;
+  void clear_plunderstate();
+  static const int kPlunderStateFieldNumber = 6;
+  bool plunderstate() const;
+  void set_plunderstate(bool value);
+
+  // uint32 EnemyID = 7;
+  void clear_enemyid();
+  static const int kEnemyIDFieldNumber = 7;
+  ::google::protobuf::uint32 enemyid() const;
+  void set_enemyid(::google::protobuf::uint32 value);
+
+  // uint32 PlunderGold = 8;
+  void clear_plundergold();
+  static const int kPlunderGoldFieldNumber = 8;
+  ::google::protobuf::uint32 plundergold() const;
+  void set_plundergold(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:ElfinResponse)
  private:
 
@@ -1097,6 +1126,9 @@ class ElfinResponse : public ::google::protobuf::Message /* @@protoc_insertion_p
   ::google::protobuf::uint32 power_;
   ::google::protobuf::uint32 maxpower_;
   int etype_;
+  bool plunderstate_;
+  ::google::protobuf::uint32 enemyid_;
+  ::google::protobuf::uint32 plundergold_;
   mutable int _cached_size_;
   friend struct ::protobuf_Msg_2eproto::TableStruct;
   friend void ::protobuf_Msg_2eproto::InitDefaultsElfinResponseImpl();
@@ -1298,25 +1330,40 @@ class RollResponse : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::std::string* release_name();
   void set_allocated_name(::std::string* name);
 
+  // string HeadURL = 4;
+  void clear_headurl();
+  static const int kHeadURLFieldNumber = 4;
+  const ::std::string& headurl() const;
+  void set_headurl(const ::std::string& value);
+  #if LANG_CXX11
+  void set_headurl(::std::string&& value);
+  #endif
+  void set_headurl(const char* value);
+  void set_headurl(const char* value, size_t size);
+  ::std::string* mutable_headurl();
+  ::std::string* release_headurl();
+  void set_allocated_headurl(::std::string* headurl);
+
   // uint32 Id = 1;
   void clear_id();
   static const int kIdFieldNumber = 1;
   ::google::protobuf::uint32 id() const;
   void set_id(::google::protobuf::uint32 value);
 
-  // uint32 GrowthValue = 3;
-  void clear_growthvalue();
-  static const int kGrowthValueFieldNumber = 3;
-  ::google::protobuf::uint32 growthvalue() const;
-  void set_growthvalue(::google::protobuf::uint32 value);
+  // uint32 GrowRate = 3;
+  void clear_growrate();
+  static const int kGrowRateFieldNumber = 3;
+  ::google::protobuf::uint32 growrate() const;
+  void set_growrate(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:RollResponse)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr name_;
+  ::google::protobuf::internal::ArenaStringPtr headurl_;
   ::google::protobuf::uint32 id_;
-  ::google::protobuf::uint32 growthvalue_;
+  ::google::protobuf::uint32 growrate_;
   mutable int _cached_size_;
   friend struct ::protobuf_Msg_2eproto::TableStruct;
   friend void ::protobuf_Msg_2eproto::InitDefaultsRollResponseImpl();
@@ -2707,17 +2754,17 @@ class TreeEnchantmentRequest : public ::google::protobuf::Message /* @@protoc_in
 
   // accessors -------------------------------------------------------
 
-  // bool Well = 1;
-  void clear_well();
-  static const int kWellFieldNumber = 1;
-  bool well() const;
-  void set_well(bool value);
+  // bool TreeEnch = 1;
+  void clear_treeench();
+  static const int kTreeEnchFieldNumber = 1;
+  bool treeench() const;
+  void set_treeench(bool value);
 
   // @@protoc_insertion_point(class_scope:TreeEnchantmentRequest)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  bool well_;
+  bool treeench_;
   mutable int _cached_size_;
   friend struct ::protobuf_Msg_2eproto::TableStruct;
   friend void ::protobuf_Msg_2eproto::InitDefaultsTreeEnchantmentRequestImpl();
@@ -3057,11 +3104,11 @@ class StoreAllResponse : public ::google::protobuf::Message /* @@protoc_insertio
   ::google::protobuf::uint32 diaprice() const;
   void set_diaprice(::google::protobuf::uint32 value);
 
-  // uint32 Discount = 4;
+  // float Discount = 4;
   void clear_discount();
   static const int kDiscountFieldNumber = 4;
-  ::google::protobuf::uint32 discount() const;
-  void set_discount(::google::protobuf::uint32 value);
+  float discount() const;
+  void set_discount(float value);
 
   // .StdMode Type = 5;
   void clear_type();
@@ -3078,7 +3125,7 @@ class StoreAllResponse : public ::google::protobuf::Message /* @@protoc_insertio
   ::google::protobuf::uint32 id_;
   ::google::protobuf::uint32 goldprice_;
   ::google::protobuf::uint32 diaprice_;
-  ::google::protobuf::uint32 discount_;
+  float discount_;
   int type_;
   mutable int _cached_size_;
   friend struct ::protobuf_Msg_2eproto::TableStruct;
@@ -3313,11 +3360,11 @@ class StoreEquResponse : public ::google::protobuf::Message /* @@protoc_insertio
   ::google::protobuf::uint32 diaprice() const;
   void set_diaprice(::google::protobuf::uint32 value);
 
-  // uint32 Discount = 4;
+  // float Discount = 4;
   void clear_discount();
   static const int kDiscountFieldNumber = 4;
-  ::google::protobuf::uint32 discount() const;
-  void set_discount(::google::protobuf::uint32 value);
+  float discount() const;
+  void set_discount(float value);
 
   // .StdMode Type = 5;
   void clear_type();
@@ -3334,7 +3381,7 @@ class StoreEquResponse : public ::google::protobuf::Message /* @@protoc_insertio
   ::google::protobuf::uint32 id_;
   ::google::protobuf::uint32 goldprice_;
   ::google::protobuf::uint32 diaprice_;
-  ::google::protobuf::uint32 discount_;
+  float discount_;
   int type_;
   mutable int _cached_size_;
   friend struct ::protobuf_Msg_2eproto::TableStruct;
@@ -3569,11 +3616,11 @@ class StoreWaterResponse : public ::google::protobuf::Message /* @@protoc_insert
   ::google::protobuf::uint32 diaprice() const;
   void set_diaprice(::google::protobuf::uint32 value);
 
-  // uint32 Discount = 4;
+  // float Discount = 4;
   void clear_discount();
   static const int kDiscountFieldNumber = 4;
-  ::google::protobuf::uint32 discount() const;
-  void set_discount(::google::protobuf::uint32 value);
+  float discount() const;
+  void set_discount(float value);
 
   // .StdMode Type = 5;
   void clear_type();
@@ -3590,7 +3637,7 @@ class StoreWaterResponse : public ::google::protobuf::Message /* @@protoc_insert
   ::google::protobuf::uint32 id_;
   ::google::protobuf::uint32 goldprice_;
   ::google::protobuf::uint32 diaprice_;
-  ::google::protobuf::uint32 discount_;
+  float discount_;
   int type_;
   mutable int _cached_size_;
   friend struct ::protobuf_Msg_2eproto::TableStruct;
@@ -3825,11 +3872,11 @@ class StoreSpePropsResponse : public ::google::protobuf::Message /* @@protoc_ins
   ::google::protobuf::uint32 diaprice() const;
   void set_diaprice(::google::protobuf::uint32 value);
 
-  // uint32 Discount = 4;
+  // float Discount = 4;
   void clear_discount();
   static const int kDiscountFieldNumber = 4;
-  ::google::protobuf::uint32 discount() const;
-  void set_discount(::google::protobuf::uint32 value);
+  float discount() const;
+  void set_discount(float value);
 
   // .StdMode Type = 5;
   void clear_type();
@@ -3846,7 +3893,7 @@ class StoreSpePropsResponse : public ::google::protobuf::Message /* @@protoc_ins
   ::google::protobuf::uint32 id_;
   ::google::protobuf::uint32 goldprice_;
   ::google::protobuf::uint32 diaprice_;
-  ::google::protobuf::uint32 discount_;
+  float discount_;
   int type_;
   mutable int _cached_size_;
   friend struct ::protobuf_Msg_2eproto::TableStruct;
@@ -4650,32 +4697,44 @@ class RecTaskAwardResponse : public ::google::protobuf::Message /* @@protoc_inse
 
   // accessors -------------------------------------------------------
 
-  // .Prize prize1 = 1;
+  // .Prize prize1 = 3;
   bool has_prize1() const;
   void clear_prize1();
-  static const int kPrize1FieldNumber = 1;
+  static const int kPrize1FieldNumber = 3;
   const ::Prize& prize1() const;
   ::Prize* release_prize1();
   ::Prize* mutable_prize1();
   void set_allocated_prize1(::Prize* prize1);
 
-  // .Prize prize2 = 2;
+  // .Prize prize2 = 4;
   bool has_prize2() const;
   void clear_prize2();
-  static const int kPrize2FieldNumber = 2;
+  static const int kPrize2FieldNumber = 4;
   const ::Prize& prize2() const;
   ::Prize* release_prize2();
   ::Prize* mutable_prize2();
   void set_allocated_prize2(::Prize* prize2);
 
-  // .Prize prize3 = 3;
+  // .Prize prize3 = 5;
   bool has_prize3() const;
   void clear_prize3();
-  static const int kPrize3FieldNumber = 3;
+  static const int kPrize3FieldNumber = 5;
   const ::Prize& prize3() const;
   ::Prize* release_prize3();
   ::Prize* mutable_prize3();
   void set_allocated_prize3(::Prize* prize3);
+
+  // bool Success = 1;
+  void clear_success();
+  static const int kSuccessFieldNumber = 1;
+  bool success() const;
+  void set_success(bool value);
+
+  // uint32 Id = 2;
+  void clear_id();
+  static const int kIdFieldNumber = 2;
+  ::google::protobuf::uint32 id() const;
+  void set_id(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:RecTaskAwardResponse)
  private:
@@ -4684,6 +4743,8 @@ class RecTaskAwardResponse : public ::google::protobuf::Message /* @@protoc_inse
   ::Prize* prize1_;
   ::Prize* prize2_;
   ::Prize* prize3_;
+  bool success_;
+  ::google::protobuf::uint32 id_;
   mutable int _cached_size_;
   friend struct ::protobuf_Msg_2eproto::TableStruct;
   friend void ::protobuf_Msg_2eproto::InitDefaultsRecTaskAwardResponseImpl();
@@ -4885,25 +4946,47 @@ class FriendsResponse : public ::google::protobuf::Message /* @@protoc_insertion
   ::std::string* release_name();
   void set_allocated_name(::std::string* name);
 
+  // string HeadURL = 3;
+  void clear_headurl();
+  static const int kHeadURLFieldNumber = 3;
+  const ::std::string& headurl() const;
+  void set_headurl(const ::std::string& value);
+  #if LANG_CXX11
+  void set_headurl(::std::string&& value);
+  #endif
+  void set_headurl(const char* value);
+  void set_headurl(const char* value, size_t size);
+  ::std::string* mutable_headurl();
+  ::std::string* release_headurl();
+  void set_allocated_headurl(::std::string* headurl);
+
   // uint32 Id = 1;
   void clear_id();
   static const int kIdFieldNumber = 1;
   ::google::protobuf::uint32 id() const;
   void set_id(::google::protobuf::uint32 value);
 
-  // uint32 Level = 3;
+  // uint32 Level = 4;
   void clear_level();
-  static const int kLevelFieldNumber = 3;
+  static const int kLevelFieldNumber = 4;
   ::google::protobuf::uint32 level() const;
   void set_level(::google::protobuf::uint32 value);
+
+  // uint32 GrowRate = 5;
+  void clear_growrate();
+  static const int kGrowRateFieldNumber = 5;
+  ::google::protobuf::uint32 growrate() const;
+  void set_growrate(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:FriendsResponse)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr name_;
+  ::google::protobuf::internal::ArenaStringPtr headurl_;
   ::google::protobuf::uint32 id_;
   ::google::protobuf::uint32 level_;
+  ::google::protobuf::uint32 growrate_;
   mutable int _cached_size_;
   friend struct ::protobuf_Msg_2eproto::TableStruct;
   friend void ::protobuf_Msg_2eproto::InitDefaultsFriendsResponseImpl();
@@ -5105,25 +5188,47 @@ class EnemiesResponse : public ::google::protobuf::Message /* @@protoc_insertion
   ::std::string* release_name();
   void set_allocated_name(::std::string* name);
 
+  // string HeadURL = 3;
+  void clear_headurl();
+  static const int kHeadURLFieldNumber = 3;
+  const ::std::string& headurl() const;
+  void set_headurl(const ::std::string& value);
+  #if LANG_CXX11
+  void set_headurl(::std::string&& value);
+  #endif
+  void set_headurl(const char* value);
+  void set_headurl(const char* value, size_t size);
+  ::std::string* mutable_headurl();
+  ::std::string* release_headurl();
+  void set_allocated_headurl(::std::string* headurl);
+
   // uint32 Id = 1;
   void clear_id();
   static const int kIdFieldNumber = 1;
   ::google::protobuf::uint32 id() const;
   void set_id(::google::protobuf::uint32 value);
 
-  // uint32 Level = 3;
+  // uint32 Level = 4;
   void clear_level();
-  static const int kLevelFieldNumber = 3;
+  static const int kLevelFieldNumber = 4;
   ::google::protobuf::uint32 level() const;
   void set_level(::google::protobuf::uint32 value);
+
+  // uint32 GrowRate = 5;
+  void clear_growrate();
+  static const int kGrowRateFieldNumber = 5;
+  ::google::protobuf::uint32 growrate() const;
+  void set_growrate(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:EnemiesResponse)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr name_;
+  ::google::protobuf::internal::ArenaStringPtr headurl_;
   ::google::protobuf::uint32 id_;
   ::google::protobuf::uint32 level_;
+  ::google::protobuf::uint32 growrate_;
   mutable int _cached_size_;
   friend struct ::protobuf_Msg_2eproto::TableStruct;
   friend void ::protobuf_Msg_2eproto::InitDefaultsEnemiesResponseImpl();
@@ -5212,17 +5317,17 @@ class PlunderRequest : public ::google::protobuf::Message /* @@protoc_insertion_
 
   // accessors -------------------------------------------------------
 
-  // bool Plunder = 1;
-  void clear_plunder();
-  static const int kPlunderFieldNumber = 1;
-  bool plunder() const;
-  void set_plunder(bool value);
+  // uint32 elfinID = 1;
+  void clear_elfinid();
+  static const int kElfinIDFieldNumber = 1;
+  ::google::protobuf::uint32 elfinid() const;
+  void set_elfinid(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:PlunderRequest)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  bool plunder_;
+  ::google::protobuf::uint32 elfinid_;
   mutable int _cached_size_;
   friend struct ::protobuf_Msg_2eproto::TableStruct;
   friend void ::protobuf_Msg_2eproto::InitDefaultsPlunderRequestImpl();
@@ -5323,9 +5428,15 @@ class PlunderResponse : public ::google::protobuf::Message /* @@protoc_insertion
   ::google::protobuf::uint32 id() const;
   void set_id(::google::protobuf::uint32 value);
 
-  // uint32 GoldNum = 3;
+  // uint32 ElfinID = 3;
+  void clear_elfinid();
+  static const int kElfinIDFieldNumber = 3;
+  ::google::protobuf::uint32 elfinid() const;
+  void set_elfinid(::google::protobuf::uint32 value);
+
+  // uint32 GoldNum = 4;
   void clear_goldnum();
-  static const int kGoldNumFieldNumber = 3;
+  static const int kGoldNumFieldNumber = 4;
   ::google::protobuf::uint32 goldnum() const;
   void set_goldnum(::google::protobuf::uint32 value);
 
@@ -5335,6 +5446,7 @@ class PlunderResponse : public ::google::protobuf::Message /* @@protoc_insertion
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool success_;
   ::google::protobuf::uint32 id_;
+  ::google::protobuf::uint32 elfinid_;
   ::google::protobuf::uint32 goldnum_;
   mutable int _cached_size_;
   friend struct ::protobuf_Msg_2eproto::TableStruct;
@@ -5424,17 +5536,24 @@ class UseItemRequest : public ::google::protobuf::Message /* @@protoc_insertion_
 
   // accessors -------------------------------------------------------
 
-  // uint32 Id = 1;
-  void clear_id();
-  static const int kIdFieldNumber = 1;
-  ::google::protobuf::uint32 id() const;
-  void set_id(::google::protobuf::uint32 value);
+  // uint32 ItemId = 1;
+  void clear_itemid();
+  static const int kItemIdFieldNumber = 1;
+  ::google::protobuf::uint32 itemid() const;
+  void set_itemid(::google::protobuf::uint32 value);
+
+  // uint32 ElfinID = 2;
+  void clear_elfinid();
+  static const int kElfinIDFieldNumber = 2;
+  ::google::protobuf::uint32 elfinid() const;
+  void set_elfinid(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:UseItemRequest)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint32 id_;
+  ::google::protobuf::uint32 itemid_;
+  ::google::protobuf::uint32 elfinid_;
   mutable int _cached_size_;
   friend struct ::protobuf_Msg_2eproto::TableStruct;
   friend void ::protobuf_Msg_2eproto::InitDefaultsUseItemRequestImpl();
@@ -5535,12 +5654,19 @@ class UseItemResponse : public ::google::protobuf::Message /* @@protoc_insertion
   ::google::protobuf::uint32 id() const;
   void set_id(::google::protobuf::uint32 value);
 
+  // uint32 ElfinID = 3;
+  void clear_elfinid();
+  static const int kElfinIDFieldNumber = 3;
+  ::google::protobuf::uint32 elfinid() const;
+  void set_elfinid(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:UseItemResponse)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   bool success_;
   ::google::protobuf::uint32 id_;
+  ::google::protobuf::uint32 elfinid_;
   mutable int _cached_size_;
   friend struct ::protobuf_Msg_2eproto::TableStruct;
   friend void ::protobuf_Msg_2eproto::InitDefaultsUseItemResponseImpl();
@@ -5972,11 +6098,17 @@ class SettleAccountResponse : public ::google::protobuf::Message /* @@protoc_ins
   ::google::protobuf::uint32 number() const;
   void set_number(::google::protobuf::uint32 value);
 
-  // uint32 price = 4;
-  void clear_price();
-  static const int kPriceFieldNumber = 4;
-  ::google::protobuf::uint32 price() const;
-  void set_price(::google::protobuf::uint32 value);
+  // uint32 GoldPrice = 4;
+  void clear_goldprice();
+  static const int kGoldPriceFieldNumber = 4;
+  ::google::protobuf::uint32 goldprice() const;
+  void set_goldprice(::google::protobuf::uint32 value);
+
+  // uint32 DiaPrice = 5;
+  void clear_diaprice();
+  static const int kDiaPriceFieldNumber = 5;
+  ::google::protobuf::uint32 diaprice() const;
+  void set_diaprice(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:SettleAccountResponse)
  private:
@@ -5985,7 +6117,8 @@ class SettleAccountResponse : public ::google::protobuf::Message /* @@protoc_ins
   bool success_;
   ::google::protobuf::uint32 id_;
   ::google::protobuf::uint32 number_;
-  ::google::protobuf::uint32 price_;
+  ::google::protobuf::uint32 goldprice_;
+  ::google::protobuf::uint32 diaprice_;
   mutable int _cached_size_;
   friend struct ::protobuf_Msg_2eproto::TableStruct;
   friend void ::protobuf_Msg_2eproto::InitDefaultsSettleAccountResponseImpl();
@@ -6187,6 +6320,20 @@ class RankingResponse : public ::google::protobuf::Message /* @@protoc_insertion
   ::std::string* release_name();
   void set_allocated_name(::std::string* name);
 
+  // string HeadURL = 6;
+  void clear_headurl();
+  static const int kHeadURLFieldNumber = 6;
+  const ::std::string& headurl() const;
+  void set_headurl(const ::std::string& value);
+  #if LANG_CXX11
+  void set_headurl(::std::string&& value);
+  #endif
+  void set_headurl(const char* value);
+  void set_headurl(const char* value, size_t size);
+  ::std::string* mutable_headurl();
+  ::std::string* release_headurl();
+  void set_allocated_headurl(::std::string* headurl);
+
   // uint32 Id = 1;
   void clear_id();
   static const int kIdFieldNumber = 1;
@@ -6199,9 +6346,15 @@ class RankingResponse : public ::google::protobuf::Message /* @@protoc_insertion
   ::google::protobuf::uint32 level() const;
   void set_level(::google::protobuf::uint32 value);
 
-  // uint32 Ranking = 4;
+  // uint32 GrowRate = 4;
+  void clear_growrate();
+  static const int kGrowRateFieldNumber = 4;
+  ::google::protobuf::uint32 growrate() const;
+  void set_growrate(::google::protobuf::uint32 value);
+
+  // uint32 Ranking = 5;
   void clear_ranking();
-  static const int kRankingFieldNumber = 4;
+  static const int kRankingFieldNumber = 5;
   ::google::protobuf::uint32 ranking() const;
   void set_ranking(::google::protobuf::uint32 value);
 
@@ -6210,8 +6363,10 @@ class RankingResponse : public ::google::protobuf::Message /* @@protoc_insertion
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr name_;
+  ::google::protobuf::internal::ArenaStringPtr headurl_;
   ::google::protobuf::uint32 id_;
   ::google::protobuf::uint32 level_;
+  ::google::protobuf::uint32 growrate_;
   ::google::protobuf::uint32 ranking_;
   mutable int _cached_size_;
   friend struct ::protobuf_Msg_2eproto::TableStruct;
@@ -7275,6 +7430,197 @@ class ElfinUpgradeResponse : public ::google::protobuf::Message /* @@protoc_inse
 };
 // -------------------------------------------------------------------
 
+class HeartBeatRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:HeartBeatRequest) */ {
+ public:
+  HeartBeatRequest();
+  virtual ~HeartBeatRequest();
+
+  HeartBeatRequest(const HeartBeatRequest& from);
+
+  inline HeartBeatRequest& operator=(const HeartBeatRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  HeartBeatRequest(HeartBeatRequest&& from) noexcept
+    : HeartBeatRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline HeartBeatRequest& operator=(HeartBeatRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HeartBeatRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const HeartBeatRequest* internal_default_instance() {
+    return reinterpret_cast<const HeartBeatRequest*>(
+               &_HeartBeatRequest_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    59;
+
+  void Swap(HeartBeatRequest* other);
+  friend void swap(HeartBeatRequest& a, HeartBeatRequest& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline HeartBeatRequest* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  HeartBeatRequest* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const HeartBeatRequest& from);
+  void MergeFrom(const HeartBeatRequest& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(HeartBeatRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // bool Connected = 1;
+  void clear_connected();
+  static const int kConnectedFieldNumber = 1;
+  bool connected() const;
+  void set_connected(bool value);
+
+  // @@protoc_insertion_point(class_scope:HeartBeatRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  bool connected_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_Msg_2eproto::TableStruct;
+  friend void ::protobuf_Msg_2eproto::InitDefaultsHeartBeatRequestImpl();
+};
+// -------------------------------------------------------------------
+
+class HeartBeatResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:HeartBeatResponse) */ {
+ public:
+  HeartBeatResponse();
+  virtual ~HeartBeatResponse();
+
+  HeartBeatResponse(const HeartBeatResponse& from);
+
+  inline HeartBeatResponse& operator=(const HeartBeatResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  HeartBeatResponse(HeartBeatResponse&& from) noexcept
+    : HeartBeatResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline HeartBeatResponse& operator=(HeartBeatResponse&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HeartBeatResponse& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const HeartBeatResponse* internal_default_instance() {
+    return reinterpret_cast<const HeartBeatResponse*>(
+               &_HeartBeatResponse_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    60;
+
+  void Swap(HeartBeatResponse* other);
+  friend void swap(HeartBeatResponse& a, HeartBeatResponse& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline HeartBeatResponse* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  HeartBeatResponse* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const HeartBeatResponse& from);
+  void MergeFrom(const HeartBeatResponse& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(HeartBeatResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:HeartBeatResponse)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_Msg_2eproto::TableStruct;
+  friend void ::protobuf_Msg_2eproto::InitDefaultsHeartBeatResponseImpl();
+};
+// -------------------------------------------------------------------
+
 class Request : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Request) */ {
  public:
   Request();
@@ -7310,7 +7656,7 @@ class Request : public ::google::protobuf::Message /* @@protoc_insertion_point(c
                &_Request_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    59;
+    61;
 
   void Swap(Request* other);
   friend void swap(Request& a, Request& b) {
@@ -7618,6 +7964,15 @@ class Request : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::ElfinUpgradeRequest* mutable_elfinupgrade();
   void set_allocated_elfinupgrade(::ElfinUpgradeRequest* elfinupgrade);
 
+  // .HeartBeatRequest HeartBeat = 30;
+  bool has_heartbeat() const;
+  void clear_heartbeat();
+  static const int kHeartBeatFieldNumber = 30;
+  const ::HeartBeatRequest& heartbeat() const;
+  ::HeartBeatRequest* release_heartbeat();
+  ::HeartBeatRequest* mutable_heartbeat();
+  void set_allocated_heartbeat(::HeartBeatRequest* heartbeat);
+
   // @@protoc_insertion_point(class_scope:Request)
  private:
 
@@ -7651,6 +8006,7 @@ class Request : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::SkillUpgradeRequest* skillupgrade_;
   ::TreeUpgradeRequest* treeupgrade_;
   ::ElfinUpgradeRequest* elfinupgrade_;
+  ::HeartBeatRequest* heartbeat_;
   mutable int _cached_size_;
   friend struct ::protobuf_Msg_2eproto::TableStruct;
   friend void ::protobuf_Msg_2eproto::InitDefaultsRequestImpl();
@@ -7692,7 +8048,7 @@ class Response : public ::google::protobuf::Message /* @@protoc_insertion_point(
                &_Response_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    60;
+    62;
 
   void Swap(Response* other);
   friend void swap(Response& a, Response& b) {
@@ -8000,6 +8356,15 @@ class Response : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::ElfinUpgradeResponse* mutable_elfinupgrade();
   void set_allocated_elfinupgrade(::ElfinUpgradeResponse* elfinupgrade);
 
+  // .HeartBeatResponse HeartBeat = 30;
+  bool has_heartbeat() const;
+  void clear_heartbeat();
+  static const int kHeartBeatFieldNumber = 30;
+  const ::HeartBeatResponse& heartbeat() const;
+  ::HeartBeatResponse* release_heartbeat();
+  ::HeartBeatResponse* mutable_heartbeat();
+  void set_allocated_heartbeat(::HeartBeatResponse* heartbeat);
+
   // @@protoc_insertion_point(class_scope:Response)
  private:
 
@@ -8033,6 +8398,7 @@ class Response : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::SkillUpgradeResponse* skillupgrade_;
   ::TreeUpgradeResponse* treeupgrade_;
   ::ElfinUpgradeResponse* elfinupgrade_;
+  ::HeartBeatResponse* heartbeat_;
   mutable int _cached_size_;
   friend struct ::protobuf_Msg_2eproto::TableStruct;
   friend void ::protobuf_Msg_2eproto::InitDefaultsResponseImpl();
@@ -8074,7 +8440,7 @@ class GameMessage : public ::google::protobuf::Message /* @@protoc_insertion_poi
                &_GameMessage_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    61;
+    63;
 
   void Swap(GameMessage* other);
   friend void swap(GameMessage& a, GameMessage& b) {
@@ -8220,57 +8586,57 @@ inline void LoginRequest::set_allocated_account(::std::string* account) {
   // @@protoc_insertion_point(field_set_allocated:LoginRequest.Account)
 }
 
-// string Passwd = 2;
-inline void LoginRequest::clear_passwd() {
-  passwd_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// string HeadURL = 2;
+inline void LoginRequest::clear_headurl() {
+  headurl_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& LoginRequest::passwd() const {
-  // @@protoc_insertion_point(field_get:LoginRequest.Passwd)
-  return passwd_.GetNoArena();
+inline const ::std::string& LoginRequest::headurl() const {
+  // @@protoc_insertion_point(field_get:LoginRequest.HeadURL)
+  return headurl_.GetNoArena();
 }
-inline void LoginRequest::set_passwd(const ::std::string& value) {
+inline void LoginRequest::set_headurl(const ::std::string& value) {
   
-  passwd_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:LoginRequest.Passwd)
+  headurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:LoginRequest.HeadURL)
 }
 #if LANG_CXX11
-inline void LoginRequest::set_passwd(::std::string&& value) {
+inline void LoginRequest::set_headurl(::std::string&& value) {
   
-  passwd_.SetNoArena(
+  headurl_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:LoginRequest.Passwd)
+  // @@protoc_insertion_point(field_set_rvalue:LoginRequest.HeadURL)
 }
 #endif
-inline void LoginRequest::set_passwd(const char* value) {
+inline void LoginRequest::set_headurl(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
-  passwd_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:LoginRequest.Passwd)
+  headurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:LoginRequest.HeadURL)
 }
-inline void LoginRequest::set_passwd(const char* value, size_t size) {
+inline void LoginRequest::set_headurl(const char* value, size_t size) {
   
-  passwd_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  headurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:LoginRequest.Passwd)
+  // @@protoc_insertion_point(field_set_pointer:LoginRequest.HeadURL)
 }
-inline ::std::string* LoginRequest::mutable_passwd() {
+inline ::std::string* LoginRequest::mutable_headurl() {
   
-  // @@protoc_insertion_point(field_mutable:LoginRequest.Passwd)
-  return passwd_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  // @@protoc_insertion_point(field_mutable:LoginRequest.HeadURL)
+  return headurl_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* LoginRequest::release_passwd() {
-  // @@protoc_insertion_point(field_release:LoginRequest.Passwd)
+inline ::std::string* LoginRequest::release_headurl() {
+  // @@protoc_insertion_point(field_release:LoginRequest.HeadURL)
   
-  return passwd_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return headurl_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void LoginRequest::set_allocated_passwd(::std::string* passwd) {
-  if (passwd != NULL) {
+inline void LoginRequest::set_allocated_headurl(::std::string* headurl) {
+  if (headurl != NULL) {
     
   } else {
     
   }
-  passwd_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), passwd);
-  // @@protoc_insertion_point(field_set_allocated:LoginRequest.Passwd)
+  headurl_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), headurl);
+  // @@protoc_insertion_point(field_set_allocated:LoginRequest.HeadURL)
 }
 
 // -------------------------------------------------------------------
@@ -8383,6 +8749,48 @@ inline void ElfinResponse::set_etype(::ElfinResponse_Elfintype value) {
   // @@protoc_insertion_point(field_set:ElfinResponse.Etype)
 }
 
+// bool PlunderState = 6;
+inline void ElfinResponse::clear_plunderstate() {
+  plunderstate_ = false;
+}
+inline bool ElfinResponse::plunderstate() const {
+  // @@protoc_insertion_point(field_get:ElfinResponse.PlunderState)
+  return plunderstate_;
+}
+inline void ElfinResponse::set_plunderstate(bool value) {
+  
+  plunderstate_ = value;
+  // @@protoc_insertion_point(field_set:ElfinResponse.PlunderState)
+}
+
+// uint32 EnemyID = 7;
+inline void ElfinResponse::clear_enemyid() {
+  enemyid_ = 0u;
+}
+inline ::google::protobuf::uint32 ElfinResponse::enemyid() const {
+  // @@protoc_insertion_point(field_get:ElfinResponse.EnemyID)
+  return enemyid_;
+}
+inline void ElfinResponse::set_enemyid(::google::protobuf::uint32 value) {
+  
+  enemyid_ = value;
+  // @@protoc_insertion_point(field_set:ElfinResponse.EnemyID)
+}
+
+// uint32 PlunderGold = 8;
+inline void ElfinResponse::clear_plundergold() {
+  plundergold_ = 0u;
+}
+inline ::google::protobuf::uint32 ElfinResponse::plundergold() const {
+  // @@protoc_insertion_point(field_get:ElfinResponse.PlunderGold)
+  return plundergold_;
+}
+inline void ElfinResponse::set_plundergold(::google::protobuf::uint32 value) {
+  
+  plundergold_ = value;
+  // @@protoc_insertion_point(field_set:ElfinResponse.PlunderGold)
+}
+
 // -------------------------------------------------------------------
 
 // RollRequest
@@ -8472,18 +8880,71 @@ inline void RollResponse::set_allocated_name(::std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:RollResponse.Name)
 }
 
-// uint32 GrowthValue = 3;
-inline void RollResponse::clear_growthvalue() {
-  growthvalue_ = 0u;
+// uint32 GrowRate = 3;
+inline void RollResponse::clear_growrate() {
+  growrate_ = 0u;
 }
-inline ::google::protobuf::uint32 RollResponse::growthvalue() const {
-  // @@protoc_insertion_point(field_get:RollResponse.GrowthValue)
-  return growthvalue_;
+inline ::google::protobuf::uint32 RollResponse::growrate() const {
+  // @@protoc_insertion_point(field_get:RollResponse.GrowRate)
+  return growrate_;
 }
-inline void RollResponse::set_growthvalue(::google::protobuf::uint32 value) {
+inline void RollResponse::set_growrate(::google::protobuf::uint32 value) {
   
-  growthvalue_ = value;
-  // @@protoc_insertion_point(field_set:RollResponse.GrowthValue)
+  growrate_ = value;
+  // @@protoc_insertion_point(field_set:RollResponse.GrowRate)
+}
+
+// string HeadURL = 4;
+inline void RollResponse::clear_headurl() {
+  headurl_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& RollResponse::headurl() const {
+  // @@protoc_insertion_point(field_get:RollResponse.HeadURL)
+  return headurl_.GetNoArena();
+}
+inline void RollResponse::set_headurl(const ::std::string& value) {
+  
+  headurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:RollResponse.HeadURL)
+}
+#if LANG_CXX11
+inline void RollResponse::set_headurl(::std::string&& value) {
+  
+  headurl_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:RollResponse.HeadURL)
+}
+#endif
+inline void RollResponse::set_headurl(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  headurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:RollResponse.HeadURL)
+}
+inline void RollResponse::set_headurl(const char* value, size_t size) {
+  
+  headurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:RollResponse.HeadURL)
+}
+inline ::std::string* RollResponse::mutable_headurl() {
+  
+  // @@protoc_insertion_point(field_mutable:RollResponse.HeadURL)
+  return headurl_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* RollResponse::release_headurl() {
+  // @@protoc_insertion_point(field_release:RollResponse.HeadURL)
+  
+  return headurl_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void RollResponse::set_allocated_headurl(::std::string* headurl) {
+  if (headurl != NULL) {
+    
+  } else {
+    
+  }
+  headurl_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), headurl);
+  // @@protoc_insertion_point(field_set_allocated:RollResponse.HeadURL)
 }
 
 // -------------------------------------------------------------------
@@ -9326,18 +9787,18 @@ inline void SunResponse::set_sunshine(::google::protobuf::uint32 value) {
 
 // TreeEnchantmentRequest
 
-// bool Well = 1;
-inline void TreeEnchantmentRequest::clear_well() {
-  well_ = false;
+// bool TreeEnch = 1;
+inline void TreeEnchantmentRequest::clear_treeench() {
+  treeench_ = false;
 }
-inline bool TreeEnchantmentRequest::well() const {
-  // @@protoc_insertion_point(field_get:TreeEnchantmentRequest.Well)
-  return well_;
+inline bool TreeEnchantmentRequest::treeench() const {
+  // @@protoc_insertion_point(field_get:TreeEnchantmentRequest.TreeEnch)
+  return treeench_;
 }
-inline void TreeEnchantmentRequest::set_well(bool value) {
+inline void TreeEnchantmentRequest::set_treeench(bool value) {
   
-  well_ = value;
-  // @@protoc_insertion_point(field_set:TreeEnchantmentRequest.Well)
+  treeench_ = value;
+  // @@protoc_insertion_point(field_set:TreeEnchantmentRequest.TreeEnch)
 }
 
 // -------------------------------------------------------------------
@@ -9436,15 +9897,15 @@ inline void StoreAllResponse::set_diaprice(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:StoreAllResponse.DiaPrice)
 }
 
-// uint32 Discount = 4;
+// float Discount = 4;
 inline void StoreAllResponse::clear_discount() {
-  discount_ = 0u;
+  discount_ = 0;
 }
-inline ::google::protobuf::uint32 StoreAllResponse::discount() const {
+inline float StoreAllResponse::discount() const {
   // @@protoc_insertion_point(field_get:StoreAllResponse.Discount)
   return discount_;
 }
-inline void StoreAllResponse::set_discount(::google::protobuf::uint32 value) {
+inline void StoreAllResponse::set_discount(float value) {
   
   discount_ = value;
   // @@protoc_insertion_point(field_set:StoreAllResponse.Discount)
@@ -9634,15 +10095,15 @@ inline void StoreEquResponse::set_diaprice(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:StoreEquResponse.DiaPrice)
 }
 
-// uint32 Discount = 4;
+// float Discount = 4;
 inline void StoreEquResponse::clear_discount() {
-  discount_ = 0u;
+  discount_ = 0;
 }
-inline ::google::protobuf::uint32 StoreEquResponse::discount() const {
+inline float StoreEquResponse::discount() const {
   // @@protoc_insertion_point(field_get:StoreEquResponse.Discount)
   return discount_;
 }
-inline void StoreEquResponse::set_discount(::google::protobuf::uint32 value) {
+inline void StoreEquResponse::set_discount(float value) {
   
   discount_ = value;
   // @@protoc_insertion_point(field_set:StoreEquResponse.Discount)
@@ -9832,15 +10293,15 @@ inline void StoreWaterResponse::set_diaprice(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:StoreWaterResponse.DiaPrice)
 }
 
-// uint32 Discount = 4;
+// float Discount = 4;
 inline void StoreWaterResponse::clear_discount() {
-  discount_ = 0u;
+  discount_ = 0;
 }
-inline ::google::protobuf::uint32 StoreWaterResponse::discount() const {
+inline float StoreWaterResponse::discount() const {
   // @@protoc_insertion_point(field_get:StoreWaterResponse.Discount)
   return discount_;
 }
-inline void StoreWaterResponse::set_discount(::google::protobuf::uint32 value) {
+inline void StoreWaterResponse::set_discount(float value) {
   
   discount_ = value;
   // @@protoc_insertion_point(field_set:StoreWaterResponse.Discount)
@@ -10030,15 +10491,15 @@ inline void StoreSpePropsResponse::set_diaprice(::google::protobuf::uint32 value
   // @@protoc_insertion_point(field_set:StoreSpePropsResponse.DiaPrice)
 }
 
-// uint32 Discount = 4;
+// float Discount = 4;
 inline void StoreSpePropsResponse::clear_discount() {
-  discount_ = 0u;
+  discount_ = 0;
 }
-inline ::google::protobuf::uint32 StoreSpePropsResponse::discount() const {
+inline float StoreSpePropsResponse::discount() const {
   // @@protoc_insertion_point(field_get:StoreSpePropsResponse.Discount)
   return discount_;
 }
-inline void StoreSpePropsResponse::set_discount(::google::protobuf::uint32 value) {
+inline void StoreSpePropsResponse::set_discount(float value) {
   
   discount_ = value;
   // @@protoc_insertion_point(field_set:StoreSpePropsResponse.Discount)
@@ -10336,7 +10797,35 @@ inline void RecTaskAwardRequest::set_id(::google::protobuf::uint32 value) {
 
 // RecTaskAwardResponse
 
-// .Prize prize1 = 1;
+// bool Success = 1;
+inline void RecTaskAwardResponse::clear_success() {
+  success_ = false;
+}
+inline bool RecTaskAwardResponse::success() const {
+  // @@protoc_insertion_point(field_get:RecTaskAwardResponse.Success)
+  return success_;
+}
+inline void RecTaskAwardResponse::set_success(bool value) {
+  
+  success_ = value;
+  // @@protoc_insertion_point(field_set:RecTaskAwardResponse.Success)
+}
+
+// uint32 Id = 2;
+inline void RecTaskAwardResponse::clear_id() {
+  id_ = 0u;
+}
+inline ::google::protobuf::uint32 RecTaskAwardResponse::id() const {
+  // @@protoc_insertion_point(field_get:RecTaskAwardResponse.Id)
+  return id_;
+}
+inline void RecTaskAwardResponse::set_id(::google::protobuf::uint32 value) {
+  
+  id_ = value;
+  // @@protoc_insertion_point(field_set:RecTaskAwardResponse.Id)
+}
+
+// .Prize prize1 = 3;
 inline bool RecTaskAwardResponse::has_prize1() const {
   return this != internal_default_instance() && prize1_ != NULL;
 }
@@ -10386,7 +10875,7 @@ inline void RecTaskAwardResponse::set_allocated_prize1(::Prize* prize1) {
   // @@protoc_insertion_point(field_set_allocated:RecTaskAwardResponse.prize1)
 }
 
-// .Prize prize2 = 2;
+// .Prize prize2 = 4;
 inline bool RecTaskAwardResponse::has_prize2() const {
   return this != internal_default_instance() && prize2_ != NULL;
 }
@@ -10436,7 +10925,7 @@ inline void RecTaskAwardResponse::set_allocated_prize2(::Prize* prize2) {
   // @@protoc_insertion_point(field_set_allocated:RecTaskAwardResponse.prize2)
 }
 
-// .Prize prize3 = 3;
+// .Prize prize3 = 5;
 inline bool RecTaskAwardResponse::has_prize3() const {
   return this != internal_default_instance() && prize3_ != NULL;
 }
@@ -10575,7 +11064,60 @@ inline void FriendsResponse::set_allocated_name(::std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:FriendsResponse.Name)
 }
 
-// uint32 Level = 3;
+// string HeadURL = 3;
+inline void FriendsResponse::clear_headurl() {
+  headurl_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& FriendsResponse::headurl() const {
+  // @@protoc_insertion_point(field_get:FriendsResponse.HeadURL)
+  return headurl_.GetNoArena();
+}
+inline void FriendsResponse::set_headurl(const ::std::string& value) {
+  
+  headurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:FriendsResponse.HeadURL)
+}
+#if LANG_CXX11
+inline void FriendsResponse::set_headurl(::std::string&& value) {
+  
+  headurl_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:FriendsResponse.HeadURL)
+}
+#endif
+inline void FriendsResponse::set_headurl(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  headurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:FriendsResponse.HeadURL)
+}
+inline void FriendsResponse::set_headurl(const char* value, size_t size) {
+  
+  headurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:FriendsResponse.HeadURL)
+}
+inline ::std::string* FriendsResponse::mutable_headurl() {
+  
+  // @@protoc_insertion_point(field_mutable:FriendsResponse.HeadURL)
+  return headurl_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* FriendsResponse::release_headurl() {
+  // @@protoc_insertion_point(field_release:FriendsResponse.HeadURL)
+  
+  return headurl_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void FriendsResponse::set_allocated_headurl(::std::string* headurl) {
+  if (headurl != NULL) {
+    
+  } else {
+    
+  }
+  headurl_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), headurl);
+  // @@protoc_insertion_point(field_set_allocated:FriendsResponse.HeadURL)
+}
+
+// uint32 Level = 4;
 inline void FriendsResponse::clear_level() {
   level_ = 0u;
 }
@@ -10587,6 +11129,20 @@ inline void FriendsResponse::set_level(::google::protobuf::uint32 value) {
   
   level_ = value;
   // @@protoc_insertion_point(field_set:FriendsResponse.Level)
+}
+
+// uint32 GrowRate = 5;
+inline void FriendsResponse::clear_growrate() {
+  growrate_ = 0u;
+}
+inline ::google::protobuf::uint32 FriendsResponse::growrate() const {
+  // @@protoc_insertion_point(field_get:FriendsResponse.GrowRate)
+  return growrate_;
+}
+inline void FriendsResponse::set_growrate(::google::protobuf::uint32 value) {
+  
+  growrate_ = value;
+  // @@protoc_insertion_point(field_set:FriendsResponse.GrowRate)
 }
 
 // -------------------------------------------------------------------
@@ -10678,7 +11234,60 @@ inline void EnemiesResponse::set_allocated_name(::std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:EnemiesResponse.Name)
 }
 
-// uint32 Level = 3;
+// string HeadURL = 3;
+inline void EnemiesResponse::clear_headurl() {
+  headurl_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& EnemiesResponse::headurl() const {
+  // @@protoc_insertion_point(field_get:EnemiesResponse.HeadURL)
+  return headurl_.GetNoArena();
+}
+inline void EnemiesResponse::set_headurl(const ::std::string& value) {
+  
+  headurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:EnemiesResponse.HeadURL)
+}
+#if LANG_CXX11
+inline void EnemiesResponse::set_headurl(::std::string&& value) {
+  
+  headurl_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:EnemiesResponse.HeadURL)
+}
+#endif
+inline void EnemiesResponse::set_headurl(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  headurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:EnemiesResponse.HeadURL)
+}
+inline void EnemiesResponse::set_headurl(const char* value, size_t size) {
+  
+  headurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:EnemiesResponse.HeadURL)
+}
+inline ::std::string* EnemiesResponse::mutable_headurl() {
+  
+  // @@protoc_insertion_point(field_mutable:EnemiesResponse.HeadURL)
+  return headurl_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* EnemiesResponse::release_headurl() {
+  // @@protoc_insertion_point(field_release:EnemiesResponse.HeadURL)
+  
+  return headurl_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void EnemiesResponse::set_allocated_headurl(::std::string* headurl) {
+  if (headurl != NULL) {
+    
+  } else {
+    
+  }
+  headurl_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), headurl);
+  // @@protoc_insertion_point(field_set_allocated:EnemiesResponse.HeadURL)
+}
+
+// uint32 Level = 4;
 inline void EnemiesResponse::clear_level() {
   level_ = 0u;
 }
@@ -10692,22 +11301,36 @@ inline void EnemiesResponse::set_level(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:EnemiesResponse.Level)
 }
 
+// uint32 GrowRate = 5;
+inline void EnemiesResponse::clear_growrate() {
+  growrate_ = 0u;
+}
+inline ::google::protobuf::uint32 EnemiesResponse::growrate() const {
+  // @@protoc_insertion_point(field_get:EnemiesResponse.GrowRate)
+  return growrate_;
+}
+inline void EnemiesResponse::set_growrate(::google::protobuf::uint32 value) {
+  
+  growrate_ = value;
+  // @@protoc_insertion_point(field_set:EnemiesResponse.GrowRate)
+}
+
 // -------------------------------------------------------------------
 
 // PlunderRequest
 
-// bool Plunder = 1;
-inline void PlunderRequest::clear_plunder() {
-  plunder_ = false;
+// uint32 elfinID = 1;
+inline void PlunderRequest::clear_elfinid() {
+  elfinid_ = 0u;
 }
-inline bool PlunderRequest::plunder() const {
-  // @@protoc_insertion_point(field_get:PlunderRequest.Plunder)
-  return plunder_;
+inline ::google::protobuf::uint32 PlunderRequest::elfinid() const {
+  // @@protoc_insertion_point(field_get:PlunderRequest.elfinID)
+  return elfinid_;
 }
-inline void PlunderRequest::set_plunder(bool value) {
+inline void PlunderRequest::set_elfinid(::google::protobuf::uint32 value) {
   
-  plunder_ = value;
-  // @@protoc_insertion_point(field_set:PlunderRequest.Plunder)
+  elfinid_ = value;
+  // @@protoc_insertion_point(field_set:PlunderRequest.elfinID)
 }
 
 // -------------------------------------------------------------------
@@ -10742,7 +11365,21 @@ inline void PlunderResponse::set_id(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:PlunderResponse.Id)
 }
 
-// uint32 GoldNum = 3;
+// uint32 ElfinID = 3;
+inline void PlunderResponse::clear_elfinid() {
+  elfinid_ = 0u;
+}
+inline ::google::protobuf::uint32 PlunderResponse::elfinid() const {
+  // @@protoc_insertion_point(field_get:PlunderResponse.ElfinID)
+  return elfinid_;
+}
+inline void PlunderResponse::set_elfinid(::google::protobuf::uint32 value) {
+  
+  elfinid_ = value;
+  // @@protoc_insertion_point(field_set:PlunderResponse.ElfinID)
+}
+
+// uint32 GoldNum = 4;
 inline void PlunderResponse::clear_goldnum() {
   goldnum_ = 0u;
 }
@@ -10760,18 +11397,32 @@ inline void PlunderResponse::set_goldnum(::google::protobuf::uint32 value) {
 
 // UseItemRequest
 
-// uint32 Id = 1;
-inline void UseItemRequest::clear_id() {
-  id_ = 0u;
+// uint32 ItemId = 1;
+inline void UseItemRequest::clear_itemid() {
+  itemid_ = 0u;
 }
-inline ::google::protobuf::uint32 UseItemRequest::id() const {
-  // @@protoc_insertion_point(field_get:UseItemRequest.Id)
-  return id_;
+inline ::google::protobuf::uint32 UseItemRequest::itemid() const {
+  // @@protoc_insertion_point(field_get:UseItemRequest.ItemId)
+  return itemid_;
 }
-inline void UseItemRequest::set_id(::google::protobuf::uint32 value) {
+inline void UseItemRequest::set_itemid(::google::protobuf::uint32 value) {
   
-  id_ = value;
-  // @@protoc_insertion_point(field_set:UseItemRequest.Id)
+  itemid_ = value;
+  // @@protoc_insertion_point(field_set:UseItemRequest.ItemId)
+}
+
+// uint32 ElfinID = 2;
+inline void UseItemRequest::clear_elfinid() {
+  elfinid_ = 0u;
+}
+inline ::google::protobuf::uint32 UseItemRequest::elfinid() const {
+  // @@protoc_insertion_point(field_get:UseItemRequest.ElfinID)
+  return elfinid_;
+}
+inline void UseItemRequest::set_elfinid(::google::protobuf::uint32 value) {
+  
+  elfinid_ = value;
+  // @@protoc_insertion_point(field_set:UseItemRequest.ElfinID)
 }
 
 // -------------------------------------------------------------------
@@ -10804,6 +11455,20 @@ inline void UseItemResponse::set_id(::google::protobuf::uint32 value) {
   
   id_ = value;
   // @@protoc_insertion_point(field_set:UseItemResponse.Id)
+}
+
+// uint32 ElfinID = 3;
+inline void UseItemResponse::clear_elfinid() {
+  elfinid_ = 0u;
+}
+inline ::google::protobuf::uint32 UseItemResponse::elfinid() const {
+  // @@protoc_insertion_point(field_get:UseItemResponse.ElfinID)
+  return elfinid_;
+}
+inline void UseItemResponse::set_elfinid(::google::protobuf::uint32 value) {
+  
+  elfinid_ = value;
+  // @@protoc_insertion_point(field_set:UseItemResponse.ElfinID)
 }
 
 // -------------------------------------------------------------------
@@ -10962,18 +11627,32 @@ inline void SettleAccountResponse::set_number(::google::protobuf::uint32 value) 
   // @@protoc_insertion_point(field_set:SettleAccountResponse.Number)
 }
 
-// uint32 price = 4;
-inline void SettleAccountResponse::clear_price() {
-  price_ = 0u;
+// uint32 GoldPrice = 4;
+inline void SettleAccountResponse::clear_goldprice() {
+  goldprice_ = 0u;
 }
-inline ::google::protobuf::uint32 SettleAccountResponse::price() const {
-  // @@protoc_insertion_point(field_get:SettleAccountResponse.price)
-  return price_;
+inline ::google::protobuf::uint32 SettleAccountResponse::goldprice() const {
+  // @@protoc_insertion_point(field_get:SettleAccountResponse.GoldPrice)
+  return goldprice_;
 }
-inline void SettleAccountResponse::set_price(::google::protobuf::uint32 value) {
+inline void SettleAccountResponse::set_goldprice(::google::protobuf::uint32 value) {
   
-  price_ = value;
-  // @@protoc_insertion_point(field_set:SettleAccountResponse.price)
+  goldprice_ = value;
+  // @@protoc_insertion_point(field_set:SettleAccountResponse.GoldPrice)
+}
+
+// uint32 DiaPrice = 5;
+inline void SettleAccountResponse::clear_diaprice() {
+  diaprice_ = 0u;
+}
+inline ::google::protobuf::uint32 SettleAccountResponse::diaprice() const {
+  // @@protoc_insertion_point(field_get:SettleAccountResponse.DiaPrice)
+  return diaprice_;
+}
+inline void SettleAccountResponse::set_diaprice(::google::protobuf::uint32 value) {
+  
+  diaprice_ = value;
+  // @@protoc_insertion_point(field_set:SettleAccountResponse.DiaPrice)
 }
 
 // -------------------------------------------------------------------
@@ -11079,7 +11758,21 @@ inline void RankingResponse::set_level(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:RankingResponse.Level)
 }
 
-// uint32 Ranking = 4;
+// uint32 GrowRate = 4;
+inline void RankingResponse::clear_growrate() {
+  growrate_ = 0u;
+}
+inline ::google::protobuf::uint32 RankingResponse::growrate() const {
+  // @@protoc_insertion_point(field_get:RankingResponse.GrowRate)
+  return growrate_;
+}
+inline void RankingResponse::set_growrate(::google::protobuf::uint32 value) {
+  
+  growrate_ = value;
+  // @@protoc_insertion_point(field_set:RankingResponse.GrowRate)
+}
+
+// uint32 Ranking = 5;
 inline void RankingResponse::clear_ranking() {
   ranking_ = 0u;
 }
@@ -11091,6 +11784,59 @@ inline void RankingResponse::set_ranking(::google::protobuf::uint32 value) {
   
   ranking_ = value;
   // @@protoc_insertion_point(field_set:RankingResponse.Ranking)
+}
+
+// string HeadURL = 6;
+inline void RankingResponse::clear_headurl() {
+  headurl_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& RankingResponse::headurl() const {
+  // @@protoc_insertion_point(field_get:RankingResponse.HeadURL)
+  return headurl_.GetNoArena();
+}
+inline void RankingResponse::set_headurl(const ::std::string& value) {
+  
+  headurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:RankingResponse.HeadURL)
+}
+#if LANG_CXX11
+inline void RankingResponse::set_headurl(::std::string&& value) {
+  
+  headurl_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:RankingResponse.HeadURL)
+}
+#endif
+inline void RankingResponse::set_headurl(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  headurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:RankingResponse.HeadURL)
+}
+inline void RankingResponse::set_headurl(const char* value, size_t size) {
+  
+  headurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:RankingResponse.HeadURL)
+}
+inline ::std::string* RankingResponse::mutable_headurl() {
+  
+  // @@protoc_insertion_point(field_mutable:RankingResponse.HeadURL)
+  return headurl_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* RankingResponse::release_headurl() {
+  // @@protoc_insertion_point(field_release:RankingResponse.HeadURL)
+  
+  return headurl_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void RankingResponse::set_allocated_headurl(::std::string* headurl) {
+  if (headurl != NULL) {
+    
+  } else {
+    
+  }
+  headurl_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), headurl);
+  // @@protoc_insertion_point(field_set_allocated:RankingResponse.HeadURL)
 }
 
 // -------------------------------------------------------------------
@@ -11473,6 +12219,28 @@ inline void ElfinUpgradeResponse::set_elfinid(::google::protobuf::uint32 value) 
   elfinid_ = value;
   // @@protoc_insertion_point(field_set:ElfinUpgradeResponse.ElfinID)
 }
+
+// -------------------------------------------------------------------
+
+// HeartBeatRequest
+
+// bool Connected = 1;
+inline void HeartBeatRequest::clear_connected() {
+  connected_ = false;
+}
+inline bool HeartBeatRequest::connected() const {
+  // @@protoc_insertion_point(field_get:HeartBeatRequest.Connected)
+  return connected_;
+}
+inline void HeartBeatRequest::set_connected(bool value) {
+  
+  connected_ = value;
+  // @@protoc_insertion_point(field_set:HeartBeatRequest.Connected)
+}
+
+// -------------------------------------------------------------------
+
+// HeartBeatResponse
 
 // -------------------------------------------------------------------
 
@@ -12926,6 +13694,56 @@ inline void Request::set_allocated_elfinupgrade(::ElfinUpgradeRequest* elfinupgr
   }
   elfinupgrade_ = elfinupgrade;
   // @@protoc_insertion_point(field_set_allocated:Request.ElfinUpgrade)
+}
+
+// .HeartBeatRequest HeartBeat = 30;
+inline bool Request::has_heartbeat() const {
+  return this != internal_default_instance() && heartbeat_ != NULL;
+}
+inline void Request::clear_heartbeat() {
+  if (GetArenaNoVirtual() == NULL && heartbeat_ != NULL) {
+    delete heartbeat_;
+  }
+  heartbeat_ = NULL;
+}
+inline const ::HeartBeatRequest& Request::heartbeat() const {
+  const ::HeartBeatRequest* p = heartbeat_;
+  // @@protoc_insertion_point(field_get:Request.HeartBeat)
+  return p != NULL ? *p : *reinterpret_cast<const ::HeartBeatRequest*>(
+      &::_HeartBeatRequest_default_instance_);
+}
+inline ::HeartBeatRequest* Request::release_heartbeat() {
+  // @@protoc_insertion_point(field_release:Request.HeartBeat)
+  
+  ::HeartBeatRequest* temp = heartbeat_;
+  heartbeat_ = NULL;
+  return temp;
+}
+inline ::HeartBeatRequest* Request::mutable_heartbeat() {
+  
+  if (heartbeat_ == NULL) {
+    heartbeat_ = new ::HeartBeatRequest;
+  }
+  // @@protoc_insertion_point(field_mutable:Request.HeartBeat)
+  return heartbeat_;
+}
+inline void Request::set_allocated_heartbeat(::HeartBeatRequest* heartbeat) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete heartbeat_;
+  }
+  if (heartbeat) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      heartbeat = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, heartbeat, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  heartbeat_ = heartbeat;
+  // @@protoc_insertion_point(field_set_allocated:Request.HeartBeat)
 }
 
 // -------------------------------------------------------------------
@@ -14382,6 +15200,56 @@ inline void Response::set_allocated_elfinupgrade(::ElfinUpgradeResponse* elfinup
   // @@protoc_insertion_point(field_set_allocated:Response.ElfinUpgrade)
 }
 
+// .HeartBeatResponse HeartBeat = 30;
+inline bool Response::has_heartbeat() const {
+  return this != internal_default_instance() && heartbeat_ != NULL;
+}
+inline void Response::clear_heartbeat() {
+  if (GetArenaNoVirtual() == NULL && heartbeat_ != NULL) {
+    delete heartbeat_;
+  }
+  heartbeat_ = NULL;
+}
+inline const ::HeartBeatResponse& Response::heartbeat() const {
+  const ::HeartBeatResponse* p = heartbeat_;
+  // @@protoc_insertion_point(field_get:Response.HeartBeat)
+  return p != NULL ? *p : *reinterpret_cast<const ::HeartBeatResponse*>(
+      &::_HeartBeatResponse_default_instance_);
+}
+inline ::HeartBeatResponse* Response::release_heartbeat() {
+  // @@protoc_insertion_point(field_release:Response.HeartBeat)
+  
+  ::HeartBeatResponse* temp = heartbeat_;
+  heartbeat_ = NULL;
+  return temp;
+}
+inline ::HeartBeatResponse* Response::mutable_heartbeat() {
+  
+  if (heartbeat_ == NULL) {
+    heartbeat_ = new ::HeartBeatResponse;
+  }
+  // @@protoc_insertion_point(field_mutable:Response.HeartBeat)
+  return heartbeat_;
+}
+inline void Response::set_allocated_heartbeat(::HeartBeatResponse* heartbeat) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete heartbeat_;
+  }
+  if (heartbeat) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      heartbeat = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, heartbeat, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  heartbeat_ = heartbeat;
+  // @@protoc_insertion_point(field_set_allocated:Response.HeartBeat)
+}
+
 // -------------------------------------------------------------------
 
 // GameMessage
@@ -14503,6 +15371,10 @@ inline void GameMessage::set_allocated_res(::Response* res) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

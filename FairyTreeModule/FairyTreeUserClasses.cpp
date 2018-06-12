@@ -6,7 +6,7 @@ FairyTreeUserClasses::FairyTreeUserClasses()
 {
 	uRecordUserCount = 0;//记录用户的个数
 
-	userid = 10000; //用户ID
+	m_roleID = 10000; //用户ID
 
 	udiamond = 0; //钻石
 
@@ -38,7 +38,7 @@ void FairyTreeUserClasses::Set_RecordUserCount(uint32 ucon)
 }
 
 //获取记录用户的个数
-int FairyTreeUserClasses::Get_RecordUserCount()
+uint32 FairyTreeUserClasses::Get_RecordUserCount()
 {
 	return uRecordUserCount;
 }
@@ -47,98 +47,111 @@ int FairyTreeUserClasses::Get_RecordUserCount()
 void FairyTreeUserClasses::Set_UserId(uint32 suid)
 {
 	//用户ID号
-	userid += suid;
+	m_roleID += suid;
 	//角色ID号
-	characlass.Set_Role_ID(userid);
+	characlass.Set_Role_ID(m_roleID);
+	elf.Set_RoleID(m_roleID);
+	fairytree.Set_RoleID(m_roleID);
+	sunshine.Set_RoleID(m_roleID);
+	cshop.Set_RoleID(m_roleID);
+	treeenchantment.Set_RoleID(m_roleID);
+	warehouse.Set_RoleID(m_roleID);
+	mailbox.Set_RoleID(m_roleID);
+	tasklist.Set_RoleID(m_roleID);
+	relation.Set_RoleID(m_roleID);
+	rankinglist.Set_RoleID(m_roleID);
+	skill.Set_RoleID(m_roleID);
+	water.Set_RoleID(m_roleID);
+	gold.Set_RoleID(m_roleID);
 
 }
 
 //获得用户ID
-int FairyTreeUserClasses::Get_UserId()
+uint32 FairyTreeUserClasses::Get_UserId()
 {
-	return userid;
+	return m_roleID;
 }
 
 //获取小精灵
-Elfin FairyTreeUserClasses::Get_Elfin()
+Elfin& FairyTreeUserClasses::Get_Elfin()
 { 
 	return elf;
 }
 
 //获取神仙树
-FairyTree FairyTreeUserClasses::Get_FairyTree()
+FairyTree& FairyTreeUserClasses::Get_FairyTree()
 {
 	return fairytree;
 }
 
 //获取太阳
-CSunshine FairyTreeUserClasses::Get_SunShine()
+CSunshine& FairyTreeUserClasses::Get_SunShine()
 {
 	return sunshine;
 }
 
 //获取商店
-Shop FairyTreeUserClasses::Get_Shop()
+Shop& FairyTreeUserClasses::Get_Shop()
 {
 	return cshop;
 }
 
 //获取树结界
-TreeEnchantment FairyTreeUserClasses::Get_TreeEnchantment()
+TreeEnchantment& FairyTreeUserClasses::Get_TreeEnchantment()
 {
 	return treeenchantment;
 }
 
 //获取仓库
-Warehouse FairyTreeUserClasses::Get_Warehouse()
+Warehouse& FairyTreeUserClasses::Get_Warehouse()
 {
 	return warehouse;
 }
 
 //获取邮箱
-CMailbox FairyTreeUserClasses::Get_CMailbox()
+CMailbox& FairyTreeUserClasses::Get_CMailbox()
 {
 	return mailbox;
 }
 
 //获取任务类
-CTaskListClass FairyTreeUserClasses::Get_CTaskListClass()
+CTaskListClass& FairyTreeUserClasses::Get_CTaskListClass()
 {
 	return tasklist;
 }
 
 //获取关系
-Relation FairyTreeUserClasses::Get_Relation()
+Relation& FairyTreeUserClasses::Get_Relation()
 {
 	return relation;
 }
 
 //获取排行榜
-RankingList FairyTreeUserClasses::Get_RankingList()
+RankingList& FairyTreeUserClasses::Get_RankingList()
 {
 	return rankinglist;
 }
 
 //角色类
-CharacterClass FairyTreeUserClasses::Get_Characlass()
+CharacterClass& FairyTreeUserClasses::Get_Characlass()
 {
 	return characlass;
 }
 
 //获取技能
-CSkill FairyTreeUserClasses::Get_CSkill()
+CSkill& FairyTreeUserClasses::Get_CSkill()
 {
 	return skill;
 }
 
 //获取资源水
-Water FairyTreeUserClasses::Get_Water()
+Water& FairyTreeUserClasses::Get_Water()
 {
 	return water;
 }
 
 //获取资源金币
-Gold FairyTreeUserClasses::Get_Gold()
+Gold& FairyTreeUserClasses::Get_Gold()
 {
 	return gold;
 }
@@ -156,7 +169,7 @@ void FairyTreeUserClasses::Set_UserRedDiamond(uint32 surd)
 }
 
 //获取钻石
-int FairyTreeUserClasses::Get_UserDiamond()
+uint32 FairyTreeUserClasses::Get_UserDiamond()
 {
 	return udiamond;
 }
@@ -224,7 +237,7 @@ void FairyTreeUserClasses::vSetUpgradeWaterNum(uint32 num)
 	uUpwaterNum += num;
 }
 //获取升级普通水消耗的数量
-int FairyTreeUserClasses::vGetUpgradeWaterNum()
+uint32 FairyTreeUserClasses::vGetUpgradeWaterNum()
 {
 	return uUpwaterNum;
 }
@@ -234,7 +247,7 @@ void FairyTreeUserClasses::vSetUpgradeFairyTreeNum(uint32 num)
 	uUpfairywaterNum += num;
 }
 //获取升级神仙水消耗的数量
-int FairyTreeUserClasses::vGetUpgradeFairyTreeWaterNum()
+uint32 FairyTreeUserClasses::vGetUpgradeFairyTreeWaterNum()
 {
 	return uUpfairywaterNum;
 }
@@ -244,7 +257,7 @@ void FairyTreeUserClasses::vSetUpgradeGoldNum(uint32 num)
 	uUpgoldNum += num;
 }
 //获取升级金币消耗的数量
-int FairyTreeUserClasses::vGetUpgradeGoldNum()
+uint32 FairyTreeUserClasses::vGetUpgradeGoldNum()
 {
 	return uUpgoldNum;
 }
@@ -254,7 +267,7 @@ void FairyTreeUserClasses::vSetUpgradeSunNum(uint32 num)
 	uUpsunNum += num;
 }
 //获取升级阳光消耗的数量
-int FairyTreeUserClasses::vGetUpgradeSunNum()
+uint32 FairyTreeUserClasses::vGetUpgradeSunNum()
 {
 	return uUpsunNum;
 }
@@ -264,7 +277,7 @@ void FairyTreeUserClasses::vSetUpgradeElfinTiliNum(uint32 num)
 	uUpelfinTiliNUM += num;
 }
 //获取升级小精灵体力消耗的数量
-int FairyTreeUserClasses::vGetUpgradeElfinTiliNum()
+uint32 FairyTreeUserClasses::vGetUpgradeElfinTiliNum()
 {
 	return uUpelfinTiliNUM;
 }
@@ -274,7 +287,7 @@ void FairyTreeUserClasses::vSetUpgradeDiamoNum(uint32 num)
 	uUpdiaNum += num;
 }
 //获取升级钻石消耗的数量
-int FairyTreeUserClasses::vGetUpgradeDiamoNum()
+uint32 FairyTreeUserClasses::vGetUpgradeDiamoNum()
 {
 	return uUpdiaNum;
 }
@@ -283,4 +296,21 @@ CAllUserInfoInstance* CAllUserInfoInstance::_instance = new CAllUserInfoInstance
 CAllUserInfoInstance * CAllUserInfoInstance::GetInstance()
 {
 	return _instance;
+}
+
+std::map<uint32, FairyTreeUserClasses*> CAllUserInfoInstance::fun(uint32 uid)
+{
+	ConnetedUser[uid]->Get_Elfin().map_elfin = fairy.Get_Elfin().map_elfin;
+	ConnetedUser[uid]->Get_CMailbox().map_mail = fairy.Get_CMailbox().map_mail;
+	ConnetedUser[uid]->Get_CSkill().map_skill = fairy.Get_CSkill().map_skill;
+	ConnetedUser[uid]->Get_CTaskListClass().map_task = fairy.Get_CTaskListClass().map_task;
+	ConnetedUser[uid]->Get_Characlass().map_haracter = fairy.Get_Characlass().map_haracter;
+	ConnetedUser[uid]->Get_FairyTree().map_fairytree = fairy.Get_FairyTree().map_fairytree;
+	ConnetedUser[uid]->Get_Gold().map_gold = fairy.Get_Gold().map_gold;
+	ConnetedUser[uid]->Get_Shop().storeItemInfo = fairy.Get_Shop().storeItemInfo;
+	ConnetedUser[uid]->Get_SunShine().map_sunshine = fairy.Get_SunShine().map_sunshine;
+	ConnetedUser[uid]->Get_TreeEnchantment().map_treeEn = fairy.Get_TreeEnchantment().map_treeEn;
+	ConnetedUser[uid]->Get_Warehouse().map_warehouse = fairy.Get_Warehouse().map_warehouse;
+	ConnetedUser[uid]->Get_Water().map_water = fairy.Get_Water().map_water;
+	return ConnetedUser;
 }

@@ -4,6 +4,8 @@
 //物品类
 CWarehouseArticle::CWarehouseArticle()
 {
+	m_roleID = 0;//用户ID
+
 	uarticleSerialNumber = 0; //物品编号
 
 	ugoldPrice = 0; //物品金币价格
@@ -30,7 +32,7 @@ void CWarehouseArticle::Set_CArticleSerialNumber(uint32 casn)
 }
 
 //获取物品编号
-int CWarehouseArticle::Get_CArticleSerialNumber()
+uint32 CWarehouseArticle::Get_CArticleSerialNumber()
 {
 	return uarticleSerialNumber;
 }
@@ -42,7 +44,7 @@ void CWarehouseArticle::Set_CArticleGoldPrice(uint32 cgp)
 }
 
 //获取物品金币价格
-int CWarehouseArticle::Get_CArticleGoldPrice()
+uint32 CWarehouseArticle::Get_CArticleGoldPrice()
 {
 	return ugoldPrice;
 }
@@ -54,7 +56,7 @@ void CWarehouseArticle::Set_CArticleJewelPrice(uint32 cajp)
 }
 
 //获取物品钻石价格
-int CWarehouseArticle::Get_CArticleJewelPrice()
+uint32 CWarehouseArticle::Get_CArticleJewelPrice()
 {
 	return ujewelPrice;
 }
@@ -72,19 +74,19 @@ float CWarehouseArticle::Get_CArticleDiscount()
 }
 
 //设置物品描述(Describe)
-void CWarehouseArticle::Set_CArticleDescribe(std::string & scad)
+void CWarehouseArticle::Set_CArticleDescribe(const std::string& scad)
 {
 	eartDescribe = scad;
 }
 
 //获取物品描述(Describe)
-string CWarehouseArticle::Get_CArticleDescribe()
+std::string CWarehouseArticle::Get_CArticleDescribe()
 {
 	return eartDescribe;
 }
 
 //设置物品类型
-void CWarehouseArticle::Set_eArticleType(EArticleCategory ear)
+void CWarehouseArticle::Set_eArticleType(const EArticleCategory& ear)
 {
 	eartCat = ear;
 }
@@ -96,15 +98,27 @@ EArticleCategory CWarehouseArticle::Get_eArticleType()
 }
 
 //设置物品名字
-void CWarehouseArticle::Set_WareName(std::string & swn)
+void CWarehouseArticle::Set_WareName(const std::string& swn)
 {
 	warename = swn;
 }
 
 //获取物品名字
-string CWarehouseArticle::Get_WareName()
+std::string CWarehouseArticle::Get_WareName()
 {
 	return warename;
+}
+
+//设置用户ID
+void CWarehouseArticle::Set_RoleID(uint32 uid)
+{
+	m_roleID = uid;//用户ID
+}
+
+//获取用户ID
+uint32 CWarehouseArticle::Get_RoleID()
+{
+	return m_roleID;
 }
 
 
@@ -114,31 +128,92 @@ string CWarehouseArticle::Get_WareName()
 //仓库类
 Warehouse::Warehouse()
 {
+	m_roleID = 0;//用户ID
+
+	uWatercount = 0; //记录物品水资源的数量
+
+	uEquipcount = 0; //记录物品装备的数量
+
+	uSepProcount = 0; //记录物品特殊道具的数量
+
+	wareArt = new CWarehouseArticle;
 }
 
 
 Warehouse::~Warehouse()
 {
+	delete wareArt;
 }
 
 //增加物品
-void Warehouse::AddArticle(CWarehouseArticle* addart)
+void Warehouse::AddArticle(uint32 uid)
 {
-	vec.push_back(addart);
+	//水资源的id
+	uint32 uwater = 10001;
+	//装备的id
+	uint32 uequip = 10002;
+	//特殊道具的id
+	uint32 useppro = 10003;
+	if (map_warehouse[uid]->Get_CArticleSerialNumber() == uwater)
+	{
+		map_warehouse[uid] = wareArt;
+		uWatercount += 1;
+	}
+	if (map_warehouse[uid]->Get_CArticleSerialNumber() == uequip)
+	{
+		map_warehouse[uid] = wareArt;
+		uEquipcount += 1;
+	}
+	if (map_warehouse[uid]->Get_CArticleSerialNumber() == useppro)
+	{
+		map_warehouse[uid] = wareArt;
+		uSepProcount += 1;
+	}
+	
+	
 }
 
 //删除物品 通过物品编号
 void Warehouse::CloseArticle(uint32 cloart)
 {
-	
 	//通过物品编号 查找表里面的对应数据
-	for (std::vector<CWarehouseArticle*>::iterator it = vec.begin(); it != vec.end(); it++)
+	for (std::map<uint32, CWarehouseArticle*>::iterator it = map_warehouse.begin(); it != map_warehouse.end(); it++)
 	{
-		if (cloart == (*it)->Get_CArticleSerialNumber())
+		if (cloart == it->second->Get_CArticleSerialNumber())
 		{
-			//找到 删除
-			vec.erase(it);
+			map_warehouse.erase(it);
 		}
 	}
 
 }
+
+//获取物品水资源的数量
+uint32 Warehouse::Get_ArticleToWaterCount()
+{
+	return uWatercount;
+}
+
+//获取物品装备的数量
+uint32 Warehouse::Get_ArticleToEquipCount()
+{
+	return uEquipcount;
+}
+
+//获取物品特殊道具的数量
+uint32 Warehouse::Get_ArticleToSepProCount()
+{
+	return uSepProcount;
+}
+
+//设置用户ID
+void Warehouse::Set_RoleID(uint32 uid)
+{
+}
+
+//获取用户ID
+uint32 Warehouse::Get_RoleID()
+{
+	return m_roleID;
+}
+
+

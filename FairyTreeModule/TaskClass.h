@@ -3,7 +3,7 @@
 #ifndef _TASE_CLASS_H
 #define _TASK_CLASS_H
 
-#include "define.h"
+#include "Gamedefine.h"
 #include "Warehouse.h"
 #include <map>
 
@@ -29,37 +29,48 @@ public:
 	//设置任务编号
 	void Set_TSerialNumber(uint32 tsn);
 	// 获取任务编号
-	int Get_TSerialNumber();
+	uint32 Get_TSerialNumber();
 
 	//设置任务标题
-	void Set_TTaskheadline(std::string ttn);
+	void Set_TTaskheadline(const std::string& ttn);
 	//获取任务标题
-	string Get_TTaskheadline();
+	std::string Get_TTaskheadline();
 
 	//设置任务内容
-	void Set_TTaskContent(std::string ttc);
+	void Set_TTaskContent(const std::string& ttc);
 	//获取任务内容
-	string Get_TTaskContent();
+	std::string Get_TTaskContent();
 
 	//设置任务奖励(物品类的表,(编号,数量))
 	void Set_TTaskAward(uint32 stta, uint32 unum);
 	//获取任务奖励(物品类的表,(编号,数量))
 	std::map<uint32, uint32> Get_TTaskAward();
 
-	//任务状态(result结果)
-	TaskState TaskStateResult();
+	//设置任务状态(result结果)
+	void Set_TaskStateResult(uint32 num);
+	//获取任务状态(result结果)
+	TaskState Get_TaskStateResult();
 
 	//设置任务当前完成度
 	void Set_TaskCurComp(uint32 stcc);
 	//获取任务当前完成度
-	int Get_TaskCurComp();
+	uint32 Get_TaskCurComp();
 
 	//设置任务总的完成度
 	void Set_TaskSumUpComp(uint32 stsuc);
 	//获取任务总的完成度
-	int Get_TaskSumUpComp();
+	uint32 Get_TaskSumUpComp();
+
+	//设置用户ID
+	void Set_RoleID(uint32 uid);
+	//获取用户ID
+	uint32 Get_RoleID();
 
 private:
+
+	//用户ID
+	uint32 m_roleID;
+
 	//任务编号
 	uint32 tserialnumber;
 
@@ -92,21 +103,28 @@ public:
 	CTaskListClass();
 	~CTaskListClass();
 	//增加任务
-	void Add_Task(TaskClass* addtask);
+	void Add_Task(uint32 uid);
 	//删除任务
-	void Erase_Task(TaskClass* addtask);
+	void Erase_Task(uint32 uid);
 	//遍历任务
 	TaskClass* ErgodicTask(uint32 uid);
 	//任务个数
-	inline int GetTaskCount() { return (int)vectc.size(); }
+	uint32 GetTaskCount() { return (uint32)map_task.size(); }
+
+	//设置用户ID
+	void Set_RoleID(uint32 uid);
+	//获取用户ID
+	uint32 Get_RoleID();
 
 	//任务类map
 	std::map<uint32, TaskClass*> map_task;
 
-	TaskClass* taskc;
+	TaskClass * taskc;
 private:
-	//任务列表
-	std::vector<TaskClass*> vectc;
+
+	//用户ID
+	uint32 m_roleID;
+	
 	
 };
 
