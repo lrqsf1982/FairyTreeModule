@@ -44,10 +44,10 @@ void Process_ElfinRequest(const GameMessage& pMsg, CServerObject* pServerObj, IM
 //角色信息请求3
 void Process_RollRequest(const GameMessage & pMsg, CServerObject * pServerObj, IMessage * pMessage)
 {
-	RollRequest rollreq;
+	//RollRequest rollreq;
 
 	//收到角色信息请求
-	rollreq.roll();
+	//rollreq.roll();
 
 	//应答函数
 	Process_RollResponse(pMsg, pServerObj, pMessage);
@@ -56,10 +56,10 @@ void Process_RollRequest(const GameMessage & pMsg, CServerObject * pServerObj, I
 //神仙树请求4
 void Process_TreeRequest(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage)
 {
-	TreeRequest ptreReq;
+	//TreeRequest ptreReq;
 
 	//收到神仙树的请求 返回数据
-	ptreReq.tree();
+	//ptreReq.tree();
 
 	//应答函数
 	Process_TreeResponse(pMsg, pServerObj, pMessage);
@@ -69,10 +69,10 @@ void Process_TreeRequest(const GameMessage& pMsg, CServerObject* pServerObj, IMe
 //资源请求5
 void Process_ResourceRequest(const GameMessage & pMsg, CServerObject * pServerObj, IMessage * pMessage)
 {
-	ResourceRequest rocrut;
+	//ResourceRequest rocrut;
 
 	//收到资源请求
-	rocrut.resource();
+	//rocrut.resource();
 
 	//应答函数
 	Process_ResourceResponse(pMsg, pServerObj, pMessage);
@@ -81,10 +81,10 @@ void Process_ResourceRequest(const GameMessage & pMsg, CServerObject * pServerOb
 //获取任务列表请求6
 void Process_TasksRequest(const GameMessage & pMsg, CServerObject * pServerObj, IMessage * pMessage)
 {
-	TasksRequest ptasReq;
+	//TasksRequest ptasReq;
 
 	//获取人物列表请求
-	ptasReq.tasks();
+	//ptasReq.tasks();
 
 	//应答函数
 	Process_TasksResponse(pMsg, pServerObj, pMessage);
@@ -93,10 +93,10 @@ void Process_TasksRequest(const GameMessage & pMsg, CServerObject * pServerObj, 
 //邮件请求7
 void Process_MailsRequest(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage)
 {
-	MailsRequest pmaiReq;
+	//MailsRequest pmaiReq;
 
 	//获取邮件列表信息
-	pmaiReq.mails();
+	//pmaiReq.mails();
 
 	//应答函数
 	Process_MailsResponse(pMsg, pServerObj, pMessage);
@@ -106,10 +106,10 @@ void Process_MailsRequest(const GameMessage& pMsg, CServerObject* pServerObj, IM
 //太阳请求8
 void Process_SunRequest(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage)
 {
-	SunRequest pwelReq;
+	//SunRequest pwelReq;
 
 	//收到太阳的请求 返回数据
-	pwelReq.sun();
+	//pwelReq.sun();
 
 	//应答函数
 	Process_SunResponse(pMsg, pServerObj, pMessage);
@@ -119,10 +119,10 @@ void Process_SunRequest(const GameMessage& pMsg, CServerObject* pServerObj, IMes
 //树结界请求9
 void Process_TreeEnchantmentRequest(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage)
 {
-	TreeEnchantmentRequest ptreEncReq;
+	//TreeEnchantmentRequest ptreEncReq;
 
 	//收到请求 返回数据
-	ptreEncReq.treeench();
+	//ptreEncReq.treeench();
 
 	//应答函数
 	Process_TreeEnchantmentResponse(pMsg, pServerObj, pMessage);
@@ -132,10 +132,10 @@ void Process_TreeEnchantmentRequest(const GameMessage& pMsg, CServerObject* pSer
 //获取商店所有物品请求10
 void Process_StoreAllRequest(const GameMessage & pMsg, CServerObject * pServerObj, IMessage * pMessage)
 {
-	StoreAllRequest stoall;
+	//StoreAllRequest stoall;
 
 	//收到商店所有物品请求
-	stoall.storeall();
+	//stoall.storeall();
 
 	//应答函数
 	Process_StoreAllResponse(pMsg, pServerObj, pMessage);
@@ -145,10 +145,10 @@ void Process_StoreAllRequest(const GameMessage & pMsg, CServerObject * pServerOb
 //获取商店装备类物品请求11
 void Process_StoreEquRequest(const GameMessage & pMsg, CServerObject * pServerObj, IMessage * pMessage)
 {
-	StoreEquRequest stoequ;
+	//StoreEquRequest stoequ;
 
 	//收到商店装备类物品请求
-	stoequ.storeequ();
+	//stoequ.storeequ();
 
 	//应答函数
 	Process_StoreEquResponse(pMsg, pServerObj, pMessage);
@@ -158,10 +158,10 @@ void Process_StoreEquRequest(const GameMessage & pMsg, CServerObject * pServerOb
 //获取商店水资源类物品请求12
 void Process_StoreWaterRequest(const GameMessage & pMsg, CServerObject * pServerObj, IMessage * pMessage)
 {
-	StoreWaterRequest stowatreq;
+	//StoreWaterRequest stowatreq;
 
 	//收到商店水资源类物品请求
-	stowatreq.storewater();
+	//stowatreq.storewater();
 
 	//应答函数
 	Process_StoreWaterResponse(pMsg, pServerObj, pMessage);
@@ -171,10 +171,10 @@ void Process_StoreWaterRequest(const GameMessage & pMsg, CServerObject * pServer
 //获取商店特殊类物品请求13
 void Process_StoreSpePropsRequest(const GameMessage & pMsg, CServerObject * pServerObj, IMessage * pMessage)
 {
-	StoreSpePropsRequest stospeproreq;
+	//StoreSpePropsRequest stospeproreq;
 
 	//收到商店特殊类物品请求
-	stospeproreq.storespeprops();
+	//stospeproreq.storespeprops();
 
 	//应答函数
 	Process_StoreSpePropsResponse(pMsg, pServerObj, pMessage);
@@ -184,10 +184,10 @@ void Process_StoreSpePropsRequest(const GameMessage & pMsg, CServerObject * pSer
 //获取仓库所有物品请求14
 void Process_WarehouseRequest(const GameMessage & pMsg, CServerObject * pServerObj, IMessage * pMessage)
 {
-	WarehouseRequest warehreq;
+	//WarehouseRequest warehreq;
 
 	//收到仓库所有物品请求
-	warehreq.warehouse();
+	//warehreq.warehouse();
 
 	//应答函数
 	Process_WarehouseResponse(pMsg, pServerObj, pMessage);
@@ -198,9 +198,6 @@ void Process_WarehouseRequest(const GameMessage & pMsg, CServerObject * pServerO
 void Process_DelMailRequest(const GameMessage & pMsg, CServerObject * pServerObj, IMessage * pMessage)
 {
 	DelMailRequest delmail;
-
-	//应答函数
-	Process_DelMailResponse(pMsg, pServerObj, pMessage);
 
 	//得到消息连接ID
 	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
@@ -213,15 +210,15 @@ void Process_DelMailRequest(const GameMessage & pMsg, CServerObject * pServerObj
 		faitreUser->Get_CMailbox().CloseMail(delmail.id());
 	}
 
+	//应答函数
+	Process_DelMailResponse(pMsg, pServerObj, pMessage);
+
 }
 
 //请求领取任务16
 void Process_ClaimedTaskRequest(const GameMessage & pMsg, CServerObject * pServerObj, IMessage * pMessage)
 {
 	ClaimedTaskRequest clatask;
-
-	//应答函数
-	Process_ClaimedTaskResponse(pMsg, pServerObj, pMessage);
 
 	//得到消息连接ID
 	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
@@ -234,7 +231,8 @@ void Process_ClaimedTaskRequest(const GameMessage & pMsg, CServerObject * pServe
 		faitreUser->Get_CTaskListClass().map_task[clatask.id()]->Set_TaskStateResult(1);
 	}
 
-	
+	//应答函数
+	Process_ClaimedTaskResponse(pMsg, pServerObj, pMessage);
 
 }
 
@@ -242,9 +240,6 @@ void Process_ClaimedTaskRequest(const GameMessage & pMsg, CServerObject * pServe
 void Process_RecTaskAwardRequest(const GameMessage & pMsg, CServerObject * pServerObj, IMessage * pMessage)
 {
 	RecTaskAwardRequest rectaskaward;
-
-	//应答函数
-	Process_RecTaskAwardResponse(pMsg, pServerObj, pMessage);
 
 	//得到消息连接ID
 	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
@@ -254,15 +249,18 @@ void Process_RecTaskAwardRequest(const GameMessage & pMsg, CServerObject * pServ
 	//收到任务奖励请求 并将奖励的物品存入该用户的仓库里面(?物品的类型是什么,物品的数量是多少)
 	rectaskaward.id();
 
+	//应答函数
+	Process_RecTaskAwardResponse(pMsg, pServerObj, pMessage);
+
 }
 
 //获取好友列表请求18
 void Process_FriendsRequest(const GameMessage & pMsg, CServerObject * pServerObj, IMessage * pMessage)
 {
-	FriendsRequest friendsreq;
-
 	//收到好友列表请求
-	friendsreq.friends();
+	//FriendsRequest friendsreq;
+
+	//friendsreq.friends();
 
 	//应答函数
 	Process_FriendsResponse(pMsg, pServerObj, pMessage);
@@ -272,10 +270,10 @@ void Process_FriendsRequest(const GameMessage & pMsg, CServerObject * pServerObj
 //获取敌人列表请求19
 void Process_EnemiesRequest(const GameMessage & pMsg, CServerObject * pServerObj, IMessage * pMessage)
 {
-	EnemiesRequest enemreq;
+	//EnemiesRequest enemreq;
 
 	//收到敌人列表请求
-	enemreq.enemies();
+	//enemreq.enemies();
 
 	//应答函数
 	Process_EnemiesResponse(pMsg, pServerObj, pMessage);
@@ -285,15 +283,17 @@ void Process_EnemiesRequest(const GameMessage & pMsg, CServerObject * pServerObj
 //随机掠夺请求20
 void Process_PlunderRequest(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage)
 {
-	PlunderRequest ppluReq;
+	//PlunderRequest ppluReq;
 
 	// 得到消息连接ID
-	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
+	//uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
 	//神仙树用户类指针 
-	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
+	//FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
 
 	//掠夺请求 小精灵的ID
-	ppluReq.elfinid();
+	//ppluReq.elfinid();
+
+	//收到掠夺请求 随机返回一个用户ID给客户端
 
 	//应答函数
 	Process_PlunderResponse(pMsg, pServerObj, pMessage);
@@ -305,15 +305,12 @@ void Process_UseItemRequest(const GameMessage & pMsg, CServerObject * pServerObj
 {
 	UseItemRequest useitereq;
 
-	//应答函数
-	Process_UseItemResponse(pMsg, pServerObj, pMessage);
-
 	//得到消息连接ID
 	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
 	//神仙树用户类指针 
 	FairyTreeUserClasses* faitreUser = CAllUserInfoInstance::GetInstance()->ConnetedUser[uConId];
 	
-	//收到使用物品请求 使用物品过后小精灵的相应的属性就增加
+	//收到使用物品请求 小精灵对神仙树使用物品,设置神仙树的数据,过后小精灵的当前体力值减少,
 	// if(useitereq.itemid() == faitreUser->Get_Warehouse().map_warehouse[useitereq.itemid()]->Get_CArticleSerialNumber())
 	//{
 	//		faitreUser->Get_Warehouse().CloseArticle(useitereq.itemid());
@@ -321,7 +318,8 @@ void Process_UseItemRequest(const GameMessage & pMsg, CServerObject * pServerObj
 	useitereq.itemid();
 	useitereq.elfinid();
 
-	
+	//应答函数
+	Process_UseItemResponse(pMsg, pServerObj, pMessage);
 
 }
 
@@ -1520,6 +1518,8 @@ void Process_PlunderResponse(const GameMessage& pMsg, CServerObject* pServerObj,
 	PlunderResponse* pplures = pRes->release_plunder();
 	pplures = pRes->mutable_plunder();
 
+
+	PlunderRequest ppluReq;
 	//得到消息连接ID
 	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
 	//神仙树用户类指针 
@@ -1527,8 +1527,20 @@ void Process_PlunderResponse(const GameMessage& pMsg, CServerObject* pServerObj,
 	
 	//组织应答消息内容(抢夺结果,被掠夺者的ID,小精灵的ID,金币数量)
 	pplures->set_success(true);
-	pplures->set_id(798);
-	pplures->set_goldnum(22);
+	srand((uint32)time(0));
+	rand();//空随机一次
+	//用户的初始ID好
+	uint32 roleInitID = 10001;
+	uint32 uid = 0;
+	//如果当前的用户ID 等于 随机生成的用户ID
+	uid = rand() % CAllUserInfoInstance::GetInstance()->ConnetedUser.size() + roleInitID;
+	if (faitreUser->Get_Characlass().Get_Role_ID() == uid)
+	{
+		rand();
+		uid = rand() % CAllUserInfoInstance::GetInstance()->ConnetedUser.size() + roleInitID;
+	}
+	pplures->set_id(uid);
+	pplures->set_elfinid(ppluReq.elfinid());
 
 	//设置消息应答(枚举 3191)
 	gameMsg.set_msg(Plunder_Response);

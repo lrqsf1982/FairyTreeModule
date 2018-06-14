@@ -34,6 +34,9 @@
     <Filter Include="TinyXML">
       <UniqueIdentifier>{0c54f213-5d73-4b60-a83d-27ac4e0f9c08}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DB">
+      <UniqueIdentifier>{7f0ef6f7-32bc-416f-9e05-c6e6a0f3e24a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseCommand.cpp">
@@ -114,6 +117,66 @@
     <ClCompile Include="TinyXML\tinyxmlparser.cpp">
       <Filter>TinyXML</Filter>
     </ClCompile>
+    <ClCompile Include="DB\character_table.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="DB\DPMemDB.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="DB\elfindata_table.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="DB\fairytree_table.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="DB\gold_table.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="DB\Interface .cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="DB\mail_table.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="DB\mailbox_table.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="DB\mysql_encap.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="DB\rankinglist_table.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="DB\relation_table.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="DB\skill_table.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="DB\sunshine_table.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="DB\taskclass_table.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="DB\tasklistclass_table.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="DB\tree_enchantmen_table.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="DB\UserAllTable.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="DB\ware_house_article_table.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="DB\warehouse_table.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="DB\water_table.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseCommand.h">
@@ -187,6 +250,66 @@
     </ClInclude>
     <ClInclude Include="TinyXML\tinyxml.h">
       <Filter>TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="DB\character_table.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="DB\DPMemDB.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="DB\elfindata_table.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="DB\fairytree_table.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="DB\gold_table.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="DB\mail_table.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="DB\mailbox_table.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="DB\mysql_encap.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="DB\ObjectPool.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="DB\rankinglist_table.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="DB\relation_table.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="DB\skill_table.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="DB\sunshine_table.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="DB\taskclass_table.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="DB\tasklistclass_table.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="DB\tree_enchantmen_table.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="DB\ware_house_article_table.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="DB\warehouse_table.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="DB\water_table.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="DB\UserAllTable.h">
+      <Filter>DB</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
