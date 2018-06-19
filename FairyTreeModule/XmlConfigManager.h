@@ -3,8 +3,6 @@
 #include "define.h"
 #include <map>
 #include "./TinyXML/tinyxml.h"
-#include "./TinyXML/tinyxml.h"
-#include "FairyTreeUserClasses.h"
 
 
 
@@ -17,8 +15,11 @@ struct ItemInfo
 	uint32 goldprice; //金币价格
 	uint32 diamondprice; //钻石价格
 	double discountrate; //折扣率
-	std::string type; //类型
-	std::string photoname; //图片名
+	uint32 consStr; //消耗体力
+	uint32 timeCon; //耗时
+	uint32 height;  //高度
+	std::string mtype; //类型
+	std::string photoname; //对应的图片名
 };
 
 //小精灵
@@ -30,6 +31,9 @@ struct ElfinInfo
 	uint32 cosunnum; //阳光数量消耗
 	uint32 cogoldnum; //金币数量消耗
 	uint32 codiamondnum; //钻石消耗数量
+	uint32 cultEffic;//栽培效率
+	uint32 uwatering;//浇水
+	uint32 abiPlun;//掠夺能力
 };
 
 //技能
@@ -42,6 +46,8 @@ struct SkillInfo
 	uint32 cultivation; //栽培效果
 	uint32 elude; //躲避能力
 	uint32 plunderAddition; //抢劫加成
+	uint32 cogoldnum; //消耗金币数量
+	uint32 codiamondnum; //消耗钻石数量
 };
 
 //阳光
@@ -83,6 +89,7 @@ struct TreeInfo
 	uint32 productivity; //生产力
 	double treehigh; //树的高度
 	uint32 breakthReq; //突破所需
+	std::string photoname; //图片名
 };
 
 //树结界
@@ -90,6 +97,7 @@ struct TreeEnchantmentInfo
 {
 	uint32 gread; //等级
 	uint32 enchantdefense; //结界防御
+	std::string fairyDoor; //神仙门
 };
 
 
@@ -105,20 +113,6 @@ public:
 	std::map<uint32, TreeEnchantmentInfo*> TreeEnchantInfos;
 	static XmlConfigManager* GetInstance();
 	~XmlConfigManager();
-	//存储物品到商店类
-	void StoreItemsInStores(uint32 uid);
-	//初始化小精灵数据到小精灵类
-	void InitElfinData(uint32 uid);
-	//初始化技能数据到技能类
-	void InitSkillData(uint32 id);
-	//初始化太阳数据到太阳类
-	void InitSunData(uint32 id);
-	//初始化任务数据到任务类
-	void InitTaskData(uint32 id);
-	//初始化神仙树数据到神仙树类
-	void InitTreeData(uint32 id);
-	//初始化树结界数据到树结界类
-	void InitTreeEnchantData(uint32 id);
 
 private:
 	XmlConfigManager();
@@ -130,13 +124,6 @@ private:
 	bool ParseXmlToTree();//读取神仙树Xml文件函数
 	bool ParseXmlToTreeEnchantment();//读取树结界Xml文件函数
 	static XmlConfigManager* Instance;
-	Shop* xmlshop; // 商店
-	Elfin* xmlelfin; //小精灵
-	CSkill* xmlskill; //技能
-	CSunshine* xmlsunshine; //太阳
-	CTaskListClass xmltasklistclass; //任务
-	FairyTree* xmlfairytree; //神仙树
-	TreeEnchantment* xmltreeenchantment; //树结界
 };
 
 

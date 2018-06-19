@@ -4,7 +4,6 @@
 
 Shop::Shop()
 {
-	m_roleID = 0;//用户ID
 	pwareArt = new CWarehouseArticle;
 	ubuyGoodsTotalPrice = 0;//购买物品后的总价格
 }
@@ -29,7 +28,7 @@ bool Shop::ShopCloseAnGoldFun(uint32 ugoodsID, uint32 ugoodsNum)
 				//找到
 				float utotalprice = 0.0f; //临时的总价格
 										//根据物品的数量 * 金币(注:不是钻石) * 折扣 = 来计算总价格
-				utotalprice = ugoodsNum * (*itwater)->Get_CArticleGoldPrice() * (*itwater)->Get_CArticleDiscount();
+				//utotalprice = ugoodsNum * (*itwater)->Get_CArticleGoldPrice() * (*itwater)->Get_CArticleDiscount();
 				Set_ShopBuyGoodsTotalPrice(utotalprice);
 				return true;
 			}
@@ -47,7 +46,7 @@ bool Shop::ShopCloseAnGoldFun(uint32 ugoodsID, uint32 ugoodsNum)
 				//找到
 				float utotalprice = 0.0f; //临时的总价格
 										//根据物品的数量 * 金币(注:不是钻石) * 折扣 = 来计算总价格
-				utotalprice = ugoodsNum * (*itequ)->Get_CArticleGoldPrice() * (*itequ)->Get_CArticleDiscount();
+				//utotalprice = ugoodsNum * (*itequ)->Get_CArticleGoldPrice() * (*itequ)->Get_CArticleDiscount();
 				Set_ShopBuyGoodsTotalPrice(utotalprice);
 				return true;
 			}
@@ -65,7 +64,7 @@ bool Shop::ShopCloseAnGoldFun(uint32 ugoodsID, uint32 ugoodsNum)
 				//找到
 				float utotalprice = 0.0f; //临时的总价格
 										//根据物品的数量 * 金币(注:不是钻石) * 折扣 = 来计算总价格
-				utotalprice = ugoodsNum * (*itspe)->Get_CArticleGoldPrice() * (*itspe)->Get_CArticleDiscount();
+				//utotalprice = ugoodsNum * (*itspe)->Get_CArticleGoldPrice() * (*itspe)->Get_CArticleDiscount();
 				Set_ShopBuyGoodsTotalPrice(utotalprice);
 				return true;
 			}
@@ -89,7 +88,7 @@ bool Shop::ShopCloseAnJewelFun(uint32 ugoodsID, uint32 ugoodsNum)
 				//找到
 				float utotalprice = 0.0f; //临时的总价格
 										  //根据物品的数量 * 钻石(注:不是金币) * 折扣 = 来计算总价格
-				utotalprice = ugoodsNum * (*itwater)->Get_CArticleJewelPrice() * (*itwater)->Get_CArticleDiscount();
+				//utotalprice = ugoodsNum * (*itwater)->Get_CArticleJewelPrice() * (*itwater)->Get_CArticleDiscount();
 				Set_ShopBuyGoodsTotalPrice(utotalprice);
 				return true;
 			}
@@ -107,7 +106,7 @@ bool Shop::ShopCloseAnJewelFun(uint32 ugoodsID, uint32 ugoodsNum)
 				//找到
 				float utotalprice = 0.0f; //临时的总价格
 										  //根据物品的数量 * 钻石(注:不是金币) * 折扣 = 来计算总价格
-				utotalprice = ugoodsNum * (*itequ)->Get_CArticleJewelPrice() * (*itequ)->Get_CArticleDiscount();
+				//utotalprice = ugoodsNum * (*itequ)->Get_CArticleJewelPrice() * (*itequ)->Get_CArticleDiscount();
 				Set_ShopBuyGoodsTotalPrice(utotalprice);
 				return true;
 			}
@@ -125,7 +124,7 @@ bool Shop::ShopCloseAnJewelFun(uint32 ugoodsID, uint32 ugoodsNum)
 				//找到
 				float utotalprice = 0.0f; //临时的总价格
 										  //根据物品的数量 * 钻石(注:不是金币) * 折扣 = 来计算总价格
-				utotalprice = ugoodsNum * (*itspe)->Get_CArticleJewelPrice() * (*itspe)->Get_CArticleDiscount();
+				//utotalprice = ugoodsNum * (*itspe)->Get_CArticleJewelPrice() * (*itspe)->Get_CArticleDiscount();
 				Set_ShopBuyGoodsTotalPrice(utotalprice);
 				return true;
 			}
@@ -140,7 +139,7 @@ bool Shop::ShopCloseAnJewelFun(uint32 ugoodsID, uint32 ugoodsNum)
 void Shop::ShopDiscountFun(float sdf)
 {
 	//商店类给物品类(pwareArt)设置折扣
-	pwareArt->Set_CArticleDiscount(sdf);
+	//pwareArt = sdf;
 }
 
 
@@ -174,22 +173,23 @@ float Shop::Get_ShopBuyGoodsTotalPrice()
 	return ubuyGoodsTotalPrice;
 }
 
-//获取物品类  遍历物品
-CWarehouseArticle * Shop::Get_ArticleClass(uint32 uid)
+//获取物品类 水资源表
+std::vector<CWarehouseArticle*> Shop::Get_WarehouseWaterVector()
 {
-	return storeItemInfo[uid];
+	return vecwater;
 }
 
-//设置用户ID
-void Shop::Set_RoleID(uint32 uid)
+//获取物品类 装备表
+std::vector<CWarehouseArticle*> Shop::Get_WarehouseEquipVector()
 {
-	m_roleID = uid;
+	return vecequ;
 }
 
-//获取用户ID
-uint32 Shop::Get_RoleID()
+//获取物品类 特殊道具表
+std::vector<CWarehouseArticle*> Shop::Get_WarehouseSpeProVector()
 {
-	return m_roleID;
+	return vecspe;
 }
+
 
 

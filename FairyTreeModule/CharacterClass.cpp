@@ -27,7 +27,7 @@ void CharacterClass::Set_Role_ID(uint32 srid)
 }
 
 //获取角色ID
-uint32 CharacterClass::Get_Role_ID()
+uint32 CharacterClass::Get_Role_ID()const
 {
 	return m_roleID;
 }
@@ -39,7 +39,7 @@ void CharacterClass::Set_Role_Name(const std::string& srname)
 }
 
 //获取角色名字
-std::string CharacterClass::Get_Role_Name()
+std::string CharacterClass::Get_Role_Name()const
 {
 	return sroleName;
 }
@@ -51,7 +51,7 @@ void CharacterClass::Set_RoleGrowthValue(uint32 srgv)
 }
 
 //获取角色成长值
-uint32 CharacterClass::Get_RoleGrowthValue()
+uint32 CharacterClass::Get_RoleGrowthValue()const
 {
 	return urolegrowthvalue;
 }
@@ -63,7 +63,7 @@ void CharacterClass::Set_HaracterHeadPortraitSite(const std::string& shps)
 }
 
 //获取角色的头像地址
-std::string CharacterClass::Get_HaracterHeadPortraitSite()
+std::string CharacterClass::Get_HaracterHeadPortraitSite()const
 {
 	return uharaHPSite;
 }
@@ -75,7 +75,8 @@ void CharacterClass::Set_TreeToGread(uint32 sttg)
 }
 
 //获取树的等级
-uint32 CharacterClass::Get_TreeToGread()
+uint32 CharacterClass::Get_TreeToGread()const
 {
 	return utreeToGread;
 }
+

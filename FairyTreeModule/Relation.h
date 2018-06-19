@@ -27,17 +27,7 @@ public:
 	void RAddEnemy(CharacterClass* cr);
 	// 删除敌人 通过角色ID
 	void RDelEnemy(uint32 udel);
-
-	//设置用户ID
-	void Set_RoleID(uint32 uid);
-	//获取用户ID
-	uint32 Get_RoleID();
-
 private:
-
-	//用户ID
-	uint32 m_roleID;
-
 	CharacterClass * pharaCha;
 	//好友情况
 	std::list<CharacterClass*> crfriendlist;

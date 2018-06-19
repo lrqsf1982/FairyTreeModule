@@ -5,6 +5,7 @@
 
 #include "Gamedefine.h"
 #include <list>
+#include <map>
 #include "CharacterClass.h"
 
 //排行榜类
@@ -18,21 +19,12 @@ public:
 	//删除角色
 	void RankingList_DelCharacter(uint32 delc);
 
-	//获取排行榜
+	//获取排行榜角色的list
 	std::list<CharacterClass*> Get_Rankinglist();
-
-	//设置用户ID
-	void Set_RoleID(uint32 uid);
-	//获取用户ID
-	uint32 Get_RoleID();
-
 private:
-
-	//用户ID
-	uint32 m_roleID;
-
 	CharacterClass * pcharass;
 	
+	//角色的list
 	std::list<CharacterClass*> list_ranking;
 
 };

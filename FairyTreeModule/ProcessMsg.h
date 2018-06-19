@@ -5,9 +5,6 @@
 #include "google/protobuf/descriptor.h"
 #include "google/protobuf/message.h"
 #include "ProtobufMSG/Msg.pb.h"
-#include "FairyTreeUserClasses.h"
-#include "MD5.h"
-#include "XmlConfigManager.h"
 
 
 #ifndef COMMAND_BASE_ID
@@ -41,12 +38,12 @@ void Process_UseItemRequest(const GameMessage& pMsg, CServerObject* pServerObj, 
 void Process_SettleAccountRequest(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage);    //结账请求22
 void Process_RankingRequest(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage);		  //请求获取排行榜列表23
 void Process_ForgetSkillRequest(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage);      //遗忘技能请求24
-void Process_RegisterRequest(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage);         //注册请求25
+void Process_RegisterRequest    (const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage);         //注册请求25
 void Process_SolarUpgradeRequest(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage);     //太阳升级请求26
 void Process_SkillUpgradeRequest(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage);     //技能升级请求27
-void Process_TreeUpgradeRequest(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage);      //神仙树升级请求28
+void Process_TreeUpgradeRequest (const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage);      //神仙树升级请求28
 void Process_ElfinUpgradeRequest(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage);     //小精灵升级请求29
-void Process_HeartBeatRequest(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage);        //心跳包请求30
+void Process_HeartBeatRequest   (const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage);        //心跳包请求30
 
 
 //应答

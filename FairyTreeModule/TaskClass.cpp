@@ -3,19 +3,17 @@
 
 TaskClass::TaskClass()
 {
-	m_roleID = 0;//用户ID
+	m_taskNum = 0; //任务编号
 
-	tserialnumber = 0; //任务编号
+	m_taskHe = ""; //任务标题
 
-	staskheadline = ""; //任务标题
+	m_taskCon = ""; //任务内容
 
-	staskcontent = ""; //任务内容
+	m_taskState = NotYet; //任务状态
 
-	taskstate = NotYet; //任务状态
+	m_curComp = 0; //任务当前完成度
 
-	taskCurComp = 0; //任务当前完成度
-
-	taskSumUpComp = 0; //任务总完成度
+	m_sumUpComp = 0; //任务需要总的完成度
 }
 
 
@@ -26,49 +24,49 @@ TaskClass::~TaskClass()
 //设置任务编号
 void TaskClass::Set_TSerialNumber(uint32 tsn)
 {
-	tserialnumber = tsn;
+	m_taskNum = tsn;
 }
 
 // 获取任务编号
 uint32 TaskClass::Get_TSerialNumber()
 {
-	return tserialnumber;
+	return m_taskNum;
 }
 
 //设置任务标题
 void TaskClass::Set_TTaskheadline(const std::string& ttn)
 {
-	staskheadline = ttn;
+	m_taskHe = ttn;
 }
 
 //获取任务标题
 std::string TaskClass::Get_TTaskheadline()
 {
-	return staskheadline;
+	return m_taskHe;
 }
 
 //设置任务内容
 void TaskClass::Set_TTaskContent(const std::string& ttc)
 {
-	staskcontent = ttc;
+	m_taskCon = ttc;
 }
 
 //获取任务内容
 std::string TaskClass::Get_TTaskContent()
 {
-	return staskcontent;
+	return m_taskCon;
 }
 
 //设置任务奖励(物品类的表,(编号,数量))
 void TaskClass::Set_TTaskAward(uint32 stta, uint32 unum)
 {
-	mapware[stta] = unum;
+	map_queRew[stta] = unum;
 }
 
 //获取任务奖励(物品类的表,(编号,数量))
 std::map<uint32, uint32> TaskClass::Get_TTaskAward()
 {
-	return mapware;
+	return map_queRew;
 }
 
 //任务状态(result结果)
@@ -77,67 +75,57 @@ void TaskClass::Set_TaskStateResult(uint32 num)
 	//设置任务状态
 	switch (num)
 	{
-	case 0: { taskstate = NotYet; break; }
-	case 1: { taskstate = Already; break; }
-	case 2: { taskstate = Done; break; }
-	case 3: { taskstate = Received; break; }
+	case 0: { m_taskState = NotYet; break; }
+	case 1: { m_taskState = Already; break; }
+	case 2: { m_taskState = Done; break; }
+	case 3: { m_taskState = Received; break; }
 	}
 }
 
 //获取任务状态(result结果)
 TaskState TaskClass::Get_TaskStateResult()
 {
-	return taskstate;
+	return m_taskState;
 }
 
 //设置任务当前完成度
 void TaskClass::Set_TaskCurComp(uint32 stcc)
 {
-	taskCurComp += stcc;
+	m_curComp += stcc;
 }
 
 //获取任务当前完成度
 uint32 TaskClass::Get_TaskCurComp()
 {
-	return taskCurComp;
+	return m_curComp;
 }
 
-//设置任务总的完成度
+//设置任务需要总的完成度
 void TaskClass::Set_TaskSumUpComp(uint32 stsuc)
 {
-	taskSumUpComp = stsuc;
+	m_sumUpComp = stsuc;
 }
 
-//获取任务总的完成度
+//获取任务需要总的完成度
 uint32 TaskClass::Get_TaskSumUpComp()
 {
-	return taskSumUpComp;
+	return m_sumUpComp;
 }
 
-//设置用户ID
-void TaskClass::Set_RoleID(uint32 uid)
-{
-	m_roleID = uid;
-}
 
-//获取用户ID
-uint32 TaskClass::Get_RoleID()
-{
-	return m_roleID;
-}
 
 
 
 //任务列表类
 CTaskListClass::CTaskListClass()
 {
-	m_roleID = 0;//用户ID
 	taskc = new TaskClass;
 }
 
 CTaskListClass::~CTaskListClass()
 {
 	delete taskc;
+	taskc = NULL;
 }
 
 //增加任务
@@ -160,22 +148,20 @@ void CTaskListClass::Erase_Task(uint32 uid)
 
 }
 
-
 //遍历任务
 TaskClass * CTaskListClass::ErgodicTask(uint32 index)
 {
 	return map_task[index];
 }
-
-//设置用户ID
-void CTaskListClass::Set_RoleID(uint32 uid)
+//任务个数
+uint32 CTaskListClass::GetTaskCount()
 {
-	m_roleID = uid;
+	return (uint32)map_task.size();
 }
 
-//获取用户ID
-uint32 CTaskListClass::Get_RoleID()
+//获取任务map
+std::map<uint32, TaskClass*> CTaskListClass::Get_TaskMap()
 {
-	return m_roleID;
+	return map_task;
 }
 

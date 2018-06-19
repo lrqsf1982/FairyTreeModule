@@ -64,30 +64,36 @@ int CBaseCommand::Do_GameMessage(IMessage* pMessage)
 	GameMessage gameMsg;
 	gameMsg.ParseFromArray(packetInfo.m_pData, packetInfo.m_nDataLen);
 	MESSAGE_FUNCTION_BEGIN(gameMsg.msg());
-	MESSAGE_FUNCTION_THREE(Login_Request,           Process_LoginRequest,           gameMsg, m_pServerObject, pMessage);
-	MESSAGE_FUNCTION_THREE(Elfin_Request,           Process_ElfinRequest,           gameMsg, m_pServerObject, pMessage);
-	MESSAGE_FUNCTION_THREE(Roll_Request,            Process_RollRequest,            gameMsg, m_pServerObject, pMessage);
-	MESSAGE_FUNCTION_THREE(Tree_Request,            Process_TreeRequest,            gameMsg, m_pServerObject, pMessage);
-	MESSAGE_FUNCTION_THREE(Resource_Request,        Process_ResourceRequest,        gameMsg, m_pServerObject, pMessage);
-	MESSAGE_FUNCTION_THREE(Tasks_Request,           Process_TasksRequest,           gameMsg, m_pServerObject, pMessage);
-	MESSAGE_FUNCTION_THREE(Mails_Request,           Process_MailsRequest,           gameMsg, m_pServerObject, pMessage);
-	MESSAGE_FUNCTION_THREE(Sun_Request,             Process_SunRequest,             gameMsg, m_pServerObject, pMessage);
-	MESSAGE_FUNCTION_THREE(TreeEnchantment_Request, Process_TreeEnchantmentRequest, gameMsg, m_pServerObject, pMessage);
-	MESSAGE_FUNCTION_THREE(StoreAll_Request,        Process_StoreAllRequest,        gameMsg, m_pServerObject, pMessage);
-	MESSAGE_FUNCTION_THREE(StoreEqu_Request,        Process_StoreEquRequest,        gameMsg, m_pServerObject, pMessage);
-	MESSAGE_FUNCTION_THREE(StoreWater_Request,      Process_StoreWaterRequest,      gameMsg, m_pServerObject, pMessage);
-	MESSAGE_FUNCTION_THREE(StoreSpeProps_Request,   Process_StoreSpePropsRequest,   gameMsg, m_pServerObject, pMessage);
-	MESSAGE_FUNCTION_THREE(Warehouse_Request,       Process_WarehouseRequest,       gameMsg, m_pServerObject, pMessage);
-	MESSAGE_FUNCTION_THREE(DelMail_Request,         Process_DelMailRequest,         gameMsg, m_pServerObject, pMessage);
-	MESSAGE_FUNCTION_THREE(ClaimedTask_Request,     Process_ClaimedTaskRequest,     gameMsg, m_pServerObject, pMessage);
-	MESSAGE_FUNCTION_THREE(RecTaskAward_Request,    Process_RecTaskAwardRequest,    gameMsg, m_pServerObject, pMessage);
-	MESSAGE_FUNCTION_THREE(Friends_Request,         Process_FriendsRequest,         gameMsg, m_pServerObject, pMessage);
-	MESSAGE_FUNCTION_THREE(Enemies_Request,         Process_EnemiesRequest,         gameMsg, m_pServerObject, pMessage);
-	MESSAGE_FUNCTION_THREE(Plunder_Request,         Process_PlunderRequest,         gameMsg, m_pServerObject, pMessage);
-	MESSAGE_FUNCTION_THREE(UseItem_Request,         Process_UseItemRequest,         gameMsg, m_pServerObject, pMessage);
-	MESSAGE_FUNCTION_THREE(SettleAccount_Request,   Process_SettleAccountRequest,   gameMsg, m_pServerObject, pMessage);
-	MESSAGE_FUNCTION_THREE(Ranking_Request,         Process_RankingRequest,         gameMsg, m_pServerObject, pMessage);
-	MESSAGE_FUNCTION_THREE(ForgetSkill_Request,     Process_ForgetSkillRequest,     gameMsg, m_pServerObject, pMessage);
+	MESSAGE_FUNCTION_THREE(Login_Request,           Process_LoginRequest,           gameMsg, m_pServerObject, pMessage);//请求登录01
+	MESSAGE_FUNCTION_THREE(Elfin_Request,           Process_ElfinRequest,           gameMsg, m_pServerObject, pMessage);//请求小精灵02
+	MESSAGE_FUNCTION_THREE(Roll_Request,            Process_RollRequest,            gameMsg, m_pServerObject, pMessage);//请求角色信息03
+	MESSAGE_FUNCTION_THREE(Tree_Request,            Process_TreeRequest,            gameMsg, m_pServerObject, pMessage);//请求神仙树04
+	MESSAGE_FUNCTION_THREE(Resource_Request,        Process_ResourceRequest,        gameMsg, m_pServerObject, pMessage);//请求资源05
+	MESSAGE_FUNCTION_THREE(Tasks_Request,           Process_TasksRequest,           gameMsg, m_pServerObject, pMessage);//请求获取任务列表06
+	MESSAGE_FUNCTION_THREE(Mails_Request,           Process_MailsRequest,           gameMsg, m_pServerObject, pMessage);//请求获取邮件列表07
+	MESSAGE_FUNCTION_THREE(Sun_Request,             Process_SunRequest,             gameMsg, m_pServerObject, pMessage);//请求太阳08
+	MESSAGE_FUNCTION_THREE(TreeEnchantment_Request, Process_TreeEnchantmentRequest, gameMsg, m_pServerObject, pMessage);//请求树结界09
+	MESSAGE_FUNCTION_THREE(StoreAll_Request,        Process_StoreAllRequest,        gameMsg, m_pServerObject, pMessage);//请求商店所有物品10
+	MESSAGE_FUNCTION_THREE(StoreEqu_Request,        Process_StoreEquRequest,        gameMsg, m_pServerObject, pMessage);//请求商店装备类物品11
+	MESSAGE_FUNCTION_THREE(StoreWater_Request,      Process_StoreWaterRequest,      gameMsg, m_pServerObject, pMessage);//请求商店水资源类物品12
+	MESSAGE_FUNCTION_THREE(StoreSpeProps_Request,   Process_StoreSpePropsRequest,   gameMsg, m_pServerObject, pMessage);//请求商店特殊类物品13
+	MESSAGE_FUNCTION_THREE(Warehouse_Request,       Process_WarehouseRequest,       gameMsg, m_pServerObject, pMessage);//请求仓库所有物品14
+	MESSAGE_FUNCTION_THREE(DelMail_Request,         Process_DelMailRequest,         gameMsg, m_pServerObject, pMessage);//请求删除邮件15
+	MESSAGE_FUNCTION_THREE(ClaimedTask_Request,     Process_ClaimedTaskRequest,     gameMsg, m_pServerObject, pMessage);//请求领取任务16
+	MESSAGE_FUNCTION_THREE(RecTaskAward_Request,    Process_RecTaskAwardRequest,    gameMsg, m_pServerObject, pMessage);//请求任务奖励17
+	MESSAGE_FUNCTION_THREE(Friends_Request,         Process_FriendsRequest,         gameMsg, m_pServerObject, pMessage);//请求好友列表18
+	MESSAGE_FUNCTION_THREE(Enemies_Request,         Process_EnemiesRequest,         gameMsg, m_pServerObject, pMessage);//请求敌人列表19
+	MESSAGE_FUNCTION_THREE(Plunder_Request,         Process_PlunderRequest,         gameMsg, m_pServerObject, pMessage);//请求掠夺20
+	MESSAGE_FUNCTION_THREE(UseItem_Request,         Process_UseItemRequest,         gameMsg, m_pServerObject, pMessage);//请求物品21
+	MESSAGE_FUNCTION_THREE(SettleAccount_Request,   Process_SettleAccountRequest,   gameMsg, m_pServerObject, pMessage);//请求结账22
+	MESSAGE_FUNCTION_THREE(Ranking_Request,         Process_RankingRequest,         gameMsg, m_pServerObject, pMessage);//请求获取排行榜列表23
+	MESSAGE_FUNCTION_THREE(ForgetSkill_Request,     Process_ForgetSkillRequest,     gameMsg, m_pServerObject, pMessage);//请求遗忘技能24
+	MESSAGE_FUNCTION_THREE(Register_Request,        Process_RegisterRequest,        gameMsg, m_pServerObject, pMessage);//注册请求25
+	MESSAGE_FUNCTION_THREE(SolarUpgrade_Request,    Process_SolarUpgradeRequest,    gameMsg, m_pServerObject, pMessage);//太阳升级请求26
+	MESSAGE_FUNCTION_THREE(SkillUpgrade_Request,    Process_SkillUpgradeRequest,    gameMsg, m_pServerObject, pMessage);//技能升级请求27
+	MESSAGE_FUNCTION_THREE(TreeUpgrade_Request,     Process_TreeUpgradeRequest,     gameMsg, m_pServerObject, pMessage);//神仙树升级请求28
+	MESSAGE_FUNCTION_THREE(ElfinUpgrade_Request,    Process_ElfinUpgradeRequest,    gameMsg, m_pServerObject, pMessage);//小精灵升级请求29
+	MESSAGE_FUNCTION_THREE(HeartBeat_Request,       Process_HeartBeatRequest,       gameMsg, m_pServerObject, pMessage);//心跳包请求30
 	MESSAGE_FUNCTION_END;
 
 	return 0;

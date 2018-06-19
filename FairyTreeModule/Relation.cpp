@@ -4,7 +4,6 @@
 
 Relation::Relation()
 {
-	m_roleID = 0;//用户ID
 	pharaCha = new CharacterClass;
 }
 
@@ -12,6 +11,7 @@ Relation::Relation()
 Relation::~Relation()
 {
 	delete pharaCha;
+	pharaCha = nullptr;
 }
 
 //增加好友
@@ -39,6 +39,7 @@ void Relation::RDelFriend(uint32 udel)
 std::list<CharacterClass*> Relation::Get_RelationRfriendRanking()
 {
 	crfriendlist.sort(RelationSort);
+	//先排序在获取
 	return crfriendlist;
 }
 
@@ -46,6 +47,7 @@ std::list<CharacterClass*> Relation::Get_RelationRfriendRanking()
 std::list<CharacterClass*> Relation::Get_RelationRenemyRanking()
 {
 	crenemylist.sort(RelationSort);
+	//先排序在获取
 	return crenemylist;
 }
 
@@ -68,17 +70,5 @@ void Relation::RDelEnemy(uint32 udel)
 		}
 	}
 
-}
-
-//设置用户ID
-void Relation::Set_RoleID(uint32 uid)
-{
-	m_roleID = uid;//用户ID
-}
-
-//获取用户ID
-uint32 Relation::Get_RoleID()
-{
-	return m_roleID;
 }
 

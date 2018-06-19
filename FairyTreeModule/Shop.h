@@ -4,7 +4,7 @@
 #define _SHOP_H
 
 #include "Warehouse.h"
-#include "map"
+#include <vector>
 #include "Gamedefine.h"
 
 #define WATERCOMMODITYID 1001 //水资源类商品ID 大于它
@@ -40,25 +40,17 @@ public:
 	//获取购买物品后的总价格
 	float Get_ShopBuyGoodsTotalPrice();
 
-	//获取物品类 遍历物品
-	CWarehouseArticle* Get_ArticleClass(uint32 uid);
+	//获取物品类 水资源表
+	std::vector<CWarehouseArticle*> Get_WarehouseWaterVector();
 
-	//map用来存储物品的信息<物品的ID,物品类>
-	std::map<uint32, CWarehouseArticle*> storeItemInfo;
-	//商店里物品的数量
-	uint32 WarehouSize() { return (uint32)storeItemInfo.size(); }
+	//获取物品类 装备表
+	std::vector<CWarehouseArticle*> Get_WarehouseEquipVector();
 
-	//设置用户ID
-	void Set_RoleID(uint32 uid);
-	//获取用户ID
-	uint32 Get_RoleID();
-
+	//获取物品类 特殊道具表
+	std::vector<CWarehouseArticle*> Get_WarehouseSpeProVector();
+private:
 	//物品类 遍历物品
 	CWarehouseArticle * pwareArt;
-private:
-
-	//用户ID
-	uint32 m_roleID;
 
 	//(WATERRESOURCECLASS)水资源类商品 vector表
 	std::vector<CWarehouseArticle*> vecwater;

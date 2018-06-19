@@ -80,6 +80,8 @@
     <IntDir>Debug\FairyTreeModule\AMD64\</IntDir>
     <LinkIncremental>true</LinkIncremental>
     <SourcePath>$(PSS_ROOT)\Common;$(SourcePath)</SourcePath>
+    <IncludePath>C:\Program Files\MySQL\MySQL Server 8.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files\MySQL\MySQL Server 8.0\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>..\..\PurenessScopeServer\Windows_Bin\</OutDir>
@@ -164,7 +166,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(ACE_ROOT);$(Protobuf_Root)\src;.;$(PSS_ROOT)\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ACE_ROOT);$(Protobuf_Root)/src;./DB;$(PSS_ROOT)/Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>TEST_TCP_BUILD_DLL;_DEBUG;WIN32;_WINDOWS;_CRT_NONSTDC_NO_WARNINGS;_AMD64_;_WIN64;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;MPC_LIB_MODIFIER="d";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -181,7 +183,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalOptions>/machine:AMD64 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>ACEd.lib;libprotobufd.lib;DbgHelp.lib;psapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ACEd.lib;libmysql.lib;libprotobufd.lib;DbgHelp.lib;psapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)FairyTreeModule.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>.;$(ACE_ROOT)\lib;$(Protobuf_Root)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -229,11 +231,30 @@
   <ItemGroup>
     <ClCompile Include="BaseCommand.cpp" />
     <ClCompile Include="CharacterClass.cpp" />
+    <ClCompile Include="DB\character_table.cpp" />
+    <ClCompile Include="DB\DPMemDB.cpp" />
+    <ClCompile Include="DB\elfindata_table.cpp" />
+    <ClCompile Include="DB\fairytree_table.cpp" />
+    <ClCompile Include="DB\gold_table.cpp" />
+    <ClCompile Include="DB\mailbox_table.cpp" />
+    <ClCompile Include="DB\mail_table.cpp" />
+    <ClCompile Include="DB\mysql_encap.cpp" />
+    <ClCompile Include="DB\rankinglist_table.cpp" />
+    <ClCompile Include="DB\relation_table.cpp" />
+    <ClCompile Include="DB\skill_table.cpp" />
+    <ClCompile Include="DB\sunshine_table.cpp" />
+    <ClCompile Include="DB\taskclass_table.cpp" />
+    <ClCompile Include="DB\tasklistclass_table.cpp" />
+    <ClCompile Include="DB\tree_enchantmen_table.cpp" />
+    <ClCompile Include="DB\UserAllTable.cpp" />
+    <ClCompile Include="DB\warehouse_table.cpp" />
+    <ClCompile Include="DB\ware_house_article_table.cpp" />
+    <ClCompile Include="DB\water_table.cpp" />
     <ClCompile Include="Elfin.cpp" />
     <ClCompile Include="FairyTree.cpp" />
     <ClCompile Include="FairyTreeUserClasses.cpp" />
+    <ClCompile Include="ResourceClass.cpp" />
     <ClCompile Include="SunShine.cpp" />
-    <ClCompile Include="Gold.cpp" />
     <ClCompile Include="Mail.cpp" />
     <ClCompile Include="MD5.cpp" />
     <ClCompile Include="MessageManage.cpp" />
@@ -251,18 +272,37 @@
     <ClCompile Include="TinyXML\tinyxmlparser.cpp" />
     <ClCompile Include="TreeEnchantment.cpp" />
     <ClCompile Include="Warehouse.cpp" />
-    <ClCompile Include="Water.cpp" />
     <ClCompile Include="XmlConfigManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseCommand.h" />
     <ClInclude Include="CharacterClass.h" />
+    <ClInclude Include="DB\character_table.h" />
+    <ClInclude Include="DB\DPMemDB.h" />
+    <ClInclude Include="DB\elfindata_table.h" />
+    <ClInclude Include="DB\fairytree_table.h" />
+    <ClInclude Include="DB\gold_table.h" />
+    <ClInclude Include="DB\mailbox_table.h" />
+    <ClInclude Include="DB\mail_table.h" />
+    <ClInclude Include="DB\mysql_encap.h" />
+    <ClInclude Include="DB\ObjectPool.h" />
+    <ClInclude Include="DB\rankinglist_table.h" />
+    <ClInclude Include="DB\relation_table.h" />
+    <ClInclude Include="DB\skill_table.h" />
+    <ClInclude Include="DB\sunshine_table.h" />
+    <ClInclude Include="DB\taskclass_table.h" />
+    <ClInclude Include="DB\tasklistclass_table.h" />
+    <ClInclude Include="DB\tree_enchantmen_table.h" />
+    <ClInclude Include="DB\UserAllTable.h" />
+    <ClInclude Include="DB\warehouse_table.h" />
+    <ClInclude Include="DB\ware_house_article_table.h" />
+    <ClInclude Include="DB\water_table.h" />
     <ClInclude Include="Elfin.h" />
     <ClInclude Include="FairyTree.h" />
     <ClInclude Include="FairyTreeUserClasses.h" />
     <ClInclude Include="Gamedefine.h" />
+    <ClInclude Include="ResourceClass.h" />
     <ClInclude Include="SunShine.h" />
-    <ClInclude Include="Gold.h" />
     <ClInclude Include="Mail.h" />
     <ClInclude Include="MD5.h" />
     <ClInclude Include="MessageManage.h" />
@@ -273,11 +313,11 @@
     <ClInclude Include="Shop.h" />
     <ClInclude Include="Skill.h" />
     <ClInclude Include="TaskClass.h" />
+    <ClInclude Include="TimerHander.h" />
     <ClInclude Include="TinyXML\tinystr.h" />
     <ClInclude Include="TinyXML\tinyxml.h" />
     <ClInclude Include="TreeEnchantment.h" />
     <ClInclude Include="Warehouse.h" />
-    <ClInclude Include="Water.h" />
     <ClInclude Include="XmlConfigManager.h" />
   </ItemGroup>
   <ItemGroup>

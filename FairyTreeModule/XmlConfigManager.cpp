@@ -46,13 +46,21 @@ bool XmlConfigManager::ParseXmlToItem()
 		iteminfo.discountrate = atof(pchild->ToElement()->GetText());//物品折扣率	
 
 		pchild = pnode->IterateChildren(pchild);
-		iteminfo.type = pchild->ToElement()->GetText(); //物品类型		
+		iteminfo.consStr = atoi(pchild->ToElement()->GetText());//消耗体力
+
+		pchild = pnode->IterateChildren(pchild); 
+		iteminfo.timeCon = atoi(pchild->ToElement()->GetText());//耗时
+
+		pchild = pnode->IterateChildren(pchild); 
+		iteminfo.height = atoi(pchild->ToElement()->GetText());//高度
+
+		pchild = pnode->IterateChildren(pchild);
+		iteminfo.mtype = pchild->ToElement()->GetText(); //物品类型		
 
 		pchild = pnode->IterateChildren(pchild);
 		iteminfo.photoname = atoi(pchild->ToElement()->GetText()); //物品图片名
 
 		ItemInfos[iteminfo.articleID] = &iteminfo;
-		StoreItemsInStores(iteminfo.articleID);
 	}
 	return true;
 }
@@ -88,8 +96,16 @@ bool XmlConfigManager::ParseXmlToElfin()
 		pchild = pnode->IterateChildren(pchild);
 		elifninfo.codiamondnum = atoi(pchild->ToElement()->GetText());//读取钻石消耗数量
 
+		pchild = pnode->IterateChildren(pchild);
+		elifninfo.cultEffic = atoi(pchild->ToElement()->GetText());//读取栽培效率
+
+		pchild = pnode->IterateChildren(pchild);
+		elifninfo.uwatering = atoi(pchild->ToElement()->GetText());//读取浇水
+
+		pchild = pnode->IterateChildren(pchild);
+		elifninfo.abiPlun = atoi(pchild->ToElement()->GetText());//读取掠夺能力
+
 		ElfinInfos[elifninfo.grade] = &elifninfo;
-		InitElfinData(elifninfo.grade);
 	}
 	return true;
 }
@@ -128,8 +144,13 @@ bool XmlConfigManager::ParseXmlToSkill()
 		pchild = pnode->IterateChildren(pchild);
 		skillinfo.plunderAddition = atoi(pchild->ToElement()->GetText());//读取抢劫加成
 
+		pchild = pnode->IterateChildren(pchild);
+		skillinfo.cogoldnum = atoi(pchild->ToElement()->GetText()); //读取消耗金币数量
+
+		pchild = pnode->IterateChildren(pchild);
+		skillinfo.codiamondnum = atoi(pchild->ToElement()->GetText()); //读取消耗钻石数量
+
 		SkillInfos[skillinfo.Level] = &skillinfo;
-		InitSkillData(skillinfo.Level);
 	}
 	return true;
 }
@@ -170,7 +191,6 @@ bool XmlConfigManager::ParseXmlToSunshine()
 		sunshine.produtime = atoi(pchild->ToElement()->GetText());//读取生产时间
 
 		SunInfos[sunshine.grade] = &sunshine;
-		InitSunData(sunshine.grade);
 	}
 	return true;
 }
@@ -219,7 +239,6 @@ bool XmlConfigManager::ParseXmlToTask()
 		taskclass.numberThree = atoi(pchild->ToElement()->GetText());//读取奖励物品3的数量
 
 		TaskInfos[taskclass.taskId] = &taskclass;
-		InitTaskData(taskclass.taskId);
 	}
 	return true;
 }
@@ -264,8 +283,10 @@ bool XmlConfigManager::ParseXmlToTree()
 		pchild = pnode->IterateChildren(pchild);
 		fairytree.breakthReq = atoi(pchild->ToElement()->GetText());//读取树高
 
+		pchild = pnode->IterateChildren(pchild);
+		fairytree.photoname = pchild->ToElement()->GetText(); //图片名
+
 		TreeInfos[fairytree.gread] = &fairytree;
-		InitTreeData(fairytree.gread);
 	}
 	return true;
 }
@@ -292,8 +313,10 @@ bool XmlConfigManager::ParseXmlToTreeEnchantment()
 		pchild = pnode->IterateChildren(pchild);
 		treeench.enchantdefense = atoi(pchild->ToElement()->GetText());//设置树结界防御
 
+		pchild = pnode->IterateChildren(pchild);
+		treeench.fairyDoor = pchild->ToElement()->GetText(); //神仙门
+
 		TreeEnchantInfos[treeench.gread] = &treeench;
-		InitTreeEnchantData(treeench.gread);
 	}
 	return true;
 }
@@ -323,113 +346,4 @@ XmlConfigManager::~XmlConfigManager()
 	ReleaseMapFun(TaskInfos);
 	ReleaseMapFun(TreeInfos);
 	ReleaseMapFun(TreeEnchantInfos);
-	delete xmlshop;
-	xmlshop = nullptr;
-	delete xmlelfin;
-	xmlelfin = nullptr;
-	delete xmlskill;
-	xmlskill = nullptr;
-	delete xmlsunshine;
-	xmlsunshine = nullptr;
-	delete xmlfairytree;
-	xmlfairytree = nullptr;
-	delete xmltreeenchantment;
-	xmltreeenchantment = nullptr;
-
-	delete Instance;
-	Instance = nullptr;
 }
-
-//存储物品到商店类
-void XmlConfigManager::StoreItemsInStores(uint32 uid)
-{
-	xmlshop = new Shop;
-	xmlshop->pwareArt->Set_CArticleSerialNumber(uid);
-	xmlshop->pwareArt->Set_CArticleGoldPrice(ItemInfos[uid]->goldprice);
-	xmlshop->pwareArt->Set_CArticleJewelPrice(ItemInfos[uid]->diamondprice);
-	xmlshop->pwareArt->Set_CArticleDiscount(ItemInfos[uid]->discountrate);
-	xmlshop->pwareArt->Set_WareName(ItemInfos[uid]->articlename);
-	xmlshop->pwareArt->Set_CArticleDescribe(ItemInfos[uid]->articledescribe);
-	xmlshop->storeItemInfo[uid] = xmlshop->pwareArt;
-
-}
-
-//初始化小精灵数据到小精灵类
-void XmlConfigManager::InitElfinData(uint32 uid)
-{
-	xmlelfin = new Elfin;
-	xmlelfin->Set_EGrade(ElfinInfos[uid]->grade);
-	xmlelfin->Set_EMaxPhysicalPower(ElfinInfos[uid]->physicalilmit);
-	xmlelfin->Set_uCoWaterNum(ElfinInfos[uid]->cowaternumber);
-	xmlelfin->Set_uCoSunNum(ElfinInfos[uid]->cosunnum);
-	xmlelfin->Set_uCoGoldNum(ElfinInfos[uid]->cogoldnum);
-	xmlelfin->Set_uCoJewelNum(ElfinInfos[uid]->codiamondnum);
-	xmlelfin->map_elfin[uid] = xmlelfin;
-}
-
-//初始化技能数据到技能类
-void XmlConfigManager::InitSkillData(uint32 id)
-{
-	xmlskill = new CSkill;
-	xmlskill->Set_Skill_Level(SkillInfos[id]->Level);
-	xmlskill->Set_uPillageEffect(SkillInfos[id]->plunder);
-	xmlskill->Set_uWateringEffect(SkillInfos[id]->watering);
-	xmlskill->Set_uReserveGold(SkillInfos[id]->storage);
-	xmlskill->Set_uPlantEffect(SkillInfos[id]->cultivation);
-	xmlskill->Set_uDodgeAbility(SkillInfos[id]->elude);
-	xmlskill->Set_uRobAddition(SkillInfos[id]->plunderAddition);
-	xmlskill->map_skill[id] = xmlskill;
-}
-
-//初始化太阳数据到太阳类
-void XmlConfigManager::InitSunData(uint32 id)
-{
-	xmlsunshine = new CSunshine;
-	xmlsunshine->Set_FGrade(SunInfos[id]->grade);
-	xmlsunshine->Set_SunCoWaterNum(SunInfos[id]->cowaternumber);
-	xmlsunshine->Set_SunCoSunNum(SunInfos[id]->cosunnum);
-	xmlsunshine->Set_SunCoGoldNum(SunInfos[id]->cogoldnum);
-	xmlsunshine->Set_SunCoJewelNum(SunInfos[id]->codiamondnum);
-	xmlsunshine->Set_FSunProCap(SunInfos[id]->producompet);
-	xmlsunshine->Set_FSunProTime(SunInfos[id]->produtime);
-	xmlsunshine->map_sunshine[id] = xmlsunshine;
-}
-
-//初始化任务数据到任务类
-void XmlConfigManager::InitTaskData(uint32 id)
-{
-	xmltasklistclass.taskc->Set_TSerialNumber(TaskInfos[id]->taskId);
-	xmltasklistclass.taskc->Set_TTaskheadline(TaskInfos[id]->headline);
-	xmltasklistclass.taskc->Set_TTaskContent(TaskInfos[id]->content);
-	xmltasklistclass.taskc->Set_TaskSumUpComp(TaskInfos[id]->totalcomptimes);
-	xmltasklistclass.taskc->Set_TTaskAward(TaskInfos[id]->bonusitemnumOne, TaskInfos[id]->numberOne);
-	xmltasklistclass.taskc->Set_TTaskAward(TaskInfos[id]->bonusitemnumTwo, TaskInfos[id]->numberTwo);
-	xmltasklistclass.taskc->Set_TTaskAward(TaskInfos[id]->bonusitemnumThree, TaskInfos[id]->numberThree);
-	xmltasklistclass.map_task[id] = xmltasklistclass.taskc;
-}
-
-//初始化神仙树数据到神仙树类
-void XmlConfigManager::InitTreeData(uint32 id)
-{
-	xmlfairytree = new FairyTree;
-	xmlfairytree->Set_FGrade(TreeInfos[id]->gread);
-	xmlfairytree->Set_FCoWaterNum(TreeInfos[id]->cowaternum);
-	xmlfairytree->Set_FCoSunNum(TreeInfos[id]->cosunnum);
-	xmlfairytree->Set_FCoGoldNum(TreeInfos[id]->cogoldnum);
-	xmlfairytree->Set_FCoJewelNum(TreeInfos[id]->codiamondnum);
-	xmlfairytree->Set_FCoeflinNum(TreeInfos[id]->elfinprodco);
-	xmlfairytree->Set_FGold(TreeInfos[id]->productivity);
-	xmlfairytree->Set_TreeHeight(TreeInfos[id]->treehigh);
-	xmlfairytree->Set_FCoBreakthNum(TreeInfos[id]->breakthReq);
-	xmlfairytree->map_fairytree[id] = xmlfairytree;
-}
-
-//初始化树结界数据到树结界类
-void XmlConfigManager::InitTreeEnchantData(uint32 id)
-{
-	xmltreeenchantment = new TreeEnchantment;
-	xmltreeenchantment->Set_TEGrade(TreeEnchantInfos[id]->gread);
-	xmltreeenchantment->Set_TEDefense(TreeEnchantInfos[id]->enchantdefense);
-	xmltreeenchantment->map_treeEn[id] = xmltreeenchantment;
-}
-

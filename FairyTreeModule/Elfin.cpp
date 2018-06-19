@@ -1,44 +1,35 @@
 #include "Elfin.h"
+#include "XmlConfigManager.h"
 #include <stdlib.h>
 #include <time.h>
 
-std::map<uint32, Elfin*> Elfin::map_elfin;
 
 Elfin::Elfin()
 {
-	m_roleID = 0;//用户ID
+	m_type = Get_ESkillStyle();//枚举类型的技能属性
 
-	uEid = 0;//小精灵的ID
+	m_id = Set_Get_EToID(m_type);//小精灵的ID
 
-	_egrade = 0;//等级
+	m_level = 1;//等级
 
-	_ephysicalpower = SEGMAXPHYSICALPOWER;//体力 初始化体力为最大
+	m_maxphyPower = XmlConfigManager::GetInstance()->ElfinInfos[m_level]->physicalilmit;//最大体力
 
-	_emaxphysicalpower = SEGMAXPHYSICALPOWER;//最大体力
-
-	estype = ElfinType::EGOLD;//枚举类型的技能属性
-
-	ucowaternum = 0;//消耗水的数量
+	m_curPhyPower = m_maxphyPower;//体力 初始化体力为最大
 	
-	ucosunnum = 0;//阳光数量消耗
-	
-	ucogoldnum = 0;//金币数量消耗
-	
-	ujewelnum = 0;//钻石消耗数量
-
-	cskill = new CSkill;
+	m_skill = new CSkill;
 }
 
 
 Elfin::~Elfin()
 {
-	delete cskill;
+	delete m_skill;
+	m_skill = nullptr;
 }
 
 //设置添加技能格
 void Elfin::Set_ESkillStyle(CSkill* ecsk)
 {
-	vec.push_back(ecsk);
+	m_vecSki.push_back(ecsk);
 }
 
 //设置删除技能 (也就是遗忘技能)
@@ -46,57 +37,54 @@ void Elfin::Set_EReduceSkillStyle(uint32 iderss)
 {
 
 	//通过下标 查找对应的数据
-	for (std::vector<CSkill*>::iterator itskill = vec.begin(); itskill != vec.end(); itskill++)
+	for (std::vector<CSkill*>::iterator itskill = m_vecSki.begin(); itskill != m_vecSki.end(); itskill++)
 	{
 		if (iderss == (*itskill)->Get_Skill_ID())
 		{
 			//找到 删除
-			vec.erase(itskill);
+			m_vecSki.erase(itskill);
 		}
 	}
 
 }
 
 //获取技能格
-ElfinType Elfin::Get_ESkillStyle()
+ElfinSkillType Elfin::Get_ESkillStyle()const
 {
 	//随机设置一个技能
 	srand(time(NULL));
-	ElfinType etype = (ElfinType)(rand() % 5);
+	ElfinSkillType m_type = (ElfinSkillType)(rand() % 5);
 
 	//返回技能
-	return etype;
+	return m_type;
 }
 
 //设置等级
 void Elfin::Set_EGrade(uint32 beg)
 {
 	
-	_egrade += beg;
-
-	//每增加一级 最大体力值就增加指定值
-	Set_EMaxPhysicalPower(SEGMAXPHYSICALPOWER);
+	m_level += beg;
 
 	
 }
 
 //获取等级
-uint32 Elfin::Get_EGrade()
+uint32 Elfin::Get_EGrade()const
 {
-	return _egrade;
+	return m_level;
 }
 
 //设置增加体力
 void Elfin::Set_EAddPhysicalPower(uint32 ueap)
 {
 	//如果当前体力值小于最大体力值
-	if (_ephysicalpower < _emaxphysicalpower)
+	if (m_curPhyPower < m_maxphyPower)
 	{
-		_ephysicalpower += ueap;
+		m_curPhyPower += ueap;
 		//如果当前体力值大于最大体力值 那么当前体力值就等于最大体力值
-		if (_ephysicalpower > _emaxphysicalpower)
+		if (m_curPhyPower > m_maxphyPower)
 		{
-			_ephysicalpower = _emaxphysicalpower;
+			m_curPhyPower = m_maxphyPower;
 		}
 	}
 		
@@ -105,102 +93,56 @@ void Elfin::Set_EAddPhysicalPower(uint32 ueap)
 //设置减少体力
 void Elfin::Set_EReducePhysicalPower(uint32 uerp)
 {
-	_ephysicalpower -= uerp;
+	m_curPhyPower -= uerp;
 	//如果当前体力 小于 0 那么当前体力值就等于0
-	if (_ephysicalpower < 0)
+	if (m_curPhyPower < 0)
 	{
-		_ephysicalpower = 0;
+		m_curPhyPower = 0;
 	}
 }
 
 //获取当前体力
-uint32 Elfin::Get_EPhysicalPower()
+uint32 Elfin::Get_EPhysicalPower()const
 {
-	return _ephysicalpower;
+	return m_curPhyPower;
 }
 
 //设置最大体力
 void Elfin::Set_EMaxPhysicalPower(uint32 uempp)
 {
 	//小精灵每升一级,最大体力就会相应增加
-	_emaxphysicalpower += uempp;
+	m_maxphyPower += uempp;
 }
 
 //获取最大体力
-uint32 Elfin::Get_EMaxPhysicalPower()
+uint32 Elfin::Get_EMaxPhysicalPower()const
 {
-	return _emaxphysicalpower;
+	return m_maxphyPower;
 }
 
-//设置小精灵的ID
-void Elfin::Set_EToID(uint32 etoid)
+//设置随机分配小精灵的ID 并获取它
+uint32 Elfin::Set_Get_EToID(ElfinSkillType m_type)
 {
-	uEid = etoid;
+	switch (m_type)
+	{
+	case EGOLD: { m_id = 100001; break;	}
+	case EWOOD: { m_id = 100002; break; }
+	case EWATER: { m_id = 100003; break; }
+	case EFIRE: { m_id = 100004; break; }
+	case ESOIL: { m_id = 100005; break; }
+	}
+	return m_id;
 }
-
 //获取小精灵的ID
-uint32 Elfin::Get_ID()
+uint32 Elfin::Get_EToID()const
 {
-	return uEid;
+	return m_id;
 }
 
-//设置消耗水的数量
-void Elfin::Set_uCoWaterNum(uint32 num)
+//获取技能类
+CSkill * Elfin::Get_CSkillClass()const
 {
-	ucowaternum = num;
+	return m_skill;
 }
 
-//获取消耗水的数量
-uint32 Elfin::Get_uCoWaterNum()
-{
-	return ucowaternum;
-}
-
-//设置阳光数量消耗
-void Elfin::Set_uCoSunNum(uint32 num)
-{
-	ucosunnum = num;
-}
-
-//获取阳光数量消耗
-uint32 Elfin::Get_uCoSunNum()
-{
-	return ucosunnum;
-}
-
-//设置金币数量消耗
-void Elfin::Set_uCoGoldNum(uint32 num)
-{
-	ucogoldnum = num;
-}
-
-//获取金币数量消耗
-uint32 Elfin::Get_uCoGoldNum()
-{
-	return ucogoldnum;
-}
-
-//设置钻石消耗数量
-void Elfin::Set_uCoJewelNum(uint32 num)
-{
-	ujewelnum = num;
-}
-
-//获取钻石消耗数量
-uint32 Elfin::Get_uCoJewelNum()
-{
-	return ujewelnum;
-}
-
-//设置用户ID
-void Elfin::Set_RoleID(uint32 uid)
-{
-	m_roleID = uid;
-}
-
-//获取用户ID
-uint32 Elfin::Get_RoleID()
-{
-	return 0;
-}
 

@@ -56,42 +56,32 @@ public:
 	//获取任务当前完成度
 	uint32 Get_TaskCurComp();
 
-	//设置任务总的完成度
+	//设置任务需要总的完成度
 	void Set_TaskSumUpComp(uint32 stsuc);
-	//获取任务总的完成度
+	//获取任务需要总的完成度
 	uint32 Get_TaskSumUpComp();
 
-	//设置用户ID
-	void Set_RoleID(uint32 uid);
-	//获取用户ID
-	uint32 Get_RoleID();
-
 private:
-
-	//用户ID
-	uint32 m_roleID;
-
 	//任务编号
-	uint32 tserialnumber;
+	uint32 m_taskNum;
 
 	//任务标题
-	std::string staskheadline;
+	std::string m_taskHe;
 
 	//任务内容
-	std::string staskcontent;
+	std::string m_taskCon;
 
 	//任务奖励(物品类的表,(编号,数量))
-	std::map<uint32,uint32> mapware;
-	
+	std::map<uint32,uint32> map_queRew;
 
 	//任务状态
-	TaskState taskstate;
+	TaskState m_taskState;
 
 	//任务当前完成度
-	uint32 taskCurComp;
+	uint32 m_curComp;
 
-	//任务总完成度
-	uint32 taskSumUpComp;
+	//任务需要总的完成度
+	uint32 m_sumUpComp;
 
 };
 
@@ -109,25 +99,14 @@ public:
 	//遍历任务
 	TaskClass* ErgodicTask(uint32 uid);
 	//任务个数
-	uint32 GetTaskCount() { return (uint32)map_task.size(); }
+	uint32 GetTaskCount();
 
-	//设置用户ID
-	void Set_RoleID(uint32 uid);
-	//获取用户ID
-	uint32 Get_RoleID();
-
+	//获取任务map
+	std::map<uint32, TaskClass*> Get_TaskMap();
+private:
+	TaskClass * taskc;
 	//任务类map
 	std::map<uint32, TaskClass*> map_task;
-
-	TaskClass * taskc;
-private:
-
-	//用户ID
-	uint32 m_roleID;
-	
-	
 };
-
-
 
 #endif

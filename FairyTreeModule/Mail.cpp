@@ -4,15 +4,13 @@
 
 Mail::Mail()
 {
-	m_roleID = 0;//用户ID
+	m_SerNum = 0; //邮件编号
 
-	umailSerialNumber = 0; //邮件编号
+	m_headline = ""; //邮件标题
 
-	smailheadline = ""; //邮件标题
+	m_content = ""; //邮件内容
 
-	smailcontent = ""; //邮件内容
-
-	bmailArtGetState = false; //邮件物品的领取状态(false为未取，true为已取)
+	m_artGetS = false; //邮件物品的领取状态(false为未取，true为已取)
 }
 
 
@@ -23,76 +21,67 @@ Mail::~Mail()
 //设置邮件编号
 void Mail::Set_MailSerialNumber(uint32 smsn)
 {
-	umailSerialNumber = smsn;
+	m_SerNum = smsn;
 }
 
 //获取邮件编号
 uint32 Mail::Get_MailSerialNumber()
 {
-	return umailSerialNumber;
+	return m_SerNum;
 }
 
 //设置邮件标题
 void Mail::Set_MailHeadline(const std::string& smh)
 {
-	smailheadline = smh;
+	m_headline = smh;
 }
 
 //获取邮件标题
 std::string Mail::Get_MailHeadline()
 {
-	return smailheadline;
+	return m_headline;
 }
 
 //设置邮件内容
 void Mail::Set_MailContent(const std::string& smc)
 {
-	smailcontent = smc;
+	m_content = smc;
 }
 
 //获取邮件内容
 std::string Mail::Get_MailContent()
 {
-	return smailcontent;
+	return m_content;
 }
 
-//领取(标记邮件领取状态)(false为未取，true为已取)
+//领取状态(标记邮件领取状态)(false为未取，true为已取)
 bool Mail::MailArticleGetState()
 {
-	bmailArtGetState = true;
-	return bmailArtGetState;
+	m_artGetS = true;
+	return m_artGetS;
 }
 
-//设置用户ID
-void Mail::Set_RoleID(uint32 uid)
-{
-	m_roleID = uid;
-}
 
-//获取用户ID
-uint32 Mail::Get_RoleID()
-{
-	return m_roleID;
-}
+
 
 
 
 //邮箱类
 CMailbox::CMailbox()
 {
-	m_roleID = 0;//用户ID
-	pboxmail = new Mail;
+	pmail = new Mail;
 }
 
 CMailbox::~CMailbox()
 {
-	delete pboxmail;
+	delete pmail;
+	pmail = nullptr;
 }
 
 //增加邮件
 void CMailbox::AddMail(uint32 uid)
 {
-	map_mail[uid] = pboxmail;
+	map_mail[uid] = pmail;
 }
 
 //删除邮件
@@ -117,14 +106,8 @@ Mail * CMailbox::ErgodicMail(uint32 uid)
 	return map_mail[uid];
 }
 
-//设置用户ID
-void CMailbox::Set_RoleID(uint32 uid)
+//获取邮件类的map
+std::map<uint32, Mail*> CMailbox::Get_MailClassMap()
 {
-	m_roleID = uid;
-}
-
-//获取用户ID
-uint32 CMailbox::Get_RoleID()
-{
-	return m_roleID;
+	return map_mail;
 }

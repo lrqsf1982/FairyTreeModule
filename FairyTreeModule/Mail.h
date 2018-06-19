@@ -30,38 +30,29 @@ public:
 	//获取邮件内容
 	std::string Get_MailContent();
 
-	//领取(标记邮件领取状态)(false为未取，true为已取)
+	//领取状态(标记邮件领取状态)(false为未取，true为已取)
 	bool MailArticleGetState();
 
-	//
+	//奖品map<奖品的ID,奖品的数量>
 	std::map<uint32, uint32> GetPrizes() {
-		return vecmailArt;
+		return m_vecArt;
 	}
 
-	//设置用户ID
-	void Set_RoleID(uint32 uid);
-	//获取用户ID
-	uint32 Get_RoleID();
-
 private:
-
-	//用户ID
-	uint32 m_roleID;
-
 	//邮件编号
-	uint32 umailSerialNumber;
+	uint32 m_SerNum;
 
 	//邮件标题
-	std::string smailheadline;
+	std::string m_headline;
 
 	//邮件内容
-	std::string smailcontent;
+	std::string m_content;
 
-	//邮件物品 物品id是Key 数量为值
-	std::map<uint32,uint32> vecmailArt;
+	//邮件奖品 奖品id是Key 数量为值
+	std::map<uint32,uint32> m_vecArt;
 
-	//邮件物品的领取状态(false为未取，true为已取)
-	bool bmailArtGetState;
+	//邮件奖品的领取状态(false为未取，true为已取)
+	bool m_artGetS;
 };
 
 
@@ -80,19 +71,12 @@ public:
 	//邮件的数量
 	uint32 MailNumber() { return (uint32)map_mail.size(); }
 
-	//设置用户ID
-	void Set_RoleID(uint32 uid);
-	//获取用户ID
-	uint32 Get_RoleID();
-
+	//获取邮件类的map
+	std::map<uint32, Mail*> Get_MailClassMap();
+private:
+	Mail * pmail;
 	//邮件类map
 	std::map<uint32, Mail*> map_mail;
-private:
-
-	//用户ID
-	uint32 m_roleID;
-
-	Mail * pboxmail;
 
 };
 

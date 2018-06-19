@@ -4,7 +4,6 @@
 
 RankingList::RankingList()
 {
-	m_roleID = 0;//用户ID
 	pcharass = new CharacterClass;
 }
 
@@ -12,6 +11,7 @@ RankingList::RankingList()
 RankingList::~RankingList()
 {
 	delete pcharass;
+	pcharass = nullptr;
 }
 
 
@@ -37,23 +37,10 @@ void RankingList::RankingList_DelCharacter(uint32 delc)
 
 }
 
-//获取排行榜
+//获取排行榜角色的list
 std::list<CharacterClass*> RankingList::Get_Rankinglist()
 {
 	list_ranking.sort(JudgeCharaLevel);
 	return list_ranking;
 }
-
-//设置用户ID
-void RankingList::Set_RoleID(uint32 uid)
-{
-	m_roleID = uid;
-}
-
-//获取用户ID
-uint32 RankingList::Get_RoleID()
-{
-	return m_roleID;
-}
-
 
