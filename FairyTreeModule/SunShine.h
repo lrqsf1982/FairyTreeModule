@@ -17,19 +17,19 @@ public:
 	//设置等级
 	void Set_SunLevel(bool setgrad);
 	//获取等级
-	uint32 Get_SunLevel();
+	uint32 Get_SunLevel()const;
 
 	//设置阳光的产出能力
 	void Set_FSunProCom(uint32 setpro);
 	//获取阳光的产出能力
-	uint32 Get_FSunProCom();
+	uint32 Get_FSunProCom()const;
 
 	//设置增加阳光的数量
 	void Set_FAddSunNumber(uint32 unum);
 	//设置减少阳光的数量
 	void Set_FSubSunNum(uint32 unum);
 	//获取阳光的数量
-	uint32 Get_FSunNumber();
+	uint32 Get_FSunNumber()const;
 private:
 
 	//等级
@@ -41,6 +41,4 @@ private:
 	//阳光的数量
 	uint32 m_num;
 };
-
-
 #endif

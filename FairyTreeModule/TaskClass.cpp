@@ -3,17 +3,17 @@
 
 TaskClass::TaskClass()
 {
-	m_taskNum = 0; //任务编号
+	m_taskNum = 0;			//任务编号
 
-	m_taskHe = ""; //任务标题
+	m_taskHe = "";			//任务标题
 
-	m_taskCon = ""; //任务内容
+	m_taskCon = "";			//任务内容
 
-	m_taskState = NotYet; //任务状态
+	m_taskState = NotYet;	//任务状态
 
-	m_curComp = 0; //任务当前完成度
+	m_curComp = 0;			//任务当前完成度
 
-	m_sumUpComp = 0; //任务需要总的完成度
+	m_sumUpComp = 0;		//任务需要总的完成度
 }
 
 
@@ -164,4 +164,3 @@ std::map<uint32, TaskClass*> CTaskListClass::Get_TaskMap()
 {
 	return map_task;
 }
-

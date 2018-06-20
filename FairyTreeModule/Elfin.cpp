@@ -6,17 +6,19 @@
 
 Elfin::Elfin()
 {
-	m_type = Get_ESkillStyle();//枚举类型的技能属性
+	m_type = Get_ESkillStyle();															//枚举类型的技能属性
 
-	m_id = Set_Get_EToID(m_type);//小精灵的ID
+	m_id = Set_Get_EToID(m_type);														//小精灵的ID
 
-	m_level = 1;//等级
+	m_level = 1;																		//等级
 
 	m_maxphyPower = XmlConfigManager::GetInstance()->ElfinInfos[m_level]->physicalilmit;//最大体力
 
-	m_curPhyPower = m_maxphyPower;//体力 初始化体力为最大
+	m_curPhyPower = m_maxphyPower;														//体力 初始化体力为最大
 	
-	m_skill = new CSkill;
+	m_skill = new CSkill;																//技能
+
+	m_uState = ElfinState::FREETIME;													//空闲状态
 }
 
 
@@ -48,7 +50,7 @@ void Elfin::Set_EReduceSkillStyle(uint32 iderss)
 
 }
 
-//获取技能格
+//获取技能类型
 ElfinSkillType Elfin::Get_ESkillStyle()const
 {
 	//随机设置一个技能
@@ -62,10 +64,7 @@ ElfinSkillType Elfin::Get_ESkillStyle()const
 //设置等级
 void Elfin::Set_EGrade(uint32 beg)
 {
-	
 	m_level += beg;
-
-	
 }
 
 //获取等级
@@ -145,4 +144,32 @@ CSkill * Elfin::Get_CSkillClass()const
 	return m_skill;
 }
 
+//设置掠夺状态
+void Elfin::SetPlunderState(ElfinState state) 
+{
+	this->m_uState = state;
+}
 
+//获得掠夺状态
+ElfinState Elfin::GetPlunderState()const
+{
+	return m_uState;
+}
+
+//设置被掠夺者ID
+void Elfin::SetBePlunderId(uint32 id) 
+{
+	this->m_uBePlunderId = id;
+}
+
+//获取被掠夺者ID
+uint32 Elfin::GetBePlunderId()const 
+{
+	return m_uBePlunderId;
+}
+
+//获取已经掠夺的金币数量
+uint32 Elfin::GetPlunderGoldNum()const 
+{
+	return m_uPlunderGoldNum;
+}

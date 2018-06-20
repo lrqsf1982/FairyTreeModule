@@ -25,23 +25,19 @@ FairyTree::~FairyTree()
 //设置等级 
 void FairyTree::Set_FGrade(bool fgr)
 {
-	
 	if (fgr)
 	{
 		//等级增加一级
 		m_lev += 1;
-
 		//生产金币的数量的增加
 		Set_FGold(0);
 		//设置树高
 		Set_TreeHeight(m_goldPro);
-
 	}
-	
 }
 
 //获取等级
-uint32 FairyTree::Get_FGrade()
+uint32 FairyTree::Get_FGrade()const
 {
 	return m_lev;
 }
@@ -53,7 +49,7 @@ void FairyTree::Set_TreeHeight(uint32 sth)
 }
 
 //获取树高
-uint32 FairyTree::Get_TreeHeight()
+uint32 FairyTree::Get_TreeHeight()const
 {
 	return m_hei;
 }
@@ -65,12 +61,20 @@ void FairyTree::Set_FGold(uint32 fgo)
 	m_goldPro += fgo;
 }
 
+//设置树存储金币
+void FairyTree::Set_FAddFaiTreStoGol(uint32 ufftsg)
+{
+	//树的存储金币是否需要上限
+	//树的等级每增加一级 是否需要将 树的存储金币增加 固定值
+	m_treStoGol += ufftsg;
+}
+
 //获取生产的金币
-uint32 FairyTree::Get_FGold()
+uint32 FairyTree::Get_FGold()const
 {
 	//每获得一次金币 就将金币存放进 池中
-	Set_FAddFaiTreStoGol(m_goldPro);
-
+	
+	//Set_FAddFaiTreStoGol(m_goldPro);
 	return m_goldPro;
 }
 
@@ -82,18 +86,11 @@ void FairyTree::Set_FGoldTime(uint32 ufgt)
 }
 
 //获取生产金币的时间
-uint32 FairyTree::Get_FGoldTime()
+uint32 FairyTree::Get_FGoldTime()const
 {
 	return m_goldProTime;
 }
 
-//设置树存储金币
-void FairyTree::Set_FAddFaiTreStoGol(uint32 ufftsg)
-{
-	//树的存储金币是否需要上限
-	//树的等级每增加一级 是否需要将 树的存储金币增加 固定值
-	m_treStoGol += ufftsg;
-}
 
 //设置减少树存储金币
 void FairyTree::Set_FMinusFaiTreStoGol(uint32 ufmftsg)
@@ -103,10 +100,8 @@ void FairyTree::Set_FMinusFaiTreStoGol(uint32 ufmftsg)
 }
 
 //获取树存储金币
-uint32 FairyTree::Get_FFaiTreStoGol()
+uint32 FairyTree::Get_FFaiTreStoGol()const
 {
 	//得到总存储的金币数量
 	return m_treStoGol;
 }
-
-

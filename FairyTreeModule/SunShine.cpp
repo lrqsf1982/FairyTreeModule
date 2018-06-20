@@ -24,13 +24,11 @@ void CSunshine::Set_SunLevel(bool setgrad)
 	if (setgrad)
 	{
 		m_lev += 1;
-
 	}
-
 }
 
 //获取等级
-uint32 CSunshine::Get_SunLevel()
+uint32 CSunshine::Get_SunLevel()const
 {
 	return m_lev;
 }
@@ -43,7 +41,7 @@ void CSunshine::Set_FSunProCom(uint32 setpro)
 }
 
 //获取阳光的产出能力
-uint32 CSunshine::Get_FSunProCom()
+uint32 CSunshine::Get_FSunProCom()const
 {
 	return m_proCom;
 }
@@ -61,9 +59,7 @@ void CSunshine::Set_FSubSunNum(uint32 unum)
 }
 
 //获取阳光的数量
-uint32 CSunshine::Get_FSunNumber()
+uint32 CSunshine::Get_FSunNumber()const
 {
 	return m_num;
 }
-
-

@@ -30,7 +30,7 @@ void Process_LoginRequest(const GameMessage& pMsg, CServerObject* pServerObj, IM
 
 										   //然后在返回应答里面
 										   //应答函数
-		Process_LoginResponse(pMsg, pServerObj, pMessage);
+		
 	}
 
 	//反之就不是第一次登陆
@@ -39,9 +39,9 @@ void Process_LoginRequest(const GameMessage& pMsg, CServerObject* pServerObj, IM
 		//直接到应答函数
 		//然后在返回应答里面
 		//应答函数
-		Process_LoginResponse(pMsg, pServerObj, pMessage);
+		
 	}
-
+Process_LoginResponse(pMsg, pServerObj, pMessage);
 
 	//设置第一次登陆的当前用户相关的初始数据, 有些可以从读取了xml文件的map 里拿
 	//如:初始小精灵的数据, 初始神仙树的数据, 初始设置游戏玩家的游戏id号,
@@ -1589,6 +1589,7 @@ void Process_EnemiesResponse(const GameMessage & pMsg, CServerObject * pServerOb
 
 }
 
+
 //抢夺应答20
 void Process_PlunderResponse(const GameMessage& pMsg, CServerObject* pServerObj, IMessage* pMessage)
 {
@@ -1597,9 +1598,9 @@ void Process_PlunderResponse(const GameMessage& pMsg, CServerObject* pServerObj,
 	pRes = gameMsg.mutable_res();
 	PlunderResponse* pplures = pRes->release_plunder();
 	pplures = pRes->mutable_plunder();
-
-	//--------------------------------------------------------------
-	PlunderRequest ppluReq;
+	uint32 eID = pMsg.req().plunder().elfinid();
+	//--------------------------pM------------------------------------
+	///PlunderRequest ppluReq;
 	//得到消息连接ID
 	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
 	//神仙树用户类指针 
@@ -1614,13 +1615,19 @@ void Process_PlunderResponse(const GameMessage& pMsg, CServerObject* pServerObj,
 	uint32 uid = 0;
 	//如果当前的用户ID 等于 随机生成的用户ID
 	uid = rand() % CAllUserInfoInstance::GetInstance()->GetUserMap().size() + roleInitID;
+	Elfin * elfin;
+	//得到被掠夺者ID
+	elfin = CAllUserInfoInstance::GetInstance()->GetUserMap()[uConId]->GetElfinId(eID);
+	elfin->SetPlunderState(ElfinState::PLUNDER);
+	elfin->SetBePlunderId(uid);
 	/*if ()
 	{
 		rand();
 		uid = rand() % CAllUserInfoInstance::GetInstance()->GetUserMap().size() + roleInitID;
 	}*/
+
 	pplures->set_id(uid);
-	pplures->set_elfinid(ppluReq.elfinid());
+	pplures->set_elfinid(eID);
 
 	//--------------------------------------------------------------
 	//设置消息应答(枚举 3191)

@@ -25,7 +25,7 @@ void Mail::Set_MailSerialNumber(uint32 smsn)
 }
 
 //获取邮件编号
-uint32 Mail::Get_MailSerialNumber()
+uint32 Mail::Get_MailSerialNumber()const
 {
 	return m_SerNum;
 }
@@ -37,7 +37,7 @@ void Mail::Set_MailHeadline(const std::string& smh)
 }
 
 //获取邮件标题
-std::string Mail::Get_MailHeadline()
+std::string Mail::Get_MailHeadline()const
 {
 	return m_headline;
 }
@@ -49,7 +49,7 @@ void Mail::Set_MailContent(const std::string& smc)
 }
 
 //获取邮件内容
-std::string Mail::Get_MailContent()
+std::string Mail::Get_MailContent()const
 {
 	return m_content;
 }

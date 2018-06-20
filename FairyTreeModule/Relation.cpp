@@ -4,14 +4,11 @@
 
 Relation::Relation()
 {
-	pharaCha = new CharacterClass;
 }
 
 
 Relation::~Relation()
 {
-	delete pharaCha;
-	pharaCha = nullptr;
 }
 
 //Ôö¼ÓºÃÓÑ
@@ -71,4 +68,3 @@ void Relation::RDelEnemy(uint32 udel)
 	}
 
 }
-

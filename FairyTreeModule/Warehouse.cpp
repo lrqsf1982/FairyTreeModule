@@ -108,4 +108,3 @@ std::map<uint32, CWarehouseArticle*> Warehouse::Get_ArticleMap()
 {
 	return map_warehouse;
 }
-

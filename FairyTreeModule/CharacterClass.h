@@ -13,35 +13,45 @@ class CharacterClass
 {
 public:
 	CharacterClass();
+
 	~CharacterClass();
 
 	//设置角色ID
 	void Set_Role_ID(uint32 srid);
+
 	//获取角色ID
 	uint32 Get_Role_ID()const;
 
 	//设置角色名字
 	void Set_Role_Name(const std::string& srname);
+
 	//获取角色名字
 	std::string Get_Role_Name() const;
 
 	//设置角色成长值
 	void Set_RoleGrowthValue(uint32 srgv);
+
 	//获取角色成长值
 	uint32 Get_RoleGrowthValue()const;
 
 	//设置角色的头像地址
 	void Set_HaracterHeadPortraitSite(const std::string& shps);
+
 	//获取角色的头像地址
 	std::string Get_HaracterHeadPortraitSite()const;
 
 	//设置树的等级
 	void Set_TreeToGread(uint32 sttg);
+
 	//获取树的等级
 	uint32 Get_TreeToGread()const;
 
 	//离线时间
 	ACE_Date_Time m_disconnecttime;
+
+	//当前排名
+	uint32 m_ucurlistId;
+
 private:
 	//角色ID
 	uint32 m_roleID;
@@ -58,7 +68,4 @@ private:
 	//树的等级
 	uint32 utreeToGread;
 };
-
-
 #endif
-

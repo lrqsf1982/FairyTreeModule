@@ -18,23 +18,24 @@ public:
 	//设置邮件编号
 	void Set_MailSerialNumber(uint32 smsn);
 	//获取邮件编号
-	uint32 Get_MailSerialNumber();
+	uint32 Get_MailSerialNumber()const;
 
 	//设置邮件标题
 	void Set_MailHeadline(const std::string& smh);
 	//获取邮件标题
-	std::string Get_MailHeadline();
+	std::string Get_MailHeadline()const;
 
 	//设置邮件内容
 	void Set_MailContent(const std::string& smc);
 	//获取邮件内容
-	std::string Get_MailContent();
+	std::string Get_MailContent()const;
 
 	//领取状态(标记邮件领取状态)(false为未取，true为已取)
 	bool MailArticleGetState();
 
 	//奖品map<奖品的ID,奖品的数量>
-	std::map<uint32, uint32> GetPrizes() {
+	std::map<uint32, uint32> GetPrizes() 
+	{
 		return m_vecArt;
 	}
 

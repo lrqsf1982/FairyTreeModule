@@ -27,23 +27,32 @@
 class FairyTreeUserClasses
 {
 public:
+
 	FairyTreeUserClasses();
+
 	~FairyTreeUserClasses();
 
 	//设置用户ID
 	void Set_UserId(uint32 suid);
+
 	//获得用户ID
 	uint32 Get_UserId();
+
 	//设置用户名
 	void Set_UserName(const std::string& str);
+
 	//获取用户名
 	std::string Get_UserName();
+
 	//设置微信ID
 	void Set_UserWeChatID(uint32 uid);
+
 	//获取微信ID
 	uint32 Get_UserWeChatID();
+
 	//设置成长值
 	void Set_UserGrowthValue(uint32 val);
+
 	//获取成长值
 	uint32 Get_UserGrowthValue();
 
@@ -74,57 +83,50 @@ public:
 	//获取资源类
 	ResourceClass* Get_Resource();
 
-	
+	//通过ID查找小精灵
+	Elfin *GetElfinId(uint32);
+
 private:
+	uint32		m_roleID;				//用户ID
 
-	//用户ID , 名字, 微信ID
-	uint32 m_roleID;
-	std::string m_name;
-	uint32 m_weChatID;
-	//成长值
-	uint32 m_groValue;
-                                 
-	//小精灵(链表)								   
-	std::list<Elfin*> elfList;						
+	std::string m_name;					//名字
+
+	uint32		m_weChatID;				//微信ID
 	
-	//神仙树										 
-	FairyTree* ptree;							
-	
-	//太阳										  
-	CSunshine* psun;
+	uint32		m_groValue;				//成长值
+            							   
+	std::list<Elfin*> elfList;			//小精灵(链表)			
+									 
+	FairyTree* ptree;					//神仙树		
+									  
+	CSunshine* psun;					//太阳	
 
-	//树结界(神仙门)
-	TreeEnchantment* pchant;
+	TreeEnchantment* pchant;			//树结界(神仙门)
 
-	//仓库
-	Warehouse* phouse;
+	Warehouse* phouse;					//仓库
 
-	//邮箱
-	CMailbox* pmbox;
+	CMailbox* pmbox;					//邮箱
 
-	//任务列表类
-	CTaskListClass* ptasklist;
+	CTaskListClass* ptasklist;			//任务列表类
 
-	//关系
-	Relation* prelat;
+	Relation* prelat;					//关系
 
-	//资源类
-	ResourceClass* pres;
-
-	
+	ResourceClass* pres;				//资源类
 };
 
 class CAllUserInfoInstance 
 {
 	CAllUserInfoInstance() {};
+
 	static CAllUserInfoInstance* _instance;
+
 	std::map<uint32, FairyTreeUserClasses*> ConnetedUser;
+
 public:
 	static CAllUserInfoInstance * GetInstance();
 	
 	std::map<uint32, FairyTreeUserClasses*>& GetUserMap();
-	void SetUserMap(uint32 uid, FairyTreeUserClasses* pUser);
 
+	void SetUserMap(uint32 uid, FairyTreeUserClasses* pUser);
 };
 #endif
-

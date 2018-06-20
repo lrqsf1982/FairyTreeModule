@@ -43,4 +43,3 @@ std::list<CharacterClass*> RankingList::Get_Rankinglist()
 	list_ranking.sort(JudgeCharaLevel);
 	return list_ranking;
 }
-

@@ -4,61 +4,61 @@
 
 XmlConfigManager::XmlConfigManager()
 {
-	ParseXmlToItem();//物品
-	ParseXmlToElfin();//小精灵
-	ParseXmlToSkill();//技能
-	ParseXmlToSunshine();//阳光
-	ParseXmlToTask();//任务
-	ParseXmlToTree();//神仙树
+	ParseXmlToItem();			//物品
+	ParseXmlToElfin();			//小精灵
+	ParseXmlToSkill();			//技能
+	ParseXmlToSunshine();		//阳光
+	ParseXmlToTask();			//任务
+	ParseXmlToTree();			//神仙树
 	ParseXmlToTreeEnchantment();//树结界
 }
 
 
 bool XmlConfigManager::ParseXmlToItem()
 {
-	const char* pItemXmlFileName = "Item.xml"; //物品xml文件名
-	ItemInfo iteminfo; //物品结构体对象
-	TiXmlDocument* ptixml = new TiXmlDocument();//构建文档对象指针
+	const char* pItemXmlFileName = "Item.xml";		//物品xml文件名
+	ItemInfo iteminfo;								//物品结构体对象
+	TiXmlDocument* ptixml = new TiXmlDocument();	//构建文档对象指针
 	if (NULL == ptixml)
 	{
 		return false;
 	}
-	ptixml->LoadFile(pItemXmlFileName);//加载文件
-	TiXmlElement* proot = ptixml->RootElement(); //指向根节点
+	ptixml->LoadFile(pItemXmlFileName);				//加载文件
+	TiXmlElement* proot = ptixml->RootElement();	//指向根节点
 	for (TiXmlNode* pnode = proot->FirstChild("Table"); pnode; pnode = pnode->NextSibling("Table"))
 	{
 		TiXmlNode* pchild = pnode->FirstChild();
-		iteminfo.articleID = atoi(pchild->ToElement()->GetText());//设置物品ID
+		iteminfo.articleID = atoi(pchild->ToElement()->GetText());		//设置物品ID
 
 		pchild = pnode->IterateChildren(pchild);
-		iteminfo.articlename = pchild->ToElement()->GetText();//设置物品名字
+		iteminfo.articlename = pchild->ToElement()->GetText();			//设置物品名字
 
 		pchild = pnode->IterateChildren(pchild);
-		iteminfo.articledescribe = pchild->ToElement()->GetText(); //物品描述
+		iteminfo.articledescribe = pchild->ToElement()->GetText();		//物品描述
 
 		pchild = pnode->IterateChildren(pchild);
-		iteminfo.goldprice = atoi(pchild->ToElement()->GetText());//物品金币价格
+		iteminfo.goldprice = atoi(pchild->ToElement()->GetText());		//物品金币价格
 
 		pchild = pnode->IterateChildren(pchild);
-		iteminfo.diamondprice = atoi(pchild->ToElement()->GetText());//物品钻石价格
+		iteminfo.diamondprice = atoi(pchild->ToElement()->GetText());	//物品钻石价格
 
 		pchild = pnode->IterateChildren(pchild);
-		iteminfo.discountrate = atof(pchild->ToElement()->GetText());//物品折扣率	
+		iteminfo.discountrate = atof(pchild->ToElement()->GetText());	//物品折扣率	
 
 		pchild = pnode->IterateChildren(pchild);
-		iteminfo.consStr = atoi(pchild->ToElement()->GetText());//消耗体力
+		iteminfo.consStr = atoi(pchild->ToElement()->GetText());		//消耗体力
 
 		pchild = pnode->IterateChildren(pchild); 
-		iteminfo.timeCon = atoi(pchild->ToElement()->GetText());//耗时
+		iteminfo.timeCon = atoi(pchild->ToElement()->GetText());		//耗时
 
 		pchild = pnode->IterateChildren(pchild); 
-		iteminfo.height = atoi(pchild->ToElement()->GetText());//高度
+		iteminfo.height = atoi(pchild->ToElement()->GetText());			//高度
 
 		pchild = pnode->IterateChildren(pchild);
-		iteminfo.mtype = pchild->ToElement()->GetText(); //物品类型		
+		iteminfo.mtype = pchild->ToElement()->GetText();				//物品类型		
 
 		pchild = pnode->IterateChildren(pchild);
-		iteminfo.photoname = atoi(pchild->ToElement()->GetText()); //物品图片名
+		iteminfo.photoname = atoi(pchild->ToElement()->GetText());		//物品图片名
 
 		ItemInfos[iteminfo.articleID] = &iteminfo;
 	}
@@ -245,55 +245,55 @@ bool XmlConfigManager::ParseXmlToTask()
 
 bool XmlConfigManager::ParseXmlToTree()
 {
-	const char* pTreeXmlFileName = "Tree.xml"; //神仙树Xml文件名
-	TreeInfo fairytree; //神仙树的结构体对象
-	TiXmlDocument* ptixml = new TiXmlDocument(); //构建文档对象
+	const char* pTreeXmlFileName = "Tree.xml";								//神仙树Xml文件名
+	TreeInfo* fairytree=new TreeInfo();										//神仙树的结构体对象
+	TiXmlDocument* ptixml = new TiXmlDocument();							//构建文档对象
 	if (NULL == ptixml)
 	{
 		return false;
 	}
-	ptixml->LoadFile(pTreeXmlFileName);//加载Xml文件
-	TiXmlElement* proot = ptixml->RootElement();//指向根节点
+	ptixml->LoadFile(pTreeXmlFileName);										//加载Xml文件
+	TiXmlElement* proot = ptixml->RootElement();							//指向根节点
 	for (TiXmlNode* pnode = proot->FirstChild("Table"); pnode; pnode = pnode->NextSibling("Table"))
 	{
 		TiXmlNode* pchild = pnode->FirstChild();
-		fairytree.gread = atoi(pchild->ToElement()->GetText());//读取等级
+		fairytree->gread = atoi(pchild->ToElement()->GetText());			//读取等级
 
 		pchild = pnode->IterateChildren(pchild);
-		fairytree.cowaternum = atoi(pchild->ToElement()->GetText());//读取消耗水的数量
+		fairytree->cowaternum = atoi(pchild->ToElement()->GetText());		//读取消耗水的数量
 
 		pchild = pnode->IterateChildren(pchild);
-		fairytree.cosunnum = atoi(pchild->ToElement()->GetText());//读取消耗阳光的数量
+		fairytree->cosunnum = atoi(pchild->ToElement()->GetText());			//读取消耗阳光的数量
 
 		pchild = pnode->IterateChildren(pchild);
-		fairytree.cogoldnum = atoi(pchild->ToElement()->GetText());//读取消耗金币的数量
+		fairytree->cogoldnum = atoi(pchild->ToElement()->GetText());		//读取消耗金币的数量
 
 		pchild = pnode->IterateChildren(pchild);
-		fairytree.codiamondnum = atoi(pchild->ToElement()->GetText());//读取钻石消耗数量
+		fairytree->codiamondnum = atoi(pchild->ToElement()->GetText());		//读取钻石消耗数量
 
 		pchild = pnode->IterateChildren(pchild);
-		fairytree.elfinprodco = atoi(pchild->ToElement()->GetText());//读取消耗小精灵体力的数量
+		fairytree->elfinprodco = atoi(pchild->ToElement()->GetText());		//读取消耗小精灵体力的数量
 
 		pchild = pnode->IterateChildren(pchild);
-		fairytree.productivity = atoi(pchild->ToElement()->GetText());//读取生产的数量
+		fairytree->productivity = atoi(pchild->ToElement()->GetText());		//读取生产的数量
 
 		pchild = pnode->IterateChildren(pchild);
-		fairytree.treehigh = atof(pchild->ToElement()->GetText());//读取树高
+		fairytree->treehigh = atof(pchild->ToElement()->GetText());			//读取树高
 
 		pchild = pnode->IterateChildren(pchild);
-		fairytree.breakthReq = atoi(pchild->ToElement()->GetText());//读取树高
+		fairytree->breakthReq = atoi(pchild->ToElement()->GetText());		//读取树高
 
 		pchild = pnode->IterateChildren(pchild);
-		fairytree.photoname = pchild->ToElement()->GetText(); //图片名
+		fairytree->photoname = pchild->ToElement()->GetText();				//图片名
 
-		TreeInfos[fairytree.gread] = &fairytree;
+		TreeInfos[fairytree->gread] = fairytree;
 	}
 	return true;
 }
 
 bool XmlConfigManager::ParseXmlToTreeEnchantment()
 {
-	const char* pTreeEnchantmentXmlFileName = "TreeEnchantment.xml"; //树结界的xml文件
+	const char* pTreeEnchantmentXmlFileName = "TreeEnchantment.xml";		//树结界的xml文件
 	TreeEnchantmentInfo treeench; //树结界结构体对象
 								  //构建文档对象指针
 	TiXmlDocument* tixml = new TiXmlDocument();
@@ -339,6 +339,7 @@ XmlConfigManager * XmlConfigManager::GetInstance()
 
 XmlConfigManager::~XmlConfigManager()
 {
+	//TODO-----------------------------
 	ReleaseMapFun(ItemInfos);
 	ReleaseMapFun(ElfinInfos);
 	ReleaseMapFun(SkillInfos);

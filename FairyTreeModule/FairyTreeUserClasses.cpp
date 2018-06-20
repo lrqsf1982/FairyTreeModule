@@ -44,6 +44,17 @@ FairyTreeUserClasses::~FairyTreeUserClasses()
 }
 
 
+//通过ID查找小精灵
+Elfin * FairyTreeUserClasses::GetElfinId(uint32 id) 
+{
+	std::list<Elfin *>::iterator it;
+	for (it = elfList.begin(); it != elfList.end(); ++it)
+	{
+		if ((*it)->Get_EToID() == id)
+			return *it;
+	}
+	return nullptr;
+}
 //设置用户ID
 void FairyTreeUserClasses::Set_UserId(uint32 suid)
 {
