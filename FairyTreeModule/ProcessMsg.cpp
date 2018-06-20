@@ -1601,6 +1601,8 @@ void Process_PlunderResponse(const GameMessage& pMsg, CServerObject* pServerObj,
 	uint32 eID = pMsg.req().plunder().elfinid();
 	//--------------------------pM------------------------------------
 	///PlunderRequest ppluReq;
+
+	PlunderRequest ppluReq;
 	//得到消息连接ID
 	uint32 uConId = pMessage->GetMessageBase()->m_u4ConnectID;
 	//神仙树用户类指针 
